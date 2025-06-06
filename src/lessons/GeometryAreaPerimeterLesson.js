@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const GeometryAreaPerimeterLesson = () => {
   const [selectedShape, setSelectedShape] = useState('triangle');
@@ -433,16 +432,8 @@ const GeometryAreaPerimeterLesson = () => {
               { value: "d", label: "15 ס״מ" }
             ],
             correctAnswer: "c",
-            explanation: "היקף מלבן = 2(אורך + רוחב). אז 30 = 2(9 + רוחב) ⟹ 15 = 9 + רוחב ⟹ רוחב = 6 ס״מ"
-          }
+            explanation: "היקף מלבן = 2(אורך + רוחב). אז 30 = 2(9 + רוחב) ⟹ 15 = 9 + רוחב ⟹ רוחב = 6 ס״מ"        }
         ]}
-      />
-
-      {/* Progress Section */}
-      <ProgressSection 
-        lessonId="35182-geometry-area-perimeter"
-        nextLessonPath="/lessons/analytic-geometry-points"
-        menuPath="/lessons"
       />
     </LessonLayout>
   );

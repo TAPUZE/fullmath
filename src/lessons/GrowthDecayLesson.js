@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const GrowthDecayLesson = () => {
   const title = "גדילה ודעיכה";
@@ -182,14 +181,10 @@ const GrowthDecayLesson = () => {
         </div>
       </section>
 
-      {/* Quiz Section */}
-      <section className="mb-12">
+      {/* Quiz Section */}      <section className="mb-12">
         <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">בחן את עצמך 🧐</h2>
         <Quiz questions={quizQuestions} />
       </section>
-
-      {/* Progress Section */}
-      <ProgressSection lessonId={lessonId} nextLessonPath={nextLessonPath} />
     </LessonLayout>
   );
 };

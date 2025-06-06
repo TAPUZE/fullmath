@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 // Sequence visualization component
 const SequenceVisualization = ({ sequence, difference, title }) => {
@@ -288,16 +287,10 @@ const ArithmeticSequencesIntroLesson = () => {
               {...exercise}
             />
           ))}
-        </div>
-      </section>
+        </div>      </section>
 
       {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />      {/* Progress Section */}
-      <ProgressSection 
-        lessonId="35182-sequences-arithmetic-intro"
-        nextLessonPath="/lessons/sequences-arithmetic-sum"
-        menuPath="/lessons"
-      />
+      <Quiz questions={quizQuestions} />
     </LessonLayout>
   );
 };

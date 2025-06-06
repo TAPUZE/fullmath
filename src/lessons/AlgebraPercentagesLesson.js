@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const P = 15; // Example value, replace with the correct one if needed
 
@@ -303,15 +302,7 @@ const AlgebraPercentagesLesson = () => {
             ],
             correctAnswer: "b",
             explanation: "העלייה היא 100 - 80 = 20 ש״ח. אחוז העלייה = (20/80) × 100% = 25%."
-          }
-        ]}
-      />
-
-      {/* Progress Section */}
-      <ProgressSection 
-        lessonId="35182-algebra-percentages"
-        nextLessonPath="/lessons/algebra-inequalities"
-        menuPath="/lessons"
+          }        ]}
       />
     </LessonLayout>
   );

@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 // Example box component for probability examples
 const ExampleBox = ({ title, children, isGreen = false }) => {
@@ -258,15 +257,8 @@ const ProbabilityIntroLesson = () => {
             />
           ))}
         </div>
-      </section>
-
-      {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />      {/* Progress Section */}
-      <ProgressSection 
-        lessonId="35182-probability-intro"
-        nextLessonPath="/lessons/probability-tree-conditional"
-        menuPath="/lessons"
-      />
+      </section>      {/* Quiz Section */}
+      <Quiz questions={quizQuestions} />
     </LessonLayout>
   );
 };

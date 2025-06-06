@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const NormalDistributionLesson = () => {
   const exercises = [
@@ -170,16 +169,11 @@ const NormalDistributionLesson = () => {
             <Exercise key={exercise.id} {...exercise} />
           ))}
         </div>
-      </section>
-
-      {/* Quiz Section */}
+      </section>      {/* Quiz Section */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">בוחן ידע 🧪</h2>
         <Quiz questions={quizQuestions} />
       </section>
-
-      {/* Progress Section */}
-      <ProgressSection lessonId="35381-normal-distribution" />
     </LessonLayout>
   );
 };

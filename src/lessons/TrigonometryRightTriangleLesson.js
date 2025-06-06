@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 // Interactive Triangle Diagram Component
 const TriangleDiagram = ({ showLabels = true, angle = 30, adjacentSide = 10, showValues = false }) => {
@@ -358,11 +357,7 @@ const TrigonometryRightTriangleLesson = () => {
         />
       </section>
 
-      {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />
-
-      {/* Progress Section */}
-      <ProgressSection lessonId="35182-trigonometry-right-triangle" />
+      {/* Quiz Section */}      <Quiz questions={quizQuestions} />
     </LessonLayout>
   );
 };

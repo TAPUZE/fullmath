@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const initializeMathJax = () => {
   window.MathJax = {
@@ -153,13 +152,9 @@ const ProblemsBuySellLesson = () => {
       {/* Quiz Section */}
       <section id="quiz" aria-labelledby="quiz-heading" className="mb-12">
         <h2 id="quiz-heading" className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
-          בחן את עצמך 🧠
-        </h2>
+          בחן את עצמך 🧠        </h2>
         <Quiz questions={quizQuestions} lessonId={lessonId} />
       </section>
-
-      {/* Progress Section */}
-      <ProgressSection lessonId={lessonId} />
     </LessonLayout>
   );
 };

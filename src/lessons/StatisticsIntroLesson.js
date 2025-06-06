@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 // Custom frequency table component
 const FrequencyTable = ({ data, title }) => {
@@ -323,14 +322,8 @@ const StatisticsIntroLesson = () => {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
           בחן את עצמך 🧐
-        </h2>
-        <Quiz questions={quizQuestions} />
-      </section>      {/* Progress Section */}
-      <ProgressSection 
-        lessonId="35182-statistics-intro"
-        nextLessonPath="/lessons/statistics-dispersion"
-        menuPath="/lessons"
-      />
+        </h2>        <Quiz questions={quizQuestions} />
+      </section>
     </LessonLayout>
   );
 };

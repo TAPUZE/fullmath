@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
-import ProgressSection from '../components/ProgressSection';
 
 const initializeMathJax = () => {
   window.MathJax = {
@@ -128,12 +127,8 @@ const SequencesArithmeticSumLesson = () => {
               correctAnswer={exercise.correctAnswer}
               solution={exercise.solution}
             />
-          ))}
-        </div>
+          ))}        </div>
       </section>
-
-      {/* Progress Section */}
-      <ProgressSection lessonId={lessonId} nextLessonPath={nextLessonPath} />
     </LessonLayout>
   );
 };
