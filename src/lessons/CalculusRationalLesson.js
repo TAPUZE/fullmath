@@ -55,25 +55,23 @@ const CalculusRationalLesson = () => {
     {
       id: 'q1',
       question: 'מהו תחום ההגדרה של הפונקציה',
-      formula: 'f(x) = \\frac{5}{x-7}',
-      options: [
+      formula: 'f(x) = \\frac{5}{x-7}',      options: [
         { value: 'a', label: 'כל x' },
         { value: 'b', label: 'x ≠ 7' },
         { value: 'c', label: 'x ≠ 5' }
       ],
-      correct: 'b',
+      correctAnswer: 'b',
       explanation: 'תחום ההגדרה הוא כל הערכים שבהם המכנה שונה מאפס. x-7≠0 לכן x≠7.'
     },
     {
       id: 'q2',
       question: 'מהי האסימפטוטה האופקית של הפונקציה',
-      formula: 'f(x) = \\frac{6x^2+1}{2x^2-x}',
-      options: [
+      formula: 'f(x) = \\frac{6x^2+1}{2x^2-x}',      options: [
         { value: 'a', label: 'y=0' },
         { value: 'b', label: 'y=3' },
         { value: 'c', label: 'אין אסימפטוטה אופקית' }
       ],
-      correct: 'b',
+      correctAnswer: 'b',
       explanation: 'החזקות הגבוהות במונה ובמכנה שוות (x²), לכן האסימפטוטה האופקית היא יחס המקדמים: 6/2 = 3, כלומר y=3.'
     }
   ];

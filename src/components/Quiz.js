@@ -36,10 +36,9 @@ const Quiz = ({ questions, onSubmit }) => {
         <div key={question.id} className="quiz-question p-4 border border-gray-300 rounded-lg bg-gray-50">
           <p className="font-medium mb-3">
             שאלה {index + 1}: {question.question}
-          </p>
-          <div className="space-y-1">
-            {question.options.map((option) => (
-              <label key={option.value} className="flex items-center">
+          </p>          <div className="space-y-1">
+            {question.options.map((option, optionIndex) => (
+              <label key={`${question.id}-option-${optionIndex}`} className="flex items-center">
                 <input
                   type="radio"
                   name={question.id}
