@@ -1,40 +1,14 @@
-import { useEffect } from 'react';
-
-const MathJax = () => {
-  useEffect(() => {
-    // Configure MathJax
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-
-    // Load MathJax script
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-    script.async = true;
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup
-      const existingScript = document.querySelector('script[src*="mathjax"]');
-      if (existingScript) {
-        existingScript.remove();
-      }
-    };
-  }, []);
-
-  return null;
-};
-
+/**
+ * Triggers MathJax to typeset mathematical content within a given HTML element.
+ * @param {HTMLElement} element The HTML element containing the math to be typeset.
+ */
 export const renderMathInElement = (element) => {
-  if (window.MathJax && window.MathJax.typesetPromise) {
-    window.MathJax.typesetPromise([element]).catch((err) => console.log('MathJax error:', err));
+  if (window.MathJax && window.MathJax.typesetPromise && element) {
+    window.MathJax.typesetPromise([element])
+      .catch((err) => console.error('MathJax typesetting error:', err));
+  } else if (!element) {
+    console.warn('renderMathInElement called with no element.');
+  } else if (!(window.MathJax && window.MathJax.typesetPromise)) {
+    console.warn('MathJax or typesetPromise not available on window.');
   }
 };
-
-export default MathJax;

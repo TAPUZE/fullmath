@@ -1,47 +1,35 @@
 import React, { useEffect, useRef } from 'react';
+import { renderMathInElement } from './MathJax'; // Corrected import path if necessary
+import '../styles/FormulaBox.css'; // Make sure this path is correct
 
-const FormulaBox = ({ children, dir = 'rtl', isBlock = false }) => {
-  const className = isBlock ? 'formula-box-block' : 'formula-box';
-  const spanRef = useRef(null);
-
-  const typesetMath = () => {
-    if (window.MathJax && window.MathJax.typesetPromise && spanRef.current) {
-      window.MathJax.typesetPromise([spanRef.current])
-        .then(() => {
-          // console.log('MathJax typeset successfully for:', children);
-        })
-        .catch((err) => {
-          console.error('MathJax typesetting error in FormulaBox for:', children, err);
-        });
-    } else {
-      // console.warn('MathJax not ready or spanRef.current is null when trying to typeset:', children);
-    }
-  };
+const FormulaBox = ({ children, inline = false }) => {
+  const boxRef = useRef(null);
 
   useEffect(() => {
-    const handleMathJaxReady = () => {
-      // console.log('MathJaxReady event received in FormulaBox for:', children);
-      typesetMath();
-    };
-
-    if (window.mathJaxInitialized) {
-      // console.log('MathJax already initialized, typesetting for:', children);
-      typesetMath();
-    } else {
-      // console.log('MathJax not yet initialized, adding event listener for:', children);
-      document.addEventListener('MathJaxReady', handleMathJaxReady);
+    if (boxRef.current) {
+      // Ensure MathJax is available before calling typeset
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        renderMathInElement(boxRef.current);
+      } else {
+        // Optional: Add a small delay or a listener for MathJax readiness
+        // if MathJax might not be loaded when this component first renders.
+        // For now, we assume MathJax is loaded due to its placement in index.html.
+        console.warn('MathJax not ready yet or renderMathInElement issue.');
+      }
     }
+  }, [children]); // Re-run when children (the math content) changes
 
-    return () => {
-      // console.log('Cleaning up MathJaxReady event listener for:', children);
-      document.removeEventListener('MathJaxReady', handleMathJaxReady);
-    };
-  }, [children]); // Re-run when children (the formula string) change
+  const Tag = inline ? 'span' : 'div';
+  const content = children ? (typeof children === 'string' ? children.trim() : children) : '';
 
   return (
-    <span ref={spanRef} className={className} dir={dir}>
-      {children}
-    </span>
+    <Tag
+      ref={boxRef}
+      className={`formula-box ${inline ? 'inline-formula' : 'block-formula'}`}
+    >
+      {/* Delimiters are added here. Pass raw TeX as children */}
+      {inline ? `$${content}$` : `$$${content}$$`}
+    </Tag>
   );
 };
 

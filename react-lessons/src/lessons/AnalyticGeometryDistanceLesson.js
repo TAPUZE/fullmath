@@ -195,9 +195,8 @@ const AnalyticGeometryDistanceLesson = () => {
           <h3 className="text-xl font-semibold mt-6 mb-2">2. נוסחת המרחק הכללית</h3>
           <p>
             כאשר הנקודות אינן בהכרח על קו אופקי או אנכי, אנו משתמשים בנוסחה הכללית. אם נתונות שתי נקודות <FormulaBox>{`\\(A(x_1, y_1)\\)`}</FormulaBox> ו-<FormulaBox>{`\\(B(x_2, y_2)\\)`}</FormulaBox>, המרחק ביניהן, d, מחושב כך:
-          </p>
-          <div className="my-4 text-center">
-            <FormulaBox display={true}>{`\\(d = \\\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\)`}</FormulaBox>
+          </p>          <div className="my-4 text-center">
+            <FormulaBox>{`\\(d = \\\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\)`}</FormulaBox>
           </div>
           <p>
             נוסחה זו מבוססת על משפט פיתגורס. הקטע AB הוא היתר במשולש ישר-זווית שהניצבים שלו הם <FormulaBox>{`\\(|x_2 - x_1|\\)`}</FormulaBox> ו-<FormulaBox>{`\\(|y_2 - y_1|\\)`}</FormulaBox>.

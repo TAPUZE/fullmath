@@ -152,9 +152,8 @@ const AlgebraWordProblemsLesson = () => {
           <h3 className="text-xl font-semibold mt-6 mb-2">אסטרטגיית פתרון כללית:</h3>
           <StrategySteps />
 
-          <h3 className="text-xl font-semibold mt-6 mb-2">דגש: בעיות קנייה ומכירה פשוטות</h3>          <p>בבעיות אלו, לרוב נתעסק במחיר של מוצר, כמות, וסכום כולל. הקשר הבסיסי הוא:</p>
-          <div className="my-4 text-center">
-            <FormulaBox display={true}>
+          <h3 className="text-xl font-semibold mt-6 mb-2">דגש: בעיות קנייה ומכירה פשוטות</h3>          <p>בבעיות אלו, לרוב נתעסק במחיר של מוצר, כמות, וסכום כולל. הקשר הבסיסי הוא:</p>          <div className="my-4 text-center">
+            <FormulaBox>
               {`\\text{Price per Unit} \\times \\text{Quantity} = \\text{Total}`}
             </FormulaBox>
           </div>

@@ -244,9 +244,9 @@ const AnalyticGeometryMidpointLesson = () => {
             אם נתונות שתי נקודות קצה של קטע, <FormulaBox>\(A(x_1, y_1)\)</FormulaBox> ו-<FormulaBox>\(B(x_2, y_2)\)</FormulaBox>, הקואורדינטות של נקודת האמצע <FormulaBox>\(M(x_M, y_M)\)</FormulaBox> של הקטע AB מחושבות כך:
           </p>
           <div className="formula-box-block my-6 text-center">
-            <FormulaBox display={true}>\(x_M = \frac{x_1 + x_2}{2}\)</FormulaBox>
+            <FormulaBox>\(x_M = \frac{x_1 + x_2}{2}\)</FormulaBox>
             <br />
-            <FormulaBox display={true}>\(y_M = \frac{y_1 + y_2}{2}\)</FormulaBox>
+            <FormulaBox>\(y_M = \frac{y_1 + y_2}{2}\)</FormulaBox>
           </div>
           <p>
             כלומר, שיעור ה-X של נקודת האמצע הוא הממוצע של שיעורי ה-X של נקודות הקצה, ושיעור ה-Y של נקודת האמצע הוא הממוצע של שיעורי ה-Y של נקודות הקצה.

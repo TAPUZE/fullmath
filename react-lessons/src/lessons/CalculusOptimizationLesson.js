@@ -17,32 +17,32 @@ const CalculusOptimizationLesson = () => {
       placeholder: 'הכנס ערך מקסימלי',
       solution: (
         <div>
-          <p><strong>פתרון:</strong></p>          <p>1. נגזרת: <FormulaBox inline>{"f'(x) = -2x + 4"}</FormulaBox></p>
-          <p>2. נקודת קיצון: <FormulaBox inline>{"-2x + 4 = 0 \\\\Rightarrow x = 2"}</FormulaBox></p>
-          <p>3. ערך הפונקציה: <FormulaBox inline>{"f(2) = -(2)^2 + 4(2) + 5 = -4 + 8 + 5 = 9"}</FormulaBox></p>
-          <p>4. מאחר שמקדם <FormulaBox inline>{"x^2"}</FormulaBox> שלילי, זהו מקסימום.</p>
+          <p><strong>פתרון:</strong></p>          <p>1. נגזרת: <FormulaBox inline>f'(x) = -2x + 4</FormulaBox></p>
+          <p>2. נקודת קיצון: <FormulaBox inline>-2x + 4 = 0 \\\\Rightarrow x = 2</FormulaBox></p>
+          <p>3. ערך הפונקציה: <FormulaBox inline>f(2) = -(2)^2 + 4(2) + 5 = -4 + 8 + 5 = 9</FormulaBox></p>
+          <p>4. מאחר שמקדם <FormulaBox inline>x^2</FormulaBox> שלילי, זהו מקסימום.</p>
         </div>
       )
     }
   ];
-
-  const quizQuestions = [    {
+  const quizQuestions = [
+    {
       id: 'q1',
-      question: 'מתי פונקציה f(x) = ax² + bx + c (כאשר a &lt; 0) מגיעה למקסימום?',options: [
-        { value: 'a', label: <FormulaBox inline>{"x = -\\\\frac{b}{2a}"}</FormulaBox> },
-        { value: 'b', label: <FormulaBox inline>{"x = \\\\frac{b}{2a}"}</FormulaBox> },
-        { value: 'c', label: <FormulaBox inline>{"x = -\\\\frac{a}{2b}"}</FormulaBox> },
-        { value: 'd', label: <FormulaBox inline>{"x = \\\\frac{a}{2b}"}</FormulaBox> }
+      question: 'מתי פונקציה f(x) = ax² + bx + c (כאשר a &lt; 0) מגיעה למקסימום?',      options: [
+        { value: 'a', label: <FormulaBox inline>{"x = -\\frac{b}{2a}"}</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>{"x = \\frac{b}{2a}"}</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>{"x = -\\frac{a}{2b}"}</FormulaBox> },
+        { value: 'd', label: <FormulaBox inline>{"x = \\frac{a}{2b}"}</FormulaBox> }
       ],
       correctAnswer: 'a'
-    },
-    {
+    },    {
       id: 'q2',
-      question: 'מהו תנאי הכרחי לקיום נקודת קיצון פנימית?',      options: [
-        { value: 'a', label: <FormulaBox inline>{"f(x) = 0"}</FormulaBox> },
-        { value: 'b', label: <FormulaBox inline>{"f'(x) = 0"}</FormulaBox> },
-        { value: 'c', label: <FormulaBox inline>{"f''(x) = 0"}</FormulaBox> },
-        { value: 'd', label: <FormulaBox inline>{"f''(x) > 0"}</FormulaBox> }
+      question: 'מהו תנאי הכרחי לקיום נקודת קיצון פנימית?',
+      options: [
+        { value: 'a', label: <FormulaBox inline>f(x) = 0</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>f'(x) = 0</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>f''(x) = 0</FormulaBox> },
+        { value: 'd', label: <FormulaBox inline>f''(x) &gt; 0</FormulaBox> }
       ],
       correctAnswer: 'b'
     }
@@ -66,10 +66,10 @@ const CalculusOptimizationLesson = () => {
           <p><strong>תנאי הכרחי:</strong> בנקודת קיצון פנימית, הנגזרת הראשונה שווה לאפס:</p>
           <FormulaBox>f'(x) = 0</FormulaBox>
           
-          <p><strong>תנאי מספיק:</strong> הנגזרת השנייה קובעת את סוג הקיצון:</p>
-          <ul className="list-disc pr-6 space-y-1">            <li>אם <FormulaBox inline>{"f''(x) > 0"}</FormulaBox> - מינימום מקומי</li>
+          <p><strong>תנאי מספיק:</strong> הנגזרת השנייה קובעת את סוג הקיצון:</p>          <ul className="list-disc pr-6 space-y-1">
+            <li>אם <FormulaBox inline>{"f''(x) > 0"}</FormulaBox> - מינימום מקומי</li>
             <li>אם <FormulaBox inline>{"f''(x) < 0"}</FormulaBox> - מקסימום מקומי</li>
-            <li>אם <FormulaBox inline>{"f''(x) = 0"}</FormulaBox> - הבדיקה לא חד-משמעית</li>
+            <li>אם <FormulaBox inline>f''(x) = 0</FormulaBox> - הבדיקה לא חד-משמעית</li>
           </ul>
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">2. שלבי פתרון בעיית אופטימיזציה</h3>
@@ -86,10 +86,10 @@ const CalculusOptimizationLesson = () => {
           <div className="border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-3 my-6">
             <p className="font-medium"><strong>בעיה:</strong> מלבן שהיקפו 20 מטר. מצא את הממדים שנותנים שטח מקסימלי.</p>
             <p><strong>פתרון:</strong></p>
-            <p>1. <strong>משתנים:</strong> אורך = x, רוחב = y</p>
-            <p>2. <strong>אילוץ:</strong> היקף = <FormulaBox inline>{"2x + 2y = 20 \\Rightarrow y = 10 - x"}</FormulaBox></p>
+            <p>1. <strong>משתנים:</strong> אורך = x, רוחב = y</p>            <p>2. <strong>אילוץ:</strong> היקף = <FormulaBox inline>{"2x + 2y = 20 \\Rightarrow y = 10 - x"}</FormulaBox></p>
             <p>3. <strong>פונקציית מטרה:</strong> שטח = <FormulaBox inline>{"S(x) = x \\cdot y = x(10-x) = 10x - x^2"}</FormulaBox></p>
-            <p>4. <strong>תחום:</strong> <FormulaBox inline>{"0 < x < 10"}</FormulaBox> (כדי שהמלבן יהיה חוקי)</p>            <p>5. <strong>נגזרת:</strong> <FormulaBox inline>{"S'(x) = 10 - 2x"}</FormulaBox></p>
+            <p>4. <strong>תחום:</strong> <FormulaBox inline>{"0 < x < 10"}</FormulaBox> (כדי שהמלבן יהיה חוקי)</p>
+            <p>5. <strong>נגזרת:</strong> <FormulaBox inline>{"S'(x) = 10 - 2x"}</FormulaBox></p>
             <p>6. <strong>נקודת קיצון:</strong> <FormulaBox inline>{"10 - 2x = 0 \\Rightarrow x = 5"}</FormulaBox></p>
             <p>7. <strong>נגזרת שנייה:</strong> <FormulaBox inline>{"S''(x) = -2 < 0"}</FormulaBox> ← מקסימום</p>
             <p>8. <strong>תשובה:</strong> כאשר x = 5, y = 5. השטח המקסימלי הוא 25 מ״ר (ריבוע!).</p>

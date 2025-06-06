@@ -18,11 +18,11 @@ const AlgebraLinearEquationOneVariableLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p><FormulaBox inline>{"5x - 8 = 2x + 7"}</FormulaBox></p>
-          <p>העברת אגפים: <FormulaBox inline>{"5x - 2x = 7 + 8"}</FormulaBox></p>
-          <p>כינוס איברים: <FormulaBox inline>{"3x = 15"}</FormulaBox></p>
-          <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{15}{3} = 5"}</FormulaBox></p>
-          <p>הפתרון הוא: <FormulaBox inline>{"x = 5"}</FormulaBox>.</p>
+          <p><FormulaBox inline>5x - 8 = 2x + 7</FormulaBox></p>
+          <p>העברת אגפים: <FormulaBox inline>5x - 2x = 7 + 8</FormulaBox></p>
+          <p>כינוס איברים: <FormulaBox inline>3x = 15</FormulaBox></p>
+          <p>בידוד הנעלם: <FormulaBox inline>x = \\frac{15}{3} = 5</FormulaBox></p>
+          <p>הפתרון הוא: <FormulaBox inline>x = 5</FormulaBox>.</p>
         </div>
       )
     },
@@ -34,13 +34,13 @@ const AlgebraLinearEquationOneVariableLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p><FormulaBox inline>{"4(x+1) - 2(x-3) = 12"}</FormulaBox></p>
-          <p>פתיחת סוגריים: <FormulaBox inline>{"4x + 4 - 2x + 6 = 12"}</FormulaBox></p>
-          <p>כינוס איברים באגף שמאל: <FormulaBox inline>{"2x + 10 = 12"}</FormulaBox></p>
-          <p>העברת אגפים: <FormulaBox inline>{"2x = 12 - 10"}</FormulaBox></p>
-          <p><FormulaBox inline>{"2x = 2"}</FormulaBox></p>
-          <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{2}{2} = 1"}</FormulaBox></p>
-          <p>הפתרון הוא: <FormulaBox inline>{"x = 1"}</FormulaBox>.</p>
+          <p><FormulaBox inline>4(x+1) - 2(x-3) = 12</FormulaBox></p>
+          <p>פתיחת סוגריים: <FormulaBox inline>4x + 4 - 2x + 6 = 12</FormulaBox></p>
+          <p>כינוס איברים באגף שמאל: <FormulaBox inline>2x + 10 = 12</FormulaBox></p>
+          <p>העברת אגפים: <FormulaBox inline>2x = 12 - 10</FormulaBox></p>
+          <p><FormulaBox inline>2x = 2</FormulaBox></p>
+          <p>בידוד הנעלם: <FormulaBox inline>x = \\frac{2}{2} = 1</FormulaBox></p>
+          <p>הפתרון הוא: <FormulaBox inline>x = 1</FormulaBox>.</p>
         </div>
       )
     },
@@ -52,14 +52,14 @@ const AlgebraLinearEquationOneVariableLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p><FormulaBox inline>{"\\frac{x}{2} + \\frac{x}{3} = 5"}</FormulaBox></p>
+          <p><FormulaBox inline>\\frac{x}{2} + \\frac{x}{3} = 5</FormulaBox></p>
           <p>המכנה המשותף הקטן ביותר של 2 ו-3 הוא 6.</p>
           <p>נכפול כל איבר במשוואה ב-6:</p>
-          <p><FormulaBox inline>{"6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5"}</FormulaBox></p>
-          <p><FormulaBox inline>{"3x + 2x = 30"}</FormulaBox></p>
-          <p>כינוס איברים: <FormulaBox inline>{"5x = 30"}</FormulaBox></p>
-          <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{30}{5} = 6"}</FormulaBox></p>
-          <p>פתרון המשוואה הוא <FormulaBox inline>{"x = 6"}</FormulaBox>.</p>
+          <p><FormulaBox inline>6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5</FormulaBox></p>
+          <p><FormulaBox inline>3x + 2x = 30</FormulaBox></p>
+          <p>כינוס איברים: <FormulaBox inline>5x = 30</FormulaBox></p>
+          <p>בידוד הנעלם: <FormulaBox inline>x = \\frac{30}{5} = 6</FormulaBox></p>
+          <p>פתרון המשוואה הוא <FormulaBox inline>x = 6</FormulaBox>.</p>
         </div>
       )
     }
@@ -70,10 +70,10 @@ const AlgebraLinearEquationOneVariableLesson = () => {
       id: 'q1',
       question: 'מהו הפתרון של המשוואה 7x - 5 = 3x + 11?',
       options: [
-        { value: 'a', label: <FormulaBox inline>{"x = 2"}</FormulaBox> },
-        { value: 'b', label: <FormulaBox inline>{"x = 3"}</FormulaBox> },
-        { value: 'c', label: <FormulaBox inline>{"x = 4"}</FormulaBox> },
-        { value: 'd', label: <FormulaBox inline>{"x = 1.6"}</FormulaBox> }
+        { value: 'a', label: <FormulaBox inline>x = 2</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>x = 3</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>x = 4</FormulaBox> },
+        { value: 'd', label: <FormulaBox inline>x = 1.6</FormulaBox> }
       ],
       correctAnswer: 'c'
     },
@@ -81,10 +81,10 @@ const AlgebraLinearEquationOneVariableLesson = () => {
       id: 'q2',
       question: 'מהו הפתרון של המשוואה x/4 - 1 = 2?',
       options: [
-        { value: 'a', label: <FormulaBox inline>{"x = 4"}</FormulaBox> },
-        { value: 'b', label: <FormulaBox inline>{"x = 8"}</FormulaBox> },
-        { value: 'c', label: <FormulaBox inline>{"x = 12"}</FormulaBox> },
-        { value: 'd', label: <FormulaBox inline>{"x = \\frac{3}{4}"}</FormulaBox> }
+        { value: 'a', label: <FormulaBox inline>x = 4</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>x = 8</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>x = 12</FormulaBox> },
+        { value: 'd', label: <FormulaBox inline>x = \\frac{3}{4}</FormulaBox> }
       ],
       correctAnswer: 'c'
     },
@@ -118,8 +118,8 @@ const AlgebraLinearEquationOneVariableLesson = () => {
             ולא בחזקות גבוהות יותר או במכנה. המטרה היא למצוא את ערכו של הנעלם שמקיים את השוויון.
           </p>
           <p>
-            הצורה הכללית של משוואה כזו לאחר פישוט יכולה להיות <FormulaBox inline>{"ax = b"}</FormulaBox>, 
-            כאשר a ו-b הם מספרים ידועים, ו-<FormulaBox inline>{"a \\neq 0"}</FormulaBox>.
+            הצורה הכללית של משוואה כזו לאחר פישוט יכולה להיות <FormulaBox inline>ax = b</FormulaBox>, 
+            כאשר a ו-b הם מספרים ידועים, ו-<FormulaBox inline>a \\neq 0</FormulaBox>.
           </p>
           
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">שלבי פתרון:</h3>
@@ -156,26 +156,26 @@ const AlgebraLinearEquationOneVariableLesson = () => {
 
           <h3 className="text-xl font-semibold mt-8 mb-2 text-gray-800">דוגמה פתורה</h3>
           <div className="border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-3 my-6">
-            <p className="font-medium"><strong>שאלה:</strong> פתור את המשוואה <FormulaBox inline>{"3(x-2) + 5 = 2x - 1"}</FormulaBox></p>
+            <p className="font-medium"><strong>שאלה:</strong> פתור את המשוואה <FormulaBox inline>3(x-2) + 5 = 2x - 1</FormulaBox></p>
             <p><strong>פתרון:</strong></p>
             
             <div className="space-y-2">
               <p><strong>שלב 1 - פתיחת סוגריים:</strong></p>
-              <p><FormulaBox inline>{"3x - 3 \\cdot 2 + 5 = 2x - 1"}</FormulaBox></p>
-              <p><FormulaBox inline>{"3x - 6 + 5 = 2x - 1"}</FormulaBox></p>
+              <p><FormulaBox inline>3x - 3 \\cdot 2 + 5 = 2x - 1</FormulaBox></p>
+              <p><FormulaBox inline>3x - 6 + 5 = 2x - 1</FormulaBox></p>
               
               <p><strong>שלב 2 - כינוס איברים באגף שמאל:</strong></p>
-              <p><FormulaBox inline>{"3x - 1 = 2x - 1"}</FormulaBox></p>
+              <p><FormulaBox inline>3x - 1 = 2x - 1</FormulaBox></p>
               
               <p><strong>שלב 3 - העברת אגפים:</strong></p>
               <p>מעבירים 2x שמאלה ו-1- ימינה:</p>
-              <p><FormulaBox inline>{"3x - 2x = -1 + 1"}</FormulaBox></p>
+              <p><FormulaBox inline>3x - 2x = -1 + 1</FormulaBox></p>
               
               <p><strong>שלב 4 - כינוס איברים ובידוד הנעלם:</strong></p>
-              <p><FormulaBox inline>{"x = 0"}</FormulaBox></p>
+              <p><FormulaBox inline>x = 0</FormulaBox></p>
             </div>
             
-            <p className="font-medium text-green-700">לכן, פתרון המשוואה הוא <FormulaBox inline>{"x = 0"}</FormulaBox>.</p>
+            <p className="font-medium text-green-700">לכן, פתרון המשוואה הוא <FormulaBox inline>x = 0</FormulaBox>.</p>
           </div>
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">משוואות עם שברים פשוטים</h3>
@@ -185,19 +185,19 @@ const AlgebraLinearEquationOneVariableLesson = () => {
           </p>
           
           <div className="border border-gray-200 rounded-lg p-4 bg-yellow-50 space-y-3 my-6">
-            <p className="font-medium"><strong>דוגמה:</strong> פתור את המשוואה <FormulaBox inline>{"\\frac{x}{2} + \\frac{x}{3} = 5"}</FormulaBox></p>
+            <p className="font-medium"><strong>דוגמה:</strong> פתור את המשוואה <FormulaBox inline>\\frac{x}{2} + \\frac{x}{3} = 5</FormulaBox></p>
             <p><strong>פתרון:</strong></p>
             
             <div className="space-y-2">
               <p>המכנה המשותף הקטן ביותר של 2 ו-3 הוא 6.</p>
               <p>נכפול כל איבר במשוואה ב-6:</p>
-              <p><FormulaBox inline>{"6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5"}</FormulaBox></p>
-              <p><FormulaBox inline>{"3x + 2x = 30"}</FormulaBox></p>
-              <p>כינוס איברים: <FormulaBox inline>{"5x = 30"}</FormulaBox></p>
-              <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{30}{5} = 6"}</FormulaBox></p>
+              <p><FormulaBox inline>6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5</FormulaBox></p>
+              <p><FormulaBox inline>3x + 2x = 30</FormulaBox></p>
+              <p>כינוס איברים: <FormulaBox inline>5x = 30</FormulaBox></p>
+              <p>בידוד הנעלם: <FormulaBox inline>x = \\frac{30}{5} = 6</FormulaBox></p>
             </div>
             
-            <p className="font-medium text-green-700">פתרון המשוואה הוא <FormulaBox inline>{"x = 6"}</FormulaBox>.</p>
+            <p className="font-medium text-green-700">פתרון המשוואה הוא <FormulaBox inline>x = 6</FormulaBox>.</p>
           </div>
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">טיפים חשובים</h3>

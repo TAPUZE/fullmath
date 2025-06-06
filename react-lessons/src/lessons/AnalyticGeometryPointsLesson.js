@@ -238,7 +238,7 @@ const AnalyticGeometryPointsLesson = () => {
       id: 'quadrant-identification',
       question: (
         <span>
-          באיזה רביע נמצאת הנקודה <FormulaBox inline={true}>{`Q(5, -3)`}</FormulaBox>?
+          באיזה רביע נמצאת הנקודה <FormulaBox inline>{`Q(5, -3)`}</FormulaBox>?
         </span>
       ),
       type: 'input',
@@ -246,7 +246,7 @@ const AnalyticGeometryPointsLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>לנקודה <FormulaBox inline={true}>{`Q(5, -3)`}</FormulaBox> יש שיעור X חיובי (<FormulaBox inline={true}>{`5 > 0`}</FormulaBox>) ושיעור Y שלילי (<FormulaBox inline={true}>{`-3 < 0`}</FormulaBox>).</p>
+          <p>לנקודה <FormulaBox inline>{`Q(5, -3)`}</FormulaBox> יש שיעור X חיובי (<FormulaBox inline>{`5 > 0`}</FormulaBox>) ושיעור Y שלילי (<FormulaBox inline>{`-3 < 0`}</FormulaBox>).</p>
           <p>לכן, הנקודה נמצאת ברביע הרביעי (IV).</p>
         </div>
       ),
@@ -256,7 +256,7 @@ const AnalyticGeometryPointsLesson = () => {
       id: 'movement-description',
       question: (
         <span>
-          תאר במילים כיצד היית מסמן את הנקודה <FormulaBox inline={true}>{`M(-1, -4)`}</FormulaBox> במערכת צירים, החל מראשית הצירים.
+          תאר במילים כיצד היית מסמן את הנקודה <FormulaBox inline>{`M(-1, -4)`}</FormulaBox> במערכת צירים, החל מראשית הצירים.
         </span>
       ),
       type: 'textarea',
@@ -273,7 +273,7 @@ const AnalyticGeometryPointsLesson = () => {
       id: 'point-identification',
       question: (
         <span>
-          בהתייחס לתרשים מערכת הצירים הראשית למעלה, איזו אות מייצגת את הנקודה <FormulaBox inline={true}>{`(4, -1)`}</FormulaBox>?
+          בהתייחס לתרשים מערכת הצירים הראשית למעלה, איזו אות מייצגת את הנקודה <FormulaBox inline>{`(4, -1)`}</FormulaBox>?
         </span>
       ),
       type: 'input',
@@ -281,7 +281,7 @@ const AnalyticGeometryPointsLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>הנקודה <FormulaBox inline={true}>{`(4, -1)`}</FormulaBox> נמצאת 4 יחידות ימינה ו-1 יחידה למטה. בתרשים, זוהי הנקודה D.</p>
+          <p>הנקודה <FormulaBox inline>{`(4, -1)`}</FormulaBox> נמצאת 4 יחידות ימינה ו-1 יחידה למטה. בתרשים, זוהי הנקודה D.</p>
         </div>
       ),
       placeholder: 'הכנס אות (A, B, C, או D)'
@@ -293,16 +293,16 @@ const AnalyticGeometryPointsLesson = () => {
     {
       id: 'origin-coordinates',
       question: 'מהן הקואורדינטות של ראשית הצירים?',
-      options: [        { id: 'a', text: <FormulaBox inline={true}>{`(1,1)`}</FormulaBox> },
-        { id: 'b', text: <FormulaBox inline={true}>{`(0,0)`}</FormulaBox> },
-        { id: 'c', text: <FormulaBox inline={true}>{`(0,1)`}</FormulaBox> },
-        { id: 'd', text: <FormulaBox inline={true}>{`(1,0)`}</FormulaBox> }
+      options: [        { id: 'a', text: <FormulaBox inline>{`(1,1)`}</FormulaBox> },
+        { id: 'b', text: <FormulaBox inline>{`(0,0)`}</FormulaBox> },
+        { id: 'c', text: <FormulaBox inline>{`(0,1)`}</FormulaBox> },
+        { id: 'd', text: <FormulaBox inline>{`(1,0)`}</FormulaBox> }
       ],
       correctAnswer: 'b',
       explanation: (
         <div>
           <p>ראשית הצירים היא הנקודה שבה שני הצירים נחתכים.</p>
-          <p>הקואורדינטות שלה הן <FormulaBox inline={true}>{`(0,0)`}</FormulaBox> - אפס ציר X ואפס ציר Y.</p>
+          <p>הקואורדינטות שלה הן <FormulaBox inline>{`(0,0)`}</FormulaBox> - אפס ציר X ואפס ציר Y.</p>
         </div>
       )
     },
@@ -310,7 +310,7 @@ const AnalyticGeometryPointsLesson = () => {
       id: 'quadrant-negative',
       question: (
         <span>
-          נקודה <FormulaBox inline={true}>{`(-2, -5)`}</FormulaBox> נמצאת באיזה רביע?
+          נקודה <FormulaBox inline>{`(-2, -5)`}</FormulaBox> נמצאת באיזה רביע?
         </span>
       ),
       options: [
@@ -322,7 +322,7 @@ const AnalyticGeometryPointsLesson = () => {
       correctAnswer: 'c',
       explanation: (
         <div>
-          <p>נקודה <FormulaBox inline={true}>{`(-2, -5)`}</FormulaBox> יש לה שני קואורדינטות שליליות.</p>
+          <p>נקודה <FormulaBox inline>{`(-2, -5)`}</FormulaBox> יש לה שני קואורדינטות שליליות.</p>
           <p>רביע III הוא האזור שבו גם ציר X וגם ציר Y שליליים.</p>
         </div>
       )

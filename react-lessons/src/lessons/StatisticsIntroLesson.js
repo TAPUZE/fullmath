@@ -199,7 +199,7 @@ const StatisticsIntroLesson = () => {
       explanation: (
         <div>
           <p>הממוצע מחושב על ידי סכום כל הערכים חלקי מספר הערכים:</p>
-          <FormulaBox>{`\\text{ממוצע} = \\frac{2+4+6+8+10}{5} = \\frac{30}{5} = 6`}</FormulaBox>
+          <FormulaBox>\text{ממוצע} = \frac{2+4+6+8+10}{5} = \frac{30}{5} = 6</FormulaBox>
         </div>
       )
     },
@@ -239,19 +239,14 @@ const StatisticsIntroLesson = () => {
           
           <div className="sub-section">
             <h3 className="text-xl font-semibold mt-4 mb-2 text-purple-600">מדדי מרכז</h3>
-            <p>מדדי מרכז הם ערכים המנסים לתאר את "מרכז" קבוצת הנתונים, כלומר, ערך טיפוסי או מייצג של הנתונים. המדדים הנפוצים שנלמד הם ממוצע, חציון ושכיח.</p>
-
-            <h4 className="text-lg font-semibold mt-3 mb-1">1. ממוצע חשבוני (Mean)</h4>
+            <p>מדדי מרכז הם ערכים המנסים לתאר את "מרכז" קבוצת הנתונים, כלומר, ערך טיפוסי או מייצג של הנתונים. המדדים הנפוצים שנלמד הם ממוצע, חציון ושכיח.</p>            <h4 className="text-lg font-semibold mt-3 mb-1">1. ממוצע חשבוני (Mean)</h4>
             <p>הממוצע הוא סכום כל ערכי הנתונים, מחולק במספר הנתונים.</p>
-              <FormulaBox display={true}>
-              {`\\text{ממוצע} = \\frac{\\text{סכום כל הנתונים}}{\\text{מספר הנתונים}}`}
-            </FormulaBox>
+            <FormulaBox>{"\\text{ממוצע} = \\frac{\\text{סכום כל הנתונים}}{\\text{מספר הנתונים}}"}</FormulaBox>
 
             <h4 className="text-lg font-semibold mt-3 mb-1">2. חציון (Median)</h4>
             <p>החציון הוא הערך האמצעי בקבוצת נתונים המסודרת לפי גודל (מהקטן לגדול או מהגדול לקטן).</p>
-            <ul className="list-disc list-inside space-y-1 pr-5">
-              <li>אם מספר הנתונים (<FormulaBox inline={true}>{`N`}</FormulaBox>) הוא <strong>אי-זוגי</strong>, החציון הוא האיבר הנמצא בדיוק באמצע הרשימה המסודרת (האיבר במקום ה-<FormulaBox inline={true}>{`\\frac{N+1}{2}`}</FormulaBox>).</li>
-              <li>אם מספר הנתונים (<FormulaBox inline={true}>{`N`}</FormulaBox>) הוא <strong>זוגי</strong>, החציון הוא הממוצע של שני האיברים האמצעיים ברשימה המסודרת (האיברים במקומות <FormulaBox inline={true}>{`\\frac{N}{2}`}</FormulaBox> ו-<FormulaBox inline={true}>{`\\frac{N}{2}+1`}</FormulaBox>).</li>
+            <ul className="list-disc list-inside space-y-1 pr-5">              <li>אם מספר הנתונים (<FormulaBox inline>N</FormulaBox>) הוא <strong>אי-זוגי</strong>, החציון הוא האיבר הנמצא בדיוק באמצע הרשימה המסודרת (האיבר במקום ה-<FormulaBox inline>{"\\frac{N+1}{2}"}</FormulaBox>).</li>
+              <li>אם מספר הנתונים (<FormulaBox inline>N</FormulaBox>) הוא <strong>זוגי</strong>, החציון הוא הממוצע של שני האיברים האמצעיים ברשימה המסודרת (האיברים במקומות <FormulaBox inline>{"\\frac{N}{2}"}</FormulaBox> ו-<FormulaBox inline>{"\\frac{N}{2}+1"}</FormulaBox>).</li>
             </ul>
 
             <h4 className="text-lg font-semibold mt-3 mb-1">3. שכיח (Mode)</h4>
@@ -263,7 +258,7 @@ const StatisticsIntroLesson = () => {
             <p className="font-medium">הציונים של 5 תלמידים הם: <DataDisplay data={[70, 80, 80, 90, 100]} />. מהו הממוצע, החציון והשכיח?</p>
             <p className="mt-2"><strong>פתרון:</strong></p>
             <p><strong>ממוצע:</strong></p>
-            <FormulaBox>{`\\text{ממוצע} = \\frac{70+80+80+90+100}{5} = \\frac{420}{5} = 84`}</FormulaBox>
+            <FormulaBox>\text{ממוצע} = \frac{70+80+80+90+100}{5} = \frac{420}{5} = 84</FormulaBox>
             <p><strong>חציון:</strong></p>
             <p>הנתונים כבר מסודרים מהקטן לגדול: 70, 80, <strong>80</strong>, 90, 100.</p>
             <p>יש 5 נתונים (מספר אי-זוגי). האיבר האמצעי (השלישי) הוא 80. לכן, החציון הוא 80.</p>
@@ -283,19 +278,17 @@ const StatisticsIntroLesson = () => {
               title="טבלת שכיחויות - ציוני תלמידים"
             />
             
-            <p className="mt-2"><strong>ממוצע:</strong> כדי לחשב ממוצע מטבלת שכיחויות, כופלים כל ערך בשכיחות שלו, סוכמים את כל המכפלות, ומחלקים בסך כל השכיחויות (סה"כ התלמידים).</p>
-            <p>סה"כ תלמידים: <FormulaBox inline={true}>{`3+5+8+4+2 = 22`}</FormulaBox>.</p>
-            <p>סכום (ערך × שכיחות): <FormulaBox inline={true}>{`(60 \\cdot 3) + (70 \\cdot 5) + (80 \\cdot 8) + (90 \\cdot 4) + (100 \\cdot 2)`}</FormulaBox></p>
-            <FormulaBox>{`= 180 + 350 + 640 + 360 + 200 = 1730`}</FormulaBox>
-            <p>ממוצע: <FormulaBox inline={true}>{`\\frac{1730}{22} \\approx 78.64`}</FormulaBox>.</p>
+            <p className="mt-2"><strong>ממוצע:</strong> כדי לחשב ממוצע מטבלת שכיחויות, כופלים כל ערך בשכיחות שלו, סוכמים את כל המכפלות, ומחלקים בסך כל השכיחויות (סה"כ התלמידים).</p>            <p>סה"כ תלמידים: <FormulaBox inline>3+5+8+4+2 = 22</FormulaBox>.</p>
+            <p>סכום (ערך × שכיחות): <FormulaBox inline>(60 \cdot 3) + (70 \cdot 5) + (80 \cdot 8) + (90 \cdot 4) + (100 \cdot 2)</FormulaBox></p>
+            <FormulaBox>= 180 + 350 + 640 + 360 + 200 = 1730</FormulaBox>
+            <p>ממוצע: <FormulaBox inline>\frac{1730}{22} \approx 78.64</FormulaBox>.</p>
             
-            <p className="mt-2"><strong>חציון:</strong> יש 22 תלמידים (מספר זוגי). האיברים האמצעיים הם במקומות <FormulaBox inline={true}>{`\\frac{22}{2}=11`}</FormulaBox> ו-<FormulaBox inline={true}>{`11+1=12`}</FormulaBox>.</p>
+            <p className="mt-2"><strong>חציון:</strong> יש 22 תלמידים (מספר זוגי). האיברים האמצעיים הם במקומות <FormulaBox inline>\frac{22}{2}=11</FormulaBox> ו-<FormulaBox inline>11+1=12</FormulaBox>.</p>
             <ul className="list-disc list-inside pr-5">
-              <li>3 תלמידים קיבלו 60.</li>
-              <li><FormulaBox inline={true}>{`3+5=8`}</FormulaBox> תלמידים קיבלו 70 או פחות.</li>
-              <li><FormulaBox inline={true}>{`8+8=16`}</FormulaBox> תלמידים קיבלו 80 או פחות.</li>
+              <li>3 תלמידים קיבלו 60.</li>              <li><FormulaBox inline>3+5=8</FormulaBox> תלמידים קיבלו 70 או פחות.</li>
+              <li><FormulaBox inline>8+8=16</FormulaBox> תלמידים קיבלו 80 או פחות.</li>
             </ul>
-            <p>התלמיד ה-11 והתלמיד ה-12 קיבלו שניהם ציון 80. לכן, החציון הוא <FormulaBox inline={true}>{`\\frac{80+80}{2} = 80`}</FormulaBox>.</p>
+            <p>התלמיד ה-11 והתלמיד ה-12 קיבלו שניהם ציון 80. לכן, החציון הוא <FormulaBox inline>\frac{80+80}{2} = 80</FormulaBox>.</p>
             
             <p className="mt-2"><strong>שכיח:</strong> הציון בעל השכיחות הגבוהה ביותר הוא 80 (8 תלמידים). לכן, השכיח הוא 80.</p>
           </div>
@@ -318,7 +311,7 @@ const StatisticsIntroLesson = () => {
                 <p><strong>פתרון מלא:</strong></p>
                 <p>נתונים מסודרים: 70, 70, 70, 80, 90, 90, 100</p>
                 <p><strong>ממוצע:</strong></p>
-                <FormulaBox>{`\\text{ממוצע} = \\frac{70+70+70+80+90+90+100}{7} = \\frac{560}{7} = 80`}</FormulaBox>
+                <FormulaBox>\text{ממוצע} = \frac{70+70+70+80+90+90+100}{7} = \frac{560}{7} = 80</FormulaBox>
                 <p><strong>חציון:</strong></p>
                 <p>יש 7 נתונים (מספר אי-זוגי). האיבר האמצעי (הרביעי) הוא 80.</p>
                 <p><strong>שכיח:</strong></p>

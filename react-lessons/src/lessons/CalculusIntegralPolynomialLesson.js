@@ -17,8 +17,8 @@ const CalculusIntegralPolynomialLesson = () => {
         <div>
           <p><strong>פתרון מלא:</strong></p>
           <FormulaBox>{"\\int (4x^3 - 6x + 2) dx = 4\\frac{x^4}{4} - 6\\frac{x^2}{2} + 2x + C"}</FormulaBox>
-          <FormulaBox>{"= x^4 - 3x^2 + 2x + C"}</FormulaBox>
-          <p><strong>תשובה:</strong> <FormulaBox inline>{"x^4 - 3x^2 + 2x + C"}</FormulaBox>.</p>
+          <FormulaBox>= x^4 - 3x^2 + 2x + C</FormulaBox>
+          <p><strong>תשובה:</strong> <FormulaBox inline>x^4 - 3x^2 + 2x + C</FormulaBox>.</p>
         </div>
       ),
       checkAnswer: (answers) => {
@@ -92,29 +92,27 @@ const CalculusIntegralPolynomialLesson = () => {
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-4">פונקציה קדומה (אינטגרל לא מסוים)</h3>
           <p className="mb-4">
-            פונקציה קדומה של פונקציה <FormulaBox inline>{"f(x)"}</FormulaBox> היא פונקציה <FormulaBox inline>{"F(x)"}</FormulaBox> שהנגזרת שלה שווה ל-<FormulaBox inline>{"f(x)"}</FormulaBox>, 
-            כלומר <FormulaBox inline>{"F'(x) = f(x)"}</FormulaBox>.
+            פונקציה קדומה של פונקציה <FormulaBox inline>f(x)</FormulaBox> היא פונקציה <FormulaBox inline>F(x)</FormulaBox> שהנגזרת שלה שווה ל-<FormulaBox inline>f(x)</FormulaBox>, 
+            כלומר <FormulaBox inline>F'(x) = f(x)</FormulaBox>.
           </p>
           <p className="mb-4">
-            האינטגרל הלא מסוים של <FormulaBox inline>{"f(x)"}</FormulaBox> מסומן <FormulaBox inline>{"\\int f(x) dx"}</FormulaBox> והוא מייצג את כל הפונקציות הקדומות של <FormulaBox inline>{"f(x)"}</FormulaBox>. 
-            אם <FormulaBox inline>{"F(x)"}</FormulaBox> היא פונקציה קדומה אחת, אז כל פונקציה קדומה אחרת היא מהצורה <FormulaBox inline>{"F(x) + C"}</FormulaBox>, 
-            כאשר <FormulaBox inline>{"C"}</FormulaBox> הוא קבוע אינטגרציה.
+            האינטגרל הלא מסוים של <FormulaBox inline>f(x)</FormulaBox> מסומן <FormulaBox inline>\\int f(x) dx</FormulaBox> והוא מייצג את כל הפונקציות הקדומות של <FormulaBox inline>f(x)</FormulaBox>. 
+            אם <FormulaBox inline>F(x)</FormulaBox> היא פונקציה קדומה אחת, אז כל פונקציה קדומה אחרת היא מהצורה <FormulaBox inline>F(x) + C</FormulaBox>, 
+            כאשר <FormulaBox inline>C</FormulaBox> הוא קבוע אינטגרציה.
           </p>
           
           <h4 className="text-lg font-semibold mt-4 mb-1 text-gray-800">כללי אינטגרציה בסיסיים לפולינומים:</h4>
           <ul className="list-disc pr-6 space-y-2">
             <li><FormulaBox>{"\\int x^n dx = \\frac{x^{n+1}}{n+1} + C \\quad (n \\neq -1)"}</FormulaBox></li>
-            <li><FormulaBox>{"\\int k dx = kx + C \\quad (k \\text{ constant})"}</FormulaBox></li>
-            <li><FormulaBox>{"\\int k \\cdot f(x) dx = k \\int f(x) dx"}</FormulaBox></li>
+            <li><FormulaBox>{"\\int k dx = kx + C \\quad (k \\text{ constant})"}</FormulaBox></li>            <li><FormulaBox>{"\\int k \\cdot f(x) dx = k \\int f(x) dx"}</FormulaBox></li>
             <li><FormulaBox>{"\\int (f(x) \\pm g(x)) dx = \\int f(x) dx \\pm \\int g(x) dx"}</FormulaBox></li>
           </ul>
 
           <div className="border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-3 my-4">
             <p className="font-medium">
-              <strong>דוגמה:</strong> מצא את האינטגרל של <FormulaBox inline>{"f(x) = 3x^2 - 2x + 5"}</FormulaBox>.
+              <strong>דוגמה:</strong> מצא את האינטגרל של <FormulaBox inline>f(x) = 3x^2 - 2x + 5</FormulaBox>.
             </p>
-            <p><strong>פתרון:</strong></p>
-            <FormulaBox>{"\\int (3x^2 - 2x + 5) dx = 3 \\int x^2 dx - 2 \\int x dx + \\int 5 dx"}</FormulaBox>
+            <p><strong>פתרון:</strong></p>            <FormulaBox>{"\\int (3x^2 - 2x + 5) dx = 3 \\int x^2 dx - 2 \\int x dx + \\int 5 dx"}</FormulaBox>
             <FormulaBox>{"= 3 \\left(\\frac{x^{3}}{3}\\right) - 2 \\left(\\frac{x^{2}}{2}\\right) + 5x + C"}</FormulaBox>
             <FormulaBox>{"= x^3 - x^2 + 5x + C"}</FormulaBox>
           </div>
@@ -124,53 +122,53 @@ const CalculusIntegralPolynomialLesson = () => {
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-4">האינטגרל המסוים וחישוב שטחים</h3>
           <p className="mb-4">
-            האינטגרל המסוים של פונקציה <FormulaBox inline>{"f(x)"}</FormulaBox> מהנקודה <FormulaBox inline>{"a"}</FormulaBox> עד הנקודה <FormulaBox inline>{"b"}</FormulaBox> מסומן <FormulaBox inline>{"\\int_a^b f(x) dx"}</FormulaBox> ומחושב כך:
+            האינטגרל המסוים של פונקציה <FormulaBox inline>f(x)</FormulaBox> מהנקודה <FormulaBox inline>a</FormulaBox> עד הנקודה <FormulaBox inline>b</FormulaBox> מסומן <FormulaBox inline>\\int_a^b f(x) dx</FormulaBox> ומחושב כך:
           </p>
-          <FormulaBox>{"\\int_a^b f(x) dx = [F(x)]_a^b = F(b) - F(a)"}</FormulaBox>
+          <FormulaBox>\int_a^b f(x) dx = [F(x)]_a^b = F(b) - F(a)</FormulaBox>
           <p className="mb-4">
-            כאשר <FormulaBox inline>{"F(x)"}</FormulaBox> היא פונקציה קדומה כלשהי של <FormulaBox inline>{"f(x)"}</FormulaBox> (אין צורך להוסיף <FormulaBox inline>{"C"}</FormulaBox> כי הוא מתבטל בחיסור).
+            כאשר <FormulaBox inline>F(x)</FormulaBox> היא פונקציה קדומה כלשהי של <FormulaBox inline>f(x)</FormulaBox> (אין צורך להוסיף <FormulaBox inline>C</FormulaBox> כי הוא מתבטל בחיסור).
           </p>
           
           <h4 className="text-lg font-semibold mt-4 mb-1 text-gray-800">חישוב שטח המוגבל בין גרף פונקציה לציר ה-x:</h4>
           <p className="mb-4">
-            אם הפונקציה <FormulaBox inline>{"f(x)"}</FormulaBox> היא אי-שלילית (<FormulaBox inline>{"f(x) \\ge 0"}</FormulaBox>) בקטע <FormulaBox inline>{"[a,b]"}</FormulaBox>, 
-            השטח <FormulaBox inline>{"S"}</FormulaBox> המוגבל בין גרף הפונקציה, ציר ה-x, והישרים <FormulaBox inline>{"x=a"}</FormulaBox> ו-<FormulaBox inline>{"x=b"}</FormulaBox> הוא:
+            אם הפונקציה <FormulaBox inline>f(x)</FormulaBox> היא אי-שלילית (<FormulaBox inline>f(x) \\ge 0</FormulaBox>) בקטע <FormulaBox inline>[a,b]</FormulaBox>, 
+            השטח <FormulaBox inline>S</FormulaBox> המוגבל בין גרף הפונקציה, ציר ה-x, והישרים <FormulaBox inline>x=a</FormulaBox> ו-<FormulaBox inline>x=b</FormulaBox> הוא:
           </p>
-          <FormulaBox>{"S = \\int_a^b f(x) dx"}</FormulaBox>
+          <FormulaBox>S = \int_a^b f(x) dx</FormulaBox>
           <p className="mb-4">
-            אם הפונקציה שלילית (<FormulaBox inline>{"f(x) \\le 0"}</FormulaBox>) בקטע, השטח הוא <FormulaBox inline>{"S = \\int_a^b (-f(x)) dx = -\\int_a^b f(x) dx"}</FormulaBox>, 
-            או פשוט <FormulaBox inline>{"|\\int_a^b f(x) dx|"}</FormulaBox>.
+            אם הפונקציה שלילית (<FormulaBox inline>f(x) \\le 0</FormulaBox>) בקטע, השטח הוא <FormulaBox inline>S = \\int_a^b (-f(x)) dx = -\\int_a^b f(x) dx</FormulaBox>, 
+            או פשוט <FormulaBox inline>|\\int_a^b f(x) dx|</FormulaBox>.
           </p>
 
           <div className="border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-3 my-4">
             <p className="font-medium">
-              <strong>דוגמה:</strong> חשב את השטח המוגבל על ידי גרף הפונקציה <FormulaBox inline>{"y = -x^2 + 4x"}</FormulaBox>, 
-              ציר ה-x, והישרים <FormulaBox inline>{"x=1"}</FormulaBox> ו-<FormulaBox inline>{"x=3"}</FormulaBox>.
+              <strong>דוגמה:</strong> חשב את השטח המוגבל על ידי גרף הפונקציה <FormulaBox inline>y = -x^2 + 4x</FormulaBox>, 
+              ציר ה-x, והישרים <FormulaBox inline>x=1</FormulaBox> ו-<FormulaBox inline>x=3</FormulaBox>.
             </p>
             <p><strong>פתרון:</strong></p>
             <p>
-              1. נבדוק אם הפונקציה חיובית בתחום <FormulaBox inline>{"[1,3]"}</FormulaBox>. נקודות חיתוך עם ציר x: <FormulaBox inline>{"-x^2+4x=0 \\Rightarrow x(-x+4)=0 \\Rightarrow x=0, x=4"}</FormulaBox>.
+              1. נבדוק אם הפונקציה חיובית בתחום <FormulaBox inline>[1,3]</FormulaBox>. נקודות חיתוך עם ציר x: <FormulaBox inline>-x^2+4x=0 \\Rightarrow x(-x+4)=0 \\Rightarrow x=0, x=4</FormulaBox>.
             </p>
             <p>
-              הפונקציה היא פרבולה "בוכה". בין 0 ל-4 היא חיובית. הקטע <FormulaBox inline>{"[1,3]"}</FormulaBox> נמצא כולו בתחום זה, 
-              לכן <FormulaBox inline>{"f(x) \\ge 0"}</FormulaBox> בקטע הנתון.
+              הפונקציה היא פרבולה "בוכה". בין 0 ל-4 היא חיובית. הקטע <FormulaBox inline>[1,3]</FormulaBox> נמצא כולו בתחום זה, 
+              לכן <FormulaBox inline>f(x) \\ge 0</FormulaBox> בקטע הנתון.
             </p>
-            <p>2. השטח <FormulaBox inline>{"S = \\int_1^3 (-x^2 + 4x) dx"}</FormulaBox>.</p>
-            <p>3. נמצא פונקציה קדומה: <FormulaBox inline>{"F(x) = \\int (-x^2 + 4x) dx = -\\frac{x^3}{3} + 2x^2"}</FormulaBox>.</p>
+            <p>2. השטח <FormulaBox inline>S = \\int_1^3 (-x^2 + 4x) dx</FormulaBox>.</p>
+            <p>3. נמצא פונקציה קדומה: <FormulaBox inline>F(x) = \\int (-x^2 + 4x) dx = -\\frac{x^3}{3} + 2x^2</FormulaBox>.</p>
             <p>4. נחשב את האינטגרל המסוים:</p>
             <FormulaBox>{"S = [-\\frac{x^3}{3} + 2x^2]_1^3"}</FormulaBox>
             <FormulaBox>{"= \\left(-\\frac{27}{3} + 2 \\cdot 9\\right) - \\left(-\\frac{1}{3} + 2\\right)"}</FormulaBox>
             <FormulaBox>{"= (-9 + 18) - (-\\frac{1}{3} + \\frac{6}{3}) = 9 - \\frac{5}{3} = \\frac{22}{3}"}</FormulaBox>
-            <p><strong>תשובה:</strong> השטח הוא <FormulaBox inline>{"\\frac{22}{3}"}</FormulaBox> יחידות שטח.</p>
+            <p><strong>תשובה:</strong> השטח הוא <FormulaBox inline>\\frac{22}{3}</FormulaBox> יחידות שטח.</p>
           </div>
 
           <h4 className="text-lg font-semibold mt-4 mb-1 text-gray-800">חישוב שטח הכלוא בין שני גרפים:</h4>
           <p className="mb-4">
-            השטח <FormulaBox inline>{"S"}</FormulaBox> הכלוא בין שני גרפים של פונקציות <FormulaBox inline>{"f(x)"}</FormulaBox> ו-<FormulaBox inline>{"g(x)"}</FormulaBox> בתחום <FormulaBox inline>{"[a,b]"}</FormulaBox>, 
-            כאשר <FormulaBox inline>{"f(x) \\ge g(x)"}</FormulaBox> בכל הקטע, הוא:
+            השטח <FormulaBox inline>S</FormulaBox> הכלוא בין שני גרפים של פונקציות <FormulaBox inline>f(x)</FormulaBox> ו-<FormulaBox inline>g(x)</FormulaBox> בתחום <FormulaBox inline>[a,b]</FormulaBox>, 
+            כאשר <FormulaBox inline>f(x) \\ge g(x)</FormulaBox> בכל הקטע, הוא:
           </p>
-          <FormulaBox>{"S = \\int_a^b (f(x) - g(x)) dx"}</FormulaBox>
-          <p>הגבולות <FormulaBox inline>{"a,b"}</FormulaBox> הם לרוב שיעורי ה-x של נקודות החיתוך בין שתי הפונקציות.</p>
+          <FormulaBox>S = \int_a^b (f(x) - g(x)) dx</FormulaBox>
+          <p>הגבולות <FormulaBox inline>a,b</FormulaBox> הם לרוב שיעורי ה-x של נקודות החיתוך בין שתי הפונקציות.</p>
         </div>
 
         {/* תרגילים */}

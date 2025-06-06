@@ -19,12 +19,12 @@ const GrowthDecayLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>נתונים: <FormulaBox inline>{"M_t = 2680.19"}</FormulaBox>, <FormulaBox inline>{"p = 5\\%"}</FormulaBox>, <FormulaBox inline>{"t = 6"}</FormulaBox>. מחפשים <FormulaBox inline>{"M_0"}</FormulaBox>.</p>
-          <p>גורם הגדילה: <FormulaBox inline>{"q = 1 + \\frac{5}{100} = 1.05"}</FormulaBox>.</p>
-          <p>נציב בנוסחה <FormulaBox inline>{"M_t = M_0 \\cdot q^t"}</FormulaBox>:</p>
-          <p><FormulaBox inline>{"2680.19 = M_0 \\cdot (1.05)^6"}</FormulaBox></p>
-          <p><FormulaBox inline>{"(1.05)^6 \\approx 1.3400956"}</FormulaBox></p>
-          <p><FormulaBox inline>{"M_0 = \\frac{2680.19}{1.3400956} \\approx 1999.999..."}</FormulaBox></p>
+          <p>נתונים: <FormulaBox inline>M_t = 2680.19</FormulaBox>, <FormulaBox inline>p = 5\\%</FormulaBox>, <FormulaBox inline>t = 6</FormulaBox>. מחפשים <FormulaBox inline>M_0</FormulaBox>.</p>
+          <p>גורם הגדילה: <FormulaBox inline>q = 1 + \\frac{5}{100} = 1.05</FormulaBox>.</p>
+          <p>נציב בנוסחה <FormulaBox inline>M_t = M_0 \\cdot q^t</FormulaBox>:</p>
+          <p><FormulaBox inline>2680.19 = M_0 \\cdot (1.05)^6</FormulaBox></p>
+          <p><FormulaBox inline>(1.05)^6 \\approx 1.3400956</FormulaBox></p>
+          <p><FormulaBox inline>M_0 = \\frac{2680.19}{1.3400956} \\approx 1999.999...</FormulaBox></p>
           <p>תשובה: הסכום ההתחלתי היה 2000.00 ש"ח.</p>
         </div>
       )
@@ -37,13 +37,13 @@ const GrowthDecayLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>נתונים: <FormulaBox inline>{"M_0 = 50,000"}</FormulaBox>, <FormulaBox inline>{"p = 2.5\\%"}</FormulaBox>.</p>
-          <p>מספר השנים: מתחילת 2010 עד תחילת 2015 עברו 5 שנים. לכן, <FormulaBox inline>{"t = 5"}</FormulaBox>.</p>
-          <p>גורם הגדילה: <FormulaBox inline>{"q = 1 + \\frac{2.5}{100} = 1.025"}</FormulaBox>.</p>
-          <p>נציב בנוסחה <FormulaBox inline>{"M_t = M_0 \\cdot q^t"}</FormulaBox>:</p>
-          <p><FormulaBox inline>{"M_5 = 50,000 \\cdot (1.025)^5"}</FormulaBox></p>
-          <p><FormulaBox inline>{"(1.025)^5 \\approx 1.131408"}</FormulaBox></p>
-          <p><FormulaBox inline>{"M_5 = 50,000 \\cdot 1.131408 \\approx 56570.4"}</FormulaBox></p>
+          <p>נתונים: <FormulaBox inline>M_0 = 50,000</FormulaBox>, <FormulaBox inline>p = 2.5\\%</FormulaBox>.</p>
+          <p>מספר השנים: מתחילת 2010 עד תחילת 2015 עברו 5 שנים. לכן, <FormulaBox inline>t = 5</FormulaBox>.</p>
+          <p>גורם הגדילה: <FormulaBox inline>q = 1 + \\frac{2.5}{100} = 1.025</FormulaBox>.</p>
+          <p>נציב בנוסחה <FormulaBox inline>M_t = M_0 \\cdot q^t</FormulaBox>:</p>
+          <p><FormulaBox inline>M_5 = 50,000 \\cdot (1.025)^5</FormulaBox></p>
+          <p><FormulaBox inline>(1.025)^5 \\approx 1.131408</FormulaBox></p>
+          <p><FormulaBox inline>M_5 = 50,000 \\cdot 1.131408 \\approx 56570.4</FormulaBox></p>
           <p>תשובה: מספר התושבים יהיה כ-56,570.</p>
         </div>
       )
@@ -84,22 +84,22 @@ const GrowthDecayLesson = () => {
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">הנוסחה המרכזית לגדילה ודעיכה</h3>
           <p>הנוסחה לחישוב הכמות לאחר מספר תקופות זמן היא:</p>
           <div className="my-3 text-center">
-            <FormulaBox>{"M_t = M_0 \\cdot q^t"}</FormulaBox>
+            <FormulaBox>M_t = M_0 \cdot q^t</FormulaBox>
           </div>
           <p>כאשר:</p>
           <ul className="list-disc pr-6 space-y-2 my-2">
-            <li><FormulaBox inline>{"M_t"}</FormulaBox> היא הכמות הסופית, לאחר <FormulaBox inline>{"t"}</FormulaBox> תקופות זמן.</li>
-            <li><FormulaBox inline>{"M_0"}</FormulaBox> היא הכמות ההתחלתית (בזמן <FormulaBox inline>{"t=0"}</FormulaBox>).</li>
-            <li><FormulaBox inline>{"q"}</FormulaBox> הוא גורם השינוי (גורם הגדילה או הדעיכה) בכל תקופת זמן.</li>
-            <li><FormulaBox inline>{"t"}</FormulaBox> הוא מספר תקופות הזמן שעברו.</li>
+            <li><FormulaBox inline>M_t</FormulaBox> היא הכמות הסופית, לאחר <FormulaBox inline>t</FormulaBox> תקופות זמן.</li>
+            <li><FormulaBox inline>M_0</FormulaBox> היא הכמות ההתחלתית (בזמן <FormulaBox inline>t=0</FormulaBox>).</li>
+            <li><FormulaBox inline>q</FormulaBox> הוא גורם השינוי (גורם הגדילה או הדעיכה) בכל תקופת זמן.</li>
+            <li><FormulaBox inline>t</FormulaBox> הוא מספר תקופות הזמן שעברו.</li>
           </ul>
 
-          <h4 className="text-lg font-semibold mt-4 mb-1 text-gray-800">כיצד מחשבים את <FormulaBox inline>{"q"}</FormulaBox>?</h4>
-          <p>אם הכמות גדלה ב-<FormulaBox inline>{"p\\%"}</FormulaBox> בכל תקופת זמן, אז גורם הגדילה הוא: <FormulaBox inline>{"q = 1 + \\frac{p}{100}"}</FormulaBox>.</p>
-          <p>לדוגמה, אם המחיר עולה ב-10% כל שנה, אז <FormulaBox inline>{"p=10"}</FormulaBox>, ו-<FormulaBox inline>{"q = 1 + \\frac{10}{100} = 1 + 0.1 = 1.1"}</FormulaBox>.</p>
-          <p>אם הכמות קטנה (דועכת) ב-<FormulaBox inline>{"p\\%"}</FormulaBox> בכל תקופת זמן, אז גורם הדעיכה הוא: <FormulaBox inline>{"q = 1 - \\frac{p}{100}"}</FormulaBox>.</p>
-          <p>לדוגמה, אם ערך מכונית יורד ב-15% כל שנה, אז <FormulaBox inline>{"p=15"}</FormulaBox>, ו-<FormulaBox inline>{"q = 1 - \\frac{15}{100} = 1 - 0.15 = 0.85"}</FormulaBox>.</p>
-          <p>שימו לב: אם <FormulaBox inline>{"q > 1"}</FormulaBox> מדובר בתהליך גדילה, ואם <FormulaBox inline>{"0 < q < 1"}</FormulaBox> מדובר בתהליך דעיכה.</p>
+          <h4 className="text-lg font-semibold mt-4 mb-1 text-gray-800">כיצד מחשבים את <FormulaBox inline>q</FormulaBox>?</h4>
+          <p>אם הכמות גדלה ב-<FormulaBox inline>p\\%</FormulaBox> בכל תקופת זמן, אז גורם הגדילה הוא: <FormulaBox inline>q = 1 + \\frac{p}{100}</FormulaBox>.</p>
+          <p>לדוגמה, אם המחיר עולה ב-10% כל שנה, אז <FormulaBox inline>p=10</FormulaBox>, ו-<FormulaBox inline>q = 1 + \\frac{10}{100} = 1 + 0.1 = 1.1</FormulaBox>.</p>
+          <p>אם הכמות קטנה (דועכת) ב-<FormulaBox inline>p\\%</FormulaBox> בכל תקופת זמן, אז גורם הדעיכה הוא: <FormulaBox inline>q = 1 - \\frac{p}{100}</FormulaBox>.</p>
+          <p>לדוגמה, אם ערך מכונית יורד ב-15% כל שנה, אז <FormulaBox inline>p=15</FormulaBox>, ו-<FormulaBox inline>q = 1 - \\frac{15}{100} = 1 - 0.15 = 0.85</FormulaBox>.</p>
+          <p>שימו לב: אם <FormulaBox inline>q &gt; 1</FormulaBox> מדובר בתהליך גדילה, ואם <FormulaBox inline>0 &lt; q &lt; 1</FormulaBox> מדובר בתהליך דעיכה.</p>
 
           <h3 className="text-xl font-semibold mt-8 mb-2 text-gray-800">דוגמאות פתורות</h3>
           <div className="border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-3 mb-6">
@@ -107,17 +107,16 @@ const GrowthDecayLesson = () => {
             <p>אוכלוסיית חיידקים גדלה ב-20% בכל שעה. בתחילת הניסוי היו 1000 חיידקים. כמה חיידקים יהיו כעבור 3 שעות?</p>
             <p><strong>פתרון:</strong></p>
             <ul className="list-disc pr-5 space-y-1">
-              <li>הכמות ההתחלתית: <FormulaBox inline>{"M_0 = 1000"}</FormulaBox>.</li>
-              <li>אחוז הגדילה לשעה: <FormulaBox inline>{"p = 20\\%"}</FormulaBox>.</li>
-              <li>גורם הגדילה: <FormulaBox inline>{"q = 1 + \\frac{20}{100} = 1 + 0.2 = 1.2"}</FormulaBox>.</li>
-              <li>מספר תקופות הזמן (שעות): <FormulaBox inline>{"t = 3"}</FormulaBox>.</li>
+              <li>הכמות ההתחלתית: <FormulaBox inline>M_0 = 1000</FormulaBox>.</li>
+              <li>אחוז הגדילה לשעה: <FormulaBox inline>p = 20\\%</FormulaBox>.</li>
+              <li>גורם הגדילה: <FormulaBox inline>q = 1 + \\frac{20}{100} = 1 + 0.2 = 1.2</FormulaBox>.</li>
+              <li>מספר תקופות הזמן (שעות): <FormulaBox inline>t = 3</FormulaBox>.</li>
             </ul>
-            <p>נציב בנוסחה <FormulaBox inline>{"M_t = M_0 \\cdot q^t"}</FormulaBox>:</p>
-            <div className="my-2 text-center">
-              <FormulaBox>{"M_3 = 1000 \\cdot (1.2)^3"}</FormulaBox>
+            <p>נציב בנוסחה <FormulaBox inline>M_t = M_0 \\cdot q^t</FormulaBox>:</p>
+            <div className="my-2 text-center">              <FormulaBox>M_3 = 1000 \cdot (1.2)^3</FormulaBox>
             </div>
             <div className="my-2 text-center">
-              <FormulaBox>{"M_3 = 1000 \\cdot 1.728 = 1728"}</FormulaBox>
+              <FormulaBox>M_3 = 1000 \cdot 1.728 = 1728</FormulaBox>
             </div>
             <p>תשובה: כעבור 3 שעות יהיו 1728 חיידקים.</p>
           </div>
@@ -127,17 +126,16 @@ const GrowthDecayLesson = () => {
             <p>מחיר מכונית חדשה הוא 120,000 ש"ח. ערך המכונית יורד ב-10% בכל שנה. מה יהיה ערך המכונית כעבור 4 שנים?</p>
             <p><strong>פתרון:</strong></p>
             <ul className="list-disc pr-5 space-y-1">
-              <li>הכמות ההתחלתית (מחיר התחלתי): <FormulaBox inline>{"M_0 = 120,000"}</FormulaBox>.</li>
-              <li>אחוז הדעיכה לשנה: <FormulaBox inline>{"p = 10\\%"}</FormulaBox>.</li>
-              <li>גורם הדעיכה: <FormulaBox inline>{"q = 1 - \\frac{10}{100} = 1 - 0.1 = 0.9"}</FormulaBox>.</li>
-              <li>מספר תקופות הזמן (שנים): <FormulaBox inline>{"t = 4"}</FormulaBox>.</li>
+              <li>הכמות ההתחלתית (מחיר התחלתי): <FormulaBox inline>M_0 = 120,000</FormulaBox>.</li>
+              <li>אחוז הדעיכה לשנה: <FormulaBox inline>p = 10\\%</FormulaBox>.</li>
+              <li>גורם הדעיכה: <FormulaBox inline>q = 1 - \\frac{10}{100} = 1 - 0.1 = 0.9</FormulaBox>.</li>
+              <li>מספר תקופות הזמן (שנים): <FormulaBox inline>t = 4</FormulaBox>.</li>
             </ul>
-            <p>נציב בנוסחה <FormulaBox inline>{"M_t = M_0 \\cdot q^t"}</FormulaBox>:</p>
-            <div className="my-2 text-center">
-              <FormulaBox>{"M_4 = 120,000 \\cdot (0.9)^4"}</FormulaBox>
+            <p>נציב בנוסחה <FormulaBox inline>M_t = M_0 \\cdot q^t</FormulaBox>:</p>
+            <div className="my-2 text-center">              <FormulaBox>M_4 = 120,000 \cdot (0.9)^4</FormulaBox>
             </div>
             <div className="my-2 text-center">
-              <FormulaBox>{"M_4 = 120,000 \\cdot 0.6561 = 78,732"}</FormulaBox>
+              <FormulaBox>M_4 = 120,000 \cdot 0.6561 = 78,732</FormulaBox>
             </div>
             <p>תשובה: כעבור 4 שנים, ערך המכונית יהיה 78,732 ש"ח.</p>
           </div>
@@ -147,19 +145,18 @@ const GrowthDecayLesson = () => {
             <p>לאחר 5 שנים, ערכו של פריט מסוים הוא 1500 ש"ח. ידוע כי ערך הפריט יורד ב-8% כל שנה. מה היה מחירו ההתחלתי של הפריט?</p>
             <p><strong>פתרון:</strong></p>
             <ul className="list-disc pr-5 space-y-1">
-              <li>הכמות הסופית: <FormulaBox inline>{"M_t = 1500"}</FormulaBox> (כאשר <FormulaBox inline>{"t=5"}</FormulaBox>).</li>
-              <li>אחוז הדעיכה לשנה: <FormulaBox inline>{"p = 8\\%"}</FormulaBox>.</li>
-              <li>גורם הדעיכה: <FormulaBox inline>{"q = 1 - \\frac{8}{100} = 1 - 0.08 = 0.92"}</FormulaBox>.</li>
-              <li>מספר תקופות הזמן (שנים): <FormulaBox inline>{"t = 5"}</FormulaBox>.</li>
-              <li>אנחנו מחפשים את <FormulaBox inline>{"M_0"}</FormulaBox>.</li>
+              <li>הכמות הסופית: <FormulaBox inline>M_t = 1500</FormulaBox> (כאשר <FormulaBox inline>t=5</FormulaBox>).</li>
+              <li>אחוז הדעיכה לשנה: <FormulaBox inline>p = 8\\%</FormulaBox>.</li>
+              <li>גורם הדעיכה: <FormulaBox inline>q = 1 - \\frac{8}{100} = 1 - 0.08 = 0.92</FormulaBox>.</li>
+              <li>מספר תקופות הזמן (שנים): <FormulaBox inline>t = 5</FormulaBox>.</li>
+              <li>אנחנו מחפשים את <FormulaBox inline>M_0</FormulaBox>.</li>
             </ul>
-            <p>נציב בנוסחה <FormulaBox inline>{"M_t = M_0 \\cdot q^t"}</FormulaBox>:</p>
-            <div className="my-2 text-center">
-              <FormulaBox>{"1500 = M_0 \\cdot (0.92)^5"}</FormulaBox>
+            <p>נציב בנוסחה <FormulaBox inline>M_t = M_0 \\cdot q^t</FormulaBox>:</p>
+            <div className="my-2 text-center">              <FormulaBox>1500 = M_0 \cdot (0.92)^5</FormulaBox>
             </div>
-            <p>נחשב את <FormulaBox inline>{"(0.92)^5 \\approx 0.65908"}</FormulaBox> (מומלץ להשתמש במחשבון).</p>
+            <p>נחשב את <FormulaBox inline>(0.92)^5 \approx 0.65908</FormulaBox> (מומלץ להשתמש במחשבון).</p>
             <div className="my-2 text-center">
-              <FormulaBox>{"1500 = M_0 \\cdot 0.65908"}</FormulaBox>
+              <FormulaBox>1500 = M_0 \cdot 0.65908</FormulaBox>
             </div>
             <div className="my-2 text-center">
               <FormulaBox>{"M_0 = \\frac{1500}{0.65908} \\approx 2275.94"}</FormulaBox>

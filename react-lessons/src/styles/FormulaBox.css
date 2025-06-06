@@ -1,0 +1,66 @@
+/* FormulaBox CSS styles for mathematical formulas */
+
+.formula-box {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0.5rem 0;
+  padding: 0.25rem;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  display: inline-block;
+  min-height: 1.5rem;
+  line-height: 1.5;
+}
+
+.formula-box.inline {
+  display: inline;
+  margin: 0 0.25rem;
+  padding: 0.125rem 0.25rem;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  font-size: 0.95em;
+}
+
+.formula-box.block {
+  display: block;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 0.75rem;
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  max-width: fit-content;
+}
+
+/* RTL support for Hebrew text mixed with formulas */
+.formula-box[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+.formula-box[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* MathJax specific styles */
+.MathJax {
+  font-size: inherit !important;
+}
+
+.MathJax_Display {
+  margin: 0.5rem 0 !important;
+}
+
+/* Loading state */
+.formula-box.loading {
+  background-color: #f5f5f5;
+  color: #999;
+  font-style: italic;
+}
+
+/* Error state */
+.formula-box.error {
+  background-color: #ffe6e6;
+  color: #cc0000;
+  border: 1px solid #ffcccc;
+}

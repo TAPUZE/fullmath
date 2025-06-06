@@ -122,17 +122,15 @@ const TrigCalculator = () => {
         </div>
       </div>
       
-      <TriangleDiagram angle={angle} adjacentSide={adjacent} showValues={true} />
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+      <TriangleDiagram angle={angle} adjacentSide={adjacent} showValues={true} />      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
         <div className="text-center">
-          <FormulaBox content={`\\sin(${angle}°) = ${sine.toFixed(3)}`} />
+          <FormulaBox>{`\\sin(${angle}°) = ${sine.toFixed(3)}`}</FormulaBox>
         </div>
         <div className="text-center">
-          <FormulaBox content={`\\cos(${angle}°) = ${cosine.toFixed(3)}`} />
+          <FormulaBox>{`\\cos(${angle}°) = ${cosine.toFixed(3)}`}</FormulaBox>
         </div>
         <div className="text-center">
-          <FormulaBox content={`\\tan(${angle}°) = ${tangent.toFixed(3)}`} />
+          <FormulaBox>{`\\tan(${angle}°) = ${tangent.toFixed(3)}`}</FormulaBox>
         </div>
       </div>
     </div>
@@ -163,15 +161,14 @@ const CommonTrigValues = () => {
           <tbody>
             {values.map(({ angle, sin, cos, tan }) => (
               <tr key={angle}>
-                <td className="border border-gray-300 px-3 py-2 text-center">{angle}°</td>
-                <td className="border border-gray-300 px-3 py-2 text-center">
-                  <FormulaBox content={sin} />
+                <td className="border border-gray-300 px-3 py-2 text-center">{angle}°</td>                <td className="border border-gray-300 px-3 py-2 text-center">
+                  <FormulaBox>{sin}</FormulaBox>
                 </td>
                 <td className="border border-gray-300 px-3 py-2 text-center">
-                  <FormulaBox content={cos} />
+                  <FormulaBox>{cos}</FormulaBox>
                 </td>
                 <td className="border border-gray-300 px-3 py-2 text-center">
-                  <FormulaBox content={tan} />
+                  <FormulaBox>{tan}</FormulaBox>
                 </td>
               </tr>
             ))}
@@ -250,7 +247,7 @@ const TrigonometryRightTriangleLesson = () => {
               הגדרות במשולש ישר-זווית
             </h3>
             <p className="mb-3">
-              במשולש ישר-זווית ABC, כאשר <FormulaBox content="\\angle C = 90^\\circ" />:
+              במשולש ישר-זווית ABC, כאשר <FormulaBox>\angle C = 90^\circ</FormulaBox>:
             </p>
             
             <TriangleDiagram />
@@ -259,10 +256,9 @@ const TrigonometryRightTriangleLesson = () => {
               <li>הצלע שמול הזווית הישרה (AB) נקראת <strong>יתר</strong>.</li>
               <li>שתי הצלעות האחרות (AC ו-BC) נקראות <strong>ניצבים</strong>.</li>
               <li>
-                ביחס לזווית חדה <FormulaBox content="\\alpha" /> (בסקיצה זו, <FormulaBox content="\\alpha = \\angle A" />):
-                <ul className="list-disc list-inside mr-6 mt-2 space-y-1">
-                  <li>הניצב שמול הזווית <FormulaBox content="\\alpha" /> (הצלע BC) נקרא <strong>הניצב שמול הזווית</strong>.</li>
-                  <li>הניצב שליד הזווית <FormulaBox content="\\alpha" /> (הצלע AC) נקרא <strong>הניצב שליד הזווית</strong>.</li>
+                ביחס לזווית חדה <FormulaBox>\alpha</FormulaBox> (בסקיצה זו, <FormulaBox>\alpha = \angle A</FormulaBox>):
+                <ul className="list-disc list-inside mr-6 mt-2 space-y-1">                  <li>הניצב שמול הזווית <FormulaBox>\alpha</FormulaBox> (הצלע BC) נקרא <strong>הניצב שמול הזווית</strong>.</li>
+                  <li>הניצב שליד הזווית <FormulaBox>\alpha</FormulaBox> (הצלע AC) נקרא <strong>הניצב שליד הזווית</strong>.</li>
                 </ul>
               </li>
             </ul>
@@ -273,21 +269,20 @@ const TrigonometryRightTriangleLesson = () => {
               הפונקציות הטריגונומטריות הבסיסיות
             </h3>
             <p className="mb-3">
-              עבור זווית חדה <FormulaBox content="\\alpha" /> במשולש ישר-זווית, מוגדרות הפונקציות הבאות:
+              עבור זווית חדה <FormulaBox>\alpha</FormulaBox> במשולש ישר-זווית, מוגדרות הפונקציות הבאות:
             </p>
             
-            <div className="space-y-3">
-              <div className="flex items-center space-x-4">
+            <div className="space-y-3">              <div className="flex items-center space-x-4">
                 <strong>סינוס (Sine):</strong>
-                <FormulaBox content="\\sin(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{יתר}}" />
+                <FormulaBox>{"\\sin(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{יתר}}"}</FormulaBox>
               </div>
               <div className="flex items-center space-x-4">
                 <strong>קוסינוס (Cosine):</strong>
-                <FormulaBox content="\\cos(\\alpha) = \\frac{\\text{ניצב ליד}}{\\text{יתר}}" />
+                <FormulaBox>{"\\cos(\\alpha) = \\frac{\\text{ניצב ליד}}{\\text{יתר}}"}</FormulaBox>
               </div>
               <div className="flex items-center space-x-4">
                 <strong>טנגנס (Tangent):</strong>
-                <FormulaBox content="\\tan(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{ניצב ליד}}" />
+                <FormulaBox>{"\\tan(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{ניצב ליד}}"}</FormulaBox>
               </div>
             </div>
             
@@ -304,9 +299,8 @@ const TrigonometryRightTriangleLesson = () => {
             <h4 className="text-lg font-semibold mb-3 text-purple-700">
               דוגמה פתורה:
             </h4>
-            <p className="font-medium mb-3">
-              במשולש ישר זווית ABC (<FormulaBox content="\\angle C=90^\\circ" />), נתון: 
-              <FormulaBox content="\\angle A=30^\\circ" />, <FormulaBox content="AC=10" /> ס"מ. 
+            <p className="font-medium mb-3">              במשולש ישר זווית ABC (<FormulaBox>\angle C=90^\circ</FormulaBox>), נתון: 
+              <FormulaBox>\angle A=30^\circ</FormulaBox>, <FormulaBox>AC=10</FormulaBox> ס"מ.
               חשב את אורך הניצב BC.
             </p>
             
@@ -314,23 +308,23 @@ const TrigonometryRightTriangleLesson = () => {
             
             <div className="mt-4 space-y-2">
               <p><strong>פתרון:</strong></p>
-              <p>ביחס לזווית A (<FormulaBox content="30^\\circ" />):</p>
+              <p>ביחס לזווית A (<FormulaBox inline>30^\\circ</FormulaBox>):</p>
               <ul className="list-disc list-inside mr-4">
                 <li>הניצב שמול הזווית הוא BC (אותו אנו מחפשים).</li>
                 <li>הניצב שליד הזווית הוא AC (שאורכו 10 ס"מ).</li>
               </ul>
               
               <p>הפונקציה המקשרת בין ניצב מול וניצב ליד היא טנגנס:</p>
-              <FormulaBox content="\\tan(A) = \\frac{BC}{AC}" display />
+              <FormulaBox>\\tan(A) = \\frac{BC}{AC}</FormulaBox>
               
               <p>נציב את הנתונים:</p>
-              <FormulaBox content="\\tan(30^\\circ) = \\frac{BC}{10}" display />
+              <FormulaBox>\\tan(30^\\circ) = \\frac{BC}{10}</FormulaBox>
               
               <p>כדי למצוא את BC, נכפול ב-10:</p>
-              <FormulaBox content="BC = 10 \\cdot \\tan(30^\\circ)" display />
+              <FormulaBox>BC = 10 \\cdot \\tan(30^\\circ)</FormulaBox>
               
-              <p>באמצעות מחשבון: <FormulaBox content="\\tan(30^\\circ) \\approx 0.577" />.</p>
-              <FormulaBox content="BC \\approx 10 \\cdot 0.577 = 5.77" display />
+              <p>באמצעות מחשבון: <FormulaBox inline>\\tan(30^\\circ) \\approx 0.577</FormulaBox>.</p>
+              <FormulaBox>BC \\approx 10 \\cdot 0.577 = 5.77</FormulaBox>
               
               <p className="font-semibold text-green-700">
                 אורך הניצב BC הוא כ-5.77 ס"מ.
@@ -357,9 +351,9 @@ const TrigonometryRightTriangleLesson = () => {
           solution={
             <div className="space-y-2">
               <p><strong>פתרון מלא:</strong></p>
-              <p>נסמן את הניצב שמול הזווית ב-<FormulaBox content="a" />. נשתמש בפונקציית הסינוס:</p>
-              <FormulaBox content="\\sin(40^\\circ) = \\frac{a}{10}" display />
-              <FormulaBox content="a = 10 \\cdot \\sin(40^\\circ) \\approx 10 \\cdot 0.6428 \\approx 6.43" display />
+              <p>נסמן את הניצב שמול הזווית ב-<FormulaBox inline>a</FormulaBox>. נשתמש בפונקציית הסינוס:</p>
+              <FormulaBox>\\sin(40^\\circ) = \\frac{a}{10}</FormulaBox>
+              <FormulaBox>a = 10 \\cdot \\sin(40^\\circ) \\approx 10 \\cdot 0.6428 \\approx 6.43</FormulaBox>
               <p>התשובה: 6.43 ס״מ</p>
             </div>
           }

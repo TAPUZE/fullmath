@@ -30,10 +30,8 @@ const ProbabilityTreeConditionalLesson = () => {
       allowFractions: true,
       solution: (
         <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p>סה"כ כדורים בכד: 3 (אדומים) + 2 (כחולים) = 5 כדורים.</p>
-          <p>הסתברות להוציא כדור אדום בהוצאה ראשונה: <FormulaBox inline>{"P(\\text{Red}_1) = \\frac{3}{5}"}</FormulaBox>.</p>
-          <p>מכיוון שמחזירים את הכדור, ההסתברות להוציא כדור אדום בהוצאה שנייה זהה: <FormulaBox inline>{"P(\\text{Red}_2) = \\frac{3}{5}"}</FormulaBox>.</p>
+          <p><strong>פתרון מלא:</strong></p>          <p>סה"כ כדורים בכד: 3 (אדומים) + 2 (כחולים) = 5 כדורים.</p>          <p>הסתברות להוציא כדור אדום בהוצאה ראשונה: <FormulaBox inline>P(\\text{Red}_1) = \\frac{3}{5}</FormulaBox>.</p>
+          <p>מכיוון שמחזירים את הכדור, ההסתברות להוציא כדור אדום בהוצאה שנייה זהה: <FormulaBox inline>P(\\text{Red}_2) = \\frac{3}{5}</FormulaBox>.</p>
           <p>ההסתברות להוציא אדום בשתי הפעמים (מאורעות בלתי תלויים):</p>
           <FormulaBox>{"P(\\text{Red}_1 \\text{ and Red}_2) = P(\\text{Red}_1) \\cdot P(\\text{Red}_2) = \\frac{3}{5} \\cdot \\frac{3}{5} = \\frac{9}{25}"}</FormulaBox>
           <p>או בחישוב עשרוני: 0.36</p>
@@ -49,10 +47,9 @@ const ProbabilityTreeConditionalLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>בחפיסת קלפים רגילה יש 52 קלפים ו-4 אסים.</p>
-          <p>הסתברות שהקלף הראשון יהיה אס: <FormulaBox inline>{"P(\\text{Ace}_1) = \\frac{4}{52} = \\frac{1}{13}"}</FormulaBox></p>
+          <p>בחפיסת קלפים רגילה יש 52 קלפים ו-4 אסים.</p>          <p>הסתברות שהקלף הראשון יהיה אס: <FormulaBox inline>P(\\text{Ace}_1) = \\frac{4}{52} = \\frac{1}{13}</FormulaBox></p>
           <p>לאחר הוצאת האס הראשון, נותרו 51 קלפים ו-3 אסים.</p>
-          <p>הסתברות שהקלף השני יהיה אס (בתנאי שהראשון היה אס): <FormulaBox inline>{"P(\\text{Ace}_2|\\text{Ace}_1) = \\frac{3}{51} = \\frac{1}{17}"}</FormulaBox></p>
+          <p>הסתברות שהקלף השני יהיה אס (בתנאי שהראשון היה אס): <FormulaBox inline>P(\\text{Ace}_2|\\text{Ace}_1) = \\frac{3}{51} = \\frac{1}{17}</FormulaBox></p>
           <p>ההסתברות לשני אסים רצופים:</p>
           <FormulaBox>{"P(\\text{Ace}_1 \\text{ and Ace}_2) = \\frac{1}{13} \\cdot \\frac{1}{17} = \\frac{1}{221}"}</FormulaBox>
         </div>
@@ -138,11 +135,9 @@ const ProbabilityTreeConditionalLesson = () => {
           <p className="text-sm text-gray-600">חשוב לשים לב: המיקוד לשנת תשפ"ה הסיר את הנושא "הסתברות של מאורעות תלויים (הוצאה בלי החזרה)" באופן גורף. לכן, רוב השאלות יתמקדו בהוצאה עם החזרה, או בתרחישים בהם ההסתברויות בכל שלב אינן משתנות באופן מורכב מדי.</p>
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">3. הסתברות מותנית (ברמה בסיסית)</h3>
-          <p>הסתברות מותנית היא ההסתברות שמאורע A יתרחש, בהינתן שמאורע B כבר התרחש. היא מסומנת <FormulaBox inline>{"P(A|B)"}</FormulaBox> (קרי: ההסתברות של A בתנאי B).</p>
-          <p>במקרים פשוטים, ניתן לחשב הסתברות מותנית ישירות מדיאגרמת עץ או מטבלה דו-ממדית (כפי שנראה בדוגמאות).</p>
-          <p>הנוסחה הכללית להסתברות מותנית (שחשוב להכיר גם אם לא תמיד נשתמש בה ישירות לחישוב ברמה זו):</p>
-          <FormulaBox>{"P(A|B) = \\frac{P(A \\cap B)}{P(B)}"}</FormulaBox>
-          <p>כאשר <FormulaBox inline>{"P(A \\cap B)"}</FormulaBox> היא ההסתברות שגם A וגם B יתרחשו (חיתוך המאורעות).</p>
+          <p>הסתברות מותנית היא ההסתברות שמאורע A יתרחש, בהינתן שמאורע B כבר התרחש. היא מסומנת <FormulaBox inline>P(A|B)</FormulaBox> (קרי: ההסתברות של A בתנאי B).</p>
+          <p>במקרים פשוטים, ניתן לחשב הסתברות מותנית ישירות מדיאגרמת עץ או מטבלה דו-ממדית (כפי שנראה בדוגמאות).</p>          <p>הנוסחה הכללית להסתברות מותנית (שחשוב להכיר גם אם לא תמיד נשתמש בה ישירות לחישוב ברמה זו):</p>          <FormulaBox>{"P(A|B) = \\frac{P(A \\cap B)}{P(B)}"}</FormulaBox>
+          <p>כאשר <FormulaBox inline>P(A \\cap B)</FormulaBox> היא ההסתברות שגם A וגם B יתרחשו (חיתוך המאורעות).</p>
 
           <h3 className="text-xl font-semibold mt-8 mb-2 text-gray-800">דוגמה פתורה: הטלת מטבע פעמיים</h3>
           <div className="border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-3 mb-6">

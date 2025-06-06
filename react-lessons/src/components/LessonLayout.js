@@ -1,17 +1,9 @@
-import React, { useEffect } from 'react';
-import MathJax, { renderMathInElement } from './MathJax';
+import React from 'react';
 import ProgressSection from './ProgressSection';
 
 const LessonLayout = ({ children, lessonId, title, nextLessonUrl, menuUrl }) => {
-  useEffect(() => {
-    // Render math after component mounts
-    setTimeout(() => {
-      renderMathInElement(document.body);
-    }, 100);
-  }, [children]);
   return (
     <div className="bg-gray-100 text-gray-800 min-h-screen">
-      <MathJax />
       
       <div className="container mx-auto p-4 md:p-8 max-w-5xl">
         <header className="mb-8">

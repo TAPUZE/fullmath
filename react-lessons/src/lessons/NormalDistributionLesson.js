@@ -14,13 +14,11 @@ const NormalDistributionLesson = () => {
       tolerance: 0.01,
       solution: (
         <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p>נתונים: <FormulaBox inline>{"\\mu = 500, \\sigma = 40"}</FormulaBox></p>
-          <p>עבור <FormulaBox inline>{"X = 450"}</FormulaBox> שעות:</p>
-          <FormulaBox>{"Z = \\frac{450 - 500}{40} = \\frac{-50}{40} = -1.25"}</FormulaBox>
-          <p>נחפש בטבלת Z את <FormulaBox inline>{"P(Z < -1.25)"}</FormulaBox>. בדרך כלל, <FormulaBox inline>{"P(Z < -1.25) = P(Z > 1.25) = 1 - P(Z < 1.25)"}</FormulaBox>.</p>
-          <p>מטבלה, <FormulaBox inline>{"P(Z < 1.25) \\approx 0.8944"}</FormulaBox>.</p>
-          <p>לכן, <FormulaBox inline>{"P(Z < -1.25) \\approx 1 - 0.8944 = 0.1056"}</FormulaBox>.</p>
+          <p><strong>פתרון מלא:</strong></p>          <p>נתונים: <FormulaBox inline>\\mu = 500, \\sigma = 40</FormulaBox></p>
+          <p>עבור <FormulaBox inline>X = 450</FormulaBox> שעות:</p>
+          <FormulaBox>Z = \\frac{450 - 500}{40} = \\frac{-50}{40} = -1.25</FormulaBox>          <p>נחפש בטבלת Z את <FormulaBox inline>P(Z &lt; -1.25)</FormulaBox>. בדרך כלל, <FormulaBox inline>P(Z &lt; -1.25) = P(Z &gt; 1.25) = 1 - P(Z &lt; 1.25)</FormulaBox>.</p>
+          <p>מטבלה, <FormulaBox inline>P(Z &lt; 1.25) \\approx 0.8944</FormulaBox>.</p>
+          <p>לכן, <FormulaBox inline>P(Z &lt; -1.25) \\approx 1 - 0.8944 = 0.1056</FormulaBox>.</p>
           <p>ההסתברות היא כ-10.56%.</p>
         </div>
       )
@@ -30,11 +28,10 @@ const NormalDistributionLesson = () => {
       question: 'ציוני מבחן מתפלגים נורמלית עם ממוצע 70 וסטיית תקן 10. מהו ציון ה-Z של תלמיד שקיבל 85?',
       correctAnswer: '1.5',
       tolerance: 0.01,
-      solution: (
-        <div>
+      solution: (        <div>
           <p><strong>פתרון:</strong></p>
-          <p>נתונים: <FormulaBox inline>{"X = 85, \\mu = 70, \\sigma = 10"}</FormulaBox></p>
-          <FormulaBox>{"Z = \\frac{85 - 70}{10} = \\frac{15}{10} = 1.5"}</FormulaBox>
+          <p>נתונים: <FormulaBox inline>X = 85, \\mu = 70, \\sigma = 10</FormulaBox></p>
+          <FormulaBox>Z = \\frac{85 - 70}{10} = \\frac{15}{10} = 1.5</FormulaBox>
           <p>ציון ה-Z של התלמיד הוא 1.5. משמעות הדבר היא שהציון שלו גבוה ב-1.5 סטיות תקן מהממוצע.</p>
         </div>
       )
@@ -45,12 +42,11 @@ const NormalDistributionLesson = () => {
       correctAnswer: '0.6826',
       tolerance: 0.01,
       solution: (
-        <div>
-          <p><strong>פתרון:</strong></p>
-          <p>נתונים: <FormulaBox inline>{"\\mu = 200, \\sigma = 5"}</FormulaBox></p>
-          <p>עבור 195 גרם: <FormulaBox inline>{"Z_1 = \\frac{195 - 200}{5} = -1"}</FormulaBox></p>
-          <p>עבור 205 גרם: <FormulaBox inline>{"Z_2 = \\frac{205 - 200}{5} = 1"}</FormulaBox></p>
-          <p>אנחנו מחפשים <FormulaBox inline>{"P(-1 < Z < 1)"}</FormulaBox>.</p>
+        <div>          <p><strong>פתרון:</strong></p>
+          <p>נתונים: <FormulaBox inline>\\mu = 200, \\sigma = 5</FormulaBox></p>
+          <p>עבור 195 גרם: <FormulaBox inline>Z_1 = \\frac{195 - 200}{5} = -1</FormulaBox></p>
+          <p>עבור 205 גרם: <FormulaBox inline>Z_2 = \\frac{205 - 200}{5} = 1</FormulaBox></p>
+          <p>אנחנו מחפשים <FormulaBox inline>P(-1 &lt; Z &lt; 1)</FormulaBox>.</p>
           <p>לפי הכלל האמפירי (68-95-99.7), כ-68% מהנתונים נמצאים במרחק של סטיית תקן אחת מהממוצע.</p>
           <p>לכן ההסתברות היא 0.6826 (68.26%).</p>
         </div>
@@ -114,17 +110,17 @@ const NormalDistributionLesson = () => {
           </ul>
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">התפלגות נורמלית סטנדרטית (Z)</h3>
-          <p>כדי להקל על חישובים, אנו משתמשים בהתפלגות נורמלית סטנדרטית, שבה הממוצע הוא 0 וסטיית התקן היא 1. כלומר, <FormulaBox inline>{"Z \\sim N(0, 1)"}</FormulaBox>.</p>
-          <p>ניתן להמיר כל משתנה מקרי <FormulaBox inline>{"X"}</FormulaBox> המתפלג נורמלית עם ממוצע <FormulaBox inline>{"\\mu"}</FormulaBox> וסטיית תקן <FormulaBox inline>{"\\sigma"}</FormulaBox> למשתנה סטנדרטי <FormulaBox inline>{"Z"}</FormulaBox> באמצעות הנוסחה:</p>
+          <p>כדי להקל על חישובים, אנו משתמשים בהתפלגות נורמלית סטנדרטית, שבה הממוצע הוא 0 וסטיית התקן היא 1. כלומר, <FormulaBox inline>Z \\sim N(0, 1)</FormulaBox>.</p>
+          <p>ניתן להמיר כל משתנה מקרי <FormulaBox inline>X</FormulaBox> המתפלג נורמלית עם ממוצע <FormulaBox inline>\\mu</FormulaBox> וסטיית תקן <FormulaBox inline>\\sigma</FormulaBox> למשתנה סטנדרטי <FormulaBox inline>Z</FormulaBox> באמצעות הנוסחה:</p>
           <FormulaBox>{"Z = \\frac{X - \\mu}{\\sigma}"}</FormulaBox>
           <p>לאחר ההמרה, ניתן להשתמש בטבלת ההתפלגות הנורמלית הסטנדרטית (טבלת Z) כדי למצוא הסתברויות.</p>
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">כלל 68-95-99.7 (הכלל האמפירי)</h3>
           <p>בהתפלגות נורמלית:</p>
           <ul className="list-disc pr-6 space-y-1">
-            <li>כ-<strong>68%</strong> מהנתונים נמצאים במרחק של סטיית תקן אחת מהממוצע (בין <FormulaBox inline>{"\\mu - \\sigma"}</FormulaBox> ל- <FormulaBox inline>{"\\mu + \\sigma"}</FormulaBox>).</li>
-            <li>כ-<strong>95%</strong> מהנתונים נמצאים במרחק של שתי סטיות תקן מהממוצע (בין <FormulaBox inline>{"\\mu - 2\\sigma"}</FormulaBox> ל- <FormulaBox inline>{"\\mu + 2\\sigma"}</FormulaBox>).</li>
-            <li>כ-<strong>99.7%</strong> מהנתונים נמצאים במרחק של שלוש סטיות תקן מהממוצע (בין <FormulaBox inline>{"\\mu - 3\\sigma"}</FormulaBox> ל- <FormulaBox inline>{"\\mu + 3\\sigma"}</FormulaBox>).</li>
+            <li>כ-<strong>68%</strong> מהנתונים נמצאים במרחק של סטיית תקן אחת מהממוצע (בין <FormulaBox inline>\\mu - \\sigma</FormulaBox> ל- <FormulaBox inline>\\mu + \\sigma</FormulaBox>).</li>
+            <li>כ-<strong>95%</strong> מהנתונים נמצאים במרחק של שתי סטיות תקן מהממוצע (בין <FormulaBox inline>\\mu - 2\\sigma</FormulaBox> ל- <FormulaBox inline>\\mu + 2\\sigma</FormulaBox>).</li>
+            <li>כ-<strong>99.7%</strong> מהנתונים נמצאים במרחק של שלוש סטיות תקן מהממוצע (בין <FormulaBox inline>\\mu - 3\\sigma</FormulaBox> ל- <FormulaBox inline>\\mu + 3\\sigma</FormulaBox>).</li>
           </ul>
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 my-6">
@@ -141,7 +137,7 @@ const NormalDistributionLesson = () => {
             <p className="font-medium"><strong>דוגמה:</strong> ציוני מבחן מתפלגים נורמלית עם ממוצע 70 וסטיית תקן 10. מהו ציון ה-Z של תלמיד שקיבל 85?</p>
             
             <p><strong>פתרון:</strong></p>
-            <p>נתונים: <FormulaBox inline>{"X = 85, \\mu = 70, \\sigma = 10"}</FormulaBox></p>
+            <p>נתונים: <FormulaBox inline>X = 85, \\mu = 70, \\sigma = 10</FormulaBox></p>
             <FormulaBox>{"Z = \\frac{85 - 70}{10} = \\frac{15}{10} = 1.5"}</FormulaBox>
             <p>ציון ה-Z של התלמיד הוא 1.5. משמעות הדבר היא שהציון שלו גבוה ב-1.5 סטיות תקן מהממוצע.</p>
           </div>
@@ -151,18 +147,17 @@ const NormalDistributionLesson = () => {
             <p className="font-medium"><strong>דוגמה:</strong> מהי ההסתברות שערך Z שנבחר באקראי יהיה קטן מ-1.5?</p>
             
             <p><strong>פתרון:</strong></p>
-            <p>נשתמש בטבלת ההתפלגות הנורמלית הסטנדרטית. הטבלה בדרך כלל מציגה את השטח משמאל לערך Z נתון, כלומר <FormulaBox inline>{"P(Z < z)"}</FormulaBox>.</p>
-            <p>עבור <FormulaBox inline>{"z = 1.5"}</FormulaBox>, נמצא בטבלה את הערך המתאים. ברוב הטבלאות, <FormulaBox inline>{"P(Z < 1.5) \\approx 0.9332"}</FormulaBox>.</p>
+            <p>נשתמש בטבלת ההתפלגות הנורמלית הסטנדרטית. הטבלה בדרך כלל מציגה את השטח משמאל לערך Z נתון, כלומר <FormulaBox inline>P(Z &lt; z)</FormulaBox>.</p>
+            <p>עבור <FormulaBox inline>z = 1.5</FormulaBox>, נמצא בטבלה את הערך המתאים. ברוב הטבלאות, <FormulaBox inline>P(Z &lt; 1.5) \approx 0.9332</FormulaBox>.</p>
             <p>לכן, ההסתברות היא כ-93.32%.</p>
             
             <p><strong>חישובים נוספים:</strong></p>
-            <p>מהי ההסתברות שערך Z יהיה גדול מ-1.5?</p>
-            <FormulaBox>{"P(Z > 1.5) = 1 - P(Z < 1.5) = 1 - 0.9332 = 0.0668"}</FormulaBox>
+            <p>מהי ההסתברות שערך Z יהיה גדול מ-1.5?</p>            <FormulaBox>P(Z &gt; 1.5) = 1 - P(Z &lt; 1.5) = 1 - 0.9332 = 0.0668</FormulaBox>
             
             <p>מהי ההסתברות שערך Z יהיה בין 0 ל-1.5?</p>
-            <FormulaBox>{"P(0 < Z < 1.5) = P(Z < 1.5) - P(Z < 0)"}</FormulaBox>
-            <p>מכיוון שההתפלגות סימטרית סביב 0, <FormulaBox inline>{"P(Z < 0) = 0.5"}</FormulaBox>.</p>
-            <FormulaBox>{"P(0 < Z < 1.5) = 0.9332 - 0.5 = 0.4332"}</FormulaBox>
+            <FormulaBox>P(0 &lt; Z &lt; 1.5) = P(Z &lt; 1.5) - P(Z &lt; 0)</FormulaBox>
+            <p>מכיוון שההתפלגות סימטרית סביב 0, <FormulaBox inline>P(Z &lt; 0) = 0.5</FormulaBox>.</p>
+            <FormulaBox>P(0 &lt; Z &lt; 1.5) = 0.9332 - 0.5 = 0.4332</FormulaBox>
           </div>
         </div>
       </section>
