@@ -123,9 +123,6 @@ const CalculusOptimizationLesson = () => {
         </h2>
         <Quiz questions={quizQuestions} lessonId={lessonId} />
       </section>
-
-      {/* Progress Section */}
-      <ProgressSection lessonId={lessonId} />
     </LessonLayout>
   );
 };

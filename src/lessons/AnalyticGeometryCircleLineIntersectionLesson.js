@@ -216,13 +216,6 @@ const AnalyticGeometryCircleLineIntersectionLesson = () => {
             <li>עבור ישרים אופקיים ואנכיים, ההצבה פשוטה יותר</li>
           </ul>
         </div>
-
-        {/* Progress Section */}
-        <ProgressSection 
-          lessonId="35382-analytic-geometry-circle-line-intersection"
-          nextLessonPath="/lessons/analytic-geometry-circle-tangent"
-          menuPath="/lessons"
-        />
       </div>
     </LessonLayout>
   );

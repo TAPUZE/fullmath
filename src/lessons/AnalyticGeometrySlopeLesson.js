@@ -482,12 +482,7 @@ const AnalyticGeometrySlopeLesson = () => {
           בחן את עצמך 🧐
         </h2>
         <Quiz questions={quizQuestions} />
-      </section>      {/* Progress Section */}
-      <ProgressSection 
-        lessonId="35182-analytic-geometry-slope"
-        nextLessonPath="/lessons/analytic-geometry-line"
-        menuPath="/lessons"
-      />
+      </section>     
     </LessonLayout>
   );
 };

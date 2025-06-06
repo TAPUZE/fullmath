@@ -434,12 +434,7 @@ const GeometryShapesPropertiesLesson = () => {
       </section>
 
       {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />      {/* Progress Section */}
-      <ProgressSection 
-        lessonId="35182-geometry-shapes-properties"
-        nextLessonPath="/lessons/geometry-area-perimeter"
-        menuPath="/lessons"
-      />
+      <Quiz questions={quizQuestions} />    
     </LessonLayout>
   );
 };

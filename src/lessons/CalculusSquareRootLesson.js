@@ -4,6 +4,7 @@ import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
+
 const CalculusSquareRootLesson = () => {
   const lessonId = 'calculus_square_root_he';
   const nextLessonPath = '/calculus-rational';
@@ -145,9 +146,6 @@ const CalculusSquareRootLesson = () => {
         </h2>
         <Quiz questions={quizQuestions} lessonId={lessonId} />
       </section>
-
-      {/* Progress Section */}
-      <ProgressSection lessonId={lessonId} />
     </LessonLayout>
   );
 };

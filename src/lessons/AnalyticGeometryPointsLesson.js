@@ -404,12 +404,7 @@ const AnalyticGeometryPointsLesson = () => {
         <div dir="rtl">
           <Quiz questions={quizQuestions} />
         </div>
-      </section>{/* Progress Section */}
-      <ProgressSection 
-        lessonId="35182-analytic-geometry-points"
-        nextLessonPath="/lessons/analytic-geometry-distance"
-        menuPath="/lessons"
-      />
+      </section>
     </LessonLayout>
   );
 };
