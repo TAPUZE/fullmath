@@ -30,8 +30,8 @@ const ProbabilityTreeConditionalLesson = () => {
       allowFractions: true,
       solution: (
         <div>
-          <p><strong>פתרון מלא:</strong></p>          <p>סה"כ כדורים בכד: 3 (אדומים) + 2 (כחולים) = 5 כדורים.</p>          <p>הסתברות להוציא כדור אדום בהוצאה ראשונה: <FormulaBox inline>P(\\text{Red}_1) = \\frac{3}{5}</FormulaBox>.</p>
-          <p>מכיוון שמחזירים את הכדור, ההסתברות להוציא כדור אדום בהוצאה שנייה זהה: <FormulaBox inline>P(\\text{Red}_2) = \\frac{3}{5}</FormulaBox>.</p>
+          <p><strong>פתרון מלא:</strong></p>          <p>סה"כ כדורים בכד: 3 (אדומים) + 2 (כחולים) = 5 כדורים.</p>          <p>הסתברות להוציא כדור אדום בהוצאה ראשונה: <FormulaBox inline>{"P(\\text{Red}_1) = \\frac{3}{5}"}</FormulaBox>.</p>
+          <p>מכיוון שמחזירים את הכדור, ההסתברות להוציא כדור אדום בהוצאה שנייה זהה: <FormulaBox inline>{"P(\\text{Red}_2) = \\frac{3}{5}"}</FormulaBox>.</p>
           <p>ההסתברות להוציא אדום בשתי הפעמים (מאורעות בלתי תלויים):</p>
           <FormulaBox>{"P(\\text{Red}_1 \\text{ and Red}_2) = P(\\text{Red}_1) \\cdot P(\\text{Red}_2) = \\frac{3}{5} \\cdot \\frac{3}{5} = \\frac{9}{25}"}</FormulaBox>
           <p>או בחישוב עשרוני: 0.36</p>
@@ -47,9 +47,9 @@ const ProbabilityTreeConditionalLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>בחפיסת קלפים רגילה יש 52 קלפים ו-4 אסים.</p>          <p>הסתברות שהקלף הראשון יהיה אס: <FormulaBox inline>P(\\text{Ace}_1) = \\frac{4}{52} = \\frac{1}{13}</FormulaBox></p>
+          <p>בחפיסת קלפים רגילה יש 52 קלפים ו-4 אסים.</p>          <p>הסתברות שהקלף הראשון יהיה אס: <FormulaBox inline>{"P(\\text{Ace}_1) = \\frac{4}{52} = \\frac{1}{13}"}</FormulaBox></p>
           <p>לאחר הוצאת האס הראשון, נותרו 51 קלפים ו-3 אסים.</p>
-          <p>הסתברות שהקלף השני יהיה אס (בתנאי שהראשון היה אס): <FormulaBox inline>P(\\text{Ace}_2|\\text{Ace}_1) = \\frac{3}{51} = \\frac{1}{17}</FormulaBox></p>
+          <p>הסתברות שהקלף השני יהיה אס (בתנאי שהראשון היה אס): <FormulaBox inline>{"P(\\text{Ace}_2|\\text{Ace}_1) = \\frac{3}{51} = \\frac{1}{17}"}</FormulaBox></p>
           <p>ההסתברות לשני אסים רצופים:</p>
           <FormulaBox>{"P(\\text{Ace}_1 \\text{ and Ace}_2) = \\frac{1}{13} \\cdot \\frac{1}{17} = \\frac{1}{221}"}</FormulaBox>
         </div>

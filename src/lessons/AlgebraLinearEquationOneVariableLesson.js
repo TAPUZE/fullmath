@@ -51,11 +51,10 @@ const AlgebraLinearEquationOneVariableLesson = () => {
       placeholder: 'הכנס פתרון',
       solution: (
         <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p><FormulaBox inline>\\frac{x}{2} + \\frac{x}{3} = 5</FormulaBox></p>
+          <p><strong>פתרון מלא:</strong></p>          <p><FormulaBox inline>{"\\frac{x}{2} + \\frac{x}{3} = 5"}</FormulaBox></p>
           <p>המכנה המשותף הקטן ביותר של 2 ו-3 הוא 6.</p>
           <p>נכפול כל איבר במשוואה ב-6:</p>
-          <p><FormulaBox inline>6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5</FormulaBox></p>
+          <p><FormulaBox inline>{"6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5"}</FormulaBox></p>
           <p><FormulaBox inline>3x + 2x = 30</FormulaBox></p>
           <p>כינוס איברים: <FormulaBox inline>5x = 30</FormulaBox></p>
           <p>בידוד הנעלם: <FormulaBox inline>x = \\frac{30}{5} = 6</FormulaBox></p>
@@ -183,18 +182,17 @@ const AlgebraLinearEquationOneVariableLesson = () => {
             כאשר במשוואה יש שברים והנעלם אינו במכנה, ניתן לפתור על ידי מציאת מכנה משותף וכפל כל אברי המשוואה 
             במכנה המשותף כדי "להיפטר" מהמכנים. לאחר מכן, פותרים את המשוואה כרגיל.
           </p>
-          
-          <div className="border border-gray-200 rounded-lg p-4 bg-yellow-50 space-y-3 my-6">
-            <p className="font-medium"><strong>דוגמה:</strong> פתור את המשוואה <FormulaBox inline>\\frac{x}{2} + \\frac{x}{3} = 5</FormulaBox></p>
+              <div className="border border-gray-200 rounded-lg p-4 bg-yellow-50 space-y-3 my-6">
+            <p className="font-medium"><strong>דוגמה:</strong> פתור את המשוואה <FormulaBox inline>{"\\frac{x}{2} + \\frac{x}{3} = 5"}</FormulaBox></p>
             <p><strong>פתרון:</strong></p>
             
             <div className="space-y-2">
               <p>המכנה המשותף הקטן ביותר של 2 ו-3 הוא 6.</p>
               <p>נכפול כל איבר במשוואה ב-6:</p>
-              <p><FormulaBox inline>6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5</FormulaBox></p>
-              <p><FormulaBox inline>3x + 2x = 30</FormulaBox></p>
-              <p>כינוס איברים: <FormulaBox inline>5x = 30</FormulaBox></p>
-              <p>בידוד הנעלם: <FormulaBox inline>x = \\frac{30}{5} = 6</FormulaBox></p>
+              <p><FormulaBox inline>{"6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5"}</FormulaBox></p>
+              <p><FormulaBox inline>{"3x + 2x = 30"}</FormulaBox></p>
+              <p>כינוס איברים: <FormulaBox inline>{"5x = 30"}</FormulaBox></p>
+              <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{30}{5} = 6"}</FormulaBox></p>
             </div>
             
             <p className="font-medium text-green-700">פתרון המשוואה הוא <FormulaBox inline>x = 6</FormulaBox>.</p>

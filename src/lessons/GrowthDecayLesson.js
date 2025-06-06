@@ -94,11 +94,10 @@ const GrowthDecayLesson = () => {
             <li><FormulaBox inline>t</FormulaBox> הוא מספר תקופות הזמן שעברו.</li>
           </ul>
 
-          <h4 className="text-lg font-semibold mt-4 mb-1 text-gray-800">כיצד מחשבים את <FormulaBox inline>q</FormulaBox>?</h4>
-          <p>אם הכמות גדלה ב-<FormulaBox inline>p\\%</FormulaBox> בכל תקופת זמן, אז גורם הגדילה הוא: <FormulaBox inline>q = 1 + \\frac{p}{100}</FormulaBox>.</p>
-          <p>לדוגמה, אם המחיר עולה ב-10% כל שנה, אז <FormulaBox inline>p=10</FormulaBox>, ו-<FormulaBox inline>q = 1 + \\frac{10}{100} = 1 + 0.1 = 1.1</FormulaBox>.</p>
-          <p>אם הכמות קטנה (דועכת) ב-<FormulaBox inline>p\\%</FormulaBox> בכל תקופת זמן, אז גורם הדעיכה הוא: <FormulaBox inline>q = 1 - \\frac{p}{100}</FormulaBox>.</p>
-          <p>לדוגמה, אם ערך מכונית יורד ב-15% כל שנה, אז <FormulaBox inline>p=15</FormulaBox>, ו-<FormulaBox inline>q = 1 - \\frac{15}{100} = 1 - 0.15 = 0.85</FormulaBox>.</p>
+          <h4 className="text-lg font-semibold mt-4 mb-1 text-gray-800">כיצד מחשבים את <FormulaBox inline>q</FormulaBox>?</h4>          <p>אם הכמות גדלה ב-<FormulaBox inline>{"p\\%"}</FormulaBox> בכל תקופת זמן, אז גורם הגדילה הוא: <FormulaBox inline>{"q = 1 + \\frac{p}{100}"}</FormulaBox>.</p>
+          <p>לדוגמה, אם המחיר עולה ב-10% כל שנה, אז <FormulaBox inline>{"p=10"}</FormulaBox>, ו-<FormulaBox inline>{"q = 1 + \\frac{10}{100} = 1 + 0.1 = 1.1"}</FormulaBox>.</p>
+          <p>אם הכמות קטנה (דועכת) ב-<FormulaBox inline>{"p\\%"}</FormulaBox> בכל תקופת זמן, אז גורם הדעיכה הוא: <FormulaBox inline>{"q = 1 - \\frac{p}{100}"}</FormulaBox>.</p>
+          <p>לדוגמה, אם ערך מכונית יורד ב-15% כל שנה, אז <FormulaBox inline>{"p=15"}</FormulaBox>, ו-<FormulaBox inline>{"q = 1 - \\frac{15}{100} = 1 - 0.15 = 0.85"}</FormulaBox>.</p>
           <p>שימו לב: אם <FormulaBox inline>q &gt; 1</FormulaBox> מדובר בתהליך גדילה, ואם <FormulaBox inline>0 &lt; q &lt; 1</FormulaBox> מדובר בתהליך דעיכה.</p>
 
           <h3 className="text-xl font-semibold mt-8 mb-2 text-gray-800">דוגמאות פתורות</h3>

@@ -313,15 +313,14 @@ const TrigonometryRightTriangleLesson = () => {
                 <li>הניצב שמול הזווית הוא BC (אותו אנו מחפשים).</li>
                 <li>הניצב שליד הזווית הוא AC (שאורכו 10 ס"מ).</li>
               </ul>
-              
-              <p>הפונקציה המקשרת בין ניצב מול וניצב ליד היא טנגנס:</p>
-              <FormulaBox>\\tan(A) = \\frac{BC}{AC}</FormulaBox>
+                <p>הפונקציה המקשרת בין ניצב מול וניצב ליד היא טנגנס:</p>
+              <FormulaBox>{"\\tan(A) = \\frac{BC}{AC}"}</FormulaBox>
               
               <p>נציב את הנתונים:</p>
-              <FormulaBox>\\tan(30^\\circ) = \\frac{BC}{10}</FormulaBox>
+              <FormulaBox>{"\\tan(30^\\circ) = \\frac{BC}{10}"}</FormulaBox>
               
               <p>כדי למצוא את BC, נכפול ב-10:</p>
-              <FormulaBox>BC = 10 \\cdot \\tan(30^\\circ)</FormulaBox>
+              <FormulaBox>{"BC = 10 \\cdot \\tan(30^\\circ)"}</FormulaBox>
               
               <p>באמצעות מחשבון: <FormulaBox inline>\\tan(30^\\circ) \\approx 0.577</FormulaBox>.</p>
               <FormulaBox>BC \\approx 10 \\cdot 0.577 = 5.77</FormulaBox>
@@ -350,10 +349,9 @@ const TrigonometryRightTriangleLesson = () => {
           onShowSolution={() => setShowSolution1(true)}
           solution={
             <div className="space-y-2">
-              <p><strong>פתרון מלא:</strong></p>
-              <p>נסמן את הניצב שמול הזווית ב-<FormulaBox inline>a</FormulaBox>. נשתמש בפונקציית הסינוס:</p>
-              <FormulaBox>\\sin(40^\\circ) = \\frac{a}{10}</FormulaBox>
-              <FormulaBox>a = 10 \\cdot \\sin(40^\\circ) \\approx 10 \\cdot 0.6428 \\approx 6.43</FormulaBox>
+              <p><strong>פתרון מלא:</strong></p>              <p>נסמן את הניצב שמול הזווית ב-<FormulaBox inline>{"a"}</FormulaBox>. נשתמש בפונקציית הסינוס:</p>
+              <FormulaBox>{"\\sin(40^\\circ) = \\frac{a}{10}"}</FormulaBox>
+              <FormulaBox>{"a = 10 \\cdot \\sin(40^\\circ) \\approx 10 \\cdot 0.6428 \\approx 6.43"}</FormulaBox>
               <p>התשובה: 6.43 ס״מ</p>
             </div>
           }

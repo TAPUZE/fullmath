@@ -43,9 +43,8 @@ const SequencesArithmeticSumLesson = () => {
       question: 'בסדרה חשבונית האיבר הראשון הוא 10, האיבר האחרון (בסכום מסוים) הוא 70, וסכום האיברים הוא 400. כמה איברים בסדרה זו?',
       correctAnswer: '10',
       solution: (
-        <div>          <p><strong>פתרון מלא:</strong></p>
-          <p>נתונים: <FormulaBox inline>a_1=10, a_n=70, S_n=400</FormulaBox>.</p>
-          <p>נשתמש בנוסחה השנייה: <FormulaBox inline>S_n = \\frac{n}{2}(a_1 + a_n)</FormulaBox>.</p>
+        <div>          <p><strong>פתרון מלא:</strong></p>          <p>נתונים: <FormulaBox inline>{"a_1=10, a_n=70, S_n=400"}</FormulaBox>.</p>
+          <p>נשתמש בנוסחה השנייה: <FormulaBox inline>{"S_n = \\frac{n}{2}(a_1 + a_n)"}</FormulaBox>.</p>
           <p>נציב את הנתונים:</p>          <div className="my-2 text-center">
             <FormulaBox>{"S_{n} = \\frac{n}{2}(10 + 70)"}</FormulaBox>
           </div>

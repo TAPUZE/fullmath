@@ -152,9 +152,8 @@ const CalculusIntegralPolynomialLesson = () => {
             <p>
               הפונקציה היא פרבולה "בוכה". בין 0 ל-4 היא חיובית. הקטע <FormulaBox inline>[1,3]</FormulaBox> נמצא כולו בתחום זה, 
               לכן <FormulaBox inline>f(x) \\ge 0</FormulaBox> בקטע הנתון.
-            </p>
-            <p>2. השטח <FormulaBox inline>S = \\int_1^3 (-x^2 + 4x) dx</FormulaBox>.</p>
-            <p>3. נמצא פונקציה קדומה: <FormulaBox inline>F(x) = \\int (-x^2 + 4x) dx = -\\frac{x^3}{3} + 2x^2</FormulaBox>.</p>
+            </p>            <p>2. השטח <FormulaBox inline>{"S = \\int_1^3 (-x^2 + 4x) dx"}</FormulaBox>.</p>
+            <p>3. נמצא פונקציה קדומה: <FormulaBox inline>{"F(x) = \\int (-x^2 + 4x) dx = -\\frac{x^3}{3} + 2x^2"}</FormulaBox>.</p>
             <p>4. נחשב את האינטגרל המסוים:</p>
             <FormulaBox>{"S = [-\\frac{x^3}{3} + 2x^2]_1^3"}</FormulaBox>
             <FormulaBox>{"= \\left(-\\frac{27}{3} + 2 \\cdot 9\\right) - \\left(-\\frac{1}{3} + 2\\right)"}</FormulaBox>

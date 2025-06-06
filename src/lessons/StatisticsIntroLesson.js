@@ -197,9 +197,8 @@ const StatisticsIntroLesson = () => {
       ],
       correctAnswer: 'b',
       explanation: (
-        <div>
-          <p>הממוצע מחושב על ידי סכום כל הערכים חלקי מספר הערכים:</p>
-          <FormulaBox>\text{ממוצע} = \frac{2+4+6+8+10}{5} = \frac{30}{5} = 6</FormulaBox>
+        <div>          <p>הממוצע מחושב על ידי סכום כל הערכים חלקי מספר הערכים:</p>
+          <FormulaBox>{"\\text{ממוצע} = \\frac{2+4+6+8+10}{5} = \\frac{30}{5} = 6"}</FormulaBox>
         </div>
       )
     },
@@ -256,9 +255,8 @@ const StatisticsIntroLesson = () => {
           <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <h4 className="text-lg font-semibold mb-2">דוגמה פתורה (מתוך חומר הבחינה):</h4>
             <p className="font-medium">הציונים של 5 תלמידים הם: <DataDisplay data={[70, 80, 80, 90, 100]} />. מהו הממוצע, החציון והשכיח?</p>
-            <p className="mt-2"><strong>פתרון:</strong></p>
-            <p><strong>ממוצע:</strong></p>
-            <FormulaBox>\text{ממוצע} = \frac{70+80+80+90+100}{5} = \frac{420}{5} = 84</FormulaBox>
+            <p className="mt-2"><strong>פתרון:</strong></p>            <p><strong>ממוצע:</strong></p>
+            <FormulaBox>{"\\text{ממוצע} = \\frac{70+80+80+90+100}{5} = \\frac{420}{5} = 84"}</FormulaBox>
             <p><strong>חציון:</strong></p>
             <p>הנתונים כבר מסודרים מהקטן לגדול: 70, 80, <strong>80</strong>, 90, 100.</p>
             <p>יש 5 נתונים (מספר אי-זוגי). האיבר האמצעי (השלישי) הוא 80. לכן, החציון הוא 80.</p>
@@ -309,9 +307,8 @@ const StatisticsIntroLesson = () => {
             solution={
               <div>
                 <p><strong>פתרון מלא:</strong></p>
-                <p>נתונים מסודרים: 70, 70, 70, 80, 90, 90, 100</p>
-                <p><strong>ממוצע:</strong></p>
-                <FormulaBox>\text{ממוצע} = \frac{70+70+70+80+90+90+100}{7} = \frac{560}{7} = 80</FormulaBox>
+                <p>נתונים מסודרים: 70, 70, 70, 80, 90, 90, 100</p>                <p><strong>ממוצע:</strong></p>
+                <FormulaBox>{"\\text{ממוצע} = \\frac{70+70+70+80+90+90+100}{7} = \\frac{560}{7} = 80"}</FormulaBox>
                 <p><strong>חציון:</strong></p>
                 <p>יש 7 נתונים (מספר אי-זוגי). האיבר האמצעי (הרביעי) הוא 80.</p>
                 <p><strong>שכיח:</strong></p>
