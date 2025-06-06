@@ -64,3 +64,58 @@
   color: #cc0000;
   border: 1px solid #ffcccc;
 }
+
+/* Hebrew text in KaTeX mathematical formulas */
+.math-hebrew .katex-html {
+  direction: ltr;
+}
+
+.math-hebrew .katex .mord.text {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.inline-math-hebrew .katex-html {
+  direction: ltr;
+}
+
+.inline-math-hebrew .katex .mord.text {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+/* Ensure Hebrew text in \text{} commands displays correctly */
+.katex .mord.text[dir="rtl"] {
+  direction: rtl !important;
+  unicode-bidi: bidi-override !important;
+}
+
+/* Force RTL for Hebrew Unicode characters in math */
+.katex .mord.text:has([lang="he"]) {
+  direction: rtl !important;
+  unicode-bidi: bidi-override !important;
+}
+
+/* Additional Hebrew text support in KaTeX */
+.katex .mord.text {
+  /* Check if text contains Hebrew characters */
+  font-family: "Times New Roman", "David", "Narkisim", serif;
+}
+
+/* Specific support for Hebrew text nodes in KaTeX */
+.katex .mord.text span:lang(he) {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+/* Global Hebrew text direction support */
+.katex .text[dir="rtl"] {
+  direction: rtl !important;
+  unicode-bidi: bidi-override !important;
+}
+
+/* Force Hebrew text direction in math environments */
+.katex .mord.text:matches([\u0590-\u05FF]) {
+  direction: rtl !important;
+  unicode-bidi: bidi-override !important;
+}

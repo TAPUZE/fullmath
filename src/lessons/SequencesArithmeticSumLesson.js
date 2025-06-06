@@ -1,23 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 
-const initializeMathJax = () => {
-  window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-    svg: { fontCache: 'global' },
-  };
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-  script.async = true;
-  document.head.appendChild(script);
-};
-
 const SequencesArithmeticSumLesson = () => {
-  useEffect(() => {
-    initializeMathJax();
-  }, []);
 
   const title = "סדרות חשבוניות (המשך) - סכום";
   const lessonId = "35381_sequences_arithmetic_sum";

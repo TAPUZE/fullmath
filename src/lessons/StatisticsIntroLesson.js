@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
+import HebrewMathBox from '../components/HebrewMathBox';
 import Quiz from '../components/Quiz';
 
 // Custom frequency table component
@@ -158,22 +159,7 @@ const StatisticsExercise = ({ question, data, correctAnswers, solution }) => {
   );
 };
 
-const initializeMathJax = () => {
-  window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-    svg: { fontCache: 'global' },
-  };
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-  script.async = true;
-  document.head.appendChild(script);
-};
-
 const StatisticsIntroLesson = () => {
-  useEffect(() => {
-    initializeMathJax();
-  }, []);
-
   // Sample data for the frequency table example
   const frequencyTableData = [
     { value: 60, frequency: 3 },
@@ -195,9 +181,11 @@ const StatisticsIntroLesson = () => {
         { id: 'd', text: '30' }
       ],
       correctAnswer: 'b',
-      explanation: (
-        <div>          <p>הממוצע מחושב על ידי סכום כל הערכים חלקי מספר הערכים:</p>
-          <FormulaBox>{"\\text{ממוצע} = \\frac{2+4+6+8+10}{5} = \\frac{30}{5} = 6"}</FormulaBox>
+      explanation: (        <div>          <p>הממוצע מחושב על ידי סכום כל הערכים חלקי מספר הערכים:</p>
+          <p className="text-center my-4">
+            <span className="text-lg font-semibold">ממוצע = </span>
+            <FormulaBox inline>{"\\frac{2+4+6+8+10}{5} = \\frac{30}{5} = 6"}</FormulaBox>
+          </p>
         </div>
       )
     },
@@ -238,8 +226,13 @@ const StatisticsIntroLesson = () => {
           <div className="sub-section">
             <h3 className="text-xl font-semibold mt-4 mb-2 text-purple-600">מדדי מרכז</h3>
             <p>מדדי מרכז הם ערכים המנסים לתאר את "מרכז" קבוצת הנתונים, כלומר, ערך טיפוסי או מייצג של הנתונים. המדדים הנפוצים שנלמד הם ממוצע, חציון ושכיח.</p>            <h4 className="text-lg font-semibold mt-3 mb-1">1. ממוצע חשבוני (Mean)</h4>
-            <p>הממוצע הוא סכום כל ערכי הנתונים, מחולק במספר הנתונים.</p>
-            <FormulaBox>{"\\text{ממוצע} = \\frac{\\text{סכום כל הנתונים}}{\\text{מספר הנתונים}}"}</FormulaBox>
+            <p>הממוצע הוא סכום כל ערכי הנתונים, מחולק במספר הנתונים.</p>            <p className="text-center my-4">
+              <span className="text-lg font-semibold">ממוצע = </span>
+              <FormulaBox inline>{"\\frac{\\text{sum of all data}}{\\text{number of data points}}"}</FormulaBox>
+            </p>
+            <p className="text-center text-sm text-gray-600 mt-2">
+              (סכום כל הנתונים חלקי מספר הנתונים)
+            </p>
 
             <h4 className="text-lg font-semibold mt-3 mb-1">2. חציון (Median)</h4>
             <p>החציון הוא הערך האמצעי בקבוצת נתונים המסודרת לפי גודל (מהקטן לגדול או מהגדול לקטן).</p>
@@ -255,7 +248,10 @@ const StatisticsIntroLesson = () => {
             <h4 className="text-lg font-semibold mb-2">דוגמה פתורה (מתוך חומר הבחינה):</h4>
             <p className="font-medium">הציונים של 5 תלמידים הם: <DataDisplay data={[70, 80, 80, 90, 100]} />. מהו הממוצע, החציון והשכיח?</p>
             <p className="mt-2"><strong>פתרון:</strong></p>            <p><strong>ממוצע:</strong></p>
-            <FormulaBox>{"\\text{ממוצע} = \\frac{70+80+80+90+100}{5} = \\frac{420}{5} = 84"}</FormulaBox>
+            <p className="text-center my-4">
+              <span className="text-lg font-semibold">ממוצע = </span>
+              <FormulaBox inline>{"\\frac{70+80+80+90+100}{5} = \\frac{420}{5} = 84"}</FormulaBox>
+            </p>
             <p><strong>חציון:</strong></p>
             <p>הנתונים כבר מסודרים מהקטן לגדול: 70, 80, <strong>80</strong>, 90, 100.</p>
             <p>יש 5 נתונים (מספר אי-זוגי). האיבר האמצעי (השלישי) הוא 80. לכן, החציון הוא 80.</p>
@@ -307,7 +303,10 @@ const StatisticsIntroLesson = () => {
               <div>
                 <p><strong>פתרון מלא:</strong></p>
                 <p>נתונים מסודרים: 70, 70, 70, 80, 90, 90, 100</p>                <p><strong>ממוצע:</strong></p>
-                <FormulaBox>{"\\text{ממוצע} = \\frac{70+70+70+80+90+90+100}{7} = \\frac{560}{7} = 80"}</FormulaBox>
+                <p className="text-center my-4">
+                  <span className="text-lg font-semibold">ממוצע = </span>
+                  <FormulaBox inline>{"\\frac{70+70+70+80+90+90+100}{7} = \\frac{560}{7} = 80"}</FormulaBox>
+                </p>
                 <p><strong>חציון:</strong></p>
                 <p>יש 7 נתונים (מספר אי-זוגי). האיבר האמצעי (הרביעי) הוא 80.</p>
                 <p><strong>שכיח:</strong></p>

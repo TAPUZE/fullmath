@@ -1,24 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
+import HebrewMathBox from '../components/HebrewMathBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
-const initializeMathJax = () => {
-  window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-    svg: { fontCache: 'global' },
-  };
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-  script.async = true;
-  document.head.appendChild(script);
-};
-
 const ProblemsBuySellLesson = () => {
-  useEffect(() => {
-    initializeMathJax();
-  }, []);
 
   const lessonId = 'problems_buy_sell_he';
   const nextLessonPath = '/calculus-optimization';
@@ -104,15 +91,26 @@ const ProblemsBuySellLesson = () => {
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">נוסחאות עיקריות</h3>
           <div className="space-y-3">
-            <p><strong>רווח/הפסד באחוזים:</strong></p>
-            <FormulaBox>{`\\text{אחוז רווח} = \\\\frac{\\text{רווח}}{\\text{מחיר קנייה}} \\\\times 100\\%`}</FormulaBox>
-            <FormulaBox>{`\\text{אחוז הפסד} = \\\\frac{\\text{הפסד}}{\\text{מחיר קנייה}} \\\\times 100\\%`}</FormulaBox>
+            <p><strong>רווח/הפסד באחוזים:</strong></p>            <p className="text-center my-4">
+              <span className="text-lg font-semibold">אחוז רווח = </span>
+              <HebrewMathBox inline formula="\\frac{\\text{רווח}}{\\text{מחיר קנייה}} \\times 100\\%" />
+            </p>
+            <p className="text-center my-4">
+              <span className="text-lg font-semibold">אחוז הפסד = </span>
+              <HebrewMathBox inline formula="\\frac{\\text{הפסד}}{\\text{מחיר קנייה}} \\times 100\\%" />
+            </p>
             
             <p><strong>מחיר מכירה עם רווח:</strong></p>
-            <FormulaBox>{`\\text{מחיר מכירה} = \\\\text{מחיר קנייה} \\\\times (1 + \\\\frac{\\text{אחוז רווח}}{100})`}</FormulaBox>
+            <p className="text-center my-4">
+              <span className="text-lg font-semibold">מחיר מכירה = </span>
+              <HebrewMathBox inline formula="\\text{מחיר קנייה} \\times \\left(1 + \\frac{\\text{אחוז רווח}}{100}\\right)" />
+            </p>
             
             <p><strong>מחיר מכירה עם הפסד:</strong></p>
-            <FormulaBox>{`\\text{מחיר מכירה} = \\\\text{מחיר קנייה} \\\\times (1 - \\\\frac{\\text{אחוז הפסד}}{100})`}</FormulaBox>
+            <p className="text-center my-4">
+              <span className="text-lg font-semibold">מחיר מכירה = </span>
+              <HebrewMathBox inline formula="\\text{מחיר קנייה} \\times \\left(1 - \\frac{\\text{אחוז הפסד}}{100}\\right)" />
+            </p>
           </div>
 
           <h3 className="text-xl font-semibold mt-8 mb-2 text-gray-800">דוגמה פתורה</h3>

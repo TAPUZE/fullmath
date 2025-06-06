@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
@@ -57,21 +57,7 @@ const ProbabilityVisual = ({ title, favorable, total, color = "blue" }) => {
   );
 };
 
-const initializeMathJax = () => {
-  window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-    svg: { fontCache: 'global' },
-  };
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-  script.async = true;
-  document.head.appendChild(script);
-};
-
 const ProbabilityIntroLesson = () => {
-  useEffect(() => {
-    initializeMathJax();
-  }, []);
 
   const exercises = [
     {
@@ -188,9 +174,12 @@ const ProbabilityIntroLesson = () => {
             <div className="mt-4">
               <p><strong>פתרון:</strong></p>
               <p>1. <strong>מספר כל התוצאות האפשריות:</strong> סך כל הכדורים בכד הוא <FormulaBox isInline>5 + 3 = 8</FormulaBox>. כלומר, יש 8 תוצאות אפשריות (ניתן להוציא כל אחד מ-8 הכדורים).</p>
-              <p>2. <strong>מספר התוצאות הרצויות:</strong> המאורע הרצוי הוא "הוצאת כדור אדום". יש 5 כדורים אדומים, ולכן יש 5 תוצאות רצויות.</p>
-              <p>3. <strong>חישוב ההסתברות:</strong></p>
-              <p><FormulaBox>P(Red) = (מספר כדורים אדומים) / (סה"כ כדורים) = 5/8</FormulaBox></p>
+              <p>2. <strong>מספר התוצאות הרצויות:</strong> המאורע הרצוי הוא "הוצאת כדור אדום". יש 5 כדורים אדומים, ולכן יש 5 תוצאות רצויות.</p>              <p>3. <strong>חישוב ההסתברות:</strong></p>
+              <p className="text-center my-4">
+                <span className="text-lg font-semibold">P(Red) = </span>
+                <FormulaBox inline>{"\\frac{5}{8}"}</FormulaBox>
+                <span className="text-lg font-semibold"> = מספר כדורים אדומים / סה״כ כדורים</span>
+              </p>
               <p className="mt-2">ההסתברות להוציא כדור אדום היא <FormulaBox isInline>5/8</FormulaBox> (או 0.625, או 62.5%).</p>
             </div>
           </ExampleBox>
@@ -226,10 +215,9 @@ const ProbabilityIntroLesson = () => {
               <p><strong>פתרון:</strong></p>
               <p>המאורע "לא להוציא כדור אדום" הוא המאורע המשלים ל"הוצאת כדור אדום".</p>
               <p>ידוע לנו ש-<FormulaBox isInline>P(Red) = 5/8</FormulaBox>.</p>
-              <p>לכן, <FormulaBox>P(Not Red) = 1 - P(Red) = 1 - 5/8 = 8/8 - 5/8 = 3/8</FormulaBox>.</p>
-              <p className="mt-2">
+              <p>לכן, <FormulaBox>P(Not Red) = 1 - P(Red) = 1 - 5/8 = 8/8 - 5/8 = 3/8</FormulaBox>.</p>              <p className="mt-2">
                 ההסתברות לא להוציא כדור אדום היא <FormulaBox isInline>3/8</FormulaBox>. 
-                (זה תואם לחישוב ישיר: <FormulaBox isInline>(מספר כדורים כחולים) / (סה"כ כדורים) = 3/8</FormulaBox>).
+                (זה תואם לחישוב ישיר: מספר כדורים כחולים / סה״כ כדורים = <FormulaBox isInline>{"\\frac{3}{8}"}</FormulaBox>).
               </p>
             </div>
           </ExampleBox>

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
+import HebrewMathBox from '../components/HebrewMathBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
@@ -178,22 +179,7 @@ const CommonTrigValues = () => {
   );
 };
 
-const initializeMathJax = () => {
-  window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-    svg: { fontCache: 'global' },
-  };
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-  script.async = true;
-  document.head.appendChild(script);
-};
-
 const TrigonometryRightTriangleLesson = () => {
-  useEffect(() => {
-    initializeMathJax();
-  }, []);
-
   const [exercise1Answer, setExercise1Answer] = useState('');
   const [exercise1Feedback, setExercise1Feedback] = useState('');
   const [showSolution1, setShowSolution1] = useState(false);
@@ -269,21 +255,29 @@ const TrigonometryRightTriangleLesson = () => {
             </h3>
             <p className="mb-3">
               עבור זווית חדה <FormulaBox>\alpha</FormulaBox> במשולש ישר-זווית, מוגדרות הפונקציות הבאות:
-            </p>
-            
-            <div className="space-y-3">              <div className="flex items-center space-x-4">
-                <strong>סינוס (Sine):</strong>
-                <FormulaBox>{"\\sin(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{יתר}}"}</FormulaBox>
+            </p>              <div className="space-y-3">
+                <div className="flex items-center space-x-4">
+                  <strong>סינוס (Sine):</strong>
+                  <HebrewMathBox 
+                    inline 
+                    formula="\\sin(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{יתר}}"
+                  />
+                </div>
+                <div className="flex items-center space-x-4">
+                  <strong>קוסינוס (Cosine):</strong>
+                  <HebrewMathBox 
+                    inline 
+                    formula="\\cos(\\alpha) = \\frac{\\text{ניצב ליד}}{\\text{יתר}}"
+                  />
+                </div>
+                <div className="flex items-center space-x-4">
+                  <strong>טנגנס (Tangent):</strong>
+                  <HebrewMathBox 
+                    inline 
+                    formula="\\tan(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{ניצב ליד}}"
+                  />
+                </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <strong>קוסינוס (Cosine):</strong>
-                <FormulaBox>{"\\cos(\\alpha) = \\frac{\\text{ניצב ליד}}{\\text{יתר}}"}</FormulaBox>
-              </div>
-              <div className="flex items-center space-x-4">
-                <strong>טנגנס (Tangent):</strong>
-                <FormulaBox>{"\\tan(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{ניצב ליד}}"}</FormulaBox>
-              </div>
-            </div>
             
             <p className="mt-3">
               פונקציות אלו מאפשרות לנו למצוא אורכי צלעות או גדלי זוויות במשולש ישר-זווית.

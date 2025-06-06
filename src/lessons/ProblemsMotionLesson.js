@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
-const initializeMathJax = () => {
-  window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-    svg: { fontCache: 'global' },
-  };
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-  script.async = true;
-  document.head.appendChild(script);
-};
-
 const ProblemsMotionLesson = () => {
   const [completionStatus, setCompletionStatus] = useState(false);
-
-  useEffect(() => {
-    initializeMathJax();
-  }, []);
 
   const breadcrumbItems = [
     { label: 'דף ראשי', href: '/' },
@@ -222,10 +207,16 @@ const ProblemsMotionLesson = () => {
             <p>2. <strong>ניתוח המצב:</strong> הרכבים נעים בכיוונים מנוגדים, לכן הם מתרחקים זה מזה.</p>
             
             <p>3. <strong>חישוב מהירות יחסית:</strong></p>
-            <FormulaBox formula={`v_{rel} = v_1 + v_2 = 50 + 70 = 120 \\\text{ קמ"ש}`} block />
+            <p className="text-center my-4">
+              <FormulaBox formula={`v_{rel} = v_1 + v_2 = 50 + 70 = 120`} block />
+              <span className="text-lg mr-2">קמ"ש</span>
+            </p>
             
             <p>4. <strong>חישוב זמן:</strong></p>
-            <FormulaBox formula={`t = \\\frac{s}{v_{rel}} = \\\frac{360}{120} = 3 \\\text{ שעות}`} block />
+            <p className="text-center my-4">
+              <FormulaBox formula={`t = \\frac{s}{v_{rel}} = \\frac{360}{120} = 3`} block />
+              <span className="text-lg mr-2">שעות</span>
+            </p>
             
             <p>5. <strong>בדיקה:</strong></p>
             <ul className="list-disc pr-4">

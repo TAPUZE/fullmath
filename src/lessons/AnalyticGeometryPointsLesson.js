@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
@@ -110,58 +110,6 @@ const CoordinateIdentificationExercise = ({ questionText, svgContent, correctAns
   );
 };
 
-const initializeMathJax = () => {
-  // Prevent multiple initializations or script additions
-  if (window.mathJaxInitialized) {
-    // If already initialized, ensure the ready event fires for any new listeners
-    if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
-      window.MathJax.startup.promise.then(() => {
-        document.dispatchEvent(new CustomEvent('MathJaxReady'));
-      });
-    }
-    return;
-  }
-  if (document.getElementById('mathjax-script') && window.MathJax) {
-    // Script exists, and MathJax object exists, assume it's initializing or initialized.
-    // Rely on startup.ready or the event for FormulaBox.
-    // If it's fully initialized, set the flag.
-    if (window.MathJax.startup && window.MathJax.startup.promise) {
-        window.MathJax.startup.promise.then(() => {
-            window.mathJaxInitialized = true;
-            document.dispatchEvent(new CustomEvent('MathJaxReady'));
-        });
-    }
-    return;
-  }
-
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
-      displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']]
-    },
-    svg: { fontCache: 'global' },
-    startup: {
-      ready: () => {
-        console.log('MathJax is ready via startup.ready().');
-        window.MathJax.startup.defaultReady(); // Completes MathJax initialization
-        window.mathJaxInitialized = true; // Set our custom flag
-        document.dispatchEvent(new CustomEvent('MathJaxReady')); // Signal readiness
-      }
-    }
-  };
-
-  if (!document.getElementById('mathjax-script')) {
-    const script = document.createElement('script');
-    script.id = 'mathjax-script';
-    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-    script.async = true;
-    script.onerror = () => {
-      console.error('Failed to load MathJax script.');
-    };
-    document.head.appendChild(script);
-  }
-};
-
 const DynamicCoordinateSystem = () => {
   return (
     <div className="flex justify-center my-6">
@@ -225,12 +173,6 @@ const DynamicCoordinateSystem = () => {
 };
 
 const AnalyticGeometryPointsLesson = () => {
-  useEffect(() => {
-    initializeMathJax();
-    // Removed direct console logs and typesetPromise calls here,
-    // as FormulaBox and the MathJaxReady event will handle it.
-  }, []);
-
   // Exercise definitions
   const exercises = [
     {

@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
+import HebrewMathBox from '../components/HebrewMathBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
-const initializeMathJax = () => {
-  window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-    svg: { fontCache: 'global' },
-  };
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-  script.async = true;
-  document.head.appendChild(script);
-};
-
 const ProblemsWorkRateLesson = () => {
   const [completionStatus, setCompletionStatus] = useState(false);
-
-  useEffect(() => {
-    initializeMathJax();
-  }, []);
 
   const breadcrumbItems = [
     { label: 'דף ראשי', href: '/' },
@@ -138,8 +124,10 @@ const ProblemsWorkRateLesson = () => {
           </h3>
           
           <div className="border border-blue-200 rounded-lg p-4 bg-blue-50 space-y-2">
-            <p><strong>עקרון מרכזי:</strong></p>
-            <FormulaBox formula="\text{קצב עבודה} = \frac{1}{\text{זמן לסיום העבודה}}" block />
+            <p><strong>עקרון מרכזי:</strong></p>            <p className="text-center my-4">
+              <span className="text-lg font-semibold">קצב עבודה = </span>
+              <HebrewMathBox inline formula="\\frac{1}{\\text{זמן לסיום העבודה}}" />
+            </p>
             <p>אם עובד מסיים עבודה ב-t שעות, קצב העבודה שלו הוא <FormulaBox formula="\frac{1}{t}" /> עבודות לשעה.</p>
           </div>
 
@@ -147,8 +135,10 @@ const ProblemsWorkRateLesson = () => {
             2. עבודה משותפת
           </h3>
           
-          <p>כאשר מספר גורמים עובדים יחד, קצבי העבודה מתחברים:</p>
-          <FormulaBox formula="\text{קצב משותף} = \text{קצב}_1 + \text{קצב}_2 + ..." block />
+          <p>כאשר מספר גורמים עובדים יחד, קצבי העבודה מתחברים:</p>          <p className="text-center my-4">
+            <span className="text-lg font-semibold">קצב משותף = </span>
+            <HebrewMathBox inline formula="\\text{קצב}_1 + \\text{קצב}_2 + \\ldots" />
+          </p>
           
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">
             3. אסטרטגיית פתרון
@@ -158,7 +148,7 @@ const ProblemsWorkRateLesson = () => {
             <li><strong>זיהוי הנתונים:</strong> מה הזמן הנדרש לכל גורם לסיים את העבודה בנפרד?</li>
             <li><strong>חישוב קצבי עבודה:</strong> עבור כל גורם, חשב את קצב העבודה.</li>
             <li><strong>חישוב קצב משותף:</strong> חבר את כל קצבי העבודה.</li>
-            <li><strong>חישוב זמן משותף:</strong> הזמן המשותף הוא <FormulaBox formula="\frac{1}{\text{קצב משותף}}" />.</li>
+            <li><strong>חישוב זמן משותף:</strong> הזמן המשותף הוא <HebrewMathBox inline formula="\\frac{1}{\\text{קצב משותף}}" />.</li>
             <li><strong>בדיקה:</strong> ודא שהתשובה הגיונית.</li>
           </ol>
 
@@ -191,7 +181,10 @@ const ProblemsWorkRateLesson = () => {
             <FormulaBox formula="\frac{1}{8} + \frac{1}{12} = \frac{3}{24} + \frac{2}{24} = \frac{5}{24}" block />
             
             <p>4. <strong>חישוב זמן משותף:</strong></p>
-            <FormulaBox formula="t = \frac{1}{\frac{5}{24}} = \frac{24}{5} = 4.8 \text{ שעות}" block />
+            <p className="text-center my-4">
+              <FormulaBox formula="t = \frac{1}{\frac{5}{24}} = \frac{24}{5} = 4.8" block />
+              <span className="text-lg mr-2">שעות</span>
+            </p>
             
             <p>5. <strong>בדיקה:</strong> 4.8 שעות פחות מכל אחד מהזמנים הבודדים - הגיוני!</p>
             

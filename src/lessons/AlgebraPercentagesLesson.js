@@ -138,7 +138,10 @@ const AlgebraPercentagesLesson = () => {
             <p className="mt-2"><strong>פתרון:</strong></p>
             <p>אנו יודעים שהמחיר המקורי הוא 200 ש"ח.</p>
             <p>1. <strong>חישוב סכום השינוי:</strong> ההתייקרות היא 15% מהמחיר המקורי.</p>
-            <FormulaBox>{`\\text{Change} = \\frac{15}{100} \\cdot 200 = 0.15 \\cdot 200 = 30 \\text{ ש״ח}`}</FormulaBox>
+            <p className="text-center my-4">
+              <FormulaBox>{"\\text{Change} = \\frac{15}{100} \\cdot 200 = 0.15 \\cdot 200 = 30"}</FormulaBox>
+              <span className="text-lg mr-2">ש״ח</span>
+            </p>
             
             <p>נמלא בטבלה:</p>
             <DataTable>
@@ -155,7 +158,10 @@ const AlgebraPercentagesLesson = () => {
 
             <p className="mt-2">2. <strong>חישוב המחיר החדש:</strong></p>
             <p>המחיר החדש = מחיר מקורי + סכום השינוי (ההתייקרות).</p>
-            <FormulaBox>{`\\text{New Price} = 200 + 30 = 230 \\text{ ש״ח}`}</FormulaBox>
+            <p className="text-center my-4">
+              <FormulaBox>{"\\text{New Price} = 200 + 30 = 230"}</FormulaBox>
+              <span className="text-lg mr-2">ש״ח</span>
+            </p>
 
             <p>נשלים את הטבלה:</p>
             <DataTable>
@@ -177,9 +183,15 @@ const AlgebraPercentagesLesson = () => {
               אם המחיר התייקר ב-15%, אז המחיר החדש מהווה <FormulaBox inline>100\% + 15\% = 115\%</FormulaBox> מהמחיר המקורי.
             </p>
             <p>המחיר החדש <FormulaBox inline>M_1</FormulaBox> הוא:</p>
-            <FormulaBox>{`M_1 = \\frac{115}{100} \\cdot 200 = 1.15 \\cdot 200 = 230 \\text{ ש״ח}`}</FormulaBox>
+            <p className="text-center my-4">
+              <FormulaBox>{`M_1 = \\frac{115}{100} \\cdot 200 = 1.15 \\cdot 200 = 230`}</FormulaBox>
+              <span className="text-lg mr-2">ש״ח</span>
+            </p>
             <p>או באמצעות הנוסחה הכללית להתייקרות: <FormulaBox inline>M_1 = M_0 \left(1 + \frac{P}{100}\right)</FormulaBox></p>
-            <FormulaBox>{`M_1 = 200 \\left(1 + \\frac{15}{100}\\right) = 200 \\cdot (1 + 0.15) = 200 \\cdot 1.15 = 230 \\text{ ש״ח}`}</FormulaBox>
+            <p className="text-center my-4">
+              <FormulaBox>{`M_1 = 200 \\left(1 + \\frac{15}{100}\\right) = 200 \\cdot (1 + 0.15) = 200 \\cdot 1.15 = 230`}</FormulaBox>
+              <span className="text-lg mr-2">ש״ח</span>
+            </p>
           </div>
 
           <div className="border border-gray-200 rounded-lg p-4 bg-gray-50 mt-4">
@@ -213,7 +225,10 @@ const AlgebraPercentagesLesson = () => {
             <p className="mt-2">
               <strong>דרך ישירה:</strong> אם הוזל ב-20%, המחיר החדש הוא <FormulaBox inline>100\% - 20\% = 80\%</FormulaBox> מהמקורי.
             </p>
-            <FormulaBox>{`M_1 = \\frac{80}{100} \\cdot 300 = 0.80 \\cdot 300 = 240 \\text{ ש״ח}`}</FormulaBox>
+            <p className="text-center my-4">
+              <FormulaBox>{`M_1 = \\frac{80}{100} \\cdot 300 = 0.80 \\cdot 300 = 240`}</FormulaBox>
+              <span className="text-lg mr-2">ש״ח</span>
+            </p>
           </div>
         </div>
       </section>
