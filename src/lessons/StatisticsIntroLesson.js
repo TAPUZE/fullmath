@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Quiz from '../components/Quiz';
@@ -158,7 +158,22 @@ const StatisticsExercise = ({ question, data, correctAnswers, solution }) => {
   );
 };
 
+const initializeMathJax = () => {
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+    svg: { fontCache: 'global' },
+  };
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+  script.async = true;
+  document.head.appendChild(script);
+};
+
 const StatisticsIntroLesson = () => {
+  useEffect(() => {
+    initializeMathJax();
+  }, []);
+
   // Sample data for the frequency table example
   const frequencyTableData = [
     { value: 60, frequency: 3 },
@@ -172,13 +187,15 @@ const StatisticsIntroLesson = () => {
   const quizQuestions = [
     {
       id: 'mean-calculation',
-      question: 'מהו הממוצע של המספרים: 2, 4, 6, 8, 10?',      options: [
-        { value: 'a', label: '5' },
-        { value: 'b', label: '6' },
-        { value: 'c', label: '7' },
-        { value: 'd', label: '30' }
+      question: 'מהו הממוצע של המספרים: 2, 4, 6, 8, 10?',
+      options: [
+        { id: 'a', text: '5' },
+        { id: 'b', text: '6' },
+        { id: 'c', text: '7' },
+        { id: 'd', text: '30' }
       ],
-      correctAnswer: 'b',      explanation: (
+      correctAnswer: 'b',
+      explanation: (
         <div>          <p>הממוצע מחושב על ידי סכום כל הערכים חלקי מספר הערכים:</p>
           <FormulaBox>{"\\text{ממוצע} = \\frac{2+4+6+8+10}{5} = \\frac{30}{5} = 6"}</FormulaBox>
         </div>
@@ -186,11 +203,12 @@ const StatisticsIntroLesson = () => {
     },
     {
       id: 'median-calculation',
-      question: 'מהו החציון של רשימת הציונים: 60, 90, 70, 100, 80?',      options: [
-        { value: 'a', label: '70' },
-        { value: 'b', label: '80' },
-        { value: 'c', label: '85' },
-        { value: 'd', label: '90' }
+      question: 'מהו החציון של רשימת הציונים: 60, 90, 70, 100, 80?',
+      options: [
+        { id: 'a', text: '70' },
+        { id: 'b', text: '80' },
+        { id: 'c', text: '85' },
+        { id: 'd', text: '90' }
       ],
       correctAnswer: 'b',
       explanation: (
@@ -256,7 +274,8 @@ const StatisticsIntroLesson = () => {
               data={frequencyTableData}
               title="טבלת שכיחויות - ציוני תלמידים"
             />
-              <p className="mt-2"><strong>ממוצע:</strong> כדי לחשב ממוצע מטבלת שכיחויות, כופלים כל ערך בשכיחות שלו, סוכמים את כל המכפלות, ומחלקים בסך כל השכיחויות (סה"כ התלמידים).</p>            <p>סה"כ תלמידים: <FormulaBox inline>3+5+8+4+2 = 22</FormulaBox>.</p>
+            
+            <p className="mt-2"><strong>ממוצע:</strong> כדי לחשב ממוצע מטבלת שכיחויות, כופלים כל ערך בשכיחות שלו, סוכמים את כל המכפלות, ומחלקים בסך כל השכיחויות (סה"כ התלמידים).</p>            <p>סה"כ תלמידים: <FormulaBox inline>3+5+8+4+2 = 22</FormulaBox>.</p>
             <p>סכום (ערך × שכיחות): <FormulaBox inline>(60 \cdot 3) + (70 \cdot 5) + (80 \cdot 8) + (90 \cdot 4) + (100 \cdot 2)</FormulaBox></p>
             <FormulaBox>= 180 + 350 + 640 + 360 + 200 = 1730</FormulaBox>
             <p>ממוצע: <FormulaBox inline>\frac{1730}{22} \approx 78.64</FormulaBox>.</p>

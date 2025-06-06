@@ -296,11 +296,12 @@ const AnalyticGeometrySlopeLesson = () => {
         <span>
           מהו שיפוע הישר העובר דרך הנקודות <FormulaBox inline>(1,1)</FormulaBox> ו-<FormulaBox inline>(3,5)</FormulaBox>?
         </span>
-      ),      options: [
-        { value: 'a', label: '1' },
-        { value: 'b', label: '2' },
-        { value: 'c', label: '0.5' },
-        { value: 'd', label: '-2' }
+      ),
+      options: [
+        { id: 'a', text: '1' },
+        { id: 'b', text: '2' },
+        { id: 'c', text: '0.5' },
+        { id: 'd', text: '-2' }
       ],
       correctAnswer: 'b',
       explanation: (
@@ -316,11 +317,11 @@ const AnalyticGeometrySlopeLesson = () => {
         <span>
           מהי משוואת הישר ששיפועו 1 וחותך את ציר ה-Y בנקודה <FormulaBox inline>(0,-3)</FormulaBox>?
         </span>
-      ),      options: [
-        { value: 'a', label: <FormulaBox inline>y = -3x + 1</FormulaBox> },
-        { value: 'b', label: <FormulaBox inline>y = x - 3</FormulaBox> },
-        { value: 'c', label: <FormulaBox inline>y = x + 3</FormulaBox> },
-        { value: 'd', label: <FormulaBox inline>y = 3x - 1</FormulaBox> }
+      ),
+      options: [        { id: 'a', text: <FormulaBox inline>y = -3x + 1</FormulaBox> },
+        { id: 'b', text: <FormulaBox inline>y = x - 3</FormulaBox> },
+        { id: 'c', text: <FormulaBox inline>y = x + 3</FormulaBox> },
+        { id: 'd', text: <FormulaBox inline>y = 3x - 1</FormulaBox> }
       ],
       correctAnswer: 'b',
       explanation: (

@@ -55,32 +55,35 @@ const CalculusPolynomialLesson = () => {
     {
       id: 'q1',
       question: 'מהי הנגזרת של הפונקציה',
-      formula: 'f(x) = 3x^4 - 2x^3 + x',      options: [
+      formula: 'f(x) = 3x^4 - 2x^3 + x',
+      options: [
         { value: 'a', label: '12x³ - 6x² + 1' },
         { value: 'b', label: '12x³ - 6x² + x' },
         { value: 'c', label: '3x³ - 2x² + 1' }
       ],
-      correctAnswer: 'a',
+      correct: 'a',
       explanation: 'הנגזרת: (3x⁴)′ = 12x³, (-2x³)′ = -6x², (x)′ = 1. לכן f′(x) = 12x³ - 6x² + 1.'
     },
     {
       id: 'q2', 
-      question: 'בנקודה חשודה לקיצון, אם הנגזרת השנייה חיובית, מה סוג הנקודה?',      options: [
+      question: 'בנקודה חשודה לקיצון, אם הנגזרת השנייה חיובית, מה סוג הנקודה?',
+      options: [
         { value: 'a', label: 'נקודת מינימום' },
         { value: 'b', label: 'נקודת מקסימום' },
         { value: 'c', label: 'נקודת פיתול' }
       ],
-      correctAnswer: 'a',
+      correct: 'a',
       explanation: 'כאשר f″(x₀) > 0 בנקודה חשודה, הפונקציה קעורה כלפי מעלה ולכן זו נקודת מינימום מקומי.'
     },
     {
       id: 'q3',
-      question: 'עבור הפונקציה f(x) = x² - 4x + 3, מהי נקודת החיתוך עם ציר y?',      options: [
+      question: 'עבור הפונקציה f(x) = x² - 4x + 3, מהי נקודת החיתוך עם ציר y?',
+      options: [
         { value: 'a', label: '(0, 3)' },
         { value: 'b', label: '(0, -4)' },
         { value: 'c', label: '(3, 0)' }
       ],
-      correctAnswer: 'a',
+      correct: 'a',
       explanation: 'נקודת החיתוך עם ציר y מתקבלת כאשר x=0. f(0) = 0² - 4(0) + 3 = 3. הנקודה היא (0,3).'
     }
   ];

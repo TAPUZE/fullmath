@@ -211,12 +211,14 @@ const TrigonometryRightTriangleLesson = () => {
   };
   const quizQuestions = [
     {
-      question: "במשולש ישר-זווית, הניצב שליד זווית α הוא 8 ס״מ והיתר הוא 10 ס״מ. מהו cos(α)?",      options: [
-        { value: 'a', label: '0.6' },
-        { value: 'b', label: '0.8' },
-        { value: 'c', label: '1.25' },
-        { value: 'd', label: '0.5' }      ],
-      correctAnswer: 'b',
+      question: "במשולש ישר-זווית, הניצב שליד זווית α הוא 8 ס״מ והיתר הוא 10 ס״מ. מהו cos(α)?",
+      options: [
+        { value: 'a', text: '0.6' },
+        { value: 'b', text: '0.8' },
+        { value: 'c', text: '1.25' },
+        { value: 'd', text: '0.5' }
+      ],
+      correct: 'b',
       explanation: 'cos(α) = ניצב ליד / יתר = 8/10 = 0.8'
     }
   ];

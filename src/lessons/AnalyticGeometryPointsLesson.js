@@ -291,11 +291,11 @@ const AnalyticGeometryPointsLesson = () => {
   const quizQuestions = [
     {
       id: 'origin-coordinates',
-      question: 'מהן הקואורדינטות של ראשית הצירים?',      options: [
-        { value: 'a', label: <FormulaBox inline>{`(1,1)`}</FormulaBox> },
-        { value: 'b', label: <FormulaBox inline>{`(0,0)`}</FormulaBox> },
-        { value: 'c', label: <FormulaBox inline>{`(0,1)`}</FormulaBox> },
-        { value: 'd', label: <FormulaBox inline>{`(1,0)`}</FormulaBox> }
+      question: 'מהן הקואורדינטות של ראשית הצירים?',
+      options: [        { id: 'a', text: <FormulaBox inline>{`(1,1)`}</FormulaBox> },
+        { id: 'b', text: <FormulaBox inline>{`(0,0)`}</FormulaBox> },
+        { id: 'c', text: <FormulaBox inline>{`(0,1)`}</FormulaBox> },
+        { id: 'd', text: <FormulaBox inline>{`(1,0)`}</FormulaBox> }
       ],
       correctAnswer: 'b',
       explanation: (
@@ -310,12 +310,13 @@ const AnalyticGeometryPointsLesson = () => {
       question: (
         <span>
           נקודה <FormulaBox inline>{`(-2, -5)`}</FormulaBox> נמצאת באיזה רביע?
-        </span>      ),
+        </span>
+      ),
       options: [
-        { value: 'a', label: 'רביע I' },
-        { value: 'b', label: 'רביע II' },
-        { value: 'c', label: 'רביע III' },
-        { value: 'd', label: 'רביע IV' }
+        { id: 'a', text: 'רביע I' },
+        { id: 'b', text: 'רביע II' },
+        { id: 'c', text: 'רביע III' },
+        { id: 'd', text: 'רביע IV' }
       ],
       correctAnswer: 'c',
       explanation: (

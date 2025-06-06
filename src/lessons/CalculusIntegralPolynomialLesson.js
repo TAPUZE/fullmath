@@ -40,33 +40,36 @@ const CalculusIntegralPolynomialLesson = () => {
     {
       id: 'q1',
       question: 'מהי הפונקציה הקדומה של',
-      formula: 'f(x) = 2x',      options: [
+      formula: 'f(x) = 2x',
+      options: [
         { value: 'a', label: '2x² + C' },
         { value: 'b', label: 'x² + C' },
         { value: 'c', label: '2 + C' }
       ],
-      correctAnswer: 'b',
+      correct: 'b',
       explanation: 'לפי כלל האינטגרציה: ∫2x dx = 2∫x dx = 2(x²/2) + C = x² + C.'
     },
     {
       id: 'q2',
       question: 'האינטגרל המסוים שווה ל:',
-      formula: '∫₀¹ x² dx',      options: [
+      formula: '∫₀¹ x² dx',
+      options: [
         { value: 'a', label: '1' },
         { value: 'b', label: '1/3' },
         { value: 'c', label: '3' }
       ],
-      correctAnswer: 'b',
+      correct: 'b',
       explanation: 'הפונקציה הקדומה של x² היא x³/3. לכן: [x³/3]₀¹ = (1³/3) - (0³/3) = 1/3 - 0 = 1/3.'
     },
     {
       id: 'q3',
-      question: 'מהו האינטגרל הלא מסוים של הפונקציה הקבועה f(x) = 5?',      options: [
+      question: 'מהו האינטגרל הלא מסוים של הפונקציה הקבועה f(x) = 5?',
+      options: [
         { value: 'a', label: '5x + C' },
         { value: 'b', label: '5 + C' },
         { value: 'c', label: 'x + C' }
       ],
-      correctAnswer: 'a',
+      correct: 'a',
       explanation: 'האינטגרל של קבוע k הוא kx + C. לכן ∫5 dx = 5x + C.'
     }
   ];
