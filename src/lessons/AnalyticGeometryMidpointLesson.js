@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const x_1 = 0, x_2 = 0, y_1 = 0, y_2 = 0; // Replace with appropriate values or imports
 
@@ -311,11 +310,7 @@ const AnalyticGeometryMidpointLesson = () => {
         </div>
       </section>
 
-      {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />
-
-      {/* Progress Section */}
-      <ProgressSection lessonId="35182-analytic-geometry-midpoint" />
+      {/* Quiz Section */}      <Quiz questions={quizQuestions} />
     </LessonLayout>
   );
 };

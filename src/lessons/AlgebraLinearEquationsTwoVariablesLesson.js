@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const AlgebraLinearEquationsTwoVariablesLesson = () => {
   const SystemOfEquations = ({ children }) => (
@@ -217,15 +216,7 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
             correctAnswer: "c",
             explanation: "הצבה: x + 2x = 9 ⟹ 3x = 9 ⟹ x = 3. אז y = 2 × 3 = 6"
           }
-        ]}
-      />
-
-      {/* Progress Section */}
-      <ProgressSection 
-        lessonId="35182-algebra-linear-equations-two-variables"
-        nextLessonPath="/lessons/algebra-quadratic-equations"
-        menuPath="/lessons"
-      />
+        ]}        />
     </LessonLayout>
   );
 };

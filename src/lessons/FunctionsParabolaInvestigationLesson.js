@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const FunctionsParabolaInvestigationLesson = () => {
   const lessonId = 'functions_parabola_investigation_35381';

@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const AlgebraWordProblemsLesson = () => {
   // Strategy steps component
@@ -182,13 +181,8 @@ const AlgebraWordProblemsLesson = () => {
             />
           ))}
         </div>
-      </section>
-
-      {/* Quiz Section */}
+      </section>      {/* Quiz Section */}
       <Quiz questions={quizQuestions} />
-
-      {/* Progress Section */}
-      <ProgressSection lessonId="35182-algebra-word-problems" />
     </LessonLayout>
   );
 };

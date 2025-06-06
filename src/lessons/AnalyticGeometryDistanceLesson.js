@@ -3,7 +3,6 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
-import ProgressSection from '../components/ProgressSection';
 
 const AnalyticGeometryDistanceLesson = () => {
   // SVG Diagram Component for distance visualization
@@ -224,13 +223,8 @@ const AnalyticGeometryDistanceLesson = () => {
             />
           ))}
         </div>
-      </section>
-
-      {/* Quiz Section */}
+      </section>      {/* Quiz Section */}
       <Quiz questions={quizQuestions} />
-
-      {/* Progress Section */}
-      <ProgressSection lessonId="35182-analytic-geometry-distance" />
     </LessonLayout>
   );
 };
