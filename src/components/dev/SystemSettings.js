@@ -42,13 +42,22 @@ const SystemSettings = ({ devData }) => {
       debugMode: false,
       corsEnabled: true,
       webhooksEnabled: true
-    },
-    storage: {
+    },    storage: {
       maxFileSize: 10, // MB
       allowedFileTypes: ['pdf', 'doc', 'docx', 'jpg', 'png'],
       storageQuotaPerSchool: 5000, // MB
       autoCleanup: true,
       backupRetention: 30 // days
+    },
+    chatbot: {
+      enabled: true,
+      maxWarningsBeforeBlock: 3,
+      blockDurationMinutes: 30,
+      harassmentDetectionEnabled: true,
+      mathOnlyMode: true,
+      responseDelay: 1000, // milliseconds
+      maxQuestionsPerHour: 50,
+      aiModel: 'mock' // 'openai', 'gemini', 'mock'
     }
   });
 
@@ -110,14 +119,14 @@ const SystemSettings = ({ devData }) => {
       setHasChanges(false);
     }
   };
-
   const sections = [
     { id: 'system', label: 'הגדרות כלליות', icon: '⚙️' },
     { id: 'features', label: 'תכונות גלובליות', icon: '🎯' },
     { id: 'security', label: 'אבטחה', icon: '🔒' },
     { id: 'notifications', label: 'התראות', icon: '🔔' },
     { id: 'api', label: 'API', icon: '🔌' },
-    { id: 'storage', label: 'אחסון', icon: '💾' }
+    { id: 'storage', label: 'אחסון', icon: '💾' },
+    { id: 'chatbot', label: 'בוט מתמטיקה', icon: '🤖' }
   ];
 
   const renderSystemSettings = () => (
@@ -582,12 +591,143 @@ const SystemSettings = ({ devData }) => {
             </div>
           </div>
         </div>
+      </div>    </div>
+  );
+
+  const renderChatbotSettings = () => (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-white p-6 rounded-lg border">
+          <h3 className="text-lg font-semibold mb-4">הגדרות בוט מתמטיקה</h3>
+          
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium">בוט מופעל</label>
+              <button
+                onClick={() => handleSettingChange('chatbot', 'enabled', !settings.chatbot.enabled)}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                  settings.chatbot.enabled ? 'bg-green-600' : 'bg-gray-200'
+                }`}
+              >
+                <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  settings.chatbot.enabled ? 'translate-x-6' : 'translate-x-1'
+                }`} />
+              </button>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">מקס' אזהרות לפני חסימה</label>
+              <input
+                type="number"
+                min="1"
+                max="10"
+                value={settings.chatbot.maxWarningsBeforeBlock}
+                onChange={(e) => handleSettingChange('chatbot', 'maxWarningsBeforeBlock', parseInt(e.target.value))}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">משך חסימה (דקות)</label>
+              <input
+                type="number"
+                min="5"
+                max="180"
+                value={settings.chatbot.blockDurationMinutes}
+                onChange={(e) => handleSettingChange('chatbot', 'blockDurationMinutes', parseInt(e.target.value))}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium">זיהוי הטרדות מופעל</label>
+              <button
+                onClick={() => handleSettingChange('chatbot', 'harassmentDetectionEnabled', !settings.chatbot.harassmentDetectionEnabled)}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                  settings.chatbot.harassmentDetectionEnabled ? 'bg-green-600' : 'bg-gray-200'
+                }`}
+              >
+                <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  settings.chatbot.harassmentDetectionEnabled ? 'translate-x-6' : 'translate-x-1'
+                }`} />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium">מצב מתמטיקה בלבד</label>
+              <button
+                onClick={() => handleSettingChange('chatbot', 'mathOnlyMode', !settings.chatbot.mathOnlyMode)}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                  settings.chatbot.mathOnlyMode ? 'bg-green-600' : 'bg-gray-200'
+                }`}
+              >
+                <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  settings.chatbot.mathOnlyMode ? 'translate-x-6' : 'translate-x-1'
+                }`} />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-lg border">
+          <h3 className="text-lg font-semibold mb-4">הגדרות מתקדמות</h3>
+          
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">עיכוב תשובה (מילישניות)</label>
+              <input
+                type="number"
+                min="500"
+                max="5000"
+                step="500"
+                value={settings.chatbot.responseDelay}
+                onChange={(e) => handleSettingChange('chatbot', 'responseDelay', parseInt(e.target.value))}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">מקס' שאלות לשעה</label>
+              <input
+                type="number"
+                min="10"
+                max="200"
+                value={settings.chatbot.maxQuestionsPerHour}
+                onChange={(e) => handleSettingChange('chatbot', 'maxQuestionsPerHour', parseInt(e.target.value))}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">מודל AI</label>
+              <select
+                value={settings.chatbot.aiModel}
+                onChange={(e) => handleSettingChange('chatbot', 'aiModel', e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="mock">Mock (Demo)</option>
+                <option value="openai">OpenAI GPT</option>
+                <option value="gemini">Google Gemini</option>
+                <option value="claude">Anthropic Claude</option>
+              </select>
+            </div>
+
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <h4 className="text-sm font-medium text-yellow-800 mb-2">📊 סטטיסטיקות בוט</h4>
+              <div className="text-xs text-yellow-700 space-y-1">
+                <p>• משתמשים פעילים: 42</p>
+                <p>• שאלות היום: 156</p>
+                <p>• משתמשים חסומים: 3</p>
+                <p>• זמן תגובה ממוצע: 1.2 שניות</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 
-  const renderContent = () => {
-    switch (activeSection) {
+  const renderContent = () => {    switch (activeSection) {
       case 'system':
         return renderSystemSettings();
       case 'features':
@@ -600,6 +740,8 @@ const SystemSettings = ({ devData }) => {
         return renderApiSettings();
       case 'storage':
         return renderStorageSettings();
+      case 'chatbot':
+        return renderChatbotSettings();
       default:
         return renderSystemSettings();
     }

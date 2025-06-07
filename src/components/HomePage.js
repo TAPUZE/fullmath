@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavigationHeader from './NavigationHeader';
+import ChatbotFloatingButton from './ChatbotFloatingButton';
 import { useAuth } from '../contexts/AuthContext';
 import { useUserData } from '../contexts/UserDataContext';
 import TeacherLessonButton from './TeacherLessonButton';
@@ -176,9 +177,11 @@ const HomePage = () => {
               </svg>
               כניסה לפורטל מורים
             </Link>
-          </div>
-        </section>
+          </div>        </section>
       </main>
+      
+      {/* Math Chatbot Floating Button */}
+      <ChatbotFloatingButton />
     </div>
   );
 };

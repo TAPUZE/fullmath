@@ -10,6 +10,7 @@ import ClassAnalysisModal from './teachers/ClassAnalysisModal';
 import ReportViewer from './reports/ReportViewer';
 import QuickReportViewer from './reports/QuickReportViewer';
 import ReportHistory from './reports/ReportHistory';
+import ChatbotFloatingButton from './ChatbotFloatingButton';
 
 // Import real student data provider
 import { 
@@ -735,9 +736,11 @@ const TeachersDashboard = () => {
           onClose={() => setShowReportViewer(false)}
           currentReport={currentReport}
           reportType={currentReportType}
-          reportData={currentReportData}
-        />
+          reportData={currentReportData}        />
       </div>
+      
+      {/* Math Chatbot Floating Button */}
+      <ChatbotFloatingButton />
     </div>
   );
 };

@@ -8,6 +8,7 @@ import FeaturesManagement from './dev/FeaturesManagement';
 import LessonsManagement from './dev/LessonsManagement';
 import SystemSettings from './dev/SystemSettings';
 import Analytics from './dev/Analytics';
+import ChatbotAnalytics from './dev/ChatbotAnalytics';
 import DevHeader from './dev/DevHeader';
 
 const DevDashboard = () => {
@@ -94,9 +95,12 @@ const DevDashboard = () => {
           {activeTab === 'lessons' && (
             <LessonsManagement devData={devData} />
           )}
-          
-          {activeTab === 'analytics' && (
+            {activeTab === 'analytics' && (
             <Analytics devData={devData} />
+          )}
+          
+          {activeTab === 'chatbot' && (
+            <ChatbotAnalytics devData={devData} />
           )}
           
           {activeTab === 'settings' && (

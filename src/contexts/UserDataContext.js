@@ -72,8 +72,7 @@ export const UserDataProvider = ({ children }) => {
         notifications: true,
         soundEnabled: true,
         autoSave: true
-      },
-      statistics: {
+      },      statistics: {
         totalExercisesSolved: 0,
         averageScore: 0,
         bestScore: 0,
@@ -81,6 +80,16 @@ export const UserDataProvider = ({ children }) => {
         favoriteTopics: [],
         weakAreas: [],
         strongAreas: []
+      },
+      chatbotData: {
+        harassmentCount: 0,
+        nonMathWarnings: 0,
+        lastHarassmentTime: null,
+        isBlocked: false,
+        blockUntil: null,
+        totalQuestions: 0,
+        mathQuestionsCount: 0,
+        lastInteraction: null
       },
       customData: {}
     };

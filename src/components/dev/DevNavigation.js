@@ -31,12 +31,17 @@ const DevNavigation = ({ activeTab, setActiveTab }) => {
       name: 'ניהול שיעורים',
       icon: '📚',
       description: 'ניהול תוכן השיעורים והתרגילים'
-    },
-    {
+    },    {
       id: 'analytics',
       name: 'אנליטיקה',
       icon: '📈',
       description: 'דוחות ונתונים סטטיסטיים'
+    },
+    {
+      id: 'chatbot',
+      name: 'אנליטיקת בוט',
+      icon: '🤖',
+      description: 'מעקב ובקרה על הבוט המתמטי'
     },
     {
       id: 'settings',

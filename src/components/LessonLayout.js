@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import ProgressSection from './ProgressSection';
 import NavigationHeader from './NavigationHeader';
+import ChatbotFloatingButton from './ChatbotFloatingButton';
 import { markLessonAsStarted } from '../utils/progressUtils';
 
 const LessonLayout = ({ children, lessonId, title, nextLessonUrl, nextLessonPath, menuUrl }) => {
@@ -31,9 +32,11 @@ const LessonLayout = ({ children, lessonId, title, nextLessonUrl, nextLessonPath
             <p className="text-sm">
               &copy; {new Date().getFullYear()} כל הזכויות שמורות. HLC.
             </p>
-          </div>
-        </footer>
+          </div>        </footer>
       </div>
+      
+      {/* Math Chatbot Floating Button */}
+      <ChatbotFloatingButton />
     </div>
   );
 };

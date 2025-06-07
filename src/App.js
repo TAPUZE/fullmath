@@ -40,6 +40,11 @@ import DevLogin from './components/DevLogin';
 import DevDashboard from './components/DevDashboard';
 
 // ============================================
+// CHATBOT COMPONENTS
+// ============================================
+import ChatbotTestPage from './components/ChatbotTestPage';
+
+// ============================================
 // QUESTIONNAIRE COMPONENTS
 // ============================================
 import Questionnaire35182 from './components/Questionnaire35182';
@@ -155,12 +160,17 @@ function AppContent() {
         } />        {/* School Admin Routes */}
         <Route path="/admin/login" element={<SchoolAdminLogin />} />
         <Route path="/admin" element={<SchoolAdminDashboard />} />
-        <Route path="/admin/*" element={<SchoolAdminDashboard />} />
-
-        {/* Dev Dashboard Routes */}
+        <Route path="/admin/*" element={<SchoolAdminDashboard />} />        {/* Dev Dashboard Routes */}
         <Route path="/dev/login" element={<DevLogin />} />
         <Route path="/dev" element={<DevDashboard />} />
         <Route path="/dev/*" element={<DevDashboard />} />
+
+        {/* Chatbot Test Routes */}
+        <Route path="/chatbot/test" element={
+          <ProtectedRoute>
+            <ChatbotTestPage />
+          </ProtectedRoute>
+        } />
 
         {/* Questionnaire Routes - Available to Students and Teachers */}
         <Route path="/questionnaire/35182" element={
