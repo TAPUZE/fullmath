@@ -9,6 +9,7 @@ import './styles/lessons.css';
 import HomePage from './components/HomePage';
 import LessonMenu from './components/LessonMenu';
 import ProgressDashboard from './components/ProgressDashboard';
+import TeachersDashboard from './components/TeachersDashboard';
 
 // ============================================
 // QUESTIONNAIRE COMPONENTS
@@ -68,13 +69,13 @@ import GrowthDecayLesson from './lessons/GrowthDecayLesson';
 function App() {
   return (
     <Router>
-      <div className="App">        <Routes>
-          {/* ============================================ */}
+      <div className="App">        <Routes>          {/* ============================================ */}
           {/* MAIN PAGES */}
           {/* ============================================ */}
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<LessonMenu />} />
           <Route path="/progress" element={<ProgressDashboard />} />
+          <Route path="/teachers" element={<TeachersDashboard />} />
           
           {/* ============================================ */}
           {/* QUESTIONNAIRES */}

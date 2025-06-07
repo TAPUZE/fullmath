@@ -111,9 +111,7 @@ const HomePage = () => {  return (
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Progress Dashboard Section */}
+        </section>        {/* Progress Dashboard Section */}
         <section className="text-center py-12">
           <h2 className="text-2xl font-semibold text-gray-800 mb-6">בדקו את ההתקדמות שלכם!</h2>
           <Link 
@@ -122,6 +120,32 @@ const HomePage = () => {  return (
           >
             לדף ההתקדמות שלי
           </Link>
+        </section>
+
+        {/* Teachers Dashboard Section */}
+        <section className="bg-gray-50 py-12 rounded-lg mb-8">
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+              <span className="inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                פורטל מורים
+              </span>
+            </h2>
+            <p className="text-gray-600 mb-6">
+              מערכת ניהול מקיפה למעקב אחר התקדמות התלמידים, ניתוח ביצועים וניהול כיתות
+            </p>
+            <Link 
+              to="/teachers" 
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-150 ease-in-out shadow-md hover:shadow-lg inline-flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              כניסה לפורטל מורים
+            </Link>
+          </div>
         </section>
       </main>
     </div>
