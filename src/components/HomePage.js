@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavigationHeader from './NavigationHeader';
 
-const HomePage = () => {  return (
-    <div className="bg-gray-100 text-gray-800">
-      {/* Notification Box */}
+const HomePage = () => {
+  return (
+    <div className="bg-gray-100 text-gray-800">      {/* Notification Box */}
       <div id="notification-box" className="fixed top-5 right-5 text-white p-4 rounded-lg shadow-xl hidden z-50 max-w-sm text-right">
         הודעה תוצג כאן
       </div>
-
+      
       {/* Navigation Header */}
       <NavigationHeader />
 

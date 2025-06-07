@@ -17,24 +17,34 @@ export const UserDataProvider = ({ children }) => {
   const getUserStorageKey = (email) => {
     return `userData_${email.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
   };
-
   // Load user-specific data
   const loadUserData = (email) => {
-    if (!email) return {};
+    console.log('UserDataContext: loadUserData called for:', email);
+    if (!email) {
+      console.log('UserDataContext: No email provided, returning empty object');
+      return {};
+    }
     
     const storageKey = getUserStorageKey(email);
+    console.log('UserDataContext: Using storage key:', storageKey);
     const savedData = localStorage.getItem(storageKey);
     
     if (savedData) {
       try {
-        return JSON.parse(savedData);
+        const parsedData = JSON.parse(savedData);
+        console.log('UserDataContext: Successfully parsed saved data:', parsedData);
+        return parsedData;
       } catch (error) {
-        console.error('Error parsing user data:', error);
-        return getDefaultUserData(email);
+        console.error('UserDataContext: Error parsing user data:', error);
+        const defaultData = getDefaultUserData(email);
+        console.log('UserDataContext: Returning default data due to parse error:', defaultData);
+        return defaultData;
       }
     }
     
-    return getDefaultUserData(email);
+    const defaultData = getDefaultUserData(email);
+    console.log('UserDataContext: No saved data found, returning default:', defaultData);
+    return defaultData;
   };
 
   // Get default user data structure
@@ -75,40 +85,54 @@ export const UserDataProvider = ({ children }) => {
       customData: {}
     };
   };
-
   // Save user-specific data
   const saveUserData = (email, data) => {
     if (!email) return;
     
-    const storageKey = getUserStorageKey(email);
-    const dataToSave = {
-      ...data,
-      lastUpdated: new Date().toISOString()
-    };
-    
-    localStorage.setItem(storageKey, JSON.stringify(dataToSave));
-    setUserData(prev => ({
-      ...prev,
-      [email]: dataToSave
-    }));
-  };
-
-  // Initialize user data when they log in
+    try {
+      const storageKey = getUserStorageKey(email);
+      const dataToSave = {
+        ...data,
+        lastUpdated: new Date().toISOString()
+      };
+      
+      localStorage.setItem(storageKey, JSON.stringify(dataToSave));
+      setUserData(prev => ({
+        ...prev,
+        [email]: dataToSave
+      }));
+    } catch (error) {
+      console.error('Error saving user data:', error);
+    }
+  };  // Initialize user data when they log in
   const initializeUserData = (email) => {
-    const existingData = loadUserData(email);
-    
-    // Update login statistics
-    const updatedData = {
-      ...existingData,
-      profile: {
-        ...existingData.profile,
-        lastLoginDate: new Date().toISOString(),
-        loginCount: (existingData.profile.loginCount || 0) + 1
-      }
-    };
-    
-    saveUserData(email, updatedData);
-    return updatedData;
+    console.log('UserDataContext: initializeUserData called for:', email);
+    try {
+      console.log('UserDataContext: Loading existing data...');
+      const existingData = loadUserData(email);
+      console.log('UserDataContext: Existing data loaded:', existingData);
+      
+      // Update login statistics
+      const updatedData = {
+        ...existingData,
+        profile: {
+          ...existingData.profile,
+          lastLoginDate: new Date().toISOString(),
+          loginCount: (existingData.profile.loginCount || 0) + 1
+        }
+      };
+      
+      console.log('UserDataContext: About to save updated data:', updatedData);
+      saveUserData(email, updatedData);
+      console.log('UserDataContext: Data saved successfully');
+      return updatedData;
+    } catch (error) {
+      console.error('UserDataContext: Error initializing user data:', error);
+      // Return default data if initialization fails
+      const defaultData = getDefaultUserData(email);
+      console.log('UserDataContext: Returning default data:', defaultData);
+      return defaultData;
+    }
   };
 
   // Update specific user data sections

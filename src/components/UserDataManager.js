@@ -7,29 +7,40 @@ const UserDataManager = () => {
   const { currentUser } = useAuth();
   const { userData } = useUserData();
   const [migrationResult, setMigrationResult] = useState(null);
-  const [summary, setSummary] = useState(null);
-
-  const handleMigration = () => {
-    if (currentUser?.email) {
-      const result = migrateLegacyProgressData(currentUser.email);
-      setMigrationResult(result);
+  const [summary, setSummary] = useState(null);  const handleMigration = () => {
+    try {
+      if (currentUser?.email) {
+        const result = migrateLegacyProgressData(currentUser.email);
+        setMigrationResult(result);
+      }
+    } catch (error) {
+      console.error('Migration error:', error);
+      setMigrationResult({ error: error.message });
     }
   };
-
   const handleGetSummary = () => {
-    if (currentUser?.email) {
-      const summaryData = getMigrationSummary(currentUser.email);
-      setSummary(summaryData);
+    try {
+      if (currentUser?.email) {
+        const summaryData = getMigrationSummary(currentUser.email);
+        setSummary(summaryData);
+      }
+    } catch (error) {
+      console.error('Summary error:', error);
+      setSummary({ error: error.message });
     }
   };
-
   const handleClearLegacy = () => {
-    const confirmed = window.confirm(
-      'Are you sure you want to clear all legacy localStorage data? This action cannot be undone!'
-    );
-    if (confirmed) {
-      const result = clearLegacyData(true);
-      alert(result.message);
+    try {
+      const confirmed = window.confirm(
+        'Are you sure you want to clear all legacy localStorage data? This action cannot be undone!'
+      );
+      if (confirmed) {
+        const result = clearLegacyData(true);
+        alert(result.message);
+      }
+    } catch (error) {
+      console.error('Clear legacy error:', error);
+      alert(`Error: ${error.message}`);
     }
   };
 

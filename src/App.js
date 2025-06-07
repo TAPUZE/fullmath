@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import './styles/lessons.css';
 
+// Import debug utilities
+import './utils/userDataDebug.js';
+import './utils/testUserData.js';
+
 // ============================================
 // AUTHENTICATION COMPONENTS
 // ============================================
@@ -104,14 +108,13 @@ function AppContent() {
 
   if (!isAuthenticated) {
     return <LoginScreen onLogin={login} />;
-  }
-  return (
+  }  return (
     <div className="min-h-screen bg-gray-50">
       <UserInitializer>
         <UserHeader />
         <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<HomePage />} />
+          {/* Public Routes */}
+          <Route path="/" element={<HomePage />} />
         
         {/* Student Routes */}
         <Route path="/lessons" element={
@@ -331,11 +334,11 @@ function AppContent() {
           <ProtectedRoute requireRole="student">
             <ProblemsBuySellLesson />
           </ProtectedRoute>
-        } />
-        <Route path="/lessons/growth-decay" element={
+        } />        <Route path="/lessons/growth-decay" element={
           <ProtectedRoute requireRole="student">
             <GrowthDecayLesson />
-          </ProtectedRoute>        } />
+          </ProtectedRoute>
+        } />
       </Routes>
       </UserInitializer>
     </div>
