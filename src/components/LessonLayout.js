@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProgressSection from './ProgressSection';
+import { markLessonAsStarted } from '../utils/progressUtils';
 
-const LessonLayout = ({ children, lessonId, title, nextLessonUrl, menuUrl }) => {
+const LessonLayout = ({ children, lessonId, title, nextLessonUrl, nextLessonPath, menuUrl }) => {
+  useEffect(() => {
+    // Mark lesson as started when component mounts
+    if (lessonId) {
+      markLessonAsStarted(lessonId);
+    }
+  }, [lessonId]);
   return (
     <div className="bg-gray-100 text-gray-800 min-h-screen">
       
@@ -16,11 +23,10 @@ const LessonLayout = ({ children, lessonId, title, nextLessonUrl, menuUrl }) => 
 
         <main className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
           {children}
-          
-          {lessonId && (
+            {lessonId && (
             <ProgressSection 
               lessonId={lessonId}
-              nextLessonUrl={nextLessonUrl}
+              nextLessonUrl={nextLessonUrl || nextLessonPath}
               menuUrl={menuUrl}
             />
           )}

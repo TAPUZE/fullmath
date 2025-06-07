@@ -35,10 +35,9 @@ const ProgressDashboard = () => {
       '35381-functions-parabola-investigation': 'פונקציות (35381): חקירת פונקציה ריבועית (פרבולה)',
       '35381-sequences-arithmetic-sum': 'סדרות (35381): סכום סדרה חשבונית',
       '35381-growth-decay': 'פונקציות (35381): גדילה ודעיכה',
-      '35381-statistics-dispersion': 'סטטיסטיקה (35381): מדדי פיזור',
-      '35381-probability-tree-conditional': 'הסתברות (35381): דיאגרמת עץ והסתברות מותנית',
+      '35381-statistics-dispersion': 'סטטיסטיקה (35381): מדדי פיזור',      '35381-probability-tree-conditional': 'הסתברות (35381): דיאגרמת עץ והסתברות מותנית',
       '35381-normal-distribution': 'סטטיסטיקה (35381): התפלגות נורמלית',
-      '35381-trigonometry-plane': 'טריגונומטריה (35381): טריגונומטריה במישור (המשך)',
+      '35381-geometry-shapes': 'צורות גיאומטריות (35381): לימוד תכונות צורות גיאומטריות בסיסיות',
       
       // Shalon 35382
       '35382-problems-buy-sell': 'בעיות מילוליות (35382): בעיות קנייה ומכירה',

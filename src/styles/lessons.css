@@ -1,5 +1,54 @@
 /* Lesson-specific styles to match HTML lessons */
 
+/* Global right alignment for all lessons */
+.bg-white.rounded-lg.shadow-lg {
+    direction: rtl;
+    text-align: right;
+}
+
+.bg-white.rounded-lg.shadow-lg * {
+    text-align: right;
+}
+
+.bg-white.rounded-lg.shadow-lg h1,
+.bg-white.rounded-lg.shadow-lg h2,
+.bg-white.rounded-lg.shadow-lg h3,
+.bg-white.rounded-lg.shadow-lg h4,
+.bg-white.rounded-lg.shadow-lg h5,
+.bg-white.rounded-lg.shadow-lg h6 {
+    text-align: right;
+}
+
+.bg-white.rounded-lg.shadow-lg p,
+.bg-white.rounded-lg.shadow-lg div,
+.bg-white.rounded-lg.shadow-lg span {
+    text-align: right;
+}
+
+.bg-white.rounded-lg.shadow-lg ul,
+.bg-white.rounded-lg.shadow-lg ol {
+    text-align: right;
+    padding-right: 2rem;
+    padding-left: 0;
+}
+
+.bg-white.rounded-lg.shadow-lg li {
+    text-align: right;
+}
+
+/* Keep buttons left-to-right for functionality */
+.bg-white.rounded-lg.shadow-lg button,
+.bg-white.rounded-lg.shadow-lg .btn {
+    direction: ltr;
+}
+
+/* Keep form inputs right-aligned but functional */
+.bg-white.rounded-lg.shadow-lg input,
+.bg-white.rounded-lg.shadow-lg textarea {
+    text-align: right;
+    direction: rtl;
+}
+
 .formula-box {
     background-color: #E5E7EB; /* bg-gray-200 */
     padding: 0.75rem; 
@@ -9,6 +58,8 @@
     line-height: 1.5; 
     margin: 0.25rem 0.1rem;
     vertical-align: middle;
+    text-align: center; /* Keep formulas centered */
+    direction: ltr; /* Keep math formulas LTR */
 }
 
 .formula-box-block {

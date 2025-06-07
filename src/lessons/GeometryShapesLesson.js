@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import LessonLayout from '../components/LessonLayout';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 import FormulaBox from '../components/FormulaBox';
 
 const GeometryShapesLesson = () => {
+  const lessonId = 'geometry-shapes';
+  const nextLessonPath = '/lessons/geometry-shapes-properties';
   const [selectedShape, setSelectedShape] = useState(null);
 
   const shapeVisuals = {
@@ -154,9 +157,12 @@ const GeometryShapesLesson = () => {
   const handleShapeSelect = (shapeKey) => {
     setSelectedShape(shapeKey);
   };
-
   return (
-    <div>
+    <LessonLayout 
+      title="צורות גיאומטריות - שאלון 35182"
+      lessonId={lessonId}
+      nextLessonPath={nextLessonPath}
+    >
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-blue-600 mb-6 border-b-2 border-blue-200 pb-2">
           לומדים 📚
@@ -282,15 +288,13 @@ const GeometryShapesLesson = () => {
             />
           ))}
         </div>
-      </section>
-
-      <section className="mb-12">
+      </section>      <section className="mb-12">
         <h2 className="text-2xl font-semibold text-blue-600 mb-4 border-b-2 border-blue-200 pb-2">
           בחן את עצמך 🧐
         </h2>
-        <Quiz questions={quizQuestions} />
+        <Quiz questions={quizQuestions} lessonId={lessonId} />
       </section>
-    </div>
+    </LessonLayout>
   );
 };
 
