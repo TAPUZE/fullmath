@@ -5,7 +5,8 @@ export const useProgressData = (lessonId) => {
     exerciseStats: [],
     quizResults: null,
     totalTimeSpent: 0,
-    lessonStartTime: null
+    lessonStartTime: null,
+    allTasksCompleted: false
   });
 
   const loadProgressData = () => {
@@ -45,12 +46,69 @@ export const useProgressData = (lessonId) => {
     
     const lessonStartTime = localStorage.getItem(`lesson_start_time_${lessonId}`);
     
+    // Check if all tasks are completed
+    const allTasksCompleted = checkAllTasksCompleted(exerciseStats, quizResults);
+    
     setProgressData({
       exerciseStats,
       quizResults,
       totalTimeSpent,
-      lessonStartTime
+      lessonStartTime,
+      allTasksCompleted
     });
+  };
+
+  const checkAllTasksCompleted = (exerciseStats, quizResults) => {
+    // Get expected tasks count from lesson metadata or reasonable defaults
+    const expectedExerciseCount = getExpectedExerciseCount(lessonId);
+    const hasQuiz = getHasQuiz(lessonId);
+    
+    // Check if we have the expected number of exercises completed
+    const exercisesCompleted = exerciseStats.length >= expectedExerciseCount;
+    
+    // Check if quiz is completed (if expected)
+    const quizCompleted = !hasQuiz || (quizResults && quizResults.score !== undefined);
+    
+    return exercisesCompleted && quizCompleted;
+  };
+  const getExpectedExerciseCount = (lessonId) => {
+    // Define expected exercise counts per lesson
+    const lessonExerciseCounts = {
+      'geometry-shapes': 3,
+      'algebra-linear-equation-one-variable': 4,
+      'algebra-quadratic-equations': 5,
+      'trigonometry-right-triangle': 4,
+      'statistics-intro': 3,
+      'functions-parabola-investigation': 4,
+      'sequences-arithmetic-sum': 3,
+      'growth-decay': 4,
+      'statistics-dispersion': 3,
+      'probability-tree-conditional': 4,
+      'normal-distribution': 3,
+      'problems_buy_sell_he': 2, // Problems Buy/Sell lesson has 2 exercises
+      // Add more lessons as needed
+    };
+    
+    return lessonExerciseCounts[lessonId] || 3; // Default to 3 exercises
+  };
+  const getHasQuiz = (lessonId) => {
+    // Define which lessons have quizzes
+    const lessonsWithQuizzes = [
+      'geometry-shapes',
+      'algebra-linear-equation-one-variable',
+      'algebra-quadratic-equations',
+      'trigonometry-right-triangle',
+      'statistics-intro',
+      'functions-parabola-investigation',
+      'sequences-arithmetic-sum',
+      'growth-decay',
+      'statistics-dispersion',
+      'probability-tree-conditional',
+      'normal-distribution',
+      'problems_buy_sell_he' // Problems Buy/Sell lesson has quiz
+    ];
+    
+    return lessonsWithQuizzes.includes(lessonId);
   };
 
   const resetProgressData = () => {
@@ -122,32 +180,54 @@ export const useProgressData = (lessonId) => {
   };
 };
 
-export const useCompletionStatus = (lessonId) => {
+export const useCompletionStatus = (lessonId, allTasksCompleted = false, progressData = null, saveCompletionData = null) => {
   const [isCompleted, setIsCompleted] = useState(false);
+  const [autoCompleted, setAutoCompleted] = useState(false);
 
   useEffect(() => {
     const completed = localStorage.getItem(`lesson_completed_${lessonId}`) === 'true';
     setIsCompleted(completed);
   }, [lessonId]);
-
+  
   const markAsCompleted = () => {
     localStorage.setItem(`lesson_completed_${lessonId}`, 'true');
     setIsCompleted(true);
     return true;
   };
 
+  // Auto-complete when all tasks are done
+  useEffect(() => {
+    if (allTasksCompleted && !isCompleted && !autoCompleted) {
+      // Save detailed completion data if available
+      if (progressData && saveCompletionData) {
+        saveCompletionData(progressData);
+      }
+      markAsCompleted();
+      setAutoCompleted(true);
+    }
+  }, [allTasksCompleted, isCompleted, lessonId, progressData, saveCompletionData, autoCompleted]);
   const markAsNotCompleted = () => {
     localStorage.removeItem(`lesson_completed_${lessonId}`);
     localStorage.removeItem(`lesson_completion_data_${lessonId}`);
     setIsCompleted(false);
+    setAutoCompleted(false);
     return true;
   };
 
+  const toggleCompletion = () => {
+    if (isCompleted) {
+      return markAsNotCompleted();
+    } else {
+      return markAsCompleted();
+    }
+  };
   return {
     isCompleted,
     markAsCompleted,
     markAsNotCompleted,
-    setIsCompleted
+    toggleCompletion,
+    setIsCompleted,
+    autoCompleted
   };
 };
 

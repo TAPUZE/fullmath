@@ -2,35 +2,49 @@ import React from 'react';
 
 const ProgressActions = ({ 
   isCompleted, 
-  markAsCompleted, 
-  markAsNotCompleted, 
+  toggleCompletion,
+  allTasksCompleted,
+  autoCompleted,
   resetProgressData,
   nextLessonUrl, 
   menuUrl 
 }) => {
   return (
     <div className="flex flex-col sm:flex-row gap-3 items-center">
+      {/* Single toggle completion button */}
       <button
-        onClick={markAsCompleted}
+        onClick={toggleCompletion}
         className={`w-full sm:w-auto font-semibold py-2 px-4 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-75 ${
           isCompleted 
-            ? 'bg-green-600 text-white focus:ring-green-400' 
+            ? 'bg-green-600 hover:bg-green-700 text-white focus:ring-green-400' 
             : 'bg-green-500 hover:bg-green-600 text-white focus:ring-green-400'
         }`}
+        title={isCompleted ? "לחץ כדי לסמן את השיעור כלא הושלם" : "לחץ כדי לסמן את השיעור כהושלם"}
       >
-        {isCompleted ? '✓ הושלם' : 'סמן כהושלם'}
+        {isCompleted 
+          ? (autoCompleted ? '✓ הושלם אוטומטית - לחץ לביטול' : '✓ הושלם - לחץ לביטול')
+          : 'סמן כהושלם'
+        }
       </button>
       
-      <button
-        onClick={markAsNotCompleted}
-        className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75"
-      >
-        סמן כלא הושלם
-      </button>
+      {/* Auto-completion indicator */}
+      {allTasksCompleted && !isCompleted && (
+        <div className="w-full sm:w-auto text-sm text-green-600 font-medium py-2 px-3 bg-green-50 rounded-md border border-green-200 animate-pulse">
+          🎉 כל המשימות הושלמו! השיעור יסומן כהושלם אוטומטית.
+        </div>
+      )}
+      
+      {/* Progress indicator */}
+      {!allTasksCompleted && (
+        <div className="w-full sm:w-auto text-sm text-blue-600 font-medium py-2 px-3 bg-blue-50 rounded-md border border-blue-200">
+          📚 השלם את כל התרגילים והבוחן לסיום השיעור
+        </div>
+      )}
       
       <button
         onClick={resetProgressData}
         className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+        title="מחק את כל נתוני ההתקדמות של השיעור"
       >
         מחק נתוני התקדמות
       </button>

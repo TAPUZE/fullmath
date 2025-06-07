@@ -8,8 +8,8 @@ const ProgressLayout = ({
   lessonId,
   progressData,
   isCompleted,
-  onMarkAsCompleted,
-  onMarkAsNotCompleted,
+  autoCompleted,
+  onToggleCompletion,
   onResetProgressData,
   nextLessonUrl,
   menuUrl,
@@ -26,8 +26,9 @@ const ProgressLayout = ({
         {/* Progress Actions */}
         <ProgressActions
           isCompleted={isCompleted}
-          markAsCompleted={onMarkAsCompleted}
-          markAsNotCompleted={onMarkAsNotCompleted}
+          toggleCompletion={onToggleCompletion}
+          allTasksCompleted={progressData.allTasksCompleted}
+          autoCompleted={autoCompleted}
           resetProgressData={onResetProgressData}
           nextLessonUrl={nextLessonUrl}
           menuUrl={menuUrl}
