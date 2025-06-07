@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import ProgressSection from './ProgressSection';
+import NavigationHeader from './NavigationHeader';
 import { markLessonAsStarted } from '../utils/progressUtils';
 
 const LessonLayout = ({ children, lessonId, title, nextLessonUrl, nextLessonPath, menuUrl }) => {
@@ -8,19 +9,12 @@ const LessonLayout = ({ children, lessonId, title, nextLessonUrl, nextLessonPath
     if (lessonId) {
       markLessonAsStarted(lessonId);
     }
-  }, [lessonId]);
-  return (
+  }, [lessonId]);  return (
     <div className="bg-gray-100 text-gray-800 min-h-screen">
+      {/* Navigation Header */}
+      <NavigationHeader lessonTitle={title} />
       
       <div className="container mx-auto p-4 md:p-8 max-w-5xl">
-        <header className="mb-8">
-          {title && (
-            <h1 className="text-3xl md:text-4xl font-bold text-blue-700">
-              {title}
-            </h1>
-          )}
-        </header>
-
         <main className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
           {children}
             {lessonId && (

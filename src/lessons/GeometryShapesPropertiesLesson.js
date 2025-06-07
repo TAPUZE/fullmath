@@ -212,10 +212,9 @@ const GeometryShapesPropertiesLesson = () => {
   const exercises = [
     {
       id: 'ex1',
-      question: (
-        <span>
-          במשולש ישר-זווית ABC (<FormulaBox isInline>∠C=90°</FormulaBox>), אורכי הניצבים הם{' '}
-          <FormulaBox isInline>AC=3</FormulaBox> ס"מ ו-<FormulaBox isInline>BC=4</FormulaBox> ס"מ. 
+      question: (        <span>
+          במשולש ישר-זווית ABC (<FormulaBox inline>∠C=90°</FormulaBox>), אורכי הניצבים הם{' '}
+          <FormulaBox inline>AC=3</FormulaBox> ס"מ ו-<FormulaBox inline>BC=4</FormulaBox> ס"מ. 
           מהו אורך היתר AB?
         </span>
       ),
@@ -223,9 +222,8 @@ const GeometryShapesPropertiesLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>לפי משפט פיתגורס: <FormulaBox isInline>AC² + BC² = AB²</FormulaBox>.</p>
-          <p><FormulaBox isInline>3² + 4² = AB² ⇒ 9 + 16 = AB² ⇒ 25 = AB²</FormulaBox></p>
-          <p><FormulaBox isInline>AB = √25 = 5</FormulaBox>. אורך היתר AB הוא 5 ס"מ.</p>
+          <p>לפי משפט פיתגורס: <FormulaBox inline>AC² + BC² = AB²</FormulaBox>.</p>          <p><FormulaBox inline>3² + 4² = AB² ⇒ 9 + 16 = AB² ⇒ 25 = AB²</FormulaBox></p>
+          <p><FormulaBox inline>AB = √25 = 5</FormulaBox>. אורך היתר AB הוא 5 ס"מ.</p>
         </div>
       ),
       placeholder: 'הכנס אורך היתר (בספרות בלבד)'
@@ -234,15 +232,14 @@ const GeometryShapesPropertiesLesson = () => {
       id: 'ex2',
       question: (
         <span>
-          במקבילית ABCD, זווית A היא <FormulaBox isInline>70°</FormulaBox>. מה גודלה של זווית B?
+          במקבילית ABCD, זווית A היא <FormulaBox inline>70°</FormulaBox>. מה גודלה של זווית B?
         </span>
       ),
       correctAnswer: '110',
       solution: (
-        <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p>במקבילית, סכום כל שתי זוויות סמוכות הוא <FormulaBox isInline>180°</FormulaBox>.</p>
-          <p><FormulaBox isInline>∠A + ∠B = 180° ⇒ 70° + ∠B = 180° ⇒ ∠B = 110°</FormulaBox>.</p>
+        <div>          <p><strong>פתרון מלא:</strong></p>
+          <p>במקבילית, סכום כל שתי זוויות סמוכות הוא <FormulaBox inline>180°</FormulaBox>.</p>
+          <p><FormulaBox inline>∠A + ∠B = 180° ⇒ 70° + ∠B = 180° ⇒ ∠B = 110°</FormulaBox>.</p>
         </div>
       ),
       placeholder: 'הכנס גודל זווית B (במעלות)'
@@ -251,18 +248,16 @@ const GeometryShapesPropertiesLesson = () => {
 
   const quizQuestions = [
     {
-      id: 'q1',
-      question: (
+      id: 'q1',      question: (
         <span>
-          במשולש שווה-שוקיים, זווית הראש היא <FormulaBox isInline>80°</FormulaBox>. 
+          במשולש שווה-שוקיים, זווית הראש היא <FormulaBox inline>80°</FormulaBox>. 
           מה גודלה של כל אחת מזוויות הבסיס?
-        </span>
-      ),
+        </span>),
       options: [
-        { value: 'a', label: <FormulaBox isInline>40°</FormulaBox> },
-        { value: 'b', label: <FormulaBox isInline>50°</FormulaBox> },
-        { value: 'c', label: <FormulaBox isInline>60°</FormulaBox> },
-        { value: 'd', label: <FormulaBox isInline>100°</FormulaBox> }
+        { value: 'a', label: <FormulaBox inline>40°</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>50°</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>60°</FormulaBox> },
+        { value: 'd', label: <FormulaBox inline>100°</FormulaBox> }
       ],
       correctAnswer: 'b'
     },
@@ -301,40 +296,36 @@ const GeometryShapesPropertiesLesson = () => {
           <ShapeVisualization
             shape="triangle-general"
             title="כללי (משולש ABC)"
-            properties={[
-              <>סכום הזוויות במשולש הוא תמיד <FormulaBox isInline>180°</FormulaBox>. (<FormulaBox isInline>∠A + ∠B + ∠C = 180°</FormulaBox>)</>,
+            properties={[              <>סכום הזוויות במשולש הוא תמיד <FormulaBox inline>180°</FormulaBox>. (<FormulaBox inline>∠A + ∠B + ∠C = 180°</FormulaBox>)</>,
               'זווית חיצונית למשולש שווה לסכום שתי הזוויות הפנימיות שאינן צמודות לה.',
-              <>סכום שתי צלעות במשולש גדול מהצלע השלישית (למשל, <FormulaBox isInline>{`a+b > c`}</FormulaBox>).</>
+              <>סכום שתי צלעות במשולש גדול מהצלע השלישית (למשל, <FormulaBox inline>{`a+b > c`}</FormulaBox>).</>
             ]}
           />
 
           <ShapeVisualization
             shape="triangle-isosceles"
-            title="משולש שווה-שוקיים (AB=AC)"
-            properties={[
+            title="משולש שווה-שוקיים (AB=AC)"            properties={[
               'שתי שוקיים שוות באורכן (AB=AC).',
-              <>זוויות הבסיס שוות זו לזו (<FormulaBox isInline>∠B = ∠C</FormulaBox>).</>,
+              <>זוויות הבסיס שוות זו לזו (<FormulaBox inline>∠B = ∠C</FormulaBox>).</>,
               'התיכון לבסיס, הגובה לבסיס וחוצה זווית הראש מתלכדים.'
             ]}
           />
 
           <ShapeVisualization
             shape="triangle-equilateral"
-            title="משולש שווה-צלעות"
-            properties={[
+            title="משולש שווה-צלעות"            properties={[
               'כל שלוש הצלעות שוות באורכן.',
-              <>כל שלוש הזוויות שוות <FormulaBox isInline>60°</FormulaBox> כל אחת.</>
+              <>כל שלוש הזוויות שוות <FormulaBox inline>60°</FormulaBox> כל אחת.</>
             ]}
           />
 
           <ShapeVisualization
             shape="triangle-right"
-            title={<>משולש ישר-זווית (<FormulaBox isInline>∠C = 90°</FormulaBox>)</>}
-            properties={[
-              <>זווית אחת ישרה (<FormulaBox isInline>90°</FormulaBox>). הניצבים הם a, b והיתר הוא c.</>,
-              <><strong>משפט פיתגורס:</strong> <FormulaBox isInline>a² + b² = c²</FormulaBox>.</>,
+            title={<>משולש ישר-זווית (<FormulaBox inline>∠C = 90°</FormulaBox>)</>}
+            properties={[              <>זווית אחת ישרה (<FormulaBox inline>90°</FormulaBox>). הניצבים הם a, b והיתר הוא c.</>,
+              <><strong>משפט פיתגורס:</strong> <FormulaBox inline>a² + b² = c²</FormulaBox>.</>,
               'התיכון ליתר שווה למחצית היתר.',
-              <>במשולש ישר-זווית שזוויותיו החדות הן <FormulaBox isInline>30°, 60°</FormulaBox>, הניצב שמול הזווית של <FormulaBox isInline>30°</FormulaBox> שווה למחצית היתר.</>
+              <>במשולש ישר-זווית שזוויותיו החדות הן <FormulaBox inline>30°, 60°</FormulaBox>, הניצב שמול הזווית של <FormulaBox inline>30°</FormulaBox> שווה למחצית היתר.</>
             ]}
           />
 
@@ -345,20 +336,18 @@ const GeometryShapesPropertiesLesson = () => {
           <ShapeVisualization
             shape="parallelogram"
             title="מקבילית"
-            properties={[
-              'צלעות נגדיות מקבילות (AB || DC, AD || BC) ושוות (AB = DC, AD = BC).',
-              <>זוויות נגדיות שוות (<FormulaBox isInline>∠A = ∠C, ∠B = ∠D</FormulaBox>).</>,
-              <>סכום זוויות סמוכות <FormulaBox isInline>180°</FormulaBox>.</>,
+            properties={[              'צלעות נגדיות מקבילות (AB || DC, AD || BC) ושוות (AB = DC, AD = BC).',
+              <>זוויות נגדיות שוות (<FormulaBox inline>∠A = ∠C, ∠B = ∠D</FormulaBox>).</>,
+              <>סכום זוויות סמוכות <FormulaBox inline>180°</FormulaBox>.</>,
               'אלכסונים חוצים זה את זה.'
             ]}
           />
 
           <ShapeVisualization
             shape="rectangle"
-            title="מלבן"
-            properties={[
+            title="מלבן"            properties={[
               'כל תכונות המקבילית.',
-              <>כל הזוויות ישרות (<FormulaBox isInline>90°</FormulaBox>).</>,
+              <>כל הזוויות ישרות (<FormulaBox inline>90°</FormulaBox>).</>,
               'אלכסונים שווים באורכם.'
             ]}
           />
@@ -383,10 +372,9 @@ const GeometryShapesPropertiesLesson = () => {
 
           <ShapeVisualization
             shape="trapezoid"
-            title="טרפז (AB || DC)"
-            properties={[
+            title="טרפז (AB || DC)"            properties={[
               'זוג אחד של צלעות נגדיות מקבילות (בסיסים).',
-              <>סכום זוויות ליד כל שוק <FormulaBox isInline>180°</FormulaBox>.</>
+              <>סכום זוויות ליד כל שוק <FormulaBox inline>180°</FormulaBox>.</>
             ]}
           />
 

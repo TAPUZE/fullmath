@@ -22,15 +22,13 @@ const ProgressLayout = ({
         
         {/* Progress Statistics */}
         <ProgressStatistics progressData={progressData} />
-        
-        {/* Progress Actions */}
+          {/* Progress Actions */}
         <ProgressActions
           isCompleted={isCompleted}
           toggleCompletion={onToggleCompletion}
           allTasksCompleted={progressData.allTasksCompleted}
           autoCompleted={autoCompleted}
           resetProgressData={onResetProgressData}
-          nextLessonUrl={nextLessonUrl}
           menuUrl={menuUrl}
         />
         

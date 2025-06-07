@@ -255,27 +255,21 @@ const TrigonometryRightTriangleLesson = () => {
             </h3>
             <p className="mb-3">
               עבור זווית חדה <FormulaBox>\alpha</FormulaBox> במשולש ישר-זווית, מוגדרות הפונקציות הבאות:
-            </p>              <div className="space-y-3">
-                <div className="flex items-center space-x-4">
+            </p>              <div className="space-y-3">                <div className="flex items-center space-x-4">
                   <strong>סינוס (Sine):</strong>
-                  <HebrewMathBox 
-                    inline 
-                    formula="\\sin(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{יתר}}"
-                  />
-                </div>
-                <div className="flex items-center space-x-4">
+                  <HebrewMathBox inline>
+                    {"\\sin(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{יתר}}"}
+                  </HebrewMathBox>
+                </div>                <div className="flex items-center space-x-4">
                   <strong>קוסינוס (Cosine):</strong>
-                  <HebrewMathBox 
-                    inline 
-                    formula="\\cos(\\alpha) = \\frac{\\text{ניצב ליד}}{\\text{יתר}}"
-                  />
-                </div>
-                <div className="flex items-center space-x-4">
+                  <HebrewMathBox inline>
+                    {"\\cos(\\alpha) = \\frac{\\text{ניצב ליד}}{\\text{יתר}}"}
+                  </HebrewMathBox>
+                </div>                <div className="flex items-center space-x-4">
                   <strong>טנגנס (Tangent):</strong>
-                  <HebrewMathBox 
-                    inline 
-                    formula="\\tan(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{ניצב ליד}}"
-                  />
+                  <HebrewMathBox inline>
+                    {"\\tan(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{ניצב ליד}}"}
+                  </HebrewMathBox>
                 </div>
               </div>
             

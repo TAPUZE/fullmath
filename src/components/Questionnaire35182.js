@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import NavigationHeader from './NavigationHeader';
 import { getLessonStatus, getProgressStats } from '../utils/progressUtils';
 
 const Questionnaire35182 = () => {
@@ -201,33 +202,11 @@ const Questionnaire35182 = () => {
         </div>
       </div>
     );
-  };
-
-  return (
+  };  return (
     <div className="bg-gray-100 min-h-screen">
-      {/* Navigation */}
-      <nav className="bg-white shadow-md sticky top-0 z-40">
-        <div className="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-          <Link to="/" className="text-xl sm:text-2xl font-bold text-blue-600">
-            לומדים מתמטיקה לבגרות
-          </Link>
-          <div className="flex space-x-4">
-            <Link 
-              to="/progress" 
-              className="text-gray-700 hover:text-blue-600 px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150"
-            >
-              ההתקדמות שלי 📊
-            </Link>
-            <Link 
-              to="/" 
-              className="text-gray-700 hover:text-blue-600 px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150"
-            >
-              חזרה לעמוד הראשי
-            </Link>
-          </div>
-        </div>
-      </nav>
-
+      {/* Navigation Header */}
+      <NavigationHeader />
+      
       {/* Header */}
       <header className="bg-blue-600 text-white py-8">
         <div className="container mx-auto px-4 text-center">
@@ -237,7 +216,7 @@ const Questionnaire35182 = () => {
             יסודות באלגברה, גיאומטריה בסיסית, אנליטית ראשונית, סדרות חשבוניות, טריגונומטריה (משולש ישר זווית), סטטיסטיקה והסתברות
           </p>
         </div>
-      </header>      {/* Main Content */}
+      </header>{/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         {/* Progress Summary */}
         <ProgressSummary />

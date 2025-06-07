@@ -40,7 +40,7 @@ const applyHebrewTextStyling = () => {
       .katex .mord.text:has(span:contains('\u05E1')),
       .katex .mord.text:has(span:contains('\u05E2')),
       .katex .mord.text:has(span:contains('\u05E3')),
-      .katex .mord.text:has(span:contains('\u05E4')),
+      .katex .mord.text:has(span:contents('\u05E4')),
       .katex .mord.text:has(span:contains('\u05E5')),
       .katex .mord.text:has(span:contains('\u05E6')),
       .katex .mord.text:has(span:contains('\u05E7')),
@@ -56,15 +56,28 @@ const applyHebrewTextStyling = () => {
 };
 
 /**
- * A component that handles mathematical formulas with Hebrew text
- * by properly formatting Hebrew text within KaTeX using \text{} with RTL direction
+ * Enhanced HebrewMathBox component for mathematical formulas with Hebrew text
+ * Properly handles Hebrew text within LaTeX \text{} commands
+ * 
+ * Props:
+ * - formula: The LaTeX formula content
+ * - children: Alternative to formula prop
+ * - inline: Boolean to render inline (default: false for block)
+ * - className: Additional CSS classes
+ * - dir: Text direction (automatically set to 'rtl' for Hebrew support)
  */
 const HebrewMathBox = ({ 
   formula,
+  children,
   inline = false,
-  className = "" 
+  className = "",
+  dir = 'rtl',
+  ...otherProps
 }) => {
   const containerRef = useRef(null);
+  
+  // Get content from either formula or children prop
+  const content = formula || children || '';
   
   useEffect(() => {
     // Apply global Hebrew styling
@@ -93,19 +106,29 @@ const HebrewMathBox = ({
     const timeoutId = setTimeout(fixHebrewTextDirection, 200);
     
     return () => clearTimeout(timeoutId);
-  }, [formula]);
+  }, [content]);
+  
+  // Handle empty content
+  if (!content) {
+    console.warn('HebrewMathBox: No content provided');
+    return null;
+  }
+  
+  const containerClasses = inline 
+    ? `inline-math-hebrew ${className}` 
+    : `text-center my-4 math-hebrew ${className}`;
   
   if (inline) {
     return (
-      <span ref={containerRef} className={`inline-math-hebrew ${className}`}>
-        <FormulaBox inline>{formula}</FormulaBox>
+      <span ref={containerRef} className={containerClasses} dir={dir}>
+        <FormulaBox inline dir={dir} {...otherProps}>{content}</FormulaBox>
       </span>
     );
   }
 
   return (
-    <div ref={containerRef} className={`text-center my-4 math-hebrew ${className}`}>
-      <FormulaBox>{formula}</FormulaBox>
+    <div ref={containerRef} className={containerClasses} dir={dir}>
+      <FormulaBox dir={dir} {...otherProps}>{content}</FormulaBox>
     </div>
   );
 };

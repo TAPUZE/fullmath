@@ -6,7 +6,6 @@ const ProgressActions = ({
   allTasksCompleted,
   autoCompleted,
   resetProgressData,
-  nextLessonUrl, 
   menuUrl 
 }) => {
   return (
@@ -48,16 +47,7 @@ const ProgressActions = ({
       >
         מחק נתוני התקדמות
       </button>
-      
-      {nextLessonUrl && (
-        <a
-          href={nextLessonUrl}
-          className="w-full sm:w-auto text-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-        >
-          השיעור הבא &rarr;
-        </a>
-      )}
-      
+        
       <a
         href={menuUrl || '/'}
         className="w-full sm:w-auto text-center bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"

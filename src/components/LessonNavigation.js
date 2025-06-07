@@ -44,16 +44,13 @@ const LessonNavigation = ({ lessonId }) => {
                 <span className="block">אין שיעור קודם</span>
               </div>
             )}
-          </div>
-
-          {/* Questionnaire link */}
+          </div>          {/* Questionnaire link */}
           <div className="flex-shrink-0">
             <a
               href={questionnaire.path}
               className="block text-center bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75"
             >
-              <span className="block text-xs opacity-75">שאלון</span>
-              <span className="block">📋 מבחן סיכום</span>
+              <span className="block">בחירת שיעור</span>
             </a>
           </div>
 

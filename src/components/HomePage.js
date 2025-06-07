@@ -1,30 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavigationHeader from './NavigationHeader';
 
-const HomePage = () => {
-  return (
+const HomePage = () => {  return (
     <div className="bg-gray-100 text-gray-800">
       {/* Notification Box */}
       <div id="notification-box" className="fixed top-5 right-5 text-white p-4 rounded-lg shadow-xl hidden z-50 max-w-sm text-right">
         הודעה תוצג כאן
       </div>
 
-      {/* Navigation */}
-      <nav className="bg-white shadow-md sticky top-0 z-40">
-        <div className="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-          <Link to="/" className="text-xl sm:text-2xl font-bold text-blue-600">
-            לומדים מתמטיקה לבגרות
-          </Link>
-          <div>
-            <Link 
-              to="/progress" 
-              className="text-gray-700 hover:text-blue-600 px-2 sm:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150"
-            >
-              ההתקדמות שלי 📊
-            </Link>
-          </div>
-        </div>
-      </nav>
+      {/* Navigation Header */}
+      <NavigationHeader />
 
       {/* Hero Section */}
       <header className="hero-section text-white py-8 md:py-16 lg:py-24">

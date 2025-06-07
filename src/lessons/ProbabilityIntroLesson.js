@@ -67,9 +67,8 @@ const ProbabilityIntroLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>מספר כל התוצאות האפשריות: 6 (המספרים 1, 2, 3, 4, 5, 6).</p>
-          <p>מספר התוצאות הרצויות (קבלת המספר 4): 1.</p>
-          <p>הסתברות: <FormulaBox isInline>P(4) = 1/6</FormulaBox>.</p>
+          <p>מספר כל התוצאות האפשריות: 6 (המספרים 1, 2, 3, 4, 5, 6).</p>          <p>מספר התוצאות הרצויות (קבלת המספר 4): 1.</p>
+          <p>הסתברות: <FormulaBox inline>P(4) = 1/6</FormulaBox>.</p>
         </div>
       ),
       placeholder: 'הכנס הסתברות (כשבר פשוט, למשל 1/6)'
@@ -80,10 +79,9 @@ const ProbabilityIntroLesson = () => {
       correctAnswer: '5/10',
       solution: (
         <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p>מספר הגולות הירוקות: <FormulaBox isInline>10 - 3 - 2 = 5</FormulaBox>.</p>
+          <p><strong>פתרון מלא:</strong></p>          <p>מספר הגולות הירוקות: <FormulaBox inline>10 - 3 - 2 = 5</FormulaBox>.</p>
           <p>סה"כ גולות: 10.</p>
-          <p>הסתברות להוציא גולה ירוקה: <FormulaBox isInline>P(Green) = 5/10 = 1/2</FormulaBox>.</p>
+          <p>הסתברות להוציא גולה ירוקה: <FormulaBox inline>P(Green) = 5/10 = 1/2</FormulaBox>.</p>
         </div>
       ),
       placeholder: 'הכנס הסתברות (כשבר פשוט)',
@@ -95,11 +93,10 @@ const ProbabilityIntroLesson = () => {
     {
       id: 'q1',
       question: 'מהי ההסתברות לקבל מספר זוגי בהטלת קובייה הוגנת?',
-      options: [
-        { value: 'a', label: <FormulaBox isInline>1/6</FormulaBox> },
-        { value: 'b', label: <FormulaBox isInline>2/6</FormulaBox> },
-        { value: 'c', label: <><FormulaBox isInline>3/6</FormulaBox> (או <FormulaBox isInline>1/2</FormulaBox>)</> },
-        { value: 'd', label: <FormulaBox isInline>1</FormulaBox> }
+      options: [        { value: 'a', label: <FormulaBox inline>1/6</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>2/6</FormulaBox> },
+        { value: 'c', label: <><FormulaBox inline>3/6</FormulaBox> (או <FormulaBox inline>1/2</FormulaBox>)</> },
+        { value: 'd', label: <FormulaBox inline>1</FormulaBox> }
       ],
       correctAnswer: 'c'
     },
@@ -153,7 +150,7 @@ const ProbabilityIntroLesson = () => {
               </FormulaBox>
             </div>
             
-            <p>כאשר <FormulaBox isInline>P(A)</FormulaBox> היא ההסתברות של המאורע A.</p>
+            <p>כאשר <FormulaBox inline>P(A)</FormulaBox> היא ההסתברות של המאורע A.</p>
           </div>
 
           <ExampleBox title="דוגמה פתורה (מתוך חומר הבחינה):">
@@ -173,14 +170,14 @@ const ProbabilityIntroLesson = () => {
             
             <div className="mt-4">
               <p><strong>פתרון:</strong></p>
-              <p>1. <strong>מספר כל התוצאות האפשריות:</strong> סך כל הכדורים בכד הוא <FormulaBox isInline>5 + 3 = 8</FormulaBox>. כלומר, יש 8 תוצאות אפשריות (ניתן להוציא כל אחד מ-8 הכדורים).</p>
+              <p>1. <strong>מספר כל התוצאות האפשריות:</strong> סך כל הכדורים בכד הוא <FormulaBox inline>5 + 3 = 8</FormulaBox>. כלומר, יש 8 תוצאות אפשריות (ניתן להוציא כל אחד מ-8 הכדורים).</p>
               <p>2. <strong>מספר התוצאות הרצויות:</strong> המאורע הרצוי הוא "הוצאת כדור אדום". יש 5 כדורים אדומים, ולכן יש 5 תוצאות רצויות.</p>              <p>3. <strong>חישוב ההסתברות:</strong></p>
               <p className="text-center my-4">
                 <span className="text-lg font-semibold">P(Red) = </span>
                 <FormulaBox inline>{"\\frac{5}{8}"}</FormulaBox>
                 <span className="text-lg font-semibold"> = מספר כדורים אדומים / סה״כ כדורים</span>
               </p>
-              <p className="mt-2">ההסתברות להוציא כדור אדום היא <FormulaBox isInline>5/8</FormulaBox> (או 0.625, או 62.5%).</p>
+              <p className="mt-2">ההסתברות להוציא כדור אדום היא <FormulaBox inline>5/8</FormulaBox> (או 0.625, או 62.5%).</p>
             </div>
           </ExampleBox>
 
@@ -189,7 +186,7 @@ const ProbabilityIntroLesson = () => {
               המאורע המשלים
             </h3>
             <p>
-              המאורע המשלים למאורע A (מסומן כ-<FormulaBox isInline>A'</FormulaBox> או <FormulaBox isInline>A̅</FormulaBox>) 
+              המאורע המשלים למאורע A (מסומן כ-<FormulaBox inline>A'</FormulaBox> או <FormulaBox inline>A̅</FormulaBox>) 
               הוא המאורע שבו A <strong>אינו</strong> מתרחש.
             </p>
             <p>סכום ההסתברויות של מאורע והמאורע המשלים לו הוא תמיד 1:</p>
@@ -213,11 +210,10 @@ const ProbabilityIntroLesson = () => {
             
             <div className="mt-4">
               <p><strong>פתרון:</strong></p>
-              <p>המאורע "לא להוציא כדור אדום" הוא המאורע המשלים ל"הוצאת כדור אדום".</p>
-              <p>ידוע לנו ש-<FormulaBox isInline>P(Red) = 5/8</FormulaBox>.</p>
+              <p>המאורע "לא להוציא כדור אדום" הוא המאורע המשלים ל"הוצאת כדור אדום".</p>              <p>ידוע לנו ש-<FormulaBox inline>P(Red) = 5/8</FormulaBox>.</p>
               <p>לכן, <FormulaBox>P(Not Red) = 1 - P(Red) = 1 - 5/8 = 8/8 - 5/8 = 3/8</FormulaBox>.</p>              <p className="mt-2">
-                ההסתברות לא להוציא כדור אדום היא <FormulaBox isInline>3/8</FormulaBox>. 
-                (זה תואם לחישוב ישיר: מספר כדורים כחולים / סה״כ כדורים = <FormulaBox isInline>{"\\frac{3}{8}"}</FormulaBox>).
+                ההסתברות לא להוציא כדור אדום היא <FormulaBox inline>3/8</FormulaBox>. 
+                (זה תואם לחישוב ישיר: מספר כדורים כחולים / סה״כ כדורים = <FormulaBox inline>{"\\frac{3}{8}"}</FormulaBox>).
               </p>
             </div>
           </ExampleBox>

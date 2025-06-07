@@ -136,12 +136,11 @@ const ArithmeticSequencesIntroLesson = () => {
       ),
       correctAnswer: '23',
       solution: (
-        <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p>נתון: <FormulaBox isInline>a₁ = 7, d = 4</FormulaBox></p>
-          <p>הנוסחה לאיבר הכללי: <FormulaBox isInline>aₙ = a₁ + (n-1)d</FormulaBox></p>
+        <div>          <p><strong>פתרון מלא:</strong></p>
+          <p>נתון: <FormulaBox inline>a₁ = 7, d = 4</FormulaBox></p>
+          <p>הנוסחה לאיבר הכללי: <FormulaBox inline>aₙ = a₁ + (n-1)d</FormulaBox></p>
           <p>עבור האיבר החמישי (n = 5):</p>
-          <p><FormulaBox isInline>a₅ = 7 + (5-1)×4 = 7 + 4×4 = 7 + 16 = 23</FormulaBox></p>
+          <p><FormulaBox inline>a₅ = 7 + (5-1)×4 = 7 + 4×4 = 7 + 16 = 23</FormulaBox></p>
           <p>האיבר החמישי הוא 23.</p>
         </div>
       ),
@@ -189,10 +188,9 @@ const ArithmeticSequencesIntroLesson = () => {
         <h2 className="text-2xl font-semibold text-purple-600 mb-6 border-b-2 border-purple-200 pb-2">
           לומדים 📚
         </h2>
-        <div className="space-y-6 text-gray-700 leading-relaxed">
-          <p>
+        <div className="space-y-6 text-gray-700 leading-relaxed">          <p>
             סדרה היא רשימה מסודרת של מספרים. בסדרה חשבונית, ההפרש בין כל שני איברים עוקבים הוא קבוע. 
-            ההפרש הקבוע הזה נקרא <strong>הפרש הסדרה</strong> ומסומן באות <FormulaBox isInline>d</FormulaBox>.
+            ההפרש הקבוע הזה נקרא <strong>הפרש הסדרה</strong> ומסומן באות <FormulaBox inline>d</FormulaBox>.
           </p>
 
           <SequenceVisualization
@@ -206,11 +204,11 @@ const ArithmeticSequencesIntroLesson = () => {
               הגדרה פורמלית
             </h3>
             <p>
-              סדרה <FormulaBox isInline>(aₙ)</FormulaBox> נקראת סדרה חשבונית אם קיים מספר קבוע <FormulaBox isInline>d</FormulaBox> 
+              סדרה <FormulaBox inline>(aₙ)</FormulaBox> נקראת סדרה חשבונית אם קיים מספר קבוע <FormulaBox inline>d</FormulaBox> 
               כך ש: <FormulaBox>aₙ₊₁ = aₙ + d</FormulaBox>
             </p>
             <p>
-              כלומר, כל איבר בסדרה (מהשני ואילך) שווה לאיבר הקודם לו בתוספת <FormulaBox isInline>d</FormulaBox>.
+              כלומר, כל איבר בסדרה (מהשני ואילך) שווה לאיבר הקודם לו בתוספת <FormulaBox inline>d</FormulaBox>.
             </p>
           </div>
 
@@ -236,9 +234,8 @@ const ArithmeticSequencesIntroLesson = () => {
           <div className="mt-6">
             <h3 className="text-xl font-semibold mb-2 text-blue-600">
               הנוסחה לאיבר הכללי
-            </h3>
-            <p>
-              באמצעות האיבר הראשון <FormulaBox isInline>a₁</FormulaBox> והפרש הסדרה <FormulaBox isInline>d</FormulaBox>, 
+            </h3>            <p>
+              באמצעות האיבר הראשון <FormulaBox inline>a₁</FormulaBox> והפרש הסדרה <FormulaBox inline>d</FormulaBox>, 
               ניתן לכתוב נוסחה לאיבר הכללי של הסדרה:
             </p>
             
@@ -248,10 +245,9 @@ const ArithmeticSequencesIntroLesson = () => {
             
             <p>כאשר:</p>
             <ul className="list-disc list-inside pr-5 space-y-1">
-              <li><FormulaBox isInline>aₙ</FormulaBox> - האיבר ה-n בסדרה</li>
-              <li><FormulaBox isInline>a₁</FormulaBox> - האיבר הראשון בסדרה</li>
-              <li><FormulaBox isInline>d</FormulaBox> - הפרש הסדרה</li>
-              <li><FormulaBox isInline>n</FormulaBox> - מיקום האיבר בסדרה (1, 2, 3, ...)</li>
+              <li><FormulaBox inline>aₙ</FormulaBox> - האיבר ה-n בסדרה</li>
+              <li><FormulaBox inline>a₁</FormulaBox> - האיבר הראשון בסדרה</li>
+              <li><FormulaBox inline>d</FormulaBox> - הפרש הסדרה</li>              <li><FormulaBox inline>n</FormulaBox> - מיקום האיבר בסדרה (1, 2, 3, ...)</li>
             </ul>
           </div>
 
@@ -262,8 +258,8 @@ const ArithmeticSequencesIntroLesson = () => {
             
             <div className="mt-4">
               <p><strong>פתרון:</strong></p>
-              <p>1. נזהה את הנתונים: <FormulaBox isInline>a₁ = 5</FormulaBox>, <FormulaBox isInline>d = 3</FormulaBox></p>
-              <p>2. נשתמש בנוסחה: <FormulaBox isInline>aₙ = a₁ + (n-1)d</FormulaBox></p>
+              <p>1. נזהה את הנתונים: <FormulaBox inline>a₁ = 5</FormulaBox>, <FormulaBox inline>d = 3</FormulaBox></p>
+              <p>2. נשתמש בנוסחה: <FormulaBox inline>aₙ = a₁ + (n-1)d</FormulaBox></p>
               <p>3. עבור n = 10:</p>
               <p><FormulaBox>a₁₀ = 5 + (10-1)×3 = 5 + 9×3 = 5 + 27 = 32</FormulaBox></p>
               <p className="font-semibold">האיבר ה-10 הוא 32.</p>

@@ -1,7 +1,7 @@
-/* FormulaBox CSS styles for mathematical formulas */
+/* Enhanced FormulaBox CSS styles for mathematical formulas */
 
 .formula-box {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', 'STIX Two Math', 'Latin Modern Math', 'Cambria Math', Times, serif;
   margin: 0.5rem 0;
   padding: 0.25rem;
   border-radius: 4px;
@@ -9,18 +9,23 @@
   display: inline-block;
   min-height: 1.5rem;
   line-height: 1.5;
+  transition: background-color 0.2s ease;
+  position: relative;
 }
 
-.formula-box.inline {
+/* Inline formula styles */
+.formula-box.inline-formula {
   display: inline;
   margin: 0 0.25rem;
   padding: 0.125rem 0.25rem;
   background-color: #f0f0f0;
   border-radius: 3px;
   font-size: 0.95em;
+  vertical-align: middle;
 }
 
-.formula-box.block {
+/* Block formula styles */
+.formula-box.block-formula {
   display: block;
   text-align: center;
   margin: 1rem auto;
@@ -29,6 +34,21 @@
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   max-width: fit-content;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effects for better UX */
+.formula-box:hover {
+  background-color: #e9ecef;
+}
+
+.formula-box.inline-formula:hover {
+  background-color: #e9ecef;
+}
+
+.formula-box.block-formula:hover {
+  background-color: #f1f3f4;
+  border-color: #ced4da;
 }
 
 /* RTL support for Hebrew text mixed with formulas */

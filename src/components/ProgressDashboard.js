@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import NavigationHeader from './NavigationHeader';
 
 const ProgressDashboard = () => {
   const [progressData, setProgressData] = useState({
@@ -302,9 +303,11 @@ const ProgressDashboard = () => {
   useEffect(() => {
     loadProgressData();
   }, [loadProgressData]);
-
   return (
     <div className="bg-gray-100 text-gray-800 min-h-screen" dir="rtl">
+      {/* Navigation Header */}
+      <NavigationHeader />
+      
       {/* Notification */}
       {notification.show && (
         <div 

@@ -62,13 +62,12 @@ const ProblemsWorkRateLesson = () => {
       placeholder: 'הכנס זמן בשעות (עם עשרות)',
       solution: (
         <div className="space-y-3">
-          <p><strong>פתרון:</strong></p>
-          <p>קצב עבודה של מכונה א': <FormulaBox formula="\frac{1}{5}" /> עבודות לשעה</p>
-          <p>קצב עבודה של מכונה ב': <FormulaBox formula="\frac{1}{10}" /> עבודות לשעה</p>
+          <p><strong>פתרון:</strong></p>          <p>קצב עבודה של מכונה א': <FormulaBox inline>\frac{1}{5}</FormulaBox> עבודות לשעה</p>
+          <p>קצב עבודה של מכונה ב': <FormulaBox inline>\frac{1}{10}</FormulaBox> עבודות לשעה</p>
           <p>קצב עבודה משותף:</p>
-          <FormulaBox formula="\frac{1}{5} + \frac{1}{10} = \frac{2}{10} + \frac{1}{10} = \frac{3}{10}" block />
+          <FormulaBox>\frac{1}{5} + \frac{1}{10} = \frac{2}{10} + \frac{1}{10} = \frac{3}{10}</FormulaBox>
           <p>זמן לסיום העבודה:</p>
-          <FormulaBox formula="t = \frac{1}{\frac{3}{10}} = \frac{10}{3} = 3\frac{1}{3}" block />
+          <FormulaBox>{"t = \\frac{1}{\\frac{3}{10}} = \\frac{10}{3} = 3\\frac{1}{3}"}</FormulaBox>
           <p><strong>תשובה:</strong> 3.33 שעות (או 3 שעות ו-20 דקות)</p>
         </div>
       )
@@ -85,13 +84,12 @@ const ProblemsWorkRateLesson = () => {
       placeholder: 'הכנס זמן בשעות (עם עשרות)',
       solution: (
         <div className="space-y-3">
-          <p><strong>פתרון:</strong></p>
-          <p>קצב ריקון של צינור א': <FormulaBox formula="\frac{1}{6}" /> בריכות לשעה</p>
-          <p>קצב ריקון של צינור ב': <FormulaBox formula="\frac{1}{4}" /> בריכות לשעה</p>
+          <p><strong>פתרון:</strong></p>          <p>קצב ריקון של צינור א': <FormulaBox inline>\frac{1}{6}</FormulaBox> בריכות לשעה</p>
+          <p>קצב ריקון של צינור ב': <FormulaBox inline>\frac{1}{4}</FormulaBox> בריכות לשעה</p>
           <p>קצב ריקון משותף:</p>
-          <FormulaBox formula="\frac{1}{6} + \frac{1}{4} = \frac{2}{12} + \frac{3}{12} = \frac{5}{12}" block />
+          <FormulaBox>\frac{1}{6} + \frac{1}{4} = \frac{2}{12} + \frac{3}{12} = \frac{5}{12}</FormulaBox>
           <p>זמן לריקון הבריכה:</p>
-          <FormulaBox formula="t = \frac{1}{\frac{5}{12}} = \frac{12}{5} = 2.4" block />
+          <FormulaBox>{"t = \\frac{1}{\\frac{5}{12}} = \\frac{12}{5} = 2.4"}</FormulaBox>
           <p><strong>תשובה:</strong> 2.4 שעות (או 2 שעות ו-24 דקות)</p>
         </div>
       )
@@ -126,9 +124,9 @@ const ProblemsWorkRateLesson = () => {
           <div className="border border-blue-200 rounded-lg p-4 bg-blue-50 space-y-2">
             <p><strong>עקרון מרכזי:</strong></p>            <p className="text-center my-4">
               <span className="text-lg font-semibold">קצב עבודה = </span>
-              <HebrewMathBox inline formula="\\frac{1}{\\text{זמן לסיום העבודה}}" />
+              <HebrewMathBox inline>{"\\frac{1}{\\text{זמן לסיום העבודה}}"}</HebrewMathBox>
             </p>
-            <p>אם עובד מסיים עבודה ב-t שעות, קצב העבודה שלו הוא <FormulaBox formula="\frac{1}{t}" /> עבודות לשעה.</p>
+            <p>אם עובד מסיים עבודה ב-t שעות, קצב העבודה שלו הוא <FormulaBox inline>{"\\frac{1}{t}"}</FormulaBox> עבודות לשעה.</p>
           </div>
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">
@@ -137,7 +135,7 @@ const ProblemsWorkRateLesson = () => {
           
           <p>כאשר מספר גורמים עובדים יחד, קצבי העבודה מתחברים:</p>          <p className="text-center my-4">
             <span className="text-lg font-semibold">קצב משותף = </span>
-            <HebrewMathBox inline formula="\\text{קצב}_1 + \\text{קצב}_2 + \\ldots" />
+            <HebrewMathBox inline>{"\\text{קצב}_1 + \\text{קצב}_2 + \\ldots"}</HebrewMathBox>
           </p>
           
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">
@@ -148,7 +146,7 @@ const ProblemsWorkRateLesson = () => {
             <li><strong>זיהוי הנתונים:</strong> מה הזמן הנדרש לכל גורם לסיים את העבודה בנפרד?</li>
             <li><strong>חישוב קצבי עבודה:</strong> עבור כל גורם, חשב את קצב העבודה.</li>
             <li><strong>חישוב קצב משותף:</strong> חבר את כל קצבי העבודה.</li>
-            <li><strong>חישוב זמן משותף:</strong> הזמן המשותף הוא <HebrewMathBox inline formula="\\frac{1}{\\text{קצב משותף}}" />.</li>
+            <li><strong>חישוב זמן משותף:</strong> הזמן המשותף הוא <HebrewMathBox inline>{"\\frac{1}{\\text{קצב משותף}}"}</HebrewMathBox>.</li>
             <li><strong>בדיקה:</strong> ודא שהתשובה הגיונית.</li>
           </ol>
 
@@ -170,19 +168,16 @@ const ProblemsWorkRateLesson = () => {
             </ul>
             
             <p>2. <strong>חישוב קצבי עבודה:</strong></p>
-            <ul className="list-disc pr-4">
-              <li>קצב עובד א': <FormulaBox formula="\frac{1}{8}" /> עבודות לשעה</li>
-              <li>קצב עובד ב': <FormulaBox formula="\frac{1}{12}" /> עבודות לשעה</li>
+            <ul className="list-disc pr-4">              <li>קצב עובד א': <FormulaBox inline>\frac{1}{8}</FormulaBox> עבודות לשעה</li>
+              <li>קצב עובד ב': <FormulaBox inline>\frac{1}{12}</FormulaBox> עבודות לשעה</li>
             </ul>
             
-            <p>3. <strong>חישוב קצב משותף:</strong></p>
-            <FormulaBox formula="\frac{1}{8} + \frac{1}{12}" block />
+            <p>3. <strong>חישוב קצב משותף:</strong></p>            <FormulaBox>\frac{1}{8} + \frac{1}{12}</FormulaBox>
             <p>נמצא מכנה משותף (24):</p>
-            <FormulaBox formula="\frac{1}{8} + \frac{1}{12} = \frac{3}{24} + \frac{2}{24} = \frac{5}{24}" block />
+            <FormulaBox>\frac{1}{8} + \frac{1}{12} = \frac{3}{24} + \frac{2}{24} = \frac{5}{24}</FormulaBox>
             
-            <p>4. <strong>חישוב זמן משותף:</strong></p>
-            <p className="text-center my-4">
-              <FormulaBox formula="t = \frac{1}{\frac{5}{24}} = \frac{24}{5} = 4.8" block />
+            <p>4. <strong>חישוב זמן משותף:</strong></p>            <p className="text-center my-4">
+              <FormulaBox>{"t = \\frac{1}{\\frac{5}{24}} = \\frac{24}{5} = 4.8"}</FormulaBox>
               <span className="text-lg mr-2">שעות</span>
             </p>
             

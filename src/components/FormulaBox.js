@@ -1,34 +1,79 @@
 import React, { useEffect, useRef } from 'react';
-import { renderMathInElement } from './MathJax'; // Corrected import path if necessary
-import '../styles/FormulaBox.css'; // Make sure this path is correct
+import { renderMathInElement } from './MathJax';
+import '../styles/FormulaBox.css';
 
-const FormulaBox = ({ children, inline = false }) => {
+/**
+ * Enhanced FormulaBox component for rendering mathematical expressions
+ * Supports both inline and block math with consistent API
+ * 
+ * Props:
+ * - children: The LaTeX formula content (preferred method)
+ * - formula: Alternative prop for formula content (deprecated, use children)
+ * - inline: Boolean to render inline (default: false for block)
+ * - dir: Text direction ('ltr' or 'rtl')
+ * - className: Additional CSS classes
+ * - isInline: Alternative to inline prop (for backward compatibility)
+ */
+const FormulaBox = ({ 
+  children, 
+  formula, 
+  inline = false, 
+  isInline = false,
+  dir = 'ltr',
+  className = '',
+  ...otherProps 
+}) => {
   const boxRef = useRef(null);
+  
+  // Support both 'inline' and 'isInline' props for backward compatibility
+  const shouldRenderInline = inline || isInline;
+  
+  // Get content from either children or formula prop
+  const content = children || formula || '';
+  const cleanContent = typeof content === 'string' ? content.trim() : content;
 
   useEffect(() => {
-    if (boxRef.current) {
+    if (boxRef.current && cleanContent) {
       // Ensure MathJax is available before calling typeset
       if (window.MathJax && window.MathJax.typesetPromise) {
         renderMathInElement(boxRef.current);
       } else {
-        // Optional: Add a small delay or a listener for MathJax readiness
-        // if MathJax might not be loaded when this component first renders.
-        // For now, we assume MathJax is loaded due to its placement in index.html.
-        console.warn('MathJax not ready yet or renderMathInElement issue.');
+        // Fallback: wait for MathJax to load
+        const checkMathJax = () => {
+          if (window.MathJax && window.MathJax.typesetPromise) {
+            renderMathInElement(boxRef.current);
+          } else {
+            setTimeout(checkMathJax, 100);
+          }
+        };
+        checkMathJax();
       }
     }
-  }, [children]); // Re-run when children (the math content) changes
+  }, [cleanContent, shouldRenderInline]); // Re-run when content or display mode changes
 
-  const Tag = inline ? 'span' : 'div';
-  const content = children ? (typeof children === 'string' ? children.trim() : children) : '';
+  // Handle empty content
+  if (!cleanContent) {
+    console.warn('FormulaBox: No content provided');
+    return null;
+  }
+
+  const Tag = shouldRenderInline ? 'span' : 'div';
+  const mathDelimiters = shouldRenderInline ? `$${cleanContent}$` : `$$${cleanContent}$$`;
+  
+  const cssClasses = [
+    'formula-box',
+    shouldRenderInline ? 'inline-formula' : 'block-formula',
+    className
+  ].filter(Boolean).join(' ');
 
   return (
     <Tag
       ref={boxRef}
-      className={`formula-box ${inline ? 'inline-formula' : 'block-formula'}`}
+      className={cssClasses}
+      dir={dir}
+      {...otherProps}
     >
-      {/* Delimiters are added here. Pass raw TeX as children */}
-      {inline ? `$${content}$` : `$$${content}$$`}
+      {mathDelimiters}
     </Tag>
   );
 };
