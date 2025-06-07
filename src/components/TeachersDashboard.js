@@ -573,8 +573,7 @@ const TeachersDashboard = () => {
                   </>
                 )}
               </button>
-              
-              {/* Admin Access Button */}
+                {/* Admin Access Button */}
               <a
                 href="/admin/login"
                 className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
@@ -585,6 +584,19 @@ const TeachersDashboard = () => {
                 </svg>
                 <span className="hidden sm:inline">ניהול בית הספר</span>
                 <span className="sm:hidden">ניהול</span>
+              </a>
+
+              {/* Dev Dashboard Access Button */}
+              <a
+                href="/dev/login"
+                className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+                title="גישה לפאנל פיתוח"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <span className="hidden sm:inline">פאנל פיתוח</span>
+                <span className="sm:hidden">Dev</span>
               </a>
             </div>
           </div>

@@ -34,6 +34,12 @@ import SchoolAdminLogin from './components/SchoolAdminLogin';
 import SchoolAdminDashboard from './components/SchoolAdminDashboard';
 
 // ============================================
+// DEV DASHBOARD COMPONENTS
+// ============================================
+import DevLogin from './components/DevLogin';
+import DevDashboard from './components/DevDashboard';
+
+// ============================================
 // QUESTIONNAIRE COMPONENTS
 // ============================================
 import Questionnaire35182 from './components/Questionnaire35182';
@@ -146,12 +152,15 @@ function AppContent() {
           <ProtectedRoute requireRole="teacher">
             <TeachersDashboard />
           </ProtectedRoute>
-        } />
-
-        {/* School Admin Routes */}
+        } />        {/* School Admin Routes */}
         <Route path="/admin/login" element={<SchoolAdminLogin />} />
         <Route path="/admin" element={<SchoolAdminDashboard />} />
         <Route path="/admin/*" element={<SchoolAdminDashboard />} />
+
+        {/* Dev Dashboard Routes */}
+        <Route path="/dev/login" element={<DevLogin />} />
+        <Route path="/dev" element={<DevDashboard />} />
+        <Route path="/dev/*" element={<DevDashboard />} />
 
         {/* Questionnaire Routes - Available to Students and Teachers */}
         <Route path="/questionnaire/35182" element={

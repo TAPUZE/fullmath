@@ -29,9 +29,8 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
               </button>
             ))}
           </div>
-          
-          {/* Admin Access Quick Link */}
-          <div className="py-4">
+            {/* Admin Access Quick Link */}
+          <div className="py-4 flex gap-2">
             <a
               href="/admin/login"
               className="bg-purple-50 hover:bg-purple-100 text-purple-700 hover:text-purple-800 px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors border border-purple-200"
@@ -39,6 +38,15 @@ const TabNavigation = ({ activeTab, setActiveTab }) => {
             >
               <span>🏫</span>
               <span className="hidden md:inline">פאנל ניהול</span>
+            </a>
+            
+            <a
+              href="/dev/login"
+              className="bg-gray-50 hover:bg-gray-100 text-gray-700 hover:text-gray-800 px-3 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors border border-gray-200"
+              title="גישה לפאנל פיתוח"
+            >
+              <span>💻</span>
+              <span className="hidden md:inline">פאנל פיתוח</span>
             </a>
           </div>
         </nav>
