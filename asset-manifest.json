@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/math03/static/css/main.090ee04a.css",
-    "main.js": "/math03/static/js/main.06e0e398.js",
-    "index.html": "/math03/index.html",
-    "main.090ee04a.css.map": "/math03/static/css/main.090ee04a.css.map",
-    "main.06e0e398.js.map": "/math03/static/js/main.06e0e398.js.map"
+    "main.css": "/fullmath/static/css/main.090ee04a.css",
+    "main.js": "/fullmath/static/js/main.06e0e398.js",
+    "index.html": "/fullmath/index.html",
+    "main.090ee04a.css.map": "/fullmath/static/css/main.090ee04a.css.map",
+    "main.06e0e398.js.map": "/fullmath/static/js/main.06e0e398.js.map"
   },
   "entrypoints": [
     "static/css/main.090ee04a.css",
