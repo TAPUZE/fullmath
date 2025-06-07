@@ -289,3 +289,24 @@ export const getQuestionnaireLessonId = (actualLessonId) => {
   
   return reverseMapping[actualLessonId] || actualLessonId;
 };
+
+/**
+ * Get all lessons from all groups in a flat array
+ * @returns {Array} - Array of all lesson objects with group info
+ */
+export const getAllLessons = () => {
+  const allLessons = [];
+  
+  Object.keys(LESSON_GROUPS).forEach(groupId => {
+    const group = LESSON_GROUPS[groupId];
+    group.lessons.forEach(lesson => {
+      allLessons.push({
+        ...lesson,
+        groupId: groupId,
+        groupTitle: group.questionnaireTitle
+      });
+    });
+  });
+  
+  return allLessons;
+};

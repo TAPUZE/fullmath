@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavigationHeader from './NavigationHeader';
+import { useAuth } from '../contexts/AuthContext';
+import TeacherLessonButton from './TeacherLessonButton';
 
 const HomePage = () => {
+  const { currentUser, isTeacher } = useAuth();
+
   return (
-    <div className="bg-gray-100 text-gray-800">      {/* Notification Box */}
+    <div className="bg-gray-100 text-gray-800">
+      {/* Notification Box */}
       <div id="notification-box" className="fixed top-5 right-5 text-white p-4 rounded-lg shadow-xl hidden z-50 max-w-sm text-right">
         הודעה תוצג כאן
       </div>
@@ -16,22 +21,36 @@ const HomePage = () => {
       <header className="hero-section text-white py-8 md:py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            ברוכים הבאים לפלטפורמת הלמידה!
+            {isTeacher() ? 'ברוכים הבאים למורים!' : 'ברוכים הבאים לפלטפורמת הלמידה!'}
           </h1>
           <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8">
-            הכנה מקיפה לבחינת הבגרות במתמטיקה 3 יחידות לימוד (תשפ"ה).
+            {isTeacher() 
+              ? 'הכינו שיעורים, למדו עם החומר ועקבו אחר התקדמות התלמידים'
+              : 'הכנה מקיפה לבחינת הבגרות במתמטיקה 3 יחידות לימוד (תשפ"ה).'
+            }
           </p>
           <Link 
             to="/questionnaire/35182" 
             className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition duration-150 ease-in-out shadow-md hover:shadow-lg inline-block"
           >
-            התחל ללמוד 👇
+            {isTeacher() ? 'התחל ללמוד / להכין שיעור 👇' : 'התחל ללמוד 👇'}
           </Link>
         </div>
       </header>
 
       {/* Main Content */}
       <main id="questionnaires" className="container mx-auto p-4 sm:p-6 md:p-8">
+        {/* Teacher-specific section (only shown to teachers) */}
+        {isTeacher() && (
+          <section className="mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center text-purple-800 mb-8">
+              כלים למורים
+            </h2>
+            <TeacherLessonButton />
+          </section>
+        )}
+
+        {/* Student Interface (shown to everyone) */}
         <section aria-labelledby="questionnaires-heading" className="py-8 sm:py-12">
           <h2 id="questionnaires-heading" className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-8 sm:mb-10">
             בחרו שאלון להתחיל:
@@ -111,7 +130,9 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-        </section>        {/* Progress Dashboard Section */}
+        </section>
+
+        {/* Progress Dashboard Section */}
         <section className="text-center py-12">
           <h2 className="text-2xl font-semibold text-gray-800 mb-6">בדקו את ההתקדמות שלכם!</h2>
           <Link 
