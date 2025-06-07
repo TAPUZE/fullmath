@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Assistant', sans-serif;
+  margin: 0;
+  background-color: #f9fafb;
+  direction: rtl;
+}
+
+/* Custom Formula Box Styling */
+.formula-box {
+  background-color: #E5E7EB;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  display: inline-block;
+  font-size: 1.125em;
+  line-height: 1.5;
+  margin: 0.25rem 0.1rem;
+  vertical-align: middle;
+}
+
+.formula-box-block {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  display: block;
+  font-size: 1.2em;
+  margin: 1rem 0;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+.formula-box[dir="ltr"] .math-inline { 
+  text-align: left !important; 
+}
+
+/* Shape Cards */
+.shape-card {
+  background-color: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.shape-card h4 {
+  color: #1D4ED8;
+}
+
+.property-list {
+  list-style-type: disc;
+  padding-right: 1.5rem;
+}
+
+.sketch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  min-height: 120px;
+}
+
+.sketch-svg {
+  width: 120px;
+  height: 120px;
+  fill: none;
+  stroke: #374151;
+  stroke-width: 2;
+}
+
+.sketch-svg polygon, 
+.sketch-svg rect, 
+.sketch-svg path {
+  fill: rgba(59, 130, 246, 0.1);
+  stroke: #3B82F6;
+}
+
+.sketch-svg text {
+  fill: #374151;
+  font-size: 12px;
+  font-weight: bold;
+  text-anchor: middle;
+}
+
+.sketch-svg .side-label {
+  font-size: 10px;
+  fill: #6B7280;
+}
+
+.sketch-svg .angle-arc {
+  fill: none;
+  stroke: #EF4444;
+  stroke-width: 1.5;
+}
+
+.sketch-svg .right-angle {
+  fill: none;
+  stroke: #EF4444;
+  stroke-width: 1.5;
+}
+
+.sketch-svg .tick {
+  stroke: #374151;
+  stroke-width: 2;
+}
+
+/* Exercise and Quiz Styling */
+.exercise {
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.exercise:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.solution {
+  background-color: #f0e6ff;
+  border: 1px solid #d8b4fe;
+}
+
+/* Notification Animation */
+#notification-box {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Practice Shape Buttons */
+.practice-shape-buttons button {
+  @apply bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out;
+}
+
+.practice-shape-buttons button.selected {
+  @apply bg-blue-500 text-white;
+}

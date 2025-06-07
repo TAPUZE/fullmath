@@ -1,0 +1,141 @@
+/* Enhanced FormulaBox CSS styles for mathematical formulas */
+
+.formula-box {
+  font-family: 'Times New Roman', 'STIX Two Math', 'Latin Modern Math', 'Cambria Math', Times, serif;
+  margin: 0.5rem 0;
+  padding: 0.25rem;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  display: inline-block;
+  min-height: 1.5rem;
+  line-height: 1.5;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+/* Inline formula styles */
+.formula-box.inline-formula {
+  display: inline;
+  margin: 0 0.25rem;
+  padding: 0.125rem 0.25rem;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  font-size: 0.95em;
+  vertical-align: middle;
+}
+
+/* Block formula styles */
+.formula-box.block-formula {
+  display: block;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 0.75rem;
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  max-width: fit-content;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effects for better UX */
+.formula-box:hover {
+  background-color: #e9ecef;
+}
+
+.formula-box.inline-formula:hover {
+  background-color: #e9ecef;
+}
+
+.formula-box.block-formula:hover {
+  background-color: #f1f3f4;
+  border-color: #ced4da;
+}
+
+/* RTL support for Hebrew text mixed with formulas */
+.formula-box[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+.formula-box[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* MathJax specific styles */
+.MathJax {
+  font-size: inherit !important;
+}
+
+.MathJax_Display {
+  margin: 0.5rem 0 !important;
+}
+
+/* Loading state */
+.formula-box.loading {
+  background-color: #f5f5f5;
+  color: #999;
+  font-style: italic;
+}
+
+/* Error state */
+.formula-box.error {
+  background-color: #ffe6e6;
+  color: #cc0000;
+  border: 1px solid #ffcccc;
+}
+
+/* Hebrew text in KaTeX mathematical formulas */
+.math-hebrew .katex-html {
+  direction: ltr;
+}
+
+.math-hebrew .katex .mord.text {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.inline-math-hebrew .katex-html {
+  direction: ltr;
+}
+
+.inline-math-hebrew .katex .mord.text {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+/* Ensure Hebrew text in \text{} commands displays correctly */
+.katex .mord.text[dir="rtl"] {
+  direction: rtl !important;
+  unicode-bidi: bidi-override !important;
+}
+
+/* Force RTL for Hebrew Unicode characters in math */
+.katex .mord.text:has([lang="he"]) {
+  direction: rtl !important;
+  unicode-bidi: bidi-override !important;
+}
+
+/* Additional Hebrew text support in KaTeX */
+.katex .mord.text {
+  /* Check if text contains Hebrew characters */
+  font-family: "Times New Roman", "David", "Narkisim", serif;
+}
+
+/* Specific support for Hebrew text nodes in KaTeX */
+.katex .mord.text span:lang(he) {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+/* Global Hebrew text direction support */
+.katex .text[dir="rtl"] {
+  direction: rtl !important;
+  unicode-bidi: bidi-override !important;
+}
+
+/* Force Hebrew text direction in math environments */
+.katex .mord.text:matches([\u0590-\u05FF]) {
+  direction: rtl !important;
+  unicode-bidi: bidi-override !important;
+}
