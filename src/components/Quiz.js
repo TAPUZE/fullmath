@@ -1,9 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Quiz = ({ questions, onSubmit }) => {
+const Quiz = ({ questions, onSubmit, lessonId }) => {
   const [answers, setAnswers] = useState({});
   const [results, setResults] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+  const [timeSpent, setTimeSpent] = useState(0);
+
+  useEffect(() => {
+    setStartTime(Date.now());
+    
+    return () => {
+      // Save time when component unmounts
+      if (startTime && !submitted) {
+        const sessionTime = Math.floor((Date.now() - startTime) / 1000);
+        setTimeSpent(prev => prev + sessionTime);
+      }
+    };
+  }, []);
 
   const handleAnswerChange = (questionId, value) => {
     setAnswers(prev => ({
@@ -15,18 +29,47 @@ const Quiz = ({ questions, onSubmit }) => {
   const handleSubmit = () => {
     let score = 0;
     const totalQuestions = questions.length;
+    const currentTime = Date.now();
+    const finalTimeSpent = startTime ? Math.floor((currentTime - startTime) / 1000) : 0;
+    
+    const detailedResults = [];
     
     questions.forEach(question => {
-      if (answers[question.id] === question.correctAnswer) {
+      const userAnswer = answers[question.id];
+      const isCorrect = userAnswer === question.correctAnswer;
+      if (isCorrect) {
         score++;
       }
+      
+      detailedResults.push({
+        questionId: question.id,
+        question: question.question,
+        userAnswer: userAnswer,
+        correctAnswer: question.correctAnswer,
+        isCorrect: isCorrect
+      });
     });
     
-    setResults({ score, totalQuestions });
+    const quizData = {
+      score,
+      total: totalQuestions,
+      timeSpent: finalTimeSpent,
+      detailedResults: detailedResults,
+      date: new Date().toISOString(),
+      lessonId: lessonId
+    };
+    
+    // Save quiz results to localStorage
+    if (lessonId) {
+      localStorage.setItem(`lesson_quiz_score_${lessonId}`, JSON.stringify(quizData));
+    }
+    
+    setResults({ score, totalQuestions, timeSpent: finalTimeSpent });
     setSubmitted(true);
+    setTimeSpent(finalTimeSpent);
     
     if (onSubmit) {
-      onSubmit({ score, totalQuestions, answers });
+      onSubmit(quizData);
     }
   };
 
@@ -63,10 +106,15 @@ const Quiz = ({ questions, onSubmit }) => {
           הגש בוחן
         </button>
       )}
-      
-      {results && (
+        {results && (
         <div className="mt-3 p-3 rounded-md text-sm bg-yellow-100 text-yellow-700">
-          הציון שלך הוא: <strong>{results.score}</strong> מתוך {results.totalQuestions}.
+          <div className="font-bold">הציון שלך הוא: {results.score} מתוך {results.totalQuestions}</div>
+          <div className="mt-1 text-xs">
+            זמן שהושקע: {Math.floor(results.timeSpent / 60)}:{(results.timeSpent % 60).toString().padStart(2, '0')} דקות
+          </div>
+          <div className="mt-1 text-xs">
+            אחוז הצלחה: {Math.round((results.score / results.totalQuestions) * 100)}%
+          </div>
         </div>
       )}
     </div>

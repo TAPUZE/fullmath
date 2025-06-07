@@ -83,11 +83,12 @@ const ProgressDashboard = () => {
       setNotification({ show: false, message: '', type: 'info' });
     }, duration);
   };
-
   // Wrap loadProgressData in useCallback
   const loadProgressData = useCallback(() => {
     let completedLessons = [];
     let quizScores = [];
+    let exerciseData = [];
+    let completionData = [];
 
     try {
       for (let i = 0; i < localStorage.length; i++) {
@@ -105,23 +106,73 @@ const ProgressDashboard = () => {
                 name: lessonName,
                 score: scoreData.score,
                 total: scoreData.total,
-                date: new Date(scoreData.date).toLocaleDateString('he-IL')
+                timeSpent: scoreData.timeSpent || 0,
+                date: new Date(scoreData.date).toLocaleDateString('he-IL'),
+                detailedResults: scoreData.detailedResults || []
               });
             } catch (parseError) {
               console.error(`Error parsing quiz score for ${key}:`, parseError);
             }
           }
+        } else if (key.startsWith('exercise_')) {
+          const exerciseDataString = localStorage.getItem(key);
+          if (exerciseDataString) {
+            try {
+              const data = JSON.parse(exerciseDataString);
+              exerciseData.push({
+                key: key,
+                lessonId: data.lessonId,
+                exerciseId: data.exerciseId,
+                attempts: data.attempts || 0,
+                wrongAnswers: data.wrongAnswers || [],
+                timeSpent: data.timeSpent || 0,
+                lastAttempt: data.lastAttempt
+              });
+            } catch (parseError) {
+              console.error(`Error parsing exercise data for ${key}:`, parseError);
+            }
+          }
+        } else if (key.startsWith('lesson_completion_data_')) {
+          const completionDataString = localStorage.getItem(key);
+          if (completionDataString) {
+            try {
+              const data = JSON.parse(completionDataString);
+              const lessonId = key.replace('lesson_completion_data_', '');
+              completionData.push({
+                lessonId: lessonId,
+                lessonName: formatLessonIdForDisplay(`lesson_completed_${lessonId}`),
+                ...data
+              });
+            } catch (parseError) {              console.error(`Error parsing completion data for ${key}:`, parseError);
+            }
+          }
         }
-      }
-    } catch (error) {
+      }    } catch (error) {
       console.error("Error reading from localStorage:", error);
       showNotification("שגיאה בקריאת נתוני התקדמות.", "error");
       return;
     }
 
-    // Sort data
-    completedLessons.sort((a, b) => a.localeCompare(b, 'he'));
-    quizScores.sort((a, b) => a.name.localeCompare(b.name, 'he'));
+    // Sort data with proper null/undefined checks
+    completedLessons.sort((a, b) => {
+      if (!a || !b) return 0;
+      return a.localeCompare(b, 'he');
+    });
+    
+    quizScores.sort((a, b) => {
+      if (!a?.name || !b?.name) return 0;
+      return a.name.localeCompare(b.name, 'he');
+    });
+    
+    exerciseData.sort((a, b) => {
+      if (!a?.lessonId || !b?.lessonId) return 0;
+      return a.lessonId.localeCompare(b.lessonId, 'he');
+    });
+    
+    completionData.sort((a, b) => {
+      if (!a?.completionTime || !b?.completionTime) return 0;
+      return new Date(b.completionTime) - new Date(a.completionTime);
+    });
 
     // Calculate average score
     let averageScore = 'לא זמין';
@@ -142,11 +193,19 @@ const ProgressDashboard = () => {
       }
     }
 
+    // Calculate total study time
+    let totalStudyTime = 0;
+    quizScores.forEach(quiz => totalStudyTime += quiz.timeSpent || 0);
+    exerciseData.forEach(exercise => totalStudyTime += exercise.timeSpent || 0);
+
     setProgressData({
       completedLessons,
       quizScores,
+      exerciseData,
+      completionData,
       totalCompleted: completedLessons.length,
-      averageScore
+      averageScore,
+      totalStudyTime
     });
   }, [formatLessonIdForDisplay]);
 
@@ -185,6 +244,18 @@ const ProgressDashboard = () => {
     completedLessons.sort((a, b) => a.localeCompare(b, 'he'));
     quizScoresData.sort((a, b) => a.name.localeCompare(b.name, 'he'));
     return { completedLessons, quizScoresData };
+  };
+
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+    
+    if (hours > 0) {
+      return `${hours}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+    } else {
+      return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
   };
 
   const exportToPdf = () => {
@@ -267,13 +338,12 @@ const ProgressDashboard = () => {
 
         {/* Print Area */}
         <div id="print-area">
-          <main className="bg-white p-6 md:p-8 rounded-lg shadow-lg">
-            {/* Summary Section */}
+          <main className="bg-white p-6 md:p-8 rounded-lg shadow-lg">            {/* Summary Section */}
             <section aria-labelledby="summary-heading" className="mb-10">
               <h2 id="summary-heading" className="text-2xl font-semibold text-blue-600 mb-4 border-b-2 border-blue-200 pb-2">
                 סיכום התקדמות
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-blue-50 p-6 rounded-lg shadow">
                   <h3 className="text-lg font-medium text-blue-800">שיעורים שהושלמו</h3>
                   <p className="text-3xl font-bold text-blue-600 mt-2">{progressData.totalCompleted}</p>
@@ -281,6 +351,14 @@ const ProgressDashboard = () => {
                 <div className="bg-green-50 p-6 rounded-lg shadow">
                   <h3 className="text-lg font-medium text-green-800">ממוצע ציוני בחנים</h3>
                   <p className="text-3xl font-bold text-green-600 mt-2">{progressData.averageScore}</p>
+                </div>
+                <div className="bg-purple-50 p-6 rounded-lg shadow">
+                  <h3 className="text-lg font-medium text-purple-800">זמן לימוד כולל</h3>
+                  <p className="text-3xl font-bold text-purple-600 mt-2">{formatTime(progressData.totalStudyTime || 0)}</p>
+                </div>
+                <div className="bg-yellow-50 p-6 rounded-lg shadow">
+                  <h3 className="text-lg font-medium text-yellow-800">כמות תרגילים</h3>
+                  <p className="text-3xl font-bold text-yellow-600 mt-2">{progressData.exerciseData?.length || 0}</p>
                 </div>
               </div>
             </section>
@@ -302,9 +380,7 @@ const ProgressDashboard = () => {
                   <p className="text-gray-500">עדיין לא השלמת שיעורים.</p>
                 )}
               </div>
-            </section>
-
-            {/* Quiz Scores Section */}
+            </section>            {/* Quiz Scores Section */}
             <section aria-labelledby="quiz-scores-heading" className="mb-10">
               <h2 id="quiz-scores-heading" className="text-2xl font-semibold text-blue-600 mb-4 border-b-2 border-blue-200 pb-2">
                 ציוני בחנים 🎯
@@ -315,6 +391,7 @@ const ProgressDashboard = () => {
                     <tr>
                       <th className="py-3 px-4 border-b text-right font-semibold text-gray-600">שם שיעור</th>
                       <th className="py-3 px-4 border-b text-right font-semibold text-gray-600">ציון</th>
+                      <th className="py-3 px-4 border-b text-right font-semibold text-gray-600">זמן בוחן</th>
                       <th className="py-3 px-4 border-b text-right font-semibold text-gray-600">תאריך</th>
                     </tr>
                   </thead>
@@ -323,19 +400,92 @@ const ProgressDashboard = () => {
                       progressData.quizScores.map((quiz, index) => (
                         <tr key={index} className="hover:bg-gray-50 transition-colors duration-150">
                           <td className="py-3 px-4 border-b text-right">{quiz.name}</td>
-                          <td className="py-3 px-4 border-b text-right">{quiz.score} / {quiz.total}</td>
+                          <td className="py-3 px-4 border-b text-right">
+                            <span className={`font-semibold ${quiz.score / quiz.total >= 0.8 ? 'text-green-600' : quiz.score / quiz.total >= 0.6 ? 'text-yellow-600' : 'text-red-600'}`}>
+                              {quiz.score} / {quiz.total}
+                            </span>
+                            <span className="text-gray-500 text-sm mr-2">
+                              ({((quiz.score / quiz.total) * 100).toFixed(1)}%)
+                            </span>
+                          </td>
+                          <td className="py-3 px-4 border-b text-right text-gray-600">
+                            {formatTime(quiz.timeSpent || 0)}
+                          </td>
                           <td className="py-3 px-4 border-b text-right">{quiz.date}</td>
                         </tr>
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="3" className="text-center py-4 text-gray-500">עדיין אין ציוני בחנים.</td>
+                        <td colSpan="4" className="text-center py-4 text-gray-500">עדיין אין ציוני בחנים.</td>
                       </tr>
                     )}
                   </tbody>
                 </table>
               </div>
             </section>
+
+            {/* Exercise Statistics Section */}
+            {progressData.exerciseData && progressData.exerciseData.length > 0 && (
+              <section aria-labelledby="exercise-stats-heading" className="mb-10">
+                <h2 id="exercise-stats-heading" className="text-2xl font-semibold text-blue-600 mb-4 border-b-2 border-blue-200 pb-2">
+                  סטטיסטיקת תרגילים 📚
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {progressData.exerciseData.map((exercise, index) => (
+                    <div key={index} className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                      <h4 className="font-semibold text-gray-800 mb-2">
+                        תרגיל {exercise.exerciseId} - {lessonDisplayNames[exercise.lessonId] || exercise.lessonId}
+                      </h4>
+                      <div className="space-y-1 text-sm text-gray-600">
+                        <p><span className="font-medium">ניסיונות:</span> {exercise.attempts}</p>
+                        <p><span className="font-medium">תשובות שגויות:</span> {exercise.wrongAnswers.length}</p>
+                        <p><span className="font-medium">זמן שהושקע:</span> {formatTime(exercise.timeSpent)}</p>
+                        {exercise.lastAttempt && (
+                          <p><span className="font-medium">ניסיון אחרון:</span> {new Date(exercise.lastAttempt).toLocaleDateString('he-IL')}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Detailed Completion Data Section */}
+            {progressData.completionData && progressData.completionData.length > 0 && (
+              <section aria-labelledby="completion-details-heading" className="mb-10">
+                <h2 id="completion-details-heading" className="text-2xl font-semibold text-blue-600 mb-4 border-b-2 border-blue-200 pb-2">
+                  פרטי השלמת שיעורים 🏆
+                </h2>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full bg-white border border-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="py-3 px-4 border-b text-right font-semibold text-gray-600">שם שיעור</th>
+                        <th className="py-3 px-4 border-b text-right font-semibold text-gray-600">זמן התחלה</th>
+                        <th className="py-3 px-4 border-b text-right font-semibold text-gray-600">זמן סיום</th>
+                        <th className="py-3 px-4 border-b text-right font-semibold text-gray-600">משך זמן</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {progressData.completionData.map((completion, index) => (
+                        <tr key={index} className="hover:bg-gray-50 transition-colors duration-150">
+                          <td className="py-3 px-4 border-b text-right">{completion.lessonName}</td>
+                          <td className="py-3 px-4 border-b text-right text-gray-600">
+                            {new Date(completion.startTime).toLocaleString('he-IL')}
+                          </td>
+                          <td className="py-3 px-4 border-b text-right text-gray-600">
+                            {new Date(completion.completionTime).toLocaleString('he-IL')}
+                          </td>
+                          <td className="py-3 px-4 border-b text-right font-medium text-blue-600">
+                            {formatTime(Math.floor((new Date(completion.completionTime) - new Date(completion.startTime)) / 1000))}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
           </main>
         </div>
 
@@ -362,10 +512,8 @@ const ProgressDashboard = () => {
         <footer className="text-center text-gray-600 mt-12 py-4 border-t border-gray-300 no-print">
           <p>&copy; {new Date().getFullYear()} פלטפורמת למידה במתמטיקה. כל הזכויות שמורות.</p>
         </footer>
-      </div>
-
-      {/* Print Styles */}
-      <style jsx>{`
+      </div>      {/* Print Styles */}
+      <style>{`
         @media print {
           body * {
             visibility: hidden;

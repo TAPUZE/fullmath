@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Exercise = ({ 
   id, 
@@ -6,16 +6,60 @@ const Exercise = ({
   correctAnswer, 
   placeholder, 
   solution,
-  onAnswerCheck 
+  onAnswerCheck,
+  lessonId 
 }) => {
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState('');
   const [feedbackType, setFeedbackType] = useState('');
   const [showSolution, setShowSolution] = useState(false);
+  const [attempts, setAttempts] = useState(0);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
+  const [startTime, setStartTime] = useState(null);
+  const [timeSpent, setTimeSpent] = useState(0);
+
+  useEffect(() => {
+    // Load existing data for this exercise
+    const savedData = localStorage.getItem(`exercise_${lessonId}_${id}`);
+    if (savedData) {
+      const data = JSON.parse(savedData);
+      setAttempts(data.attempts || 0);
+      setWrongAnswers(data.wrongAnswers || []);
+      setTimeSpent(data.timeSpent || 0);
+    }
+    
+    // Set start time when component mounts
+    setStartTime(Date.now());
+    
+    return () => {
+      // Save time spent when component unmounts
+      if (startTime) {
+        const additionalTime = Math.floor((Date.now() - startTime) / 1000);
+        setTimeSpent(prev => prev + additionalTime);
+      }
+    };
+  }, [id, lessonId]);
+
+  const saveExerciseData = (newAttempts, newWrongAnswers, newTimeSpent) => {
+    const exerciseData = {
+      attempts: newAttempts,
+      wrongAnswers: newWrongAnswers,
+      timeSpent: newTimeSpent,
+      lastAttempt: new Date().toISOString(),
+      exerciseId: id,
+      lessonId: lessonId
+    };
+    
+    localStorage.setItem(`exercise_${lessonId}_${id}`, JSON.stringify(exerciseData));
+  };
 
   const checkAnswer = () => {
     const cleanAnswer = userAnswer.trim().replace('°', '');
     const isCorrect = cleanAnswer === correctAnswer;
+    const currentTime = Date.now();
+    const sessionTime = startTime ? Math.floor((currentTime - startTime) / 1000) : 0;
+    const newTimeSpent = timeSpent + sessionTime;
+    const newAttempts = attempts + 1;
     
     if (isCorrect) {
       setFeedback('נכון מאוד! כל הכבוד! 👍');
@@ -23,10 +67,31 @@ const Exercise = ({
     } else {
       setFeedback('תשובה שגויה. נסה שוב או הצג את הפתרון. 🤔');
       setFeedbackType('error');
+      
+      // Add wrong answer to list
+      const newWrongAnswers = [...wrongAnswers, {
+        answer: cleanAnswer,
+        timestamp: new Date().toISOString(),
+        attempt: newAttempts
+      }];
+      setWrongAnswers(newWrongAnswers);
+      saveExerciseData(newAttempts, newWrongAnswers, newTimeSpent);
+    }
+    
+    setAttempts(newAttempts);
+    setTimeSpent(newTimeSpent);
+    setStartTime(currentTime); // Reset start time for next attempt
+    
+    if (isCorrect) {
+      saveExerciseData(newAttempts, wrongAnswers, newTimeSpent);
     }
     
     if (onAnswerCheck) {
-      onAnswerCheck(id, isCorrect, cleanAnswer);
+      onAnswerCheck(id, isCorrect, cleanAnswer, {
+        attempts: newAttempts,
+        wrongAnswers: wrongAnswers,
+        timeSpent: newTimeSpent
+      });
     }
   };
 
@@ -67,10 +132,19 @@ const Exercise = ({
           הצג פתרון
         </button>
       </div>
-      
-      {feedback && (
+        {feedback && (
         <div className={`mt-3 p-3 rounded-md text-sm ${feedbackClasses[feedbackType]}`}>
           {feedback}
+          {attempts > 0 && (
+            <div className="mt-2 text-xs opacity-75">
+              ניסיונות: {attempts} | זמן: {Math.floor(timeSpent / 60)}:{(timeSpent % 60).toString().padStart(2, '0')} דקות
+              {wrongAnswers.length > 0 && (
+                <div className="mt-1">
+                  תשובות שגויות: {wrongAnswers.map(wa => wa.answer).join(', ')}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
       

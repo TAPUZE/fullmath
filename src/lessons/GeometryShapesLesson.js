@@ -157,9 +157,8 @@ const GeometryShapesLesson = () => {
   const handleShapeSelect = (shapeKey) => {
     setSelectedShape(shapeKey);
   };
-  return (
-    <LessonLayout 
-      title="צורות גיאומטריות - שאלון 35182"
+  return (    <LessonLayout 
+      title="צורות גיאומטריות - שאלון 35381"
       lessonId={lessonId}
       nextLessonPath={nextLessonPath}
     >
@@ -274,9 +273,7 @@ const GeometryShapesLesson = () => {
               <p className="text-gray-500">סקיצה של הצורה הנבחרת תופיע כאן.</p>
             )}
           </div>
-        </div>
-
-        <div className="space-y-8">
+        </div>        <div className="space-y-8">
           {exercises.map((exercise) => (
             <Exercise
               key={exercise.id}
@@ -285,6 +282,7 @@ const GeometryShapesLesson = () => {
               correctAnswer={exercise.correctAnswer}
               placeholder={exercise.placeholder}
               solution={exercise.solution}
+              lessonId={lessonId}
             />
           ))}
         </div>
