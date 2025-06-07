@@ -257,6 +257,16 @@ export const UserDataProvider = ({ children }) => {
       return false;
     }
   };
+  // Update user data with specific fields
+  const updateUserData = (email, updates) => {
+    const currentData = userData[email] || loadUserData(email);
+    const updatedData = {
+      ...currentData,
+      ...updates,
+      lastUpdated: new Date().toISOString()
+    };
+    saveUserData(email, updatedData);
+  };
 
   // Clear all data for a specific user
   const clearUserData = (email) => {
@@ -285,12 +295,12 @@ export const UserDataProvider = ({ children }) => {
       })
       .filter(email => email !== null);
   };
-
   const value = {
     // Data management
     loadUserData,
     saveUserData,
     initializeUserData,
+    updateUserData,
     
     // Progress tracking
     updateUserProgress,

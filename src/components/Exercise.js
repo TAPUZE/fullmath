@@ -80,7 +80,6 @@ const Exercise = ({
       });
     }
   };
-
   const checkAnswer = () => {
     const cleanAnswer = userAnswer.trim().replace('°', '');
     const isCorrect = cleanAnswer === correctAnswer;
@@ -88,6 +87,8 @@ const Exercise = ({
     const sessionTime = startTime ? Math.floor((currentTime - startTime) / 1000) : 0;
     const newTimeSpent = timeSpent + sessionTime;
     const newAttempts = attempts + 1;
+    
+    let newWrongAnswers = wrongAnswers;
     
     if (isCorrect) {
       setFeedback('נכון מאוד! כל הכבוד! 👍');
@@ -97,27 +98,25 @@ const Exercise = ({
       setFeedbackType('error');
       
       // Add wrong answer to list
-      const newWrongAnswers = [...wrongAnswers, {
+      newWrongAnswers = [...wrongAnswers, {
         answer: cleanAnswer,
         timestamp: new Date().toISOString(),
         attempt: newAttempts
       }];
       setWrongAnswers(newWrongAnswers);
-      saveExerciseData(newAttempts, newWrongAnswers, newTimeSpent);
     }
     
     setAttempts(newAttempts);
     setTimeSpent(newTimeSpent);
     setStartTime(currentTime); // Reset start time for next attempt
     
-    if (isCorrect) {
-      saveExerciseData(newAttempts, wrongAnswers, newTimeSpent);
-    }
+    // Save exercise data (only once per check)
+    saveExerciseData(newAttempts, newWrongAnswers, newTimeSpent);
     
     if (onAnswerCheck) {
       onAnswerCheck(id, isCorrect, cleanAnswer, {
         attempts: newAttempts,
-        wrongAnswers: wrongAnswers,
+        wrongAnswers: newWrongAnswers,
         timeSpent: newTimeSpent
       });
     }
