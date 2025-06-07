@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+import { useUserData } from '../contexts/UserDataContext';
 
 const Quiz = ({ questions, onSubmit, lessonId }) => {
+  const { currentUser } = useAuth();
+  const { updateUserData } = useUserData();
   const [answers, setAnswers] = useState({});
   const [results, setResults] = useState(null);
   const [submitted, setSubmitted] = useState(false);
@@ -49,8 +53,7 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
         isCorrect: isCorrect
       });
     });
-    
-    const quizData = {
+      const quizData = {
       score,
       total: totalQuestions,
       timeSpent: finalTimeSpent,
@@ -59,9 +62,18 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
       lessonId: lessonId
     };
     
-    // Save quiz results to localStorage
+    // Save quiz results to localStorage for backward compatibility
     if (lessonId) {
       localStorage.setItem(`lesson_quiz_score_${lessonId}`, JSON.stringify(quizData));
+    }
+    
+    // Save to user data if user is logged in
+    if (currentUser?.email && lessonId) {
+      updateUserData(currentUser.email, {
+        quizzes: {
+          [`lesson_quiz_score_${lessonId}`]: quizData
+        }
+      });
     }
     
     setResults({ score, totalQuestions, timeSpent: finalTimeSpent });

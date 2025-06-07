@@ -4,6 +4,16 @@ import './App.css';
 import './styles/lessons.css';
 
 // ============================================
+// AUTHENTICATION COMPONENTS
+// ============================================
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { UserDataProvider } from './contexts/UserDataContext';
+import LoginScreen from './components/LoginScreen';
+import ProtectedRoute from './components/ProtectedRoute';
+import UserHeader from './components/UserHeader';
+import UserInitializer from './components/UserInitializer';
+
+// ============================================
 // MAIN COMPONENTS
 // ============================================
 import HomePage from './components/HomePage';
@@ -68,72 +78,267 @@ import GrowthDecayLesson from './lessons/GrowthDecayLesson';
 
 function App() {
   return (
-    <Router>
-      <div className="App">        <Routes>          {/* ============================================ */}
-          {/* MAIN PAGES */}
-          {/* ============================================ */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/menu" element={<LessonMenu />} />
-          <Route path="/progress" element={<ProgressDashboard />} />
-          <Route path="/teachers" element={<TeachersDashboard />} />
-          
-          {/* ============================================ */}
-          {/* QUESTIONNAIRES */}
-          {/* ============================================ */}
-          <Route path="/questionnaire/35182" element={<Questionnaire35182 />} />
-          <Route path="/questionnaire/35381" element={<Questionnaire35381 />} />
-          <Route path="/questionnaire/35382" element={<Questionnaire35382 />} />
-          
-          {/* ============================================ */}
-          {/* GROUP 801 - ALGEBRA & BASIC MATH */}
-          {/* ============================================ */}
-          <Route path="/lessons/algebra-linear-equation-one-variable" element={<AlgebraLinearEquationOneVariableLesson />} />
-          <Route path="/lessons/algebra-linear-equations-two-variables" element={<AlgebraLinearEquationsTwoVariablesLesson />} />
-          <Route path="/lessons/algebra-percentages" element={<AlgebraPercentagesLesson />} />
-          <Route path="/lessons/algebra-inequalities" element={<AlgebraInequalitiesLesson />} />
-          <Route path="/lessons/algebra-quadratic-equations" element={<AlgebraQuadraticEquationsLesson />} />
-          <Route path="/lessons/algebra-word-problems" element={<AlgebraWordProblemsLesson />} />
-          <Route path="/lesson/geometry-shapes" element={<GeometryShapesLesson />} />
-          <Route path="/lessons/geometry-shapes-properties" element={<GeometryShapesPropertiesLesson />} />
-          <Route path="/lessons/geometry-area-perimeter" element={<GeometryAreaPerimeterLesson />} />
-          
-          {/* ============================================ */}
-          {/* GROUP 802 - GEOMETRY & FUNCTIONS */}
-          {/* ============================================ */}
-          <Route path="/lessons/analytic-geometry-points" element={<AnalyticGeometryPointsLesson />} />
-          <Route path="/lessons/analytic-geometry-slope" element={<AnalyticGeometrySlopeLesson />} />
-          <Route path="/lessons/analytic-geometry-distance" element={<AnalyticGeometryDistanceLesson />} />
-          <Route path="/lessons/analytic-geometry-midpoint" element={<AnalyticGeometryMidpointLesson />} />
-          <Route path="/lesson/analytic-geometry-line-continued" element={<AnalyticGeometryLineContinuedLesson />} />
-          <Route path="/lesson/analytic-geometry-circle" element={<AnalyticGeometryCircleLesson />} />
-          <Route path="/lesson/analytic-geometry-circle-tangent" element={<AnalyticGeometryCircleTangentLesson />} />
-          <Route path="/lesson/analytic-geometry-circle-line-intersection" element={<AnalyticGeometryCircleLineIntersectionLesson />} />
-          <Route path="/lessons/trigonometry-right-triangle" element={<TrigonometryRightTriangleLesson />} />
-          <Route path="/lessons/functions-parabola-investigation" element={<FunctionsParabolaInvestigationLesson />} />
-          
-          {/* ============================================ */}
-          {/* GROUP 803 - ADVANCED MATH & STATISTICS */}
-          {/* ============================================ */}
-          <Route path="/lesson/calculus-polynomial" element={<CalculusPolynomialLesson />} />
-          <Route path="/lesson/calculus-rational" element={<CalculusRationalLesson />} />
-          <Route path="/lesson/calculus-square-root" element={<CalculusSquareRootLesson />} />
-          <Route path="/lesson/calculus-optimization" element={<CalculusOptimizationLesson />} />
-          <Route path="/lesson/calculus-integral-polynomial" element={<CalculusIntegralPolynomialLesson />} />
-          <Route path="/lessons/sequences-arithmetic-intro" element={<ArithmeticSequencesIntroLesson />} />
-          <Route path="/lessons/sequences-arithmetic-sum" element={<SequencesArithmeticSumLesson />} />
-          <Route path="/lessons/statistics-intro" element={<StatisticsIntroLesson />} />
-          <Route path="/lessons/statistics-dispersion" element={<StatisticsDispersionLesson />} />
-          <Route path="/lessons/normal-distribution" element={<NormalDistributionLesson />} />
-          <Route path="/lessons/probability-intro" element={<ProbabilityIntroLesson />} />
-          <Route path="/lessons/probability-tree-conditional" element={<ProbabilityTreeConditionalLesson />} />
-          <Route path="/lesson/problems-work-rate" element={<ProblemsWorkRateLesson />} />
-          <Route path="/lesson/problems-motion" element={<ProblemsMotionLesson />} />
-          <Route path="/lesson/problems-geometric-algebraic" element={<ProblemsGeometricAlgebraicLesson />} />
-          <Route path="/lesson/problems-buy-sell" element={<ProblemsBuySellLesson />} />
-          <Route path="/lessons/growth-decay" element={<GrowthDecayLesson />} />
-        </Routes>
+    <AuthProvider>
+      <UserDataProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </UserDataProvider>
+    </AuthProvider>
+  );
+}
+
+function AppContent() {
+  const { isAuthenticated, login, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">טוען את המערכת...</p>
+        </div>
       </div>
-    </Router>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <LoginScreen onLogin={login} />;
+  }
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <UserInitializer>
+        <UserHeader />
+        <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<HomePage />} />
+        
+        {/* Student Routes */}
+        <Route path="/lessons" element={
+          <ProtectedRoute requireRole="student">
+            <LessonMenu />
+          </ProtectedRoute>
+        } />
+        <Route path="/menu" element={
+          <ProtectedRoute requireRole="student">
+            <LessonMenu />
+          </ProtectedRoute>
+        } />
+        
+        <Route path="/progress" element={
+          <ProtectedRoute requireRole="student">
+            <ProgressDashboard />
+          </ProtectedRoute>
+        } />
+
+        {/* Teacher Routes */}
+        <Route path="/teachers" element={
+          <ProtectedRoute requireRole="teacher">
+            <TeachersDashboard />
+          </ProtectedRoute>
+        } />
+
+        {/* Questionnaire Routes - Available to Students */}
+        <Route path="/questionnaire/35182" element={
+          <ProtectedRoute requireRole="student">
+            <Questionnaire35182 />
+          </ProtectedRoute>
+        } />
+        <Route path="/questionnaire/35381" element={
+          <ProtectedRoute requireRole="student">
+            <Questionnaire35381 />
+          </ProtectedRoute>
+        } />
+        <Route path="/questionnaire/35382" element={
+          <ProtectedRoute requireRole="student">
+            <Questionnaire35382 />
+          </ProtectedRoute>
+        } />
+          {/* Lesson Routes - Available to Students */}
+        <Route path="/lessons/algebra-linear-equation-one-variable" element={
+          <ProtectedRoute requireRole="student">
+            <AlgebraLinearEquationOneVariableLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/algebra-linear-equations-two-variables" element={
+          <ProtectedRoute requireRole="student">
+            <AlgebraLinearEquationsTwoVariablesLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/algebra-percentages" element={
+          <ProtectedRoute requireRole="student">
+            <AlgebraPercentagesLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/algebra-inequalities" element={
+          <ProtectedRoute requireRole="student">
+            <AlgebraInequalitiesLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/algebra-quadratic-equations" element={
+          <ProtectedRoute requireRole="student">
+            <AlgebraQuadraticEquationsLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/algebra-word-problems" element={
+          <ProtectedRoute requireRole="student">
+            <AlgebraWordProblemsLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/geometry-shapes" element={
+          <ProtectedRoute requireRole="student">
+            <GeometryShapesLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/geometry-shapes-properties" element={
+          <ProtectedRoute requireRole="student">
+            <GeometryShapesPropertiesLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/geometry-area-perimeter" element={
+          <ProtectedRoute requireRole="student">
+            <GeometryAreaPerimeterLesson />
+          </ProtectedRoute>
+        } />
+        
+        {/* Additional lesson routes with protection... */}
+        <Route path="/lessons/analytic-geometry-points" element={
+          <ProtectedRoute requireRole="student">
+            <AnalyticGeometryPointsLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/analytic-geometry-slope" element={
+          <ProtectedRoute requireRole="student">
+            <AnalyticGeometrySlopeLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/analytic-geometry-distance" element={
+          <ProtectedRoute requireRole="student">
+            <AnalyticGeometryDistanceLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/analytic-geometry-midpoint" element={
+          <ProtectedRoute requireRole="student">
+            <AnalyticGeometryMidpointLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/analytic-geometry-line-continued" element={
+          <ProtectedRoute requireRole="student">
+            <AnalyticGeometryLineContinuedLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/analytic-geometry-circle" element={
+          <ProtectedRoute requireRole="student">
+            <AnalyticGeometryCircleLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/analytic-geometry-circle-tangent" element={
+          <ProtectedRoute requireRole="student">
+            <AnalyticGeometryCircleTangentLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/analytic-geometry-circle-line-intersection" element={
+          <ProtectedRoute requireRole="student">
+            <AnalyticGeometryCircleLineIntersectionLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/trigonometry-right-triangle" element={
+          <ProtectedRoute requireRole="student">
+            <TrigonometryRightTriangleLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/functions-parabola-investigation" element={
+          <ProtectedRoute requireRole="student">
+            <FunctionsParabolaInvestigationLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/calculus-polynomial" element={
+          <ProtectedRoute requireRole="student">
+            <CalculusPolynomialLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/calculus-rational" element={
+          <ProtectedRoute requireRole="student">
+            <CalculusRationalLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/calculus-square-root" element={
+          <ProtectedRoute requireRole="student">
+            <CalculusSquareRootLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/calculus-optimization" element={
+          <ProtectedRoute requireRole="student">
+            <CalculusOptimizationLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/calculus-integral-polynomial" element={
+          <ProtectedRoute requireRole="student">
+            <CalculusIntegralPolynomialLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/sequences-arithmetic-intro" element={
+          <ProtectedRoute requireRole="student">
+            <ArithmeticSequencesIntroLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/sequences-arithmetic-sum" element={
+          <ProtectedRoute requireRole="student">
+            <SequencesArithmeticSumLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/statistics-intro" element={
+          <ProtectedRoute requireRole="student">
+            <StatisticsIntroLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/statistics-dispersion" element={
+          <ProtectedRoute requireRole="student">
+            <StatisticsDispersionLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/normal-distribution" element={
+          <ProtectedRoute requireRole="student">
+            <NormalDistributionLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/probability-intro" element={
+          <ProtectedRoute requireRole="student">
+            <ProbabilityIntroLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/probability-tree-conditional" element={
+          <ProtectedRoute requireRole="student">
+            <ProbabilityTreeConditionalLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/problems-work-rate" element={
+          <ProtectedRoute requireRole="student">
+            <ProblemsWorkRateLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/problems-motion" element={
+          <ProtectedRoute requireRole="student">
+            <ProblemsMotionLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/problems-geometric-algebraic" element={
+          <ProtectedRoute requireRole="student">
+            <ProblemsGeometricAlgebraicLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lesson/problems-buy-sell" element={
+          <ProtectedRoute requireRole="student">
+            <ProblemsBuySellLesson />
+          </ProtectedRoute>
+        } />
+        <Route path="/lessons/growth-decay" element={
+          <ProtectedRoute requireRole="student">
+            <GrowthDecayLesson />
+          </ProtectedRoute>        } />
+      </Routes>
+      </UserInitializer>
+    </div>
   );
 }
 

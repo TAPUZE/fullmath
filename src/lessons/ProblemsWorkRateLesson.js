@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import HtmlMathBox from '../components/HtmlMathBox';
@@ -6,7 +6,6 @@ import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 const ProblemsWorkRateLesson = () => {
-  const [completionStatus, setCompletionStatus] = useState(false);
 
   const breadcrumbItems = [
     { label: 'דף ראשי', href: '/' },
@@ -95,15 +94,12 @@ const ProblemsWorkRateLesson = () => {
       )
     }
   ];
-
   return (
     <LessonLayout 
+      lessonId="problems-work-rate"
       title="בעיות קצב עבודה"
-      breadcrumbItems={breadcrumbItems}
       nextLessonUrl="/lessons/problems-motion"
-      lessonMenuUrl="/lessons"
-      completionStatus={completionStatus}
-      onCompletionChange={setCompletionStatus}
+      menuUrl="/lessons"
     >
       {/* Learn Section */}
       <section className="mb-12">

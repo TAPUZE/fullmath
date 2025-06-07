@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavigationHeader from './NavigationHeader';
 import { getLessonStatus, getProgressStats } from '../utils/progressUtils';
+import { useAuth } from '../contexts/AuthContext';
+import { useUserData } from '../contexts/UserDataContext';
 
 const Questionnaire35182 = () => {
+  const { currentUser } = useAuth();
+  const { userData } = useUserData();
   const [lessonStatuses, setLessonStatuses] = useState({});
   const [progressStats, setProgressStats] = useState({ total: 0, completed: 0, started: 0, notStarted: 0 });
+  
+  // Get current user's data
+  const currentUserData = currentUser?.email ? userData[currentUser.email] : null;
 
   const lessons = [
     {
@@ -103,7 +110,6 @@ const Questionnaire35182 = () => {
       description: 'פונקציות טריגונומטריות בסיסיות',
       path: '/lessons/trigonometry-right-triangle'    }
   ];
-
   // Update lesson statuses when component mounts and when localStorage changes
   useEffect(() => {
     const updateStatuses = () => {
@@ -111,11 +117,11 @@ const Questionnaire35182 = () => {
       const allLessonIds = lessons.map(lesson => lesson.id);
       
       lessons.forEach(lesson => {
-        statuses[lesson.id] = getLessonStatus(lesson.id);
+        statuses[lesson.id] = getLessonStatus(lesson.id, currentUser?.email, currentUserData);
       });
       
       setLessonStatuses(statuses);
-      setProgressStats(getProgressStats(allLessonIds));
+      setProgressStats(getProgressStats(allLessonIds, currentUser?.email, currentUserData));
     };
 
     updateStatuses();
@@ -128,13 +134,11 @@ const Questionnaire35182 = () => {
     window.addEventListener('storage', handleStorageChange);
     
     // Also listen for focus events to update when returning to this tab
-    window.addEventListener('focus', updateStatuses);
-
-    return () => {
+    window.addEventListener('focus', updateStatuses);    return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('focus', updateStatuses);
     };
-  }, []);
+  }, [currentUser?.email, currentUserData]);
 
   // Status indicator component
   const StatusIndicator = ({ status }) => {

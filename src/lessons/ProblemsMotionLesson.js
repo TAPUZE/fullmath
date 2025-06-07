@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 const ProblemsMotionLesson = () => {
-  const [completionStatus, setCompletionStatus] = useState(false);
 
   const breadcrumbItems = [
     { label: 'דף ראשי', href: '/' },
@@ -98,14 +97,11 @@ const ProblemsMotionLesson = () => {
     }
   ];
 
-  return (
-    <LessonLayout 
+  return (    <LessonLayout 
+      lessonId="problems-motion"
       title="בעיות תנועה"
-      breadcrumbItems={breadcrumbItems}
       nextLessonUrl="/lessons/problems-geometric-algebraic"
-      lessonMenuUrl="/lessons"
-      completionStatus={completionStatus}
-      onCompletionChange={setCompletionStatus}
+      menuUrl="/lessons"
     >
       {/* Learn Section */}
       <section className="mb-12">

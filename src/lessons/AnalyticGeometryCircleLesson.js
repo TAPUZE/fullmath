@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 const AnalyticGeometryCircleLesson = () => {
-  const [completionStatus, setCompletionStatus] = useState(false);
 
   const breadcrumbItems = [
     { label: 'דף ראשי', href: '/' },
@@ -88,15 +87,12 @@ const AnalyticGeometryCircleLesson = () => {
       )
     }
   ];
-
   return (
     <LessonLayout 
+      lessonId="analytic-geometry-circle"
       title="המעגל"
-      breadcrumbItems={breadcrumbItems}
       nextLessonUrl="/lessons/problems-work-rate"
-      lessonMenuUrl="/lessons"
-      completionStatus={completionStatus}
-      onCompletionChange={setCompletionStatus}
+      menuUrl="/lessons"
     >
       {/* Learn Section */}
       <section className="mb-12">

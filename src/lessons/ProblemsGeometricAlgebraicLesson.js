@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 const ProblemsGeometricAlgebraicLesson = () => {
-  const [completionStatus, setCompletionStatus] = useState(false);
 
   const breadcrumbItems = [
     { label: 'דף ראשי', href: '/' },
@@ -84,15 +83,12 @@ const ProblemsGeometricAlgebraicLesson = () => {
       )
     }
   ];
-
   return (
     <LessonLayout 
+      lessonId="problems-geometric-algebraic"
       title="בעיות גיאומטריות-אלגבריות"
-      breadcrumbItems={breadcrumbItems}
       nextLessonUrl="/lessons/analytic-geometry-line-continued"
-      lessonMenuUrl="/lessons"
-      completionStatus={completionStatus}
-      onCompletionChange={setCompletionStatus}
+      menuUrl="/lessons"
     >
       {/* Learn Section */}
       <section className="mb-12">

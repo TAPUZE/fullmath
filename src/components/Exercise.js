@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+import { useUserData } from '../contexts/UserDataContext';
 
 const Exercise = ({ 
   id, 
@@ -9,6 +11,8 @@ const Exercise = ({
   onAnswerCheck,
   lessonId 
 }) => {
+  const { currentUser } = useAuth();
+  const { updateUserData } = useUserData();
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState('');
   const [feedbackType, setFeedbackType] = useState('');
@@ -17,15 +21,29 @@ const Exercise = ({
   const [wrongAnswers, setWrongAnswers] = useState([]);
   const [startTime, setStartTime] = useState(null);
   const [timeSpent, setTimeSpent] = useState(0);
-
   useEffect(() => {
     // Load existing data for this exercise
-    const savedData = localStorage.getItem(`exercise_${lessonId}_${id}`);
+    let savedData = null;
+    
+    // Try to load from user data first if user is logged in
+    if (currentUser?.email) {
+      const userData = JSON.parse(localStorage.getItem(`userData_${currentUser.email}`) || '{}');
+      const userExerciseKey = `exercise_${lessonId}_${id}`;
+      savedData = userData.exercises?.[userExerciseKey];
+    }
+    
+    // Fallback to localStorage if no user data found
+    if (!savedData) {
+      const localData = localStorage.getItem(`exercise_${lessonId}_${id}`);
+      if (localData) {
+        savedData = JSON.parse(localData);
+      }
+    }
+    
     if (savedData) {
-      const data = JSON.parse(savedData);
-      setAttempts(data.attempts || 0);
-      setWrongAnswers(data.wrongAnswers || []);
-      setTimeSpent(data.timeSpent || 0);
+      setAttempts(savedData.attempts || 0);
+      setWrongAnswers(savedData.wrongAnswers || []);
+      setTimeSpent(savedData.timeSpent || 0);
     }
     
     // Set start time when component mounts
@@ -38,8 +56,7 @@ const Exercise = ({
         setTimeSpent(prev => prev + additionalTime);
       }
     };
-  }, [id, lessonId]);
-
+  }, [id, lessonId, currentUser]);
   const saveExerciseData = (newAttempts, newWrongAnswers, newTimeSpent) => {
     const exerciseData = {
       attempts: newAttempts,
@@ -50,7 +67,18 @@ const Exercise = ({
       lessonId: lessonId
     };
     
+    // Save to localStorage for backward compatibility
     localStorage.setItem(`exercise_${lessonId}_${id}`, JSON.stringify(exerciseData));
+    
+    // Save to user data if user is logged in
+    if (currentUser?.email) {
+      const userExerciseKey = `exercise_${lessonId}_${id}`;
+      updateUserData(currentUser.email, {
+        exercises: {
+          [userExerciseKey]: exerciseData
+        }
+      });
+    }
   };
 
   const checkAnswer = () => {

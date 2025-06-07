@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import NavigationHeader from './NavigationHeader';
+import { useAuth } from '../contexts/AuthContext';
+import { useUserData } from '../contexts/UserDataContext';
+import UserDataManager from './UserDataManager';
 
 const ProgressDashboard = () => {
+  const { currentUser } = useAuth();
+  const { getCompletedLessons, getOverallProgress, loadUserData } = useUserData();
+  
   const [progressData, setProgressData] = useState({
     completedLessons: [],
     quizScores: [],
@@ -83,76 +89,130 @@ const ProgressDashboard = () => {
     setTimeout(() => {
       setNotification({ show: false, message: '', type: 'info' });
     }, duration);
-  };
-  // Wrap loadProgressData in useCallback
+  };  // Wrap loadProgressData in useCallback
   const loadProgressData = useCallback(() => {
-    let completedLessons = [];
-    let quizScores = [];
-    let exerciseData = [];
-    let completionData = [];
+    if (!currentUser?.email) {
+      showNotification('לא זוהה משתמש מחובר', 'error');
+      return;
+    }
 
     try {
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key.startsWith('lesson_completed_')) {
+      // Load user-specific data from UserDataContext
+      const userData = loadUserData(currentUser.email);
+      const completedLessons = getCompletedLessons(currentUser.email);
+      
+      // Convert completed lessons to display names
+      const completedLessonNames = completedLessons.map(lesson => {
+        const displayName = lessonDisplayNames[lesson.id] || lesson.id;
+        return displayName;
+      });      // Get quiz scores from user data first, then fallback to localStorage
+      let quizScores = [];
+      let exerciseData = [];
+      let completionData = [];
+
+      // Load quiz scores from user data
+      if (userData.quizzes) {
+        Object.entries(userData.quizzes).forEach(([key, quizData]) => {
           const lessonName = formatLessonIdForDisplay(key);
-          completedLessons.push(lessonName);
-        } else if (key.startsWith('lesson_quiz_score_')) {
-          const lessonName = formatLessonIdForDisplay(key);
-          const scoreDataString = localStorage.getItem(key);
-          if (scoreDataString) {
-            try {
-              const scoreData = JSON.parse(scoreDataString);
-              quizScores.push({
-                name: lessonName,
-                score: scoreData.score,
-                total: scoreData.total,
-                timeSpent: scoreData.timeSpent || 0,
-                date: new Date(scoreData.date).toLocaleDateString('he-IL'),
-                detailedResults: scoreData.detailedResults || []
-              });
-            } catch (parseError) {
-              console.error(`Error parsing quiz score for ${key}:`, parseError);
+          quizScores.push({
+            name: lessonName,
+            score: quizData.score,
+            total: quizData.total,
+            timeSpent: quizData.timeSpent || 0,
+            date: new Date(quizData.date).toLocaleDateString('he-IL'),
+            detailedResults: quizData.detailedResults || []
+          });
+        });
+      }
+
+      // Load exercise data from user data
+      if (userData.exercises) {
+        Object.entries(userData.exercises).forEach(([key, data]) => {
+          exerciseData.push({
+            key: key,
+            lessonId: data.lessonId,
+            exerciseId: data.exerciseId,
+            attempts: data.attempts || 0,
+            wrongAnswers: data.wrongAnswers || [],
+            timeSpent: data.timeSpent || 0,
+            lastAttempt: data.lastAttempt
+          });
+        });
+      }
+
+      // For backwards compatibility, also check localStorage for missing data
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          
+          if (key.startsWith('lesson_quiz_score_')) {
+            // Only load from localStorage if not already in user data
+            const lessonQuizKey = key;
+            const alreadyInUserData = userData.quizzes?.[lessonQuizKey];
+            
+            if (!alreadyInUserData) {
+              const lessonName = formatLessonIdForDisplay(key);
+              const scoreDataString = localStorage.getItem(key);
+              if (scoreDataString) {
+                try {
+                  const scoreData = JSON.parse(scoreDataString);
+                  quizScores.push({
+                    name: lessonName,
+                    score: scoreData.score,
+                    total: scoreData.total,
+                    timeSpent: scoreData.timeSpent || 0,
+                    date: new Date(scoreData.date).toLocaleDateString('he-IL'),
+                    detailedResults: scoreData.detailedResults || []
+                  });
+                } catch (parseError) {
+                  console.error(`Error parsing quiz score for ${key}:`, parseError);
+                }
+              }
             }
-          }
-        } else if (key.startsWith('exercise_')) {
-          const exerciseDataString = localStorage.getItem(key);
-          if (exerciseDataString) {
-            try {
-              const data = JSON.parse(exerciseDataString);
-              exerciseData.push({
-                key: key,
-                lessonId: data.lessonId,
-                exerciseId: data.exerciseId,
-                attempts: data.attempts || 0,
-                wrongAnswers: data.wrongAnswers || [],
-                timeSpent: data.timeSpent || 0,
-                lastAttempt: data.lastAttempt
-              });
-            } catch (parseError) {
-              console.error(`Error parsing exercise data for ${key}:`, parseError);
-            }
-          }
-        } else if (key.startsWith('lesson_completion_data_')) {
-          const completionDataString = localStorage.getItem(key);
-          if (completionDataString) {
-            try {
-              const data = JSON.parse(completionDataString);
-              const lessonId = key.replace('lesson_completion_data_', '');
-              completionData.push({
-                lessonId: lessonId,
-                lessonName: formatLessonIdForDisplay(`lesson_completed_${lessonId}`),
-                ...data
-              });
-            } catch (parseError) {              console.error(`Error parsing completion data for ${key}:`, parseError);
+          } else if (key.startsWith('exercise_')) {
+            // Only load from localStorage if not already in user data
+            const alreadyInUserData = userData.exercises?.[key];
+                if (!alreadyInUserData) {
+                const exerciseDataString = localStorage.getItem(key);
+                if (exerciseDataString) {
+                  try {
+                    const data = JSON.parse(exerciseDataString);
+                    exerciseData.push({
+                      key: key,
+                      lessonId: data.lessonId,
+                      exerciseId: data.exerciseId,
+                      attempts: data.attempts || 0,
+                      wrongAnswers: data.wrongAnswers || [],
+                      timeSpent: data.timeSpent || 0,
+                      lastAttempt: data.lastAttempt
+                    });
+                  } catch (parseError) {
+                    console.error(`Error parsing exercise data for ${key}:`, parseError);
+                  }
+                }
+              }
+            } else if (key.startsWith('lesson_completion_data_')) {
+            const completionDataString = localStorage.getItem(key);
+            if (completionDataString) {
+              try {
+                const data = JSON.parse(completionDataString);
+                const lessonId = key.replace('lesson_completion_data_', '');
+                completionData.push({
+                  lessonId: lessonId,
+                  lessonName: formatLessonIdForDisplay(`lesson_completed_${lessonId}`),
+                  ...data
+                });
+              } catch (parseError) {
+                console.error(`Error parsing completion data for ${key}:`, parseError);
+              }
             }
           }
         }
-      }    } catch (error) {
-      console.error("Error reading from localStorage:", error);
-      showNotification("שגיאה בקריאת נתוני התקדמות.", "error");
-      return;
-    }
+      } catch (error) {
+        console.error("Error reading from localStorage:", error);
+        showNotification("שגיאה בקריאת נתוני התקדמות.", "error");
+        return;
+      }
 
     // Sort data with proper null/undefined checks
     completedLessons.sort((a, b) => {
@@ -192,23 +252,28 @@ const ProgressDashboard = () => {
         const average = (totalScoreSum / totalPossibleSum) * 100;
         averageScore = `${average.toFixed(1)}%`;
       }
-    }
-
-    // Calculate total study time
-    let totalStudyTime = 0;
+    }    // Calculate total study time from user data
+    let totalStudyTime = userData.progress?.totalTimeSpent || 0;
+    
+    // Also add time from localStorage for backwards compatibility
     quizScores.forEach(quiz => totalStudyTime += quiz.timeSpent || 0);
     exerciseData.forEach(exercise => totalStudyTime += exercise.timeSpent || 0);
 
     setProgressData({
-      completedLessons,
+      completedLessons: completedLessonNames,
       quizScores,
       exerciseData,
       completionData,
-      totalCompleted: completedLessons.length,
+      totalCompleted: completedLessonNames.length,
       averageScore,
       totalStudyTime
     });
-  }, [formatLessonIdForDisplay]);
+
+    } catch (error) {
+      console.error("Error loading user progress data:", error);
+      showNotification("שגיאה בקריאת נתוני התקדמות.", "error");
+    }
+  }, [currentUser, loadUserData, getCompletedLessons, formatLessonIdForDisplay, lessonDisplayNames]);
 
   const getProgressDataForExport = () => {
     let completedLessons = [];
@@ -363,7 +428,14 @@ const ProgressDashboard = () => {
                   <h3 className="text-lg font-medium text-yellow-800">כמות תרגילים</h3>
                   <p className="text-3xl font-bold text-yellow-600 mt-2">{progressData.exerciseData?.length || 0}</p>
                 </div>
-              </div>
+              </div>            </section>
+
+            {/* User Data Management Section - Only visible in browser, not in print */}
+            <section className="mb-10 no-print">
+              <h2 className="text-2xl font-semibold text-blue-600 mb-4 border-b-2 border-blue-200 pb-2">
+                ניהול נתוני משתמש
+              </h2>
+              <UserDataManager />
             </section>
 
             {/* Completed Lessons Section */}

@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getLessonStatus, getProgressStats } from '../utils/progressUtils';
+import { useAuth } from '../contexts/AuthContext';
+import { useUserData } from '../contexts/UserDataContext';
 
 const LessonMenu = () => {
+  const { currentUser } = useAuth();
+  const { isLessonCompleted, getCompletedLessons } = useUserData();
+  
   const [lessonStatuses, setLessonStatuses] = useState({});
   const [progressStats, setProgressStats] = useState({ total: 0, completed: 0, started: 0, notStarted: 0 });
-
   // Update lesson statuses when component mounts and when localStorage changes
   useEffect(() => {
     const updateStatuses = () => {
+      if (!currentUser?.email) return;
+      
       const statuses = {};
       const allLessonIds = [];
       
       lessonSections.forEach(section => {
         section.lessons.forEach(lesson => {
-          statuses[lesson.id] = getLessonStatus(lesson.id);
+          // Use per-user completion status
+          const isCompleted = isLessonCompleted(currentUser.email, lesson.id);
+          const hasStarted = getLessonStatus(lesson.id) !== 'not-started'; // Still check localStorage for started status
+          
+          statuses[lesson.id] = isCompleted ? 'completed' : (hasStarted ? 'started' : 'not-started');
           allLessonIds.push(lesson.id);
         });
       });
@@ -33,13 +43,11 @@ const LessonMenu = () => {
     window.addEventListener('storage', handleStorageChange);
     
     // Also listen for focus events to update when returning to this tab
-    window.addEventListener('focus', updateStatuses);
-
-    return () => {
+    window.addEventListener('focus', updateStatuses);    return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('focus', updateStatuses);
     };
-  }, []);
+  }, [currentUser, isLessonCompleted]);
 
   // Progress summary component
   const ProgressSummary = () => {

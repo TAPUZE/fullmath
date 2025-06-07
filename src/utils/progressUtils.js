@@ -57,14 +57,35 @@ export const getActualLessonId = (questionnaireId) => {
 /**
  * Check if a lesson is completed
  * @param {string} lessonId - The lesson ID (questionnaire format)
+ * @param {string} userEmail - The user's email (optional, for per-user tracking)
+ * @param {Object} userData - User data from context (optional)
  * @returns {boolean} - True if lesson is completed
  */
-export const isLessonCompleted = (lessonId) => {
+export const isLessonCompleted = (lessonId, userEmail = null, userData = null) => {
   try {
     const actualId = getActualLessonId(lessonId);
+    
+    // Check user data first if available
+    if (userEmail && userData) {
+      const completedLessons = userData.progress?.completedLessons || [];
+      return completedLessons.some(lesson => lesson.id === actualId);
+    }
+    
+    // Try to get user data from localStorage if email provided
+    if (userEmail) {
+      const userStorageKey = `userData_${userEmail.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
+      const storedUserData = localStorage.getItem(userStorageKey);
+      if (storedUserData) {
+        const parsedData = JSON.parse(storedUserData);
+        const completedLessons = parsedData.progress?.completedLessons || [];
+        return completedLessons.some(lesson => lesson.id === actualId);
+      }
+    }
+    
+    // Fall back to legacy localStorage check
     return localStorage.getItem(`lesson_completed_${actualId}`) === 'true';
   } catch (error) {
-    console.warn('Error accessing localStorage:', error);
+    console.warn('Error accessing lesson completion status:', error);
     return false;
   }
 };
@@ -72,14 +93,35 @@ export const isLessonCompleted = (lessonId) => {
 /**
  * Check if a lesson has been started (visited)
  * @param {string} lessonId - The lesson ID (questionnaire format)
+ * @param {string} userEmail - The user's email (optional, for per-user tracking)
+ * @param {Object} userData - User data from context (optional)
  * @returns {boolean} - True if lesson has been started
  */
-export const isLessonStarted = (lessonId) => {
+export const isLessonStarted = (lessonId, userEmail = null, userData = null) => {
   try {
     const actualId = getActualLessonId(lessonId);
+    
+    // Check user data first if available
+    if (userEmail && userData) {
+      const startedLessons = userData.progress?.lessonsStarted || [];
+      return startedLessons.includes(actualId);
+    }
+    
+    // Try to get user data from localStorage if email provided
+    if (userEmail) {
+      const userStorageKey = `userData_${userEmail.toLowerCase().replace(/[^a-z0-9]/g, '_')}`;
+      const storedUserData = localStorage.getItem(userStorageKey);
+      if (storedUserData) {
+        const parsedData = JSON.parse(storedUserData);
+        const startedLessons = parsedData.progress?.lessonsStarted || [];
+        return startedLessons.includes(actualId);
+      }
+    }
+    
+    // Fall back to legacy localStorage check
     return localStorage.getItem(`lesson_visited_${actualId}`) === 'true';
   } catch (error) {
-    console.warn('Error accessing localStorage:', error);
+    console.warn('Error accessing lesson started status:', error);
     return false;
   }
 };
@@ -99,12 +141,14 @@ export const markLessonAsStarted = (lessonId) => {
 /**
  * Get the status of a lesson
  * @param {string} lessonId - The lesson ID (questionnaire format)
+ * @param {string} userEmail - The user's email (optional, for per-user tracking)
+ * @param {Object} userData - User data from context (optional)
  * @returns {string} - 'completed', 'started', or 'not-started'
  */
-export const getLessonStatus = (lessonId) => {
-  if (isLessonCompleted(lessonId)) {
+export const getLessonStatus = (lessonId, userEmail = null, userData = null) => {
+  if (isLessonCompleted(lessonId, userEmail, userData)) {
     return 'completed';
-  } else if (isLessonStarted(lessonId)) {
+  } else if (isLessonStarted(lessonId, userEmail, userData)) {
     return 'started';
   }
   return 'not-started';
@@ -113,9 +157,11 @@ export const getLessonStatus = (lessonId) => {
 /**
  * Get progress statistics for all lessons
  * @param {Array} lessonIds - Array of lesson IDs (questionnaire format)
+ * @param {string} userEmail - The user's email (optional, for per-user tracking)
+ * @param {Object} userData - User data from context (optional)
  * @returns {Object} - Object with completion statistics
  */
-export const getProgressStats = (lessonIds) => {
+export const getProgressStats = (lessonIds, userEmail = null, userData = null) => {
   const stats = {
     total: lessonIds.length,
     completed: 0,
@@ -124,7 +170,7 @@ export const getProgressStats = (lessonIds) => {
   };
 
   lessonIds.forEach(lessonId => {
-    const status = getLessonStatus(lessonId);
+    const status = getLessonStatus(lessonId, userEmail, userData);
     switch (status) {
       case 'completed':
         stats.completed++;
