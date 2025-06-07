@@ -312,17 +312,21 @@ const TeachersDashboard = () => {
               aiAnalysisLoading={aiAnalysisLoading}
               onGenerateReport={generateReport}
             />
-          )}
-
-          {activeTab === 'students' && (
+          )}          {activeTab === 'students' && (
             <StudentsTable 
-              studentsData={studentsData}
+              students={studentsData}
               classesData={classesData}
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
               selectedClass={selectedClass}
               setSelectedClass={setSelectedClass}
-              onOpenStudentAnalysis={openStudentAnalysis}
+              onAnalyzeStudent={openStudentAnalysis}
+              lessonNames={{
+                'algebra-linear-equations': 'משוואות לינאריות',
+                'geometry-areas': 'שטחים והיקפים',
+                'calculus-derivatives': 'נגזרות',
+                'probability-intro': 'הסתברות - מבוא'
+              }}
             />
           )}
 
