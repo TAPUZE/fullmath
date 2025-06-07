@@ -146,13 +146,13 @@ const LoginScreen = ({ onLogin }) => {
         </form>
 
         {/* Info Section */}
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <div className="text-center text-sm text-gray-500">
+        <div className="mt-8 pt-6 border-t border-gray-200">          <div className="text-center text-sm text-gray-500">
             <p className="mb-2">✨ כניסה ללא סיסמה - פשוט והיגיני</p>
             <div className="flex justify-center space-x-6 text-xs">
               <span>🎓 תלמידים: גישה לשיעורים ותרגילים</span>
               <span>👨‍🏫 מורים: ניהול כיתות ודוחות</span>
             </div>
+            <p className="text-xs text-gray-400 mt-3">💡 מורים: ניהול בית הספר זמין בתוך פאנל המורים</p>
           </div>
         </div>
       </div>

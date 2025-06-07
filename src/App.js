@@ -28,6 +28,12 @@ import ProgressDashboard from './components/ProgressDashboard';
 import TeachersDashboard from './components/TeachersDashboard';
 
 // ============================================
+// SCHOOL ADMIN COMPONENTS
+// ============================================
+import SchoolAdminLogin from './components/SchoolAdminLogin';
+import SchoolAdminDashboard from './components/SchoolAdminDashboard';
+
+// ============================================
 // QUESTIONNAIRE COMPONENTS
 // ============================================
 import Questionnaire35182 from './components/Questionnaire35182';
@@ -141,6 +147,11 @@ function AppContent() {
             <TeachersDashboard />
           </ProtectedRoute>
         } />
+
+        {/* School Admin Routes */}
+        <Route path="/admin/login" element={<SchoolAdminLogin />} />
+        <Route path="/admin" element={<SchoolAdminDashboard />} />
+        <Route path="/admin/*" element={<SchoolAdminDashboard />} />
 
         {/* Questionnaire Routes - Available to Students and Teachers */}
         <Route path="/questionnaire/35182" element={
