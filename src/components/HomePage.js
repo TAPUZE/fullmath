@@ -2,13 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavigationHeader from './NavigationHeader';
 import { useAuth } from '../contexts/AuthContext';
+import { useUserData } from '../contexts/UserDataContext';
 import TeacherLessonButton from './TeacherLessonButton';
+import LoopingUserFix from './LoopingUserFix';
 
 const HomePage = () => {
   const { currentUser, isTeacher } = useAuth();
+  const { userData } = useUserData();
+  
+  // Check if user data shows signs of looping (high login count)
+  const currentUserData = currentUser?.email ? userData[currentUser.email] : null;
+  const hasLoopingIssue = currentUserData?.profile?.loginCount > 100;
 
   return (
     <div className="bg-gray-100 text-gray-800">
+      {/* Show looping fix component if needed */}
+      {hasLoopingIssue && <LoopingUserFix />}
+      
       {/* Notification Box */}
       <div id="notification-box" className="fixed top-5 right-5 text-white p-4 rounded-lg shadow-xl hidden z-50 max-w-sm text-right">
         הודעה תוצג כאן

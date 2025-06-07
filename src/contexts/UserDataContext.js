@@ -84,8 +84,7 @@ export const UserDataProvider = ({ children }) => {
       },
       customData: {}
     };
-  };
-  // Save user-specific data
+  };  // Save user-specific data
   const saveUserData = (email, data) => {
     if (!email) return;
     
@@ -96,6 +95,21 @@ export const UserDataProvider = ({ children }) => {
         lastUpdated: new Date().toISOString()
       };
       
+      // Check if we're about to save the same data (prevent unnecessary writes)
+      const existingData = localStorage.getItem(storageKey);
+      if (existingData) {
+        try {
+          const parsed = JSON.parse(existingData);
+          // If the data is essentially the same, don't save
+          if (JSON.stringify(parsed) === JSON.stringify(dataToSave)) {
+            console.log('UserDataContext: Data unchanged, skipping save');
+            return;
+          }
+        } catch (e) {
+          // Continue with save if we can't parse existing data
+        }
+      }
+      
       localStorage.setItem(storageKey, JSON.stringify(dataToSave));
       setUserData(prev => ({
         ...prev,
@@ -103,8 +117,14 @@ export const UserDataProvider = ({ children }) => {
       }));
     } catch (error) {
       console.error('Error saving user data:', error);
+      
+      // Handle quota exceeded error
+      if (error.name === 'QuotaExceededError') {
+        console.warn('localStorage quota exceeded, trying to clear old data');
+        // Could implement cleanup logic here
+      }
     }
-  };  // Initialize user data when they log in
+  };// Initialize user data when they log in
   const initializeUserData = (email) => {
     console.log('UserDataContext: initializeUserData called for:', email);
     try {
@@ -112,13 +132,19 @@ export const UserDataProvider = ({ children }) => {
       const existingData = loadUserData(email);
       console.log('UserDataContext: Existing data loaded:', existingData);
       
-      // Update login statistics
+      // Check if we've already updated login count today to prevent loops
+      const today = new Date().toDateString();
+      const lastLoginDate = existingData.profile.lastLoginDate ? new Date(existingData.profile.lastLoginDate).toDateString() : null;
+      
+      // Only increment login count if it's a new day
+      const shouldIncrementCount = lastLoginDate !== today;
+      
       const updatedData = {
         ...existingData,
         profile: {
           ...existingData.profile,
           lastLoginDate: new Date().toISOString(),
-          loginCount: (existingData.profile.loginCount || 0) + 1
+          loginCount: shouldIncrementCount ? (existingData.profile.loginCount || 0) + 1 : existingData.profile.loginCount
         }
       };
       
@@ -256,15 +282,32 @@ export const UserDataProvider = ({ children }) => {
       console.error('Error importing user data:', error);
       return false;
     }
-  };
-  // Update user data with specific fields
+  };  // Update user data with specific fields
   const updateUserData = (email, updates) => {
     const currentData = userData[email] || loadUserData(email);
+    
+    // Deep merge nested objects like exercises and quizzes
     const updatedData = {
       ...currentData,
       ...updates,
       lastUpdated: new Date().toISOString()
     };
+    
+    // Handle nested objects correctly
+    if (updates.exercises) {
+      updatedData.exercises = {
+        ...currentData.exercises,
+        ...updates.exercises
+      };
+    }
+    
+    if (updates.quizzes) {
+      updatedData.quizzes = {
+        ...currentData.quizzes,
+        ...updates.quizzes
+      };
+    }
+    
     saveUserData(email, updatedData);
   };
 
