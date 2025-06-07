@@ -6,6 +6,10 @@ import StudentsTable from './teachers/StudentsTable';
 import ReportsGrid from './teachers/ReportsGrid';
 import SettingsTab from './teachers/SettingsTab';
 import StudentAnalysisModal from './teachers/StudentAnalysisModal';
+import ClassAnalysisModal from './teachers/ClassAnalysisModal';
+import ReportViewer from './reports/ReportViewer';
+import QuickReportViewer from './reports/QuickReportViewer';
+import ReportHistory from './reports/ReportHistory';
 
 // Import real student data provider
 import { 
@@ -14,14 +18,25 @@ import {
   generateOverallStatistics 
 } from '../utils/realStudentDataProvider';
 
+// Import report storage utilities
+import { saveReport } from '../utils/reportStorage';
+
 const TeachersDashboard = () => {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [selectedClass, setSelectedClass] = useState('all');
+  const [activeTab, setActiveTab] = useState('overview');  const [selectedClass, setSelectedClass] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [showStudentAnalysis, setShowStudentAnalysis] = useState(false);
+  const [selectedClassForAnalysis, setSelectedClassForAnalysis] = useState(null);
+  const [showClassAnalysis, setShowClassAnalysis] = useState(false);
   const [aiAnalysisLoading, setAiAnalysisLoading] = useState(false);
   const [aiAnalysisResults, setAiAnalysisResults] = useState({});
+  
+  // Report viewing state
+  const [showReportViewer, setShowReportViewer] = useState(false);
+  const [showQuickReportViewer, setShowQuickReportViewer] = useState(false);
+  const [currentReport, setCurrentReport] = useState(null);
+  const [currentReportType, setCurrentReportType] = useState(null);
+  const [currentReportData, setCurrentReportData] = useState(null);
   
   // Real student data state (replacing mock data)
   const [studentsData, setStudentsData] = useState([]);
@@ -182,10 +197,25 @@ const TeachersDashboard = () => {
       
       אנא ספק:
       1. סיכום ביצועים כללי
-      2. נקודות מפתח לתשומת לב
-      3. המלצות להנהלה
+      2. נקודות מפתח לתשומת לב      3. המלצות להנהלה
       4. מגמות עיקריות
       5. תחזיות לטווח הקרוב
+    `,
+    classAnalysis: (classData) => `
+      נתח את הביצועים של הכיתה הבאה במתמטיקה:
+      שם הכיתה: ${classData.name}
+      סה״כ תלמידים: ${classData.students}
+      תלמידים פעילים: ${classData.activeStudents}
+      התקדמות ממוצעת: ${classData.averageProgress}%
+      ציון ממוצע: ${classData.averageScore}%
+      
+      אנא ספק:
+      1. ניתוח ביצועי הכיתה
+      2. זיהוי תלמידים בסיכון
+      3. נקודות חוזק וחולשה של הכיתה
+      4. המלצות אסטרטגיות הוראה
+      5. תוכנית התערבות מותאמת
+      6. תחזית התקדמות עתידית
     `
   };
 
@@ -212,6 +242,32 @@ const TeachersDashboard = () => {
       console.error('Error analyzing student:', error);
     } finally {
       setAiAnalysisLoading(false);
+    }  };
+
+  const analyzeClass = async (classData) => {
+    setAiAnalysisLoading(true);
+    try {
+      // TODO: Replace with actual Gemini API call
+      const mockAnalysis = {
+        overview: `כיתה ${classData.name} מציגה ביצועים ${classData.averageScore > 75 ? 'מעולים' : classData.averageScore > 60 ? 'טובים' : 'בינוניים'} עם ממוצע של ${classData.averageScore}%`,
+        strengths: ["שיתוף פעולה טוב", "מוטיבציה גבוהה", "התקדמות יציבה"],
+        recommendations: ["חיזוק תלמידים מתקשים", "אתגור נוסף לתלמידים מצטיינים", "הכנסת משחקים לימודיים"],
+        prediction: "הכיתה צפויה להגיע ליעד השנתי עם תמיכה נוספת בתחומים החלשים"
+      };
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+        setAiAnalysisResults(prev => ({
+        ...prev,
+        [`class_${classData.id}`]: mockAnalysis
+      }));
+      
+      // Open the class analysis modal to show results
+      openClassAnalysis(classData);
+    } catch (error) {
+      console.error('Error analyzing class:', error);
+    } finally {
+      setAiAnalysisLoading(false);
     }
   };
 
@@ -224,9 +280,15 @@ const TeachersDashboard = () => {
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 3000));
       
-      // Mock response - replace with actual API integration
-      const mockReport = `דוח ${reportType} נוצר בהצלחה עם המלצות מותאמות אישית`;
-      alert(mockReport);
+      // Enhanced mock response with structured content
+      const mockReport = generateMockReportContent(reportType, data);
+      
+      // Set the report data and show the quick viewer
+      setCurrentReport(mockReport);
+      setCurrentReportType(reportType);
+      setCurrentReportData(data);
+      setShowQuickReportViewer(true);
+      
     } catch (error) {
       console.error('Error generating report:', error);
       alert('שגיאה ביצירת הדוח');
@@ -235,6 +297,226 @@ const TeachersDashboard = () => {
     }
   };
 
+  // Generate enhanced mock report content
+  const generateMockReportContent = (reportType, data) => {
+    const currentDate = new Date().toLocaleDateString('he-IL');
+    
+    const reportContents = {
+      weeklyReport: `
+# דוח התקדמות שבועי - ${currentDate}
+
+## סיכום כללי
+השבוע נרשמה פעילות גבוהה בקרב התלמידים עם שיפור ניכר בביצועים.
+
+## נתונים מרכזיים
+- סה"כ תלמידים פעילים: ${Array.isArray(data) ? data.length : 0}
+- ממוצע השלמת שיעורים: 72%
+- ממוצע ציונים: 78.5
+
+## הישגים בולטים
+• שיפור של 15% בהשלמת משימות
+• עלייה בזמן הלמידה הממוצע
+• פחות תלמידים עם קשיים
+
+## המלצות
+1. המשך עידוד התלמידים המצטיינים
+2. מתן תמיכה נוספת לתלמידים הנזקקים
+3. הוספת חומרי העשרה
+
+## מגמות עתידיות
+צפוי שיפור נוסף בשבועות הקרובים עם יישום ההמלצות.
+      `,
+      
+      difficultTopics: `
+# ניתוח נושאים קשים - ${currentDate}
+
+## נושאים שזוהו כקשים
+1. **משוואות ריבועיות** - 45% מהתלמידים מתקשים
+2. **גיאומטריה אנליטית** - 38% מהתלמידים
+3. **פונקציות** - 32% מהתלמידים
+
+## ניתוח עמוק
+### משוואות ריבועיות
+- קושי עיקרי: הבנת הנוסחה הכללית
+- זמן ממוצע לפתרון: 8.5 דקות (מעל הממוצע)
+
+### המלצות פדגוגיות
+• הוספת תרגילים מדורגים
+• שימוש בכלים ויזואליים
+• לימוד בקבוצות קטנות
+
+## אסטרטגיות מוצעות
+1. חזרה על חומר הבסיס
+2. דוגמאות מעשיות
+3. תרגול נוסף מותאם אישית
+      `,
+      
+      attendanceReport: `
+# דוח נוכחות ופעילות דיגיטלית - ${currentDate}
+
+## סיכום נוכחות
+- נוכחות ממוצעת: 87%
+- תלמידים פעילים יומית: ${Array.isArray(data) ? Math.floor(data.length * 0.8) : 0}
+- שעות למידה שבועיות: 156 שעות
+
+## דפוסי פעילות
+### שעות פעילות מועדפות
+- 16:00-18:00: 42% מהפעילות
+- 20:00-22:00: 28% מהפעילות
+- סוף השבוע: 30% מהפעילות
+
+## תלמידים בסיכון
+זוהו 3 תלמידים עם פעילות מוגבלת הזקוקים לתשומת לב:
+1. תלמיד א' - 45% נוכחות
+2. תלמיד ב' - 52% נוכחות
+3. תלמיד ג' - 48% נוכחות
+
+## המלצות לשיפור
+• יצירת קשר אישי עם התלמידים הנעדרים
+• הגמשת שעות הלמידה
+• הוספת תמריצים לנוכחות
+      `,
+      
+      performanceComparison: `
+# השוואת ביצועים בין כיתות - ${currentDate}
+
+## ביצועים לפי כיתות
+### כיתה י"א 1
+- ממוצע ציונים: 82
+- השלמת שיעורים: 78%
+- זמן למידה שבועי: 4.2 שעות
+
+### כיתה י"א 2  
+- ממוצע ציונים: 79
+- השלמת שיעורים: 74%
+- זמן למידה שבועי: 3.8 שעות
+
+## ניתוח השוואתי
+כיתה י"א 1 מובילה בכל הפרמטרים עם יתרון של 3 נקודות בממוצע.
+
+## גורמי הצלחה מזוהים
+• מעורבות גבוהה יותר בשיעורים
+• ביצוע עקבי של משימות בית
+• שיתוף פעולה טוב בקבוצה
+
+## המלצות ליישום
+1. החלת שיטות הוראה מצליחות על כיתות נוספות
+2. עידוד תחרותיות בריאה
+3. שיתוף best practices בין המורים
+      `,
+      
+      detailedActivity: `
+# דוח פעילות מפורט - ${currentDate}
+
+## ניתוח פעילות תלמידים
+סה"כ נתונים נותחו: ${Array.isArray(data) ? data.length : 0} תלמידים
+
+## דפוסי למידה מזוהים
+### למידה עצמאית
+- 68% מהתלמידים מעדיפים למידה עצמאית
+- זמן ממוצע למשימה: 12 דקות
+- שיעור הצלחה: 84%
+
+### לימוד קבוצתי
+- 32% משתתפים בפעילויות קבוצתיות
+- שיפור של 23% בהבנת החומר
+- שביעות רצון גבוהה: 91%
+
+## תובנות פדגוגיות
+המערכת מזהה העדפות למידה שונות ומתאימה את התוכן בהתאם.
+
+## המלצות להתאמה אישית
+• פיתוח מסלולי למידה מותאמים
+• הוספת כלי אבחון דיגיטליים
+• יצירת קבוצות למידה מגוונות
+      `,
+      
+      dataExport: `
+# סיכום ייצוא נתונים - ${currentDate}
+
+## נתונים כלליים
+- ${Array.isArray(data?.students) ? data.students.length : 0} תלמידים במערכת
+- ${Array.isArray(data?.classes) ? data.classes.length : 0} כיתות פעילות
+- תקופת הדיווח: חודש אחרון
+
+## עיקרי הביצועים
+### הישגים
+• עלייה של 12% בממוצע הציונים
+• שיפור של 18% בזמני השלמת משימות
+• ירידה של 25% בנושרים
+
+### נקודות לתשומת לב
+- 15% מהתלמידים זקוקים לתמיכה נוספת
+- 3 נושאים מתמטיים דורשים חיזוק
+- שיפור נדרש בכלי הערכה
+
+## תחזיות לטווח הקרוב
+בהתבסס על המגמות הנוכחיות, צפוי שיפור נוסף של 8-12% ברבעון הבא.
+
+## המלצות להנהלה
+1. השקעה בכלי למידה דיגיטליים נוספים
+2. הרחבת צוות ההוראה
+3. פיתוח תוכניות העשרה ייעודיות
+      `,
+      
+      studentAnalysis: `
+# ניתוח תלמיד מפורט - ${currentDate}
+
+## פרופיל התלמיד
+שם: ${data?.name || 'תלמיד'}
+כיתה: ${data?.class || 'לא צוין'}
+
+## ביצועים אקדמיים
+- שיעורים שהושלמו: ${data?.completedLessons || 0}/${data?.totalLessons || 0}
+- ציון ממוצע: ${data?.averageScore || 0}%
+- זמן למידה כולל: ${data?.timeSpent || 0} דקות
+
+## נקודות חוזק
+• יכולת חישובית גבוהה
+• עמידה ביעדים
+• מוטיבציה גבוהה
+
+## תחומים לשיפור
+• חיזוק בנושאי גיאומטריה
+• שיפור זמני פתרון
+• עבודה על דיוק
+
+## המלצות התאמה אישית
+1. תרגילים מותאמים ברמת קושי
+2. מעקב שבועי אחר התקדמות
+3. עידוד וחיזוק חיובי
+
+## תחזית התקדמות
+עם יישום ההמלצות, צפוי שיפור של 10-15% בחודש הבא.
+      `
+    };
+
+    return reportContents[reportType] || `דוח ${reportType} נוצר בהצלחה עם תוכן מפורט ומותאם.`;
+  };
+
+  // Report viewer functions
+  const handleSaveReport = () => {
+    if (currentReport && currentReportType) {
+      try {
+        saveReport(currentReport, currentReportType, currentReportData);
+        alert('הדוח נשמר בהצלחה! ניתן לצפות בו בהיסטוריית הדוחות.');
+      } catch (error) {
+        alert('שגיאה בשמירת הדוח: ' + error.message);
+      }
+    }
+  };
+
+  const handleOpenFullViewer = () => {
+    setShowQuickReportViewer(false);
+    setShowReportViewer(true);
+  };
+
+  const handleViewStoredReport = (report) => {
+    setCurrentReport(report.content);
+    setCurrentReportType(report.type);
+    setCurrentReportData(report.data);
+    setShowReportViewer(true);
+  };
   const openStudentAnalysis = (student) => {
     setSelectedStudent(student);
     setShowStudentAnalysis(true);
@@ -243,6 +525,16 @@ const TeachersDashboard = () => {
   const closeStudentAnalysis = () => {
     setShowStudentAnalysis(false);
     setSelectedStudent(null);
+  };
+
+  const openClassAnalysis = (classData) => {
+    setSelectedClassForAnalysis(classData);
+    setShowClassAnalysis(true);
+  };
+
+  const closeClassAnalysis = () => {
+    setShowClassAnalysis(false);
+    setSelectedClassForAnalysis(null);
   };
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -326,16 +618,16 @@ const TeachersDashboard = () => {
             <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
             {/* Main Content Area */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              {activeTab === 'overview' && (
+            <div className="bg-white rounded-lg shadow-md p-6">              {activeTab === 'overview' && (
                 <OverviewTab 
                   overallStats={overallStats}
                   classesData={classesData}
                   studentsData={studentsData}
                   aiAnalysisLoading={aiAnalysisLoading}
                   onGenerateReport={generateReport}
+                  onAnalyzeClass={analyzeClass}
                 />
-              )}              {activeTab === 'students' && (
+              )}{activeTab === 'students' && (
                 <StudentsTable 
                   students={studentsData}
                   classesData={classesData}
@@ -351,15 +643,28 @@ const TeachersDashboard = () => {
                     'probability-intro': 'הסתברות - מבוא'
                   }}
                 />
-              )}
-
-              {activeTab === 'reports' && (
-                <ReportsGrid 
-                  studentsData={studentsData}
-                  classesData={classesData}
-                  aiAnalysisLoading={aiAnalysisLoading}
-                  onGenerateReport={generateReport}
-                />
+              )}              {activeTab === 'reports' && (
+                <div className="space-y-6">
+                  {/* Report Generation Section */}
+                  <div>
+                    <h2 className="text-xl font-semibold mb-4">יצירת דוחות חדשים</h2>
+                    <ReportsGrid 
+                      studentsData={studentsData}
+                      classesData={classesData}
+                      aiAnalysisLoading={aiAnalysisLoading}
+                      onGenerateReport={generateReport}
+                    />
+                  </div>
+                  
+                  {/* Report History Section */}
+                  <div>
+                    <h2 className="text-xl font-semibold mb-4">היסטוריית דוחות</h2>
+                    <ReportHistory 
+                      onViewReport={handleViewStoredReport}
+                      onGenerateNewReport={() => {/* Scroll to top of reports tab */}}
+                    />
+                  </div>
+                </div>
               )}
 
               {activeTab === 'settings' && (
@@ -367,9 +672,7 @@ const TeachersDashboard = () => {
               )}
             </div>
           </>
-        )}
-
-        {/* Student Analysis Modal */}
+        )}        {/* Student Analysis Modal */}
         <StudentAnalysisModal 
           student={selectedStudent}
           isOpen={showStudentAnalysis}
@@ -378,6 +681,36 @@ const TeachersDashboard = () => {
           aiAnalysisLoading={aiAnalysisLoading}
           onAnalyzeStudent={analyzeStudent}
           onGenerateReport={generateReport}
+        />
+
+        {/* Class Analysis Modal */}
+        <ClassAnalysisModal 
+          classData={selectedClassForAnalysis}
+          isOpen={showClassAnalysis}
+          onClose={closeClassAnalysis}
+          aiAnalysisResults={aiAnalysisResults}
+          aiAnalysisLoading={aiAnalysisLoading}
+          onAnalyzeClass={analyzeClass}
+          onGenerateReport={generateReport}
+        />
+
+        {/* Quick Report Viewer */}
+        <QuickReportViewer
+          isOpen={showQuickReportViewer}
+          onClose={() => setShowQuickReportViewer(false)}
+          reportContent={currentReport}
+          reportType={currentReportType}
+          onSave={handleSaveReport}
+          onOpenFullViewer={handleOpenFullViewer}
+        />
+
+        {/* Full Report Viewer */}
+        <ReportViewer
+          isOpen={showReportViewer}
+          onClose={() => setShowReportViewer(false)}
+          currentReport={currentReport}
+          reportType={currentReportType}
+          reportData={currentReportData}
         />
       </div>
     </div>

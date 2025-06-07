@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const UserDataContext = createContext();
 
@@ -124,8 +124,8 @@ export const UserDataProvider = ({ children }) => {
         // Could implement cleanup logic here
       }
     }
-  };// Initialize user data when they log in
-  const initializeUserData = (email) => {
+  };  // Initialize user data when they log in
+  const initializeUserData = useCallback((email) => {
     console.log('UserDataContext: initializeUserData called for:', email);
     try {
       console.log('UserDataContext: Loading existing data...');
@@ -159,7 +159,7 @@ export const UserDataProvider = ({ children }) => {
       console.log('UserDataContext: Returning default data:', defaultData);
       return defaultData;
     }
-  };
+  }, []); // Empty dependency array since the function shouldn't depend on changing values
 
   // Update specific user data sections
   const updateUserProgress = (email, progressData) => {

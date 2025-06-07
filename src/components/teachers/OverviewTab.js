@@ -7,7 +7,8 @@ const OverviewTab = ({
   classesData, 
   studentsData,
   aiAnalysisLoading,
-  onGenerateReport 
+  onGenerateReport,
+  onAnalyzeClass
 }) => {
   return (
     <div>
@@ -48,14 +49,14 @@ const OverviewTab = ({
       {/* Classes Grid */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4">סקירת כיתות</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {classesData.map((classData) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">          {classesData.map((classData) => (
             <ClassCard 
               key={classData.id}
               classData={classData}
               studentsData={studentsData}
               aiAnalysisLoading={aiAnalysisLoading}
               onGenerateReport={onGenerateReport}
+              onAnalyzeClass={onAnalyzeClass}
             />
           ))}
         </div>
