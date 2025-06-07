@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
-import HebrewMathBox from '../components/HebrewMathBox';
+import HtmlMathBox from '../components/HtmlMathBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
@@ -124,7 +124,7 @@ const ProblemsWorkRateLesson = () => {
           <div className="border border-blue-200 rounded-lg p-4 bg-blue-50 space-y-2">
             <p><strong>עקרון מרכזי:</strong></p>            <p className="text-center my-4">
               <span className="text-lg font-semibold">קצב עבודה = </span>
-              <HebrewMathBox inline>{"\\frac{1}{\\text{זמן לסיום העבודה}}"}</HebrewMathBox>
+              <HtmlMathBox inline>{"\\frac{1}{\\text{זמן לסיום העבודה}}"}</HtmlMathBox>
             </p>
             <p>אם עובד מסיים עבודה ב-t שעות, קצב העבודה שלו הוא <FormulaBox inline>{"\\frac{1}{t}"}</FormulaBox> עבודות לשעה.</p>
           </div>
@@ -135,7 +135,7 @@ const ProblemsWorkRateLesson = () => {
           
           <p>כאשר מספר גורמים עובדים יחד, קצבי העבודה מתחברים:</p>          <p className="text-center my-4">
             <span className="text-lg font-semibold">קצב משותף = </span>
-            <HebrewMathBox inline>{"\\text{קצב}_1 + \\text{קצב}_2 + \\ldots"}</HebrewMathBox>
+            <HtmlMathBox inline>{"\\text{קצב}_1 + \\text{קצב}_2 + \\ldots"}</HtmlMathBox>
           </p>
           
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">
@@ -146,7 +146,7 @@ const ProblemsWorkRateLesson = () => {
             <li><strong>זיהוי הנתונים:</strong> מה הזמן הנדרש לכל גורם לסיים את העבודה בנפרד?</li>
             <li><strong>חישוב קצבי עבודה:</strong> עבור כל גורם, חשב את קצב העבודה.</li>
             <li><strong>חישוב קצב משותף:</strong> חבר את כל קצבי העבודה.</li>
-            <li><strong>חישוב זמן משותף:</strong> הזמן המשותף הוא <HebrewMathBox inline>{"\\frac{1}{\\text{קצב משותף}}"}</HebrewMathBox>.</li>
+            <li><strong>חישוב זמן משותף:</strong> הזמן המשותף הוא <HtmlMathBox inline>{"\\frac{1}{\\text{קצב משותף}}"}</HtmlMathBox>.</li>
             <li><strong>בדיקה:</strong> ודא שהתשובה הגיונית.</li>
           </ol>
 

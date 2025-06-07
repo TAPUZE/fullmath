@@ -1,7 +1,7 @@
 import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
-import HebrewMathBox from '../components/HebrewMathBox';
+import HtmlMathBox from '../components/HtmlMathBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
@@ -90,27 +90,26 @@ const ProblemsBuySellLesson = () => {
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">נוסחאות עיקריות</h3>          <div className="space-y-3">
             <p><strong>רווח/הפסד באחוזים:</strong></p>            <p className="text-center my-4">
-              <span className="text-lg font-semibold">אחוז רווח = </span>              <HebrewMathBox inline>
+              <span className="text-lg font-semibold">אחוז רווח = </span>              <HtmlMathBox inline>
                 {"\\frac{\\text{רווח}}{\\text{מחיר קנייה}} \\times 100\\%"}
-              </HebrewMathBox>
+              </HtmlMathBox>
             </p>
             <p className="text-center my-4">
-              <span className="text-lg font-semibold">אחוז הפסד = </span>              <HebrewMathBox inline>
+              <span className="text-lg font-semibold">אחוז הפסד = </span>              <HtmlMathBox inline>
                 {"\\frac{\\text{הפסד}}{\\text{מחיר קנייה}} \\times 100\\%"}
-              </HebrewMathBox>
+              </HtmlMathBox>
             </p>
-              <p><strong>מחיר מכירה עם רווח:</strong></p>
-            <p className="text-center my-4">
-              <span className="text-lg font-semibold">מחיר מכירה = </span>              <HebrewMathBox inline>
+              <p><strong>מחיר מכירה עם רווח:</strong></p>            <p className="text-center my-4">
+              <span className="text-lg font-semibold">מחיר מכירה = </span>              <HtmlMathBox inline>
                 {"\\text{מחיר קנייה} \\times \\left(1 + \\frac{\\text{אחוז רווח}}{100}\\right)"}
-              </HebrewMathBox>
+              </HtmlMathBox>
             </p>
             
             <p><strong>מחיר מכירה עם הפסד:</strong></p>
             <p className="text-center my-4">
-              <span className="text-lg font-semibold">מחיר מכירה = </span>              <HebrewMathBox inline>
+              <span className="text-lg font-semibold">מחיר מכירה = </span>              <HtmlMathBox inline>
                 {"\\text{מחיר קנייה} \\times \\left(1 - \\frac{\\text{אחוז הפסד}}{100}\\right)"}
-              </HebrewMathBox>
+              </HtmlMathBox>
             </p>
           </div>
 

@@ -29,9 +29,8 @@ const LessonLayout = ({ children, lessonId, title, nextLessonUrl, nextLessonPath
         <footer className="bg-gray-800 text-white text-center p-6 mt-12">
           <div className="container mx-auto">
             <p className="text-sm">
-              &copy; {new Date().getFullYear()} כל הזכויות שמורות. פלטפורמת למידה במתמטיקה.
+              &copy; {new Date().getFullYear()} כל הזכויות שמורות. HLC.
             </p>
-            <p className="text-xs mt-1">פותח בסיוע GitHub Copilot.</p>
           </div>
         </footer>
       </div>

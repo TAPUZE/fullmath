@@ -1,0 +1,230 @@
+/* HtmlMathBox CSS - Custom HTML-based mathematical expressions */
+
+.html-math-box {
+  font-family: 'Times New Roman', serif;
+  line-height: 1.4;
+}
+
+.html-math-box.inline-math {
+  display: inline-flex;
+  align-items: baseline;
+  vertical-align: baseline;
+}
+
+.html-math-box.block-math {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+
+/* Basic math elements */
+.math-regular {
+  font-style: italic;
+  font-size: 1.1em;
+}
+
+.math-operator {
+  font-style: normal;
+  font-weight: normal;
+  margin: 0 0.2em;
+}
+
+.math-space {
+  width: 0.3em;
+}
+
+/* Functions */
+.math-function {
+  font-style: normal;
+  font-weight: normal;
+  margin-right: 0.1em;
+}
+
+/* Angles */
+.math-angle {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.angle-value {
+  font-style: normal;
+}
+
+.angle-symbol {
+  font-size: 0.8em;
+  vertical-align: super;
+  margin-left: 0.1em;
+}
+
+/* Fractions */
+.math-fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.2em;
+}
+
+.fraction-numerator {
+  font-size: 0.85em;
+  padding: 0 0.1em 0.1em 0.1em;
+}
+
+.fraction-line {
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  margin: 0.1em 0;
+  min-width: 1em;
+}
+
+.fraction-denominator {
+  font-size: 0.85em;
+  padding: 0.1em 0.1em 0 0.1em;
+}
+
+/* Square roots */
+.math-sqrt {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0.1em;
+}
+
+.sqrt-symbol {
+  font-size: 1.2em;
+  margin-right: 0.1em;
+  font-weight: bold;
+}
+
+.sqrt-content {
+  border-top: 1px solid currentColor;
+  padding-top: 0.1em;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+}
+
+/* Powers/Superscripts */
+.math-power {
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.power-base {
+  font-style: normal;
+}
+
+.power-exponent {
+  font-size: 0.7em;
+  vertical-align: super;
+  margin-left: 0.1em;
+}
+
+/* Subscripts */
+.math-subscript {
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.subscript-base {
+  font-style: normal;
+}
+
+.subscript-text {
+  font-size: 0.7em;
+  vertical-align: sub;
+  margin-left: 0.1em;
+}
+
+/* Text elements */
+.math-text {
+  font-style: normal;
+  font-family: inherit;
+  margin: 0 0.1em;
+}
+
+.math-text.hebrew-text {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  font-family: 'David', 'Arial Hebrew', 'Times New Roman', serif;
+}
+
+/* Functions */
+.math-function {
+  font-style: normal;
+  font-family: 'Times New Roman', serif;
+  margin-right: 0.1em;
+}
+
+/* Angles */
+.math-angle {
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.angle-value {
+  font-style: normal;
+}
+
+.angle-symbol {
+  font-size: 0.8em;
+  vertical-align: super;
+  margin-left: 0.1em;
+}
+
+/* Special symbols */
+.math-symbol {
+  margin: 0 0.1em;
+  font-style: normal;
+}
+
+/* Parentheses and brackets */
+.math-paren,
+.math-bracket {
+  font-size: 1.1em;
+  margin: 0 0.1em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .html-math-box.block-math {
+    margin: 0.5rem 0;
+    padding: 0.3rem;
+  }
+  
+  .fraction-numerator,
+  .fraction-denominator {
+    font-size: 0.8em;
+  }
+  
+  .power-exponent,
+  .subscript-text {
+    font-size: 0.65em;
+  }
+}
+
+/* Hebrew-specific improvements */
+.hebrew-text {
+  letter-spacing: 0.05em;
+}
+
+/* Mathematical alignment */
+.math-equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+}
+
+/* Color scheme support */
+.html-math-box {
+  color: inherit;
+}
+
+/* Focus and hover states for interactive elements */
+.html-math-box:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

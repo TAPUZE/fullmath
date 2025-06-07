@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
-import HebrewMathBox from '../components/HebrewMathBox';
+import HtmlMathBox from '../components/HtmlMathBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
@@ -162,13 +162,13 @@ const CommonTrigValues = () => {
             {values.map(({ angle, sin, cos, tan }) => (
               <tr key={angle}>
                 <td className="border border-gray-300 px-3 py-2 text-center">{angle}°</td>                <td className="border border-gray-300 px-3 py-2 text-center">
-                  <FormulaBox>{sin}</FormulaBox>
+                  <HtmlMathBox inline>{sin}</HtmlMathBox>
                 </td>
                 <td className="border border-gray-300 px-3 py-2 text-center">
-                  <FormulaBox>{cos}</FormulaBox>
+                  <HtmlMathBox inline>{cos}</HtmlMathBox>
                 </td>
                 <td className="border border-gray-300 px-3 py-2 text-center">
-                  <FormulaBox>{tan}</FormulaBox>
+                  <HtmlMathBox inline>{tan}</HtmlMathBox>
                 </td>
               </tr>
             ))}
@@ -257,19 +257,19 @@ const TrigonometryRightTriangleLesson = () => {
               עבור זווית חדה <FormulaBox>\alpha</FormulaBox> במשולש ישר-זווית, מוגדרות הפונקציות הבאות:
             </p>              <div className="space-y-3">                <div className="flex items-center space-x-4">
                   <strong>סינוס (Sine):</strong>
-                  <HebrewMathBox inline>
-                    {"\\sin(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{יתר}}"}
-                  </HebrewMathBox>
+                  <HtmlMathBox inline>
+                    {"sin(α) = \\frac{\\text{ניצב מול}}{\\text{יתר}}"}
+                  </HtmlMathBox>
                 </div>                <div className="flex items-center space-x-4">
                   <strong>קוסינוס (Cosine):</strong>
-                  <HebrewMathBox inline>
-                    {"\\cos(\\alpha) = \\frac{\\text{ניצב ליד}}{\\text{יתר}}"}
-                  </HebrewMathBox>
+                  <HtmlMathBox inline>
+                    {"cos(α) = \\frac{\\text{ניצב ליד}}{\\text{יתר}}"}
+                  </HtmlMathBox>
                 </div>                <div className="flex items-center space-x-4">
                   <strong>טנגנס (Tangent):</strong>
-                  <HebrewMathBox inline>
-                    {"\\tan(\\alpha) = \\frac{\\text{ניצב מול}}{\\text{ניצב ליד}}"}
-                  </HebrewMathBox>
+                  <HtmlMathBox inline>
+                    {"tan(α) = \\frac{\\text{ניצב מול}}{\\text{ניצב ליד}}"}
+                  </HtmlMathBox>
                 </div>
               </div>
             

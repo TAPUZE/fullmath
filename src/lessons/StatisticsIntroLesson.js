@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
-import HebrewMathBox from '../components/HebrewMathBox';
 import Quiz from '../components/Quiz';
 
 // Custom frequency table component

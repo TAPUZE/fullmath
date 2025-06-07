@@ -24,8 +24,8 @@ const NavigationHeader = ({ lessonTitle }) => {
                 </div>
               </div>
               <div className="mr-3 text-right">
-                <div className="text-sm font-bold text-gray-800">מכון הלן קלר</div>
-                <div className="text-xs text-gray-600 font-medium">Helen Keller Institute</div>
+                <div className="text-sm font-bold text-gray-800">Holy Land Connect</div>
+                <div className="text-xs text-gray-600 font-medium">Holy Land Connect</div>
                 <div className="text-[10px] text-blue-600">מתמטיקה לבגרות</div>
               </div>
             </div>
