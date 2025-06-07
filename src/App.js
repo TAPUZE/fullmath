@@ -6,6 +6,8 @@ import './styles/lessons.css';
 // Import debug utilities
 import './utils/userDataDebug.js';
 import './utils/testUserData.js';
+import './utils/realStudentDataProvider.js';
+import './utils/sampleDataGenerator.js';
 
 // ============================================
 // AUTHENTICATION COMPONENTS
