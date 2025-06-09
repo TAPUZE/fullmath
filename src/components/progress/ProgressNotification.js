@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Notification from '../Notification';
+import Notification from '../ui/Notification';
 
 export const useProgressNotification = () => {
   const [notification, setNotification] = useState(null);

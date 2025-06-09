@@ -1,7 +1,7 @@
 import React from 'react';
 import ProgressStatistics from './ProgressStatistics';
 import ProgressActions from './ProgressActions';
-import LessonNavigation from '../LessonNavigation';
+import LessonNavigation from '../lesson/LessonNavigation';
 import { getQuestionnaireLessonId } from '../../utils/lessonNavigation';
 
 const ProgressLayout = ({ 

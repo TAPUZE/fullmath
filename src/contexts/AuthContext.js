@@ -13,13 +13,15 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     // Check if user is already logged in
     const savedUser = localStorage.getItem('currentUser');
+    console.log('Debug - Saved user in localStorage:', savedUser);
+    
     if (savedUser) {
       try {
         const userData = JSON.parse(savedUser);
+        console.log('Debug - Parsed user data:', userData);
         setCurrentUser(userData);
       } catch (error) {
         console.error('Error parsing saved user data:', error);

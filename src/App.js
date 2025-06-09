@@ -14,90 +14,90 @@ import './utils/sampleDataGenerator.js';
 // ============================================
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { UserDataProvider } from './contexts/UserDataContext';
-import LoginScreen from './components/LoginScreen';
-import ProtectedRoute from './components/ProtectedRoute';
-import UserHeader from './components/UserHeader';
-import UserInitializer from './components/UserInitializer';
+import LoginScreen from './components/auth/LoginScreen';
+import ProtectedRoute from './components/core/ProtectedRoute';
+import UserHeader from './components/layout/UserHeader';
+import UserInitializer from './components/core/UserInitializer';
 
 // ============================================
 // MAIN COMPONENTS
 // ============================================
-import HomePage from './components/HomePage';
-import LessonMenu from './components/LessonMenu';
-import ProgressDashboard from './components/ProgressDashboard';
-import TeachersDashboard from './components/TeachersDashboard';
+import HomePage from './components/layout/HomePage';
+import LessonMenu from './components/lesson/LessonMenu';
+import ProgressDashboard from './components/progress/ProgressDashboard';
+import TeachersDashboard from './components/teachers/TeachersDashboard';
 
 // ============================================
 // SCHOOL ADMIN COMPONENTS
 // ============================================
-import SchoolAdminLogin from './components/SchoolAdminLogin';
-import SchoolAdminDashboard from './components/SchoolAdminDashboard';
+import SchoolAdminLogin from './components/auth/SchoolAdminLogin';
+import SchoolAdminDashboard from './components/admin/SchoolAdminDashboard';
 
 // ============================================
 // DEV DASHBOARD COMPONENTS
 // ============================================
-import DevLogin from './components/DevLogin';
-import DevDashboard from './components/DevDashboard';
+import DevLogin from './components/auth/DevLogin';
+import DevDashboard from './components/dev/DevDashboard';
 
 // ============================================
 // CHATBOT COMPONENTS
 // ============================================
-import ChatbotTestPage from './components/ChatbotTestPage';
+// import ChatbotTestPage from './components/ChatbotTestPage';
 
 // ============================================
 // QUESTIONNAIRE COMPONENTS
 // ============================================
-import Questionnaire35182 from './components/Questionnaire35182';
-import Questionnaire35381 from './components/Questionnaire35381';
-import Questionnaire35382 from './components/Questionnaire35382';
+import Questionnaire35182 from './components/questionnaires/Questionnaire35182';
+import Questionnaire35381 from './components/questionnaires/Questionnaire35381';
+import Questionnaire35382 from './components/questionnaires/Questionnaire35382';
 
 // ============================================
 // GROUP 801 - ALGEBRA & BASIC MATH
 // ============================================
-import AlgebraLinearEquationOneVariableLesson from './lessons/AlgebraLinearEquationOneVariableLesson';
-import AlgebraLinearEquationsTwoVariablesLesson from './lessons/AlgebraLinearEquationsTwoVariablesLesson';
-import AlgebraPercentagesLesson from './lessons/AlgebraPercentagesLesson';
-import AlgebraInequalitiesLesson from './lessons/AlgebraInequalitiesLesson';
-import AlgebraQuadraticEquationsLesson from './lessons/AlgebraQuadraticEquationsLesson';
-import AlgebraWordProblemsLesson from './lessons/AlgebraWordProblemsLesson';
-import GeometryShapesLesson from './lessons/GeometryShapesLesson';
-import GeometryShapesPropertiesLesson from './lessons/GeometryShapesPropertiesLesson';
-import GeometryAreaPerimeterLesson from './lessons/GeometryAreaPerimeterLesson';
+import AlgebraLinearEquationOneVariableLesson from './lessons/801/AlgebraLinearEquationOneVariableLesson';
+import AlgebraLinearEquationsTwoVariablesLesson from './lessons/801/AlgebraLinearEquationsTwoVariablesLesson';
+import AlgebraPercentagesLesson from './lessons/801/AlgebraPercentagesLesson';
+import AlgebraInequalitiesLesson from './lessons/801/AlgebraInequalitiesLesson';
+import AlgebraQuadraticEquationsLesson from './lessons/801/AlgebraQuadraticEquationsLesson';
+import AlgebraWordProblemsLesson from './lessons/801/AlgebraWordProblemsLesson';
+import GeometryShapesPropertiesLesson from './lessons/801/GeometryShapesPropertiesLesson';
+import GeometryAreaPerimeterLesson from './lessons/801/GeometryAreaPerimeterLesson';
+import AnalyticGeometryPointsLesson from './lessons/801/AnalyticGeometryPointsLesson';
+import AnalyticGeometrySlopeLesson from './lessons/801/AnalyticGeometrySlopeLesson';
+import AnalyticGeometryDistanceLesson from './lessons/801/AnalyticGeometryDistanceLesson';
+import AnalyticGeometryMidpointLesson from './lessons/801/AnalyticGeometryMidpointLesson';
+import TrigonometryRightTriangleLesson from './lessons/801/TrigonometryRightTriangleLesson';
+import ArithmeticSequencesIntroLesson from './lessons/801/ArithmeticSequencesIntroLesson';
+import StatisticsIntroLesson from './lessons/801/StatisticsIntroLesson';
+import ProbabilityIntroLesson from './lessons/801/ProbabilityIntroLesson';
 
 // ============================================
-// GROUP 802 - GEOMETRY & FUNCTIONS
+// GROUP 802 - INTERMEDIATE MATH & FUNCTIONS
 // ============================================
-import AnalyticGeometryPointsLesson from './lessons/AnalyticGeometryPointsLesson';
-import AnalyticGeometrySlopeLesson from './lessons/AnalyticGeometrySlopeLesson';
-import AnalyticGeometryDistanceLesson from './lessons/AnalyticGeometryDistanceLesson';
-import AnalyticGeometryMidpointLesson from './lessons/AnalyticGeometryMidpointLesson';
-import AnalyticGeometryLineContinuedLesson from './lessons/AnalyticGeometryLineContinuedLesson';
-import AnalyticGeometryCircleLesson from './lessons/AnalyticGeometryCircleLesson';
-import AnalyticGeometryCircleTangentLesson from './lessons/AnalyticGeometryCircleTangentLesson';
-import AnalyticGeometryCircleLineIntersectionLesson from './lessons/AnalyticGeometryCircleLineIntersectionLesson';
-import TrigonometryRightTriangleLesson from './lessons/TrigonometryRightTriangleLesson';
-import FunctionsParabolaInvestigationLesson from './lessons/FunctionsParabolaInvestigationLesson';
+import FunctionsParabolaInvestigationLesson from './lessons/802/FunctionsParabolaInvestigationLesson';
+import SequencesArithmeticSumLesson from './lessons/802/SequencesArithmeticSumLesson';
+import GrowthDecayLesson from './lessons/802/GrowthDecayLesson';
+import StatisticsDispersionLesson from './lessons/802/StatisticsDispersionLesson';
+import ProbabilityTreeConditionalLesson from './lessons/802/ProbabilityTreeConditionalLesson';
+import NormalDistributionLesson from './lessons/802/NormalDistributionLesson';
+import GeometryShapesLesson from './lessons/802/GeometryShapesLesson';
 
 // ============================================
-// GROUP 803 - ADVANCED MATH & STATISTICS
+// GROUP 803 - ADVANCED MATH & CALCULUS
 // ============================================
-import CalculusPolynomialLesson from './lessons/CalculusPolynomialLesson';
-import CalculusRationalLesson from './lessons/CalculusRationalLesson';
-import CalculusSquareRootLesson from './lessons/CalculusSquareRootLesson';
-import CalculusOptimizationLesson from './lessons/CalculusOptimizationLesson';
-import CalculusIntegralPolynomialLesson from './lessons/CalculusIntegralPolynomialLesson';
-import ArithmeticSequencesIntroLesson from './lessons/ArithmeticSequencesIntroLesson';
-import SequencesArithmeticSumLesson from './lessons/SequencesArithmeticSumLesson';
-import StatisticsIntroLesson from './lessons/StatisticsIntroLesson';
-import StatisticsDispersionLesson from './lessons/StatisticsDispersionLesson';
-import NormalDistributionLesson from './lessons/NormalDistributionLesson';
-import ProbabilityIntroLesson from './lessons/ProbabilityIntroLesson';
-import ProbabilityTreeConditionalLesson from './lessons/ProbabilityTreeConditionalLesson';
-import ProblemsWorkRateLesson from './lessons/ProblemsWorkRateLesson';
-import ProblemsMotionLesson from './lessons/ProblemsMotionLesson';
-import ProblemsGeometricAlgebraicLesson from './lessons/ProblemsGeometricAlgebraicLesson';
-import ProblemsBuySellLesson from './lessons/ProblemsBuySellLesson';
-import GrowthDecayLesson from './lessons/GrowthDecayLesson';
+import AnalyticGeometryLineContinuedLesson from './lessons/803/AnalyticGeometryLineContinuedLesson';
+import AnalyticGeometryCircleLesson from './lessons/803/AnalyticGeometryCircleLesson';
+import AnalyticGeometryCircleTangentLesson from './lessons/803/AnalyticGeometryCircleTangentLesson';
+import AnalyticGeometryCircleLineIntersectionLesson from './lessons/803/AnalyticGeometryCircleLineIntersectionLesson';
+import CalculusPolynomialLesson from './lessons/803/CalculusPolynomialLesson';
+import CalculusRationalLesson from './lessons/803/CalculusRationalLesson';
+import CalculusSquareRootLesson from './lessons/803/CalculusSquareRootLesson';
+import CalculusOptimizationLesson from './lessons/803/CalculusOptimizationLesson';
+import CalculusIntegralPolynomialLesson from './lessons/803/CalculusIntegralPolynomialLesson';
+import ProblemsWorkRateLesson from './lessons/803/ProblemsWorkRateLesson';
+import ProblemsMotionLesson from './lessons/803/ProblemsMotionLesson';
+import ProblemsGeometricAlgebraicLesson from './lessons/803/ProblemsGeometricAlgebraicLesson';
+import ProblemsBuySellLesson from './lessons/803/ProblemsBuySellLesson';
 
 function App() {
   return (
@@ -112,7 +112,10 @@ function App() {
 }
 
 function AppContent() {
-  const { isAuthenticated, login, isLoading } = useAuth();
+  const { isAuthenticated, login, isLoading, currentUser } = useAuth();
+
+  // Debug: Log authentication state
+  console.log('Debug - Auth state:', { isAuthenticated, isLoading, currentUser });
 
   if (isLoading) {
     return (
@@ -126,8 +129,9 @@ function AppContent() {
   }
 
   if (!isAuthenticated) {
+    console.log('Debug - Showing login screen');
     return <LoginScreen onLogin={login} />;
-  }  return (
+  }return (
     <div className="min-h-screen bg-gray-50">
       <UserInitializer>
         <UserHeader />
@@ -163,14 +167,12 @@ function AppContent() {
         <Route path="/admin/*" element={<SchoolAdminDashboard />} />        {/* Dev Dashboard Routes */}
         <Route path="/dev/login" element={<DevLogin />} />
         <Route path="/dev" element={<DevDashboard />} />
-        <Route path="/dev/*" element={<DevDashboard />} />
-
-        {/* Chatbot Test Routes */}
-        <Route path="/chatbot/test" element={
+        <Route path="/dev/*" element={<DevDashboard />} />        {/* Chatbot Test Routes */}
+        {/* <Route path="/chatbot/test" element={
           <ProtectedRoute>
             <ChatbotTestPage />
           </ProtectedRoute>
-        } />
+        } /> */}
 
         {/* Questionnaire Routes - Available to Students and Teachers */}
         <Route path="/questionnaire/35182" element={
