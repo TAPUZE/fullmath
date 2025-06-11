@@ -3,6 +3,7 @@ import LessonLayout from '../../components/lesson/LessonLayout';
 import FormulaBox from '../../components/math/FormulaBox';
 import InteractiveExercise from '../../components/math/InteractiveExercise';
 import Quiz from '../../components/math/Quiz';
+import StepByStepSolution from '../../components/math/StepByStepSolution';
 
 const AlgebraLinearEquationsTwoVariablesLesson = () => {
   const SystemOfEquations = ({ children }) => (
@@ -16,6 +17,122 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
     const normalize = (answer) => answer.replace(/[()]/g, '').replace(/\s+/g, '').trim();
     return normalize(userAnswer) === normalize(correctAnswer);
   };
+
+  const exercises = [
+    {
+      id: 'ex1',
+      question: (
+        <div>
+          <p>תרגיל 1: פתור את מערכת המשוואות הבאה:</p>
+          <SystemOfEquations>
+            {"\\begin{cases}"} 
+            x + y = 10 \\ 
+            x - y = 4 
+            {"\\end{cases}"}
+          </SystemOfEquations>
+          <p>רשום את הפתרון כזוג סדור (x,y), למשל: (7,3).</p>
+        </div>
+      ),
+      inputs: [{
+        id: 'answer',
+        label: 'תשובה',
+        placeholder: 'הכנס זוג סדור (x,y)',
+        type: 'text'
+      }],
+      correctAnswers: {
+        answer: "(7,3)"
+      },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא (בשיטת חיבור משוואות):"
+          steps={[
+            { step: "1. נחבר את שתי המשוואות:", formula: "(x+y) + (x-y) = 10 + 4" },
+            { step: "2. נפשט:", formula: "2x = 14" },
+            { step: "3. נחלק ב-2:", formula: "x = 7" },
+            { step: "4. נציב x=7 במשוואה הראשונה:", formula: "7 + y = 10" },
+            { step: "5. נפתור:", formula: "y = 3" },
+            { step: "6. נכתוב את התשובה:", formula: "(7,3)", highlight: true }
+          ]}
+        />
+      )
+    },
+    {
+      id: 'ex2',
+      question: (
+        <div>
+          <p>תרגיל 2: פתור את מערכת המשוואות הבאה:</p>
+          <SystemOfEquations>
+            {"\\begin{cases}"} 
+            2x + 3y = 12 \\ 
+            x - y = 1 
+            {"\\end{cases}"}
+          </SystemOfEquations>
+          <p>רשום את הפתרון כזוג סדור (x,y).</p>
+        </div>
+      ),
+      inputs: [{
+        id: 'answer',
+        label: 'תשובה',
+        placeholder: 'הכנס זוג סדור (x,y)',
+        type: 'text'
+      }],
+      correctAnswers: {
+        answer: "(3,2)"
+      },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא (בשיטת ההצבה):"
+          steps={[
+            { step: "1. נבודד את x מהמשוואה השנייה:", formula: "x = y + 1" },
+            { step: "2. נציב במשוואה הראשונה:", formula: "2(y+1) + 3y = 12" },
+            { step: "3. נפתח סוגריים:", formula: "2y + 2 + 3y = 12" },
+            { step: "4. נכנס איברים:", formula: "5y + 2 = 12" },
+            { step: "5. נפתור:", formula: "5y = 10 \\Rightarrow y = 2" },
+            { step: "6. נציב y=2 בביטוי של x:", formula: "x = 2 + 1 = 3" },
+            { step: "7. נכתוב את התשובה:", formula: "(3,2)", highlight: true }
+          ]}
+        />
+      )
+    },
+    {
+      id: 'ex3',
+      question: (
+        <div>
+          <p>תרגיל 3: פתור את מערכת המשוואות הבאה:</p>
+          <SystemOfEquations>
+            {"\\begin{cases}"} 
+            3x - 2y = 4 \\ 
+            2x + y = 8 
+            {"\\end{cases}"}
+          </SystemOfEquations>
+          <p>רשום את הפתרון כזוג סדור (x,y).</p>
+        </div>
+      ),
+      inputs: [{
+        id: 'answer',
+        label: 'תשובה',
+        placeholder: 'הכנס זוג סדור (x,y)',
+        type: 'text'
+      }],
+      correctAnswers: {
+        answer: "(4,4)"
+      },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא (בשיטת השוואת מקדמים):"
+          steps={[
+            { step: "1. נכפיל את המשוואה השנייה ב-2:", formula: "4x + 2y = 16" },
+            { step: "2. נחבר למשוואה הראשונה:", formula: "(3x-2y) + (4x+2y) = 4 + 16" },
+            { step: "3. נפשט:", formula: "7x = 20" },
+            { step: "4. נפתור:", formula: "x = 4" },
+            { step: "5. נציב x=4 במשוואה השנייה:", formula: "2(4) + y = 8" },
+            { step: "6. נפתור:", formula: "8 + y = 8 \\Rightarrow y = 4" },
+            { step: "7. נכתוב את התשובה:", formula: "(4,4)", highlight: true }
+          ]}
+        />
+      )
+    }
+  ];
 
   return (
     <LessonLayout 
@@ -38,10 +155,10 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
           <p>הצורה הכללית של מערכת כזו היא:</p>
           
           <SystemOfEquations>
-            \begin{"{"}cases{"}"} 
+            {"\\begin{cases}"} 
             a_1x + b_1y = c_1 \\ 
             a_2x + b_2y = c_2 
-            \end{"{"}cases{"}"}
+            {"\\end{cases}"}
           </SystemOfEquations>
           
           <p>
@@ -80,24 +197,33 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
             <p>המשוואות המתקבלות הן:</p>
             
             <SystemOfEquations>
-              \begin{"{"}cases{"}"} 
+              {"\\begin{cases}"} 
               g = 2r \\ 
               g + r = 21 
-              \end{"{"}cases{"}"}
+              {"\\end{cases}"}
             </SystemOfEquations>
 
-            <p className="mt-2"><strong>פתרון בשיטת ההצבה:</strong></p>
-            <div className="space-y-2 mt-2">
-              <p>1. המשוואה הראשונה כבר מציגה את <FormulaBox inline>g</FormulaBox> מבודד: <FormulaBox inline>g = 2r</FormulaBox>.</p>
-              <p>2. נציב את <FormulaBox inline>2r</FormulaBox> במקום <FormulaBox inline>g</FormulaBox> במשוואה השנייה: <FormulaBox inline>(2r) + r = 21</FormulaBox>.</p>
-              <p>3. נפתור את המשוואה שהתקבלה: <FormulaBox inline>3r = 21 \Rightarrow r = \frac{21}{3} \Rightarrow r = 7</FormulaBox>.</p>
-              <p>4. נציב <FormulaBox inline>r=7</FormulaBox> במשוואה הראשונה: <FormulaBox inline>g = 2 \cdot 7 \Rightarrow g = 14</FormulaBox>.</p>
-            </div>
-            
-            <p className="mt-2">
-              לכן, לרון יש 7 עפרונות ולגיל יש 14 עפרונות. הפתרון הוא <FormulaBox inline>(g,r) = (14,7)</FormulaBox> 
-              (או <FormulaBox inline>(x,y) = (14,7)</FormulaBox> אם היינו מסמנים ב-x ו-y).
-            </p>
+            <StepByStepSolution
+              title="פתרון מלא (בשיטת ההצבה):"
+              steps={[
+                { step: "1. המשוואה הראשונה כבר מציגה את g מבודד:", formula: "g = 2r" },
+                { step: "2. נציב את 2r במקום g במשוואה השנייה:", formula: "(2r) + r = 21" },
+                { step: "3. נפשט:", formula: "3r = 21" },
+                { step: "4. נפתור:", formula: "r = \\frac{21}{3} = 7" },
+                { step: "5. נציב r=7 במשוואה הראשונה:", formula: "g = 2 \\cdot 7 = 14" },
+                { step: "6. נכתוב את התשובה:", formula: "(g,r) = (14,7)", highlight: true }
+              ]}
+            />
+          </div>
+
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+            <h4 className="text-lg font-semibold mb-3 text-yellow-800">טיפים חשובים:</h4>
+            <ul className="list-disc list-inside space-y-2 pr-5">
+              <li>בחר את שיטת הפתרון המתאימה ביותר למערכת הנתונה.</li>
+              <li>בדוק תמיד את הפתרון על ידי הצבה בשתי המשוואות המקוריות.</li>
+              <li>בבעיות מילוליות, חשוב להגדיר היטב את המשתנים ולכתוב את המשוואות בצורה נכונה.</li>
+              <li>כאשר משתמשים בשיטת השוואת מקדמים, כדאי לבחור את הנעלם שהמקדמים שלו קלים יותר להשוואה.</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -108,64 +234,23 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
           מתרגלים ✍️
         </h2>
         
-        <div className="space-y-8">          <InteractiveExercise
-            id="ex1"
-            question={
-              <div>
-                <p>תרגיל 1: פתור את מערכת המשוואות הבאה:</p>
-                <SystemOfEquations>
-                  \begin{"{"}cases{"}"} 
-                  x + y = 10 \\ 
-                  x - y = 4 
-                  \end{"{"}cases{"}"}
-                </SystemOfEquations>
-                <p>רשום את הפתרון כזוג סדור (x,y), למשל: (7,3).</p>
-              </div>
-            }
-            correctAnswer="(7,3)"
-            placeholder="הכנס זוג סדור (x,y)"
-            checkCustom={(userAnswer) => checkSystemAnswer(userAnswer, "7,3")}
-            solution={
-              <div>
-                <p><strong>פתרון מלא (בשיטת חיבור משוואות):</strong></p>
-                <p>נחבר את שתי המשוואות:</p>
-                <FormulaBox>(x+y) + (x-y) = 10 + 4</FormulaBox>
-                <FormulaBox>2x = 14 \Rightarrow x = 7</FormulaBox>
-                <p>נציב <FormulaBox inline>x=7</FormulaBox> במשוואה הראשונה: <FormulaBox inline>7 + y = 10 \Rightarrow y = 3</FormulaBox>.</p>
-                <p>הפתרון הוא: <FormulaBox inline>(7,3)</FormulaBox>.</p>
-              </div>
-            }
-            lessonId="algebra-linear-equations-two-variables"
-          />          <InteractiveExercise
-            id="ex2"
-            question={
-              <div>
-                <p>תרגיל 2: פתור את מערכת המשוואות הבאה:</p>
-                <SystemOfEquations>
-                  \begin{"{"}cases{"}"} 
-                  2x + 3y = 12 \\ 
-                  x - y = 1 
-                  \end{"{"}cases{"}"}
-                </SystemOfEquations>
-                <p>רשום את הפתרון כזוג סדור (x,y).</p>
-              </div>
-            }
-            correctAnswer="(3,2)"
-            placeholder="הכנס זוג סדור (x,y)"
-            checkCustom={(userAnswer) => checkSystemAnswer(userAnswer, "3,2")}
-            solution={
-              <div>
-                <p><strong>פתרון מלא (בשיטת ההצבה):</strong></p>
-                <p>מהמשוואה השנייה נבודד את <FormulaBox inline>x</FormulaBox>: <FormulaBox inline>x = y + 1</FormulaBox>.</p>
-                <p>נציב זאת במשוואה הראשונה: <FormulaBox inline>2(y+1) + 3y = 12</FormulaBox>.</p>
-                <FormulaBox>2y + 2 + 3y = 12</FormulaBox>
-                <FormulaBox>5y + 2 = 12 \Rightarrow 5y = 10 \Rightarrow y = 2</FormulaBox>
-                <p>נציב <FormulaBox inline>y=2</FormulaBox> בביטוי שבודדנו: <FormulaBox inline>x = 2 + 1 = 3</FormulaBox>.</p>
-                <p>הפתרון הוא: <FormulaBox inline>(3,2)</FormulaBox>.</p>
-              </div>
-            }
-            lessonId="algebra-linear-equations-two-variables"
-          />
+        <div className="space-y-8">
+          {exercises.map((exercise) => (
+            <InteractiveExercise
+              key={exercise.id}
+              id={exercise.id}
+              question={exercise.question}
+              inputs={exercise.inputs}
+              correctAnswers={exercise.correctAnswers}
+              checkCustom={(userAnswers) => {
+                const answers = Object.values(userAnswers);
+                const correctAnswers = Object.values(exercise.correctAnswers);
+                return answers.every((userAnswer, index) => checkSystemAnswer(userAnswer, correctAnswers[index]));
+              }}
+              solution={exercise.solution}
+              lessonId="algebra-linear-equations-two-variables"
+            />
+          ))}
         </div>
       </section>
 
@@ -179,10 +264,10 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
               <div>
                 <p>מהו ערך <FormulaBox inline>x</FormulaBox> בפתרון מערכת המשוואות הבאה?</p>
                 <SystemOfEquations>
-                  \begin{"{"}cases{"}"} 
+                  {"\\begin{cases}"} 
                   x + y = 5 \\ 
                   x - y = 1 
-                  \end{"{"}cases{"}"}
+                  {"\\end{cases}"}
                 </SystemOfEquations>
               </div>
             ),
@@ -201,10 +286,10 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
               <div>
                 <p>מהו ערך <FormulaBox inline>y</FormulaBox> בפתרון מערכת המשוואות הבאה?</p>
                 <SystemOfEquations>
-                  \begin{"{"}cases{"}"} 
+                  {"\\begin{cases}"} 
                   y = 2x \\ 
                   x + y = 9 
-                  \end{"{"}cases{"}"}
+                  {"\\end{cases}"}
                 </SystemOfEquations>
               </div>
             ),
@@ -217,7 +302,8 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
             correctAnswer: "c",
             explanation: "הצבה: x + 2x = 9 ⟹ 3x = 9 ⟹ x = 3. אז y = 2 × 3 = 6"
           }
-        ]}        />
+        ]}
+      />
     </LessonLayout>
   );
 };

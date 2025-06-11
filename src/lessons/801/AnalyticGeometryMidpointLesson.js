@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LessonLayout from '../../components/lesson/LessonLayout';
 import FormulaBox from '../../components/math/FormulaBox';
 import Quiz from '../../components/math/Quiz';
-import CoordinateExercise from '../../components/math/CoordinateExercise';
+import InteractiveExercise from '../../components/math/InteractiveExercise';
 import StepByStepSolution from '../../components/math/StepByStepSolution';
 
 const x_1 = 0, x_2 = 0, y_1 = 0, y_2 = 0; // Replace with appropriate values or imports
@@ -113,92 +113,6 @@ const AnalyticGeometryMidpointLesson = () => {
     </div>
   );
 
-  // Custom midpoint exercise component
-  const MidpointExercise = ({ question, correctAnswer, solution, exerciseId }) => {
-    const [userXAnswer, setUserXAnswer] = useState('');
-    const [userYAnswer, setUserYAnswer] = useState('');
-    const [feedback, setFeedback] = useState('');
-    const [showSolution, setShowSolution] = useState(false);
-
-    const checkAnswer = () => {
-      const isXCorrect = userXAnswer.trim() === correctAnswer.xM;
-      const isYCorrect = userYAnswer.trim() === correctAnswer.yM;
-      
-      if (isXCorrect && isYCorrect) {
-        setFeedback('כל הכבוד! התשובה נכונה.');
-      } else {
-        let message = 'התשובה אינה נכונה. ';
-        if (!isXCorrect && !isYCorrect) {
-          message += 'שני השיעורים שגויים.';
-        } else if (!isXCorrect) {
-          message += 'שיעור ה-X שגוי.';
-        } else {
-          message += 'שיעור ה-Y שגוי.';
-        }
-        setFeedback(message);
-      }
-    };    return (
-      <div className="bg-gray-50 p-4 border border-gray-300 rounded-lg">
-        <p className="font-medium mb-3" dir="rtl">{question}</p>
-        
-        <div className="space-y-3" dir="rtl">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">שיעור X של האמצע:</label>
-            <input
-              type="text"
-              value={userXAnswer}
-              onChange={(e) => setUserXAnswer(e.target.value)}
-              className="mt-1 border border-gray-300 p-2 rounded w-full md:w-1/2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="הכנס xM"
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700">שיעור Y של האמצע:</label>
-            <input
-              type="text"
-              value={userYAnswer}
-              onChange={(e) => setUserYAnswer(e.target.value)}
-              className="mt-1 border border-gray-300 p-2 rounded w-full md:w-1/2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="הכנס yM"
-            />
-          </div>
-        </div>
-        
-        <div className="mt-3 text-right">
-          <button
-            onClick={checkAnswer}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-150 ease-in-out ml-2"
-          >
-            בדוק תשובה
-          </button>
-          <button
-            onClick={() => setShowSolution(!showSolution)}
-            className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-md transition duration-150 ease-in-out"
-          >
-            {showSolution ? 'הסתר פתרון' : 'הצג פתרון'}
-          </button>
-        </div>
-        
-        {feedback && (
-          <div className={`mt-3 p-3 rounded-md text-sm ${
-            feedback.includes('נכונה') 
-              ? 'bg-green-100 border border-green-300 text-green-800' 
-              : 'bg-red-100 border border-red-300 text-red-800'
-          }`}>
-            {feedback}
-          </div>
-        )}
-        
-        {showSolution && (
-          <div className="mt-3 p-3 border-t border-gray-200 bg-white rounded-md">
-            {solution}
-          </div>
-        )}
-      </div>
-    );
-  };
-
   const quizQuestions = [
     {
       id: 'q1',
@@ -226,66 +140,216 @@ const AnalyticGeometryMidpointLesson = () => {
     }
   ];
 
+  const exercises = [
+    {
+      id: 'ex1',
+      question: 'מצא את שיעורי אמצע הקטע שקצותיו הם A(2,5) ו-B(8,1).',
+      correctAnswer: { xM: '5', yM: '3' },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "1. נסמן את הנתונים:", formula: "A(2,5) \\Rightarrow x_1=2, y_1=5" },
+            { step: "2. נסמן את הנקודה השנייה:", formula: "B(8,1) \\Rightarrow x_2=8, y_2=1" },
+            { step: "3. נחשב את שיעור ה-X של נקודת האמצע:", formula: "x_M = \\frac{x_1 + x_2}{2} = \\frac{2 + 8}{2} = \\frac{10}{2} = 5" },
+            { step: "4. נחשב את שיעור ה-Y של נקודת האמצע:", formula: "y_M = \\frac{y_1 + y_2}{2} = \\frac{5 + 1}{2} = \\frac{6}{2} = 3" },
+            { step: "5. נכתוב את התשובה:", formula: "M(5,3)", highlight: true }
+          ]}
+        />
+      )
+    },
+    {
+      id: 'ex2',
+      question: 'נקודה M(3,1) היא אמצע הקטע AB. קצה אחד של הקטע הוא A(1,1). מצא את שיעורי הנקודה B.',
+      correctAnswer: { xB: '5', yB: '1' },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "1. נסמן את הנתונים:", formula: "M(3,1) \\Rightarrow x_M=3, y_M=1" },
+            { step: "2. נסמן את הנקודה A:", formula: "A(1,1) \\Rightarrow x_1=1, y_1=1" },
+            { step: "3. נסמן את הנקודה B:", formula: "B(x_2,y_2)" },
+            { step: "4. נשתמש בנוסחת אמצע קטע:", formula: "x_M = \\frac{x_1 + x_2}{2} \\Rightarrow 3 = \\frac{1 + x_2}{2}" },
+            { step: "5. נפתור את המשוואה:", formula: "6 = 1 + x_2 \\Rightarrow x_2 = 5" },
+            { step: "6. נשתמש בנוסחה עבור y:", formula: "y_M = \\frac{y_1 + y_2}{2} \\Rightarrow 1 = \\frac{1 + y_2}{2}" },
+            { step: "7. נפתור את המשוואה:", formula: "2 = 1 + y_2 \\Rightarrow y_2 = 1" },
+            { step: "8. נכתוב את התשובה:", formula: "B(5,1)", highlight: true }
+          ]}
+        />
+      )
+    },
+    {
+      id: 'ex3',
+      question: 'קטע AB הוא קוטר של מעגל שמרכזו בנקודה M(4,2). אם A(1,3), מצא את שיעורי הנקודה B.',
+      correctAnswer: { xB: '7', yB: '1' },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "1. נסמן את הנתונים:", formula: "M(4,2) \\Rightarrow x_M=4, y_M=2" },
+            { step: "2. נסמן את הנקודה A:", formula: "A(1,3) \\Rightarrow x_1=1, y_1=3" },
+            { step: "3. נסמן את הנקודה B:", formula: "B(x_2,y_2)" },
+            { step: "4. נשתמש בנוסחת אמצע קטע:", formula: "x_M = \\frac{x_1 + x_2}{2} \\Rightarrow 4 = \\frac{1 + x_2}{2}" },
+            { step: "5. נפתור את המשוואה:", formula: "8 = 1 + x_2 \\Rightarrow x_2 = 7" },
+            { step: "6. נשתמש בנוסחה עבור y:", formula: "y_M = \\frac{y_1 + y_2}{2} \\Rightarrow 2 = \\frac{3 + y_2}{2}" },
+            { step: "7. נפתור את המשוואה:", formula: "4 = 3 + y_2 \\Rightarrow y_2 = 1" },
+            { step: "8. נכתוב את התשובה:", formula: "B(7,1)", highlight: true }
+          ]}
+        />
+      )
+    }
+  ];
+
   return (
     <LessonLayout
       title="אמצע קטע"
       lessonId="35182-analytic-geometry-midpoint"
       nextLessonPath="/lessons/analytic-geometry-points"
-    >      {/* Learn Section */}
-      <section id="learn" aria-labelledby="learn-heading" className="mb-12">
-        <h2 id="learn-heading" className="text-2xl font-semibold text-blue-600 mb-6 border-b-2 border-blue-200 pb-2">
+    >
+      {/* Learning Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
           לומדים 📚
         </h2>
-        <div className="space-y-6 text-gray-700 leading-relaxed" dir="rtl">
+        
+        <div className="space-y-6 text-gray-700 leading-relaxed">
           <p>
             נקודת האמצע של קטע היא הנקודה הנמצאת בדיוק באמצע בין שתי נקודות הקצה של הקטע, ומחלקת אותו לשני קטעים שווים באורכם.
           </p>
-          
-          <h3 className="text-xl font-semibold mt-6 mb-2">נוסחת אמצע קטע</h3>          <p>
-            אם נתונות שתי נקודות קצה של קטע, <FormulaBox>\(A(x_1, y_1)\)</FormulaBox> ו-<FormulaBox>\(B(x_2, y_2)\)</FormulaBox>, הקואורדינטות של נקודת האמצע <FormulaBox>\(M(x_M, y_M)\)</FormulaBox> של הקטע AB מחושבות כך:
-          </p>
-          <div className="formula-box-block my-6 text-center">
-            <FormulaBox>\(x_M = \frac{x_1 + x_2}{2}\)</FormulaBox>
-            <br />
-            <FormulaBox>\(y_M = \frac{y_1 + y_2}{2}\)</FormulaBox>
+
+          <div className="bg-blue-50 border-r-4 border-blue-400 p-4 mb-4">
+            <h4 className="text-lg font-semibold mb-2">נוסחת אמצע קטע</h4>
+            <p>
+              אם נתונות שתי נקודות קצה של קטע, <FormulaBox>\(A(x_1, y_1)\)</FormulaBox> ו-<FormulaBox>\(B(x_2, y_2)\)</FormulaBox>, 
+              הקואורדינטות של נקודת האמצע <FormulaBox>\(M(x_M, y_M)\)</FormulaBox> של הקטע AB מחושבות כך:
+            </p>
+            <div className="my-4 text-center">
+              <FormulaBox>\(x_M = \frac{x_1 + x_2}{2}\)</FormulaBox>
+              <br />
+              <FormulaBox>\(y_M = \frac{y_1 + y_2}{2}\)</FormulaBox>
+            </div>
+            <p>
+              כלומר, שיעור ה-X של נקודת האמצע הוא הממוצע של שיעורי ה-X של נקודות הקצה, 
+              ושיעור ה-Y של נקודת האמצע הוא הממוצע של שיעורי ה-Y של נקודות הקצה.
+            </p>
           </div>
-          <p>
-            כלומר, שיעור ה-X של נקודת האמצע הוא הממוצע של שיעורי ה-X של נקודות הקצה, ושיעור ה-Y של נקודת האמצע הוא הממוצע של שיעורי ה-Y של נקודות הקצה.
-          </p>
 
           <div className="text-center my-6">
             <MidpointDiagram />
           </div>
 
-          <div className="example-box">
-            <SolvedExample />
+          <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <h4 className="text-lg font-semibold mb-2">דוגמה פתורה:</h4>
+            <p className="font-medium">מצא את שיעורי אמצע הקטע שקצותיו הם <FormulaBox>\(A(2,5)\)</FormulaBox> ו-<FormulaBox>\(B(8,1)\)</FormulaBox>.</p>
+            
+            <div className="text-center my-4">
+              <ExampleDiagram />
+            </div>
+            
+            <StepByStepSolution
+              title="פתרון מלא:"
+              steps={[
+                { step: "נסמן את הנתונים:", formula: "A(2,5) \\Rightarrow x_1=2, y_1=5" },
+                { step: "נסמן את הנקודה השנייה:", formula: "B(8,1) \\Rightarrow x_2=8, y_2=1" },
+                { step: "נחשב את שיעור ה-X של נקודת האמצע:", formula: "x_M = \\frac{x_1 + x_2}{2} = \\frac{2 + 8}{2} = \\frac{10}{2} = 5" },
+                { step: "נחשב את שיעור ה-Y של נקודת האמצע:", formula: "y_M = \\frac{y_1 + y_2}{2} = \\frac{5 + 1}{2} = \\frac{6}{2} = 3" },
+                { step: "התשובה:", formula: "M(5,3)", highlight: true }
+              ]}
+            />
           </div>
-        </div>
-      </section>      {/* Practice Section */}
-      <section id="practice" aria-labelledby="practice-heading" className="mb-12">
-        <h2 id="practice-heading" className="text-2xl font-semibold text-blue-600 mb-4 border-b-2 border-blue-200 pb-2">
-          מתרגלים ✍️
-        </h2>        <div className="space-y-8 mt-6">
-          <CoordinateExercise
-            question="מצא את שיעורי נקודת האמצע של הקטע שקצותיו P(-3, 7) ו-Q(5, -1)."
-            correctAnswer={{ x: '1', y: '3' }}
-            exerciseId="ex1"
-            labels={{ x: 'שיעור X של האמצע', y: 'שיעור Y של האמצע' }}
-            placeholders={{ x: 'הכנס xM', y: 'הכנס yM' }}
-            solution={
-              <StepByStepSolution 
-                steps={[
-                  { step: 'שיעור X של האמצע:', formula: 'x_M = \\frac{-3 + 5}{2} = \\frac{2}{2} = 1' },
-                  { step: 'שיעור Y של האמצע:', formula: 'y_M = \\frac{7 + (-1)}{2} = \\frac{6}{2} = 3' },
-                  { step: 'נקודת האמצע היא', formula: '(1,3)' }
-                ]}
-              />
-            }
-          />
+
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+            <h4 className="text-lg font-semibold mb-3 text-yellow-800">טיפים חשובים:</h4>
+            <ul className="list-disc list-inside space-y-2 pr-5">
+              <li>תמיד לסמן את הנתונים בצורה מסודרת: A(x₁,y₁) ו-B(x₂,y₂).</li>
+              <li>לזכור ששיעורי נקודת האמצע הם הממוצע של שיעורי נקודות הקצה.</li>
+              <li>בדוק את הפתרון על ידי חישוב המרחקים מנקודת האמצע לקצוות.</li>
+              <li>שים לב לסימנים של השיעורים (חיוביים או שליליים).</li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* Quiz Section */}      <Quiz questions={quizQuestions} />
+      {/* Practice Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
+          מתרגלים ✍️
+        </h2>
+        
+        <div className="space-y-8">
+          {exercises.map((exercise) => (
+            <InteractiveExercise
+              key={exercise.id}
+              id={exercise.id}
+              question={
+                <div>
+                  <p>תרגיל {exercise.id.replace('ex', '')}: {exercise.question}</p>
+                </div>
+              }
+              inputs={[
+                {
+                  id: 'xM',
+                  label: 'שיעור X',
+                  type: 'text',
+                  placeholder: 'הכנס את שיעור ה-X'
+                },
+                {
+                  id: 'yM',
+                  label: 'שיעור Y',
+                  type: 'text',
+                  placeholder: 'הכנס את שיעור ה-Y'
+                }
+              ]}
+              correctAnswers={exercise.correctAnswer}
+              solution={exercise.solution}
+              lessonId="analytic-geometry-midpoint"
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Quiz Section */}
+      <Quiz
+        title="בחן את עצמך 🧐"
+        questions={[
+          {
+            id: 'q1',
+            question: 'מהם שיעורי נקודת האמצע של קטע שקצותיו (0,0) ו-(10,4)?',
+            options: [
+              '(10,4)',
+              '(5,2)',
+              '(2,5)',
+              '(0,2)'
+            ],
+            correctAnswer: '(5,2)',
+            explanation: 'xM = (0+10)/2 = 5, yM = (0+4)/2 = 2, לכן נקודת האמצע היא (5,2)'
+          },
+          {
+            id: 'q2',
+            question: 'נקודה M(3,1) היא אמצע הקטע AB. קצה אחד של הקטע הוא A(1,1). מהם שיעורי הנקודה B?',
+            options: [
+              '(2,1)',
+              '(5,1)',
+              '(4,0)',
+              '(5,0)'
+            ],
+            correctAnswer: '(5,1)',
+            explanation: 'אם M אמצע AB, אז 3 = (1+xB)/2 ו-1 = (1+yB)/2. פותרים: xB = 5, yB = 1'
+          },
+          {
+            id: 'q3',
+            question: 'קטע AB הוא קוטר של מעגל שמרכזו בנקודה M(4,2). אם A(1,3), מהם שיעורי הנקודה B?',
+            options: [
+              '(7,1)',
+              '(5,1)',
+              '(7,3)',
+              '(5,3)'
+            ],
+            correctAnswer: '(7,1)',
+            explanation: 'מרכז המעגל הוא אמצע הקוטר. נשתמש בנוסחת אמצע קטע: 4 = (1+xB)/2 ו-2 = (3+yB)/2. פותרים: xB = 7, yB = 1'
+          }
+        ]}
+      />
     </LessonLayout>
   );
 };

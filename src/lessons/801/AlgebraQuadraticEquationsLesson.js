@@ -12,6 +12,9 @@ const AlgebraQuadraticEquationsLesson = () => {
       correctAnswer: '0.5,-3',
       tolerance: 0.01,
       allowFractions: true,
+      inputs: [
+        { id: 'answer', label: 'תשובה', type: 'text', placeholder: 'הכנס פתרון' }
+      ],
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
@@ -33,6 +36,9 @@ const AlgebraQuadraticEquationsLesson = () => {
       question: 'חשב את הדיסקרימיננטה של המשוואה \\(x^2 - 4x + 1 = 0\\) וקבע כמה פתרונות יש למשוואה.',
       correctAnswer: '12',
       tolerance: 0.01,
+      inputs: [
+        { id: 'answer', label: 'תשובה', type: 'text', placeholder: 'הכנס פתרון' }
+      ],
       solution: (
         <div>
           <p><strong>פתרון:</strong></p>
@@ -49,6 +55,9 @@ const AlgebraQuadraticEquationsLesson = () => {
       question: 'פתור את המשוואה החסרה \\(3x^2 - 12 = 0\\). הכנס את הפתרון החיובי.',
       correctAnswer: '2',
       tolerance: 0.01,
+      inputs: [
+        { id: 'answer', label: 'תשובה', type: 'text', placeholder: 'הכנס פתרון' }
+      ],
       solution: (
         <div>
           <p><strong>פתרון:</strong></p>
@@ -178,8 +187,9 @@ const AlgebraQuadraticEquationsLesson = () => {
               key={exercise.id}
               id={exercise.id}
               question={exercise.question}
-              correctAnswer={exercise.correctAnswer}
-              placeholder={exercise.placeholder}
+              inputs={exercise.inputs}
+              correctAnswers={{ answer: exercise.correctAnswer }}
+              tolerance={exercise.tolerance}
               solution={exercise.solution}
               allowNegative={exercise.allowNegative}
               lessonId="algebra-quadratic-equations"

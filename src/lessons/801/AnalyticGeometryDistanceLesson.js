@@ -3,6 +3,7 @@ import LessonLayout from '../../components/lesson/LessonLayout';
 import FormulaBox from '../../components/math/FormulaBox';
 import InteractiveExercise from '../../components/math/InteractiveExercise';
 import Quiz from '../../components/math/Quiz';
+import StepByStepSolution from '../../components/math/StepByStepSolution';
 
 const AnalyticGeometryDistanceLesson = () => {
   // SVG Diagram Component for distance visualization
@@ -85,77 +86,52 @@ const AnalyticGeometryDistanceLesson = () => {
     </div>
   );
 
-  // Solved example component
-  const SolvedExample = () => (
-    <div className="border border-blue-200 bg-blue-50 p-4 rounded-lg mt-4">
-      <h4 className="text-lg font-semibold mb-2">דוגמה פתורה (מתוך חומר הבחינה):</h4>
-      <p className="font-medium">שאלה: מצא את המרחק בין הנקודות <FormulaBox>\(A(1,2)\)</FormulaBox> ו-<FormulaBox>\(B(4,6)\)</FormulaBox>.</p>
-      <div className="mt-2 space-y-1">
-        <p><strong>פתרון:</strong></p>
-        <p>נסמן: <FormulaBox>\(x_1=1, y_1=2\)</FormulaBox> ו-<FormulaBox>\(x_2=4, y_2=6\)</FormulaBox>.</p>
-        <p>נציב בנוסחת המרחק:</p>
-        <p><FormulaBox>\(d = \sqrt{(4 - 1)^2 + (6 - 2)^2}\)</FormulaBox></p>
-        <p><FormulaBox>\(d = \sqrt{(3)^2 + (4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5\)</FormulaBox></p>
-        <p className="mt-2 font-semibold">המרחק בין הנקודות הוא 5 יחידות.</p>
-      </div>
-    </div>
-  );
-
   const exercises = [
     {
       id: 'ex1',
-      question: 'מצא את המרחק בין הנקודות C(-2, 1) וD(3, 13).',
-      correctAnswer: '13',
-      solution: (
+      question: (
         <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p><FormulaBox>\(d = \sqrt{(3 - (-2))^2 + (13 - 1)^2}\)</FormulaBox></p>
-          <p><FormulaBox>\(d = \sqrt{(5)^2 + (12)^2} = \sqrt{25 + 144} = \sqrt{169} = 13\)</FormulaBox></p>
-          <p>המרחק הוא 13 יחידות.</p>
+          <p>תרגיל 1: מצא את המרחק בין הנקודות C(-2, 1) וD(3, 13).</p>
         </div>
       ),
-      placeholder: 'הכנס את המרחק'
+      inputs: [
+        { id: 'answer', label: 'תשובה', type: 'text', placeholder: 'הכנס את המרחק' }
+      ],
+      correctAnswers: { answer: '13' },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "נסמן את הקואורדינטות:", formula: "C(-2,1), D(3,13)" },
+            { step: "נציב בנוסחת המרחק:", formula: "d = √[(3 - (-2))² + (13 - 1)²]" },
+            { step: "נחשב:", formula: "d = √[(5)² + (12)²] = √[25 + 144] = √169 = 13" },
+            { step: "המרחק הוא 13 יחידות", highlight: true }
+          ]}
+        />
+      )
     },
     {
       id: 'ex2',
-      question: 'מצא את המרחק בין הנקודה E(0, -5) לראשית הצירים (0,0).',
-      correctAnswer: '5',
-      solution: (
+      question: (
         <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p><FormulaBox>\(d = \sqrt{(0 - 0)^2 + (-5 - 0)^2}\)</FormulaBox></p>
-          <p><FormulaBox>\(d = \sqrt{0 + 25} = \sqrt{25} = 5\)</FormulaBox></p>
-          <p>המרחק הוא 5 יחידות.</p>
+          <p>תרגיל 2: מצא את המרחק בין הנקודה E(0, -5) לראשית הצירים (0,0).</p>
         </div>
       ),
-      placeholder: 'הכנס את המרחק'
-    }
-  ];
-
-  const quizQuestions = [
-    {
-      id: 'q1',
-      question: 'מהו המרחק בין הנקודות (2,2) ו-(5,6)?',
-      options: [
-        { value: 'a', label: '3' },
-        { value: 'b', label: '4' },
-        { value: 'c', label: '5' },
-        { value: 'd', label: '7' }
+      inputs: [
+        { id: 'answer', label: 'תשובה', type: 'text', placeholder: 'הכנס את המרחק' }
       ],
-      correctAnswer: 'c',
-      explanation: 'd = √[(5-2)² + (6-2)²] = √[9 + 16] = √25 = 5'
-    },
-    {
-      id: 'q2',
-      question: 'המרחק בין הנקודה (x, 0) לנקודה (0, 0) הוא 3. מה יכול להיות הערך של x?',
-      options: [
-        { value: 'a', label: '0' },
-        { value: 'b', label: '9 או 9-' },
-        { value: 'c', label: '3 בלבד' },
-        { value: 'd', label: '3 או 3-' }
-      ],
-      correctAnswer: 'd',
-      explanation: 'd = √[(x-0)² + (0-0)²] = √[x²] = |x| = 3, לכן x = 3 או x = -3'
+      correctAnswers: { answer: '5' },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "נסמן את הקואורדינטות:", formula: "E(0,-5), O(0,0)" },
+            { step: "נציב בנוסחת המרחק:", formula: "d = √[(0 - 0)² + (-5 - 0)²]" },
+            { step: "נחשב:", formula: "d = √[0 + 25] = √25 = 5" },
+            { step: "המרחק הוא 5 יחידות", highlight: true }
+          ]}
+        />
+      )
     }
   ];
 
@@ -165,45 +141,75 @@ const AnalyticGeometryDistanceLesson = () => {
       lessonId="35182-analytic-geometry-distance"
       nextLessonPath="/lessons/analytic-geometry-midpoint"
     >
-      {/* Learn Section */}
+      {/* Learning Section */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-purple-600 mb-6 border-b-2 border-purple-200 pb-2">
+        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
           לומדים 📚
         </h2>
+        
         <div className="space-y-6 text-gray-700 leading-relaxed">
           <p>
             בגיאומטריה אנליטית, אנו יכולים לחשב את המרחק בין שתי נקודות במישור אם ידועות לנו הקואורדינטות שלהן.
           </p>
 
-          <h3 className="text-xl font-semibold mt-6 mb-2">1. מרחק בין נקודות על קו ישר (אופקי או אנכי)</h3>
-          <p>
-            לפני שנציג את הנוסחה הכללית, נבחן מקרים פשוטים יותר. במקרים אלו, המרחק הוא פשוט ההפרש (בערך מוחלט) בין השיעורים המשתנים.
-          </p>
-          
-          <DistanceDiagram />
+          <div className="bg-blue-50 border-r-4 border-blue-400 p-4 mb-4">
+            <h4 className="text-lg font-semibold mb-2">1. מרחק בין נקודות על קו ישר (אופקי או אנכי)</h4>
+            <p>
+              במקרים פשוטים, המרחק הוא ההפרש (בערך מוחלט) בין השיעורים המשתנים.
+            </p>
+            
+            <DistanceDiagram />
 
-          <ul className="list-disc list-inside space-y-2 pr-5">
-            <li>
-              <strong>קו אופקי:</strong> אם שתי נקודות <FormulaBox>\(A(x_1, y)\)</FormulaBox> ו-<FormulaBox>\(B(x_2, y)\)</FormulaBox> נמצאות על קו אופקי, המרחק ביניהן הוא <FormulaBox>\(d = |x_2 - x_1|\)</FormulaBox>.
-            </li>
-            <li>
-              <strong>קו אנכי:</strong> אם שתי נקודות <FormulaBox>{`\\(C(x, y_1)\\)`}</FormulaBox> ו-<FormulaBox>{`\\(D(x, y_2)\\)`}</FormulaBox> נמצאות על קו אנכי, המרחק ביניהן הוא <FormulaBox>{`\\(d = |y_2 - y_1|\\)`}</FormulaBox>.
-            </li>
-          </ul>
-          
-          <h3 className="text-xl font-semibold mt-6 mb-2">2. נוסחת המרחק הכללית</h3>
-          <p>
-            כאשר הנקודות אינן בהכרח על קו אופקי או אנכי, אנו משתמשים בנוסחה הכללית. אם נתונות שתי נקודות <FormulaBox>{`\\(A(x_1, y_1)\\)`}</FormulaBox> ו-<FormulaBox>{`\\(B(x_2, y_2)\\)`}</FormulaBox>, המרחק ביניהן, d, מחושב כך:
-          </p>          <div className="my-4 text-center">
-            <FormulaBox>{`\\(d = \\\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\)`}</FormulaBox>
+            <ul className="list-disc list-inside space-y-2 pr-5 mt-2">
+              <li>
+                <strong>קו אופקי:</strong> אם שתי נקודות <FormulaBox>\(A(x_1, y)\)</FormulaBox> ו-<FormulaBox>\(B(x_2, y)\)</FormulaBox> נמצאות על קו אופקי, המרחק ביניהן הוא <FormulaBox>\(d = |x_2 - x_1|\)</FormulaBox>.
+              </li>
+              <li>
+                <strong>קו אנכי:</strong> אם שתי נקודות <FormulaBox>\(C(x, y_1)\)</FormulaBox> ו-<FormulaBox>\(D(x, y_2)\)</FormulaBox> נמצאות על קו אנכי, המרחק ביניהן הוא <FormulaBox>\(d = |y_2 - y_1|\)</FormulaBox>.
+              </li>
+            </ul>
           </div>
-          <p>
-            נוסחה זו מבוססת על משפט פיתגורס. הקטע AB הוא היתר במשולש ישר-זווית שהניצבים שלו הם <FormulaBox>{`\\(|x_2 - x_1|\\)`}</FormulaBox> ו-<FormulaBox>{`\\(|y_2 - y_1|\\)`}</FormulaBox>.
-          </p>
 
-          <PythagoreanDiagram />
+          <div className="bg-blue-50 border-r-4 border-blue-400 p-4 mb-4">
+            <h4 className="text-lg font-semibold mb-2">2. נוסחת המרחק הכללית</h4>
+            <p>
+              כאשר הנקודות אינן בהכרח על קו אופקי או אנכי, אנו משתמשים בנוסחה הכללית.
+            </p>
+            
+            <PythagoreanDiagram />
 
-          <SolvedExample />
+            <div className="mt-4">
+              <p>אם נתונות שתי נקודות <FormulaBox>\(A(x_1, y_1)\)</FormulaBox> ו-<FormulaBox>\(B(x_2, y_2)\)</FormulaBox>, המרחק ביניהן, d, מחושב כך:</p>
+              <div className="text-center my-4">
+                <FormulaBox>\(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\)</FormulaBox>
+              </div>
+            </div>
+          </div>
+
+          <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <h4 className="text-lg font-semibold mb-2">דוגמה פתורה:</h4>
+            <p className="font-medium">מצא את המרחק בין הנקודות <FormulaBox>\(A(1,2)\)</FormulaBox> ו-<FormulaBox>\(B(4,6)\)</FormulaBox>.</p>
+            
+            <StepByStepSolution
+              title="פתרון מלא:"
+              steps={[
+                { step: "נסמן:", formula: "x₁=1, y₁=2, x₂=4, y₂=6" },
+                { step: "נציב בנוסחת המרחק:", formula: "d = √[(4 - 1)² + (6 - 2)²]" },
+                { step: "נחשב:", formula: "d = √[(3)² + (4)²] = √[9 + 16] = √25 = 5" },
+                { step: "המרחק בין הנקודות הוא 5 יחידות", highlight: true }
+              ]}
+            />
+          </div>
+
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+            <h4 className="text-lg font-semibold mb-3 text-yellow-800">טיפים חשובים:</h4>
+            <ul className="list-disc list-inside space-y-2 pr-5">
+              <li>תמיד לזכור שצריך לחסר את הקואורדינטות בסדר הנכון: x₂ - x₁ ו-y₂ - y₁.</li>
+              <li>לשים לב לסימנים של הקואורדינטות, במיוחד כשהן שליליות.</li>
+              <li>לזכור שתמיד מחשבים את השורש הריבועי של סכום הריבועים.</li>
+              <li>במקרים פשוטים (קו אופקי או אנכי), אפשר להשתמש בנוסחה המקוצרת.</li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -211,21 +217,65 @@ const AnalyticGeometryDistanceLesson = () => {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
           מתרגלים ✍️
-        </h2>        <div className="space-y-8 mt-6">
+        </h2>
+        
+        <div className="space-y-8">
           {exercises.map((exercise) => (
             <InteractiveExercise
               key={exercise.id}
               id={exercise.id}
               question={exercise.question}
-              correctAnswer={exercise.correctAnswer}
+              inputs={exercise.inputs}
+              correctAnswers={exercise.correctAnswers}
               solution={exercise.solution}
-              placeholder={exercise.placeholder}
               lessonId="analytic-geometry-distance"
             />
           ))}
         </div>
-      </section>      {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />
+      </section>
+
+      {/* Quiz Section */}
+      <Quiz
+        title="בחן את עצמך 🧐"
+        questions={[
+          {
+            id: 'q1',
+            question: 'מהו המרחק בין הנקודות (2,2) ו-(5,6)?',
+            options: [
+              '3',
+              '4',
+              '5',
+              '7'
+            ],
+            correctAnswer: '5',
+            explanation: 'd = √[(5-2)² + (6-2)²] = √[9 + 16] = √25 = 5'
+          },
+          {
+            id: 'q2',
+            question: 'המרחק בין הנקודה (x, 0) לנקודה (0, 0) הוא 3. מה יכול להיות הערך של x?',
+            options: [
+              '0',
+              '9 או 9-',
+              '3 בלבד',
+              '3 או 3-'
+            ],
+            correctAnswer: '3 או 3-',
+            explanation: 'd = √[(x-0)² + (0-0)²] = √[x²] = |x| = 3, לכן x = 3 או x = -3'
+          },
+          {
+            id: 'q3',
+            question: 'מהו המרחק בין הנקודות (3,4) ו-(3,-4)?',
+            options: [
+              '0',
+              '4',
+              '8',
+              '10'
+            ],
+            correctAnswer: '8',
+            explanation: 'כאשר שתי הנקודות נמצאות על קו אנכי, המרחק הוא ההפרש המוחלט בין שיעורי ה-y: |4 - (-4)| = |8| = 8'
+          }
+        ]}
+      />
     </LessonLayout>
   );
 };

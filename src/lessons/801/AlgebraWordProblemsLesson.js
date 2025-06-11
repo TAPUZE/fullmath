@@ -64,6 +64,9 @@ const AlgebraWordProblemsLesson = () => {
       hint: 'סמן את מחיר העיפרון ב-x.',
       correctAnswer: '3.57',
       tolerance: 0.1,
+      inputs: [
+        { id: 'answer', label: 'תשובה', type: 'text', placeholder: 'הכנס מחיר עיפרון (בשקלים)' }
+      ],
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
@@ -76,14 +79,16 @@ const AlgebraWordProblemsLesson = () => {
           <p>בידוד הנעלם: <FormulaBox>\(x = \frac{25}{7} \approx 3.57\)</FormulaBox></p>
           <p>מחיר העיפרון הוא כ-3.57 ש"ח.</p>
         </div>
-      ),
-      placeholder: 'הכנס מחיר עיפרון (בשקלים)'
+      )
     },
     {
       id: 'ex2',
       question: 'סכום שלושה מספרים עוקבים הוא 48. מהו המספר הקטן ביותר?',
       hint: 'סמן את המספר הקטן ביותר ב-x. המספרים העוקבים יהיו x, x+1, x+2.',
       correctAnswer: '15',
+      inputs: [
+        { id: 'answer', label: 'תשובה', type: 'text', placeholder: 'הכנס את המספר הקטן ביותר' }
+      ],
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
@@ -96,8 +101,7 @@ const AlgebraWordProblemsLesson = () => {
           <p>בידוד הנעלם: <FormulaBox>\(x = \frac{45}{3} = 15\)</FormulaBox></p>
           <p>המספר הקטן ביותר הוא 15.</p>
         </div>
-      ),
-      placeholder: 'הכנס את המספר הקטן ביותר'
+      )
     }
   ];
 
@@ -173,11 +177,11 @@ const AlgebraWordProblemsLesson = () => {
               id={exercise.id}
               question={exercise.question}
               hint={exercise.hint}
-              correctAnswer={exercise.correctAnswer}
-              solution={exercise.solution}
-              placeholder={exercise.placeholder}
+              inputs={exercise.inputs}
+              correctAnswers={{ answer: exercise.correctAnswer }}
               tolerance={exercise.tolerance}
               customValidator={exercise.tolerance ? validateFloatAnswer : null}
+              solution={exercise.solution}
               lessonId="algebra-word-problems"
             />
           ))}

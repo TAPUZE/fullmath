@@ -3,6 +3,7 @@ import LessonLayout from '../../components/lesson/LessonLayout';
 import FormulaBox from '../../components/math/FormulaBox';
 import InteractiveExercise from '../../components/math/InteractiveExercise';
 import Quiz from '../../components/math/Quiz';
+import StepByStepSolution from '../../components/math/StepByStepSolution';
 
 // Shape visualization components
 const ShapeVisualization = ({ shape, title, properties }) => {
@@ -212,181 +213,171 @@ const GeometryShapesPropertiesLesson = () => {
   const exercises = [
     {
       id: 'ex1',
-      question: (        <span>
-          במשולש ישר-זווית ABC (<FormulaBox inline>∠C=90°</FormulaBox>), אורכי הניצבים הם{' '}
-          <FormulaBox inline>AC=3</FormulaBox> ס"מ ו-<FormulaBox inline>BC=4</FormulaBox> ס"מ. 
-          מהו אורך היתר AB?
-        </span>
-      ),
-      correctAnswer: '5',
-      solution: (
+      question: (
         <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p>לפי משפט פיתגורס: <FormulaBox inline>AC² + BC² = AB²</FormulaBox>.</p>          <p><FormulaBox inline>3² + 4² = AB² ⇒ 9 + 16 = AB² ⇒ 25 = AB²</FormulaBox></p>
-          <p><FormulaBox inline>AB = √25 = 5</FormulaBox>. אורך היתר AB הוא 5 ס"מ.</p>
+          <p>תרגיל 1: במשולש ישר-זווית, אורך הניצב הראשון הוא 3 ס"מ ואורך הניצב השני הוא 4 ס"מ. מהו אורך היתר?</p>
         </div>
       ),
-      placeholder: 'הכנס אורך היתר (בספרות בלבד)'
+      inputs: [{
+        id: 'answer',
+        label: 'תשובה',
+        type: 'text',
+        placeholder: 'הכנס אורך היתר (בס"מ)'
+      }],
+      correctAnswers: {
+        answer: '5'
+      },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "לפי משפט פיתגורס:", formula: "a^2 + b^2 = c^2" },
+            { step: "הצבת הערכים:", formula: "3^2 + 4^2 = c^2" },
+            { step: "חישוב:", formula: "9 + 16 = c^2" },
+            { step: "פישוט:", formula: "25 = c^2" },
+            { step: "חילוץ c:", formula: "c = \\sqrt{25} = 5" },
+            { step: "התשובה:", formula: "c = 5 \\text{ ס\"מ}", highlight: true }
+          ]}
+        />
+      )
     },
     {
       id: 'ex2',
       question: (
-        <span>
-          במקבילית ABCD, זווית A היא <FormulaBox inline>70°</FormulaBox>. מה גודלה של זווית B?
-        </span>
-      ),
-      correctAnswer: '110',
-      solution: (
-        <div>          <p><strong>פתרון מלא:</strong></p>
-          <p>במקבילית, סכום כל שתי זוויות סמוכות הוא <FormulaBox inline>180°</FormulaBox>.</p>
-          <p><FormulaBox inline>∠A + ∠B = 180° ⇒ 70° + ∠B = 180° ⇒ ∠B = 110°</FormulaBox>.</p>
+        <div>
+          <p>תרגיל 2: במקבילית, זווית A היא 70 מעלות. מה גודלה של זווית B?</p>
         </div>
       ),
-      placeholder: 'הכנס גודל זווית B (במעלות)'
+      inputs: [{
+        id: 'answer',
+        label: 'תשובה',
+        type: 'text',
+        placeholder: 'הכנס גודל זווית B (במעלות)'
+      }],
+      correctAnswers: {
+        answer: '110'
+      },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "במקבילית, זוויות נגדיות שוות:", formula: "\\angle A = \\angle C = 70^\\circ" },
+            { step: "סכום הזוויות במקבילית הוא 360 מעלות:", formula: "\\angle A + \\angle B + \\angle C + \\angle D = 360^\\circ" },
+            { step: "הצבת הערכים:", formula: "70^\\circ + \\angle B + 70^\\circ + \\angle D = 360^\\circ" },
+            { step: "במקבילית, זוויות נגדיות שוות:", formula: "\\angle B = \\angle D" },
+            { step: "פישוט:", formula: "140^\\circ + 2\\angle B = 360^\\circ" },
+            { step: "חילוץ זווית B:", formula: "2\\angle B = 220^\\circ" },
+            { step: "התשובה:", formula: "\\angle B = 110^\\circ", highlight: true }
+          ]}
+        />
+      )
     }
   ];
 
   const quizQuestions = [
     {
-      id: 'q1',      question: (
-        <span>
-          במשולש שווה-שוקיים, זווית הראש היא <FormulaBox inline>80°</FormulaBox>. 
-          מה גודלה של כל אחת מזוויות הבסיס?
-        </span>),
+      id: 'q1',
+      question: 'במשולש שווה-שוקיים, זווית הראש היא 80°. מה גודלה של כל אחת מזוויות הבסיס?',
       options: [
-        { value: 'a', label: <FormulaBox inline>40°</FormulaBox> },
-        { value: 'b', label: <FormulaBox inline>50°</FormulaBox> },
-        { value: 'c', label: <FormulaBox inline>60°</FormulaBox> },
-        { value: 'd', label: <FormulaBox inline>100°</FormulaBox> }
+        '40°',
+        '50°',
+        '60°',
+        '100°'
       ],
-      correctAnswer: 'b'
+      correctAnswer: '50°',
+      explanation: 'במשולש שווה-שוקיים, זוויות הבסיס שוות. סכום הזוויות במשולש הוא 180°. לכן: 180° - 80° = 100°, ו-100° ÷ 2 = 50° לכל זווית בסיס.'
     },
     {
       id: 'q2',
       question: 'איזו מהתכונות הבאות אינה נכונה תמיד למלבן?',
       options: [
-        { value: 'a', label: 'כל הזוויות ישרות.' },
-        { value: 'b', label: 'האלכסונים שווים באורכם.' },
-        { value: 'c', label: 'האלכסונים מאונכים זה לזה.' },
-        { value: 'd', label: 'הצלעות הנגדיות מקבילות.' }
+        'כל הזוויות ישרות',
+        'האלכסונים שווים באורכם',
+        'האלכסונים מאונכים זה לזה',
+        'הצלעות הנגדיות מקבילות'
       ],
-      correctAnswer: 'c'
+      correctAnswer: 'האלכסונים מאונכים זה לזה',
+      explanation: 'במלבן, האלכסונים שווים באורכם אך אינם מאונכים זה לזה. האלכסונים מאונכים זה לזה רק בריבוע.'
+    },
+    {
+      id: 'q3',
+      question: 'במקבילית, מה נכון לגבי הזוויות הסמוכות?',
+      options: [
+        'הן שוות',
+        'הן משלימות ל-90°',
+        'הן משלימות ל-180°',
+        'אין קשר ביניהן'
+      ],
+      correctAnswer: 'הן משלימות ל-180°',
+      explanation: 'במקבילית, הזוויות הסמוכות משלימות אחת את השנייה ל-180° בגלל שהצלעות מקבילות.'
     }
   ];
 
   return (
     <LessonLayout
-      title="תכונות גיאומטריות של משולשים ומרובעים"
-      lessonId="35182-geometry-shapes-properties"
-      nextLessonPath="/lessons/probability-intro"
+      title="תכונות של צורות גיאומטריות"
+      lessonId="35182-geometry-shapes"
+      nextLessonPath="/lesson/35182-geometry-angles"
     >
-      {/* Learn Section */}
+      {/* Learning Section */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-purple-600 mb-6 border-b-2 border-purple-200 pb-2">
+        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
           לומדים 📚
         </h2>
-        <div className="space-y-8 text-gray-700 leading-relaxed">
-          <p className="mb-4">
-            בשיעור זה נסקור את התכונות המרכזיות של משולשים ומרובעים שונים. 
-            שימו לב לסימונים בסקיצות המצורפות לכל צורה, הם יעזרו לכם להבין את התכונות.
+        
+        <div className="space-y-6 text-gray-700 leading-relaxed">
+          <p>
+            בצורות גיאומטריות יש תכונות מיוחדות שמאפשרות לנו לפתור בעיות ולחשב גדלים שונים. 
+            נכיר את התכונות העיקריות של הצורות הבסיסיות.
           </p>
-          
-          <h3 className="text-2xl font-semibold text-green-600 mb-3">משולשים</h3>
-          
-          <ShapeVisualization
-            shape="triangle-general"
-            title="כללי (משולש ABC)"
-            properties={[              <>סכום הזוויות במשולש הוא תמיד <FormulaBox inline>180°</FormulaBox>. (<FormulaBox inline>∠A + ∠B + ∠C = 180°</FormulaBox>)</>,
-              'זווית חיצונית למשולש שווה לסכום שתי הזוויות הפנימיות שאינן צמודות לה.',
-              <>סכום שתי צלעות במשולש גדול מהצלע השלישית (למשל, <FormulaBox inline>{`a+b > c`}</FormulaBox>).</>
-            ]}
-          />
 
-          <ShapeVisualization
-            shape="triangle-isosceles"
-            title="משולש שווה-שוקיים (AB=AC)"            properties={[
-              'שתי שוקיים שוות באורכן (AB=AC).',
-              <>זוויות הבסיס שוות זו לזו (<FormulaBox inline>∠B = ∠C</FormulaBox>).</>,
-              'התיכון לבסיס, הגובה לבסיס וחוצה זווית הראש מתלכדים.'
-            ]}
-          />
+          <div className="bg-blue-50 border-r-4 border-blue-400 p-4 mb-4">
+            <h4 className="text-lg font-semibold mb-2">משולש</h4>
+            <p>למשולש יש שלוש צלעות ושלוש זוויות. סכום הזוויות במשולש הוא תמיד 180 מעלות.</p>
+            <ul className="list-disc list-inside space-y-2 pr-5 mt-2">
+              <li>משולש שווה-שוקיים: יש לו שתי צלעות שוות ושתי זוויות שוות.</li>
+              <li>משולש שווה-צלעות: כל הצלעות שוות וכל הזוויות שוות ל-60 מעלות.</li>
+              <li>משולש ישר-זווית: יש לו זווית של 90 מעלות, ומתקיים בו משפט פיתגורס.</li>
+            </ul>
+          </div>
 
-          <ShapeVisualization
-            shape="triangle-equilateral"
-            title="משולש שווה-צלעות"            properties={[
-              'כל שלוש הצלעות שוות באורכן.',
-              <>כל שלוש הזוויות שוות <FormulaBox inline>60°</FormulaBox> כל אחת.</>
-            ]}
-          />
+          <div className="bg-green-50 border-r-4 border-green-400 p-4 mb-4">
+            <h4 className="text-lg font-semibold mb-2">מקבילית</h4>
+            <p>למקבילית יש ארבע צלעות וארבע זוויות, עם התכונות הבאות:</p>
+            <ul className="list-disc list-inside space-y-2 pr-5 mt-2">
+              <li>הצלעות הנגדיות מקבילות ושוות באורכן.</li>
+              <li>הזוויות הנגדיות שוות.</li>
+              <li>סכום הזוויות הסמוכות הוא 180 מעלות.</li>
+              <li>האלכסונים חוצים זה את זה.</li>
+            </ul>
+          </div>
 
-          <ShapeVisualization
-            shape="triangle-right"
-            title={<>משולש ישר-זווית (<FormulaBox inline>∠C = 90°</FormulaBox>)</>}
-            properties={[              <>זווית אחת ישרה (<FormulaBox inline>90°</FormulaBox>). הניצבים הם a, b והיתר הוא c.</>,
-              <><strong>משפט פיתגורס:</strong> <FormulaBox inline>a² + b² = c²</FormulaBox>.</>,
-              'התיכון ליתר שווה למחצית היתר.',
-              <>במשולש ישר-זווית שזוויותיו החדות הן <FormulaBox inline>30°, 60°</FormulaBox>, הניצב שמול הזווית של <FormulaBox inline>30°</FormulaBox> שווה למחצית היתר.</>
-            ]}
-          />
+          <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <h4 className="text-lg font-semibold mb-2">דוגמה פתורה:</h4>
+            <p className="font-medium">במקבילית ABCD, זווית A היא 60 מעלות. מה גודלן של שאר הזוויות?</p>
+            
+            <StepByStepSolution
+              title="פתרון מלא:"
+              steps={[
+                { step: "במקבילית, זוויות נגדיות שוות:", formula: "\\angle A = \\angle C = 60^\\circ" },
+                { step: "סכום הזוויות הסמוכות הוא 180 מעלות:", formula: "\\angle A + \\angle B = 180^\\circ" },
+                { step: "הצבת הערך של זווית A:", formula: "60^\\circ + \\angle B = 180^\\circ" },
+                { step: "חילוץ זווית B:", formula: "\\angle B = 120^\\circ" },
+                { step: "במקבילית, זוויות נגדיות שוות:", formula: "\\angle B = \\angle D = 120^\\circ" },
+                { step: "התשובה:", formula: "\\angle A = \\angle C = 60^\\circ, \\angle B = \\angle D = 120^\\circ", highlight: true }
+              ]}
+            />
+          </div>
 
-          <hr className="my-8 border-gray-300" />
-          
-          <h3 className="text-2xl font-semibold text-green-600 mb-3">מרובעים (ABCD)</h3>
-
-          <ShapeVisualization
-            shape="parallelogram"
-            title="מקבילית"
-            properties={[              'צלעות נגדיות מקבילות (AB || DC, AD || BC) ושוות (AB = DC, AD = BC).',
-              <>זוויות נגדיות שוות (<FormulaBox inline>∠A = ∠C, ∠B = ∠D</FormulaBox>).</>,
-              <>סכום זוויות סמוכות <FormulaBox inline>180°</FormulaBox>.</>,
-              'אלכסונים חוצים זה את זה.'
-            ]}
-          />
-
-          <ShapeVisualization
-            shape="rectangle"
-            title="מלבן"            properties={[
-              'כל תכונות המקבילית.',
-              <>כל הזוויות ישרות (<FormulaBox inline>90°</FormulaBox>).</>,
-              'אלכסונים שווים באורכם.'
-            ]}
-          />
-
-          <ShapeVisualization
-            shape="rhombus"
-            title="מעוין"
-            properties={[
-              'כל תכונות המקבילית.',
-              'כל הצלעות שוות.',
-              'אלכסונים מאונכים זה לזה וחוצים את הזוויות.'
-            ]}
-          />
-
-          <ShapeVisualization
-            shape="square"
-            title="ריבוע"
-            properties={[
-              'כל תכונות המלבן והמעוין.'
-            ]}
-          />
-
-          <ShapeVisualization
-            shape="trapezoid"
-            title="טרפז (AB || DC)"            properties={[
-              'זוג אחד של צלעות נגדיות מקבילות (בסיסים).',
-              <>סכום זוויות ליד כל שוק <FormulaBox inline>180°</FormulaBox>.</>
-            ]}
-          />
-
-          <ShapeVisualization
-            shape="trapezoid-isosceles"
-            title="טרפז שווה-שוקיים (AD=BC, AB || DC)"
-            properties={[
-              'טרפז שבו השוקיים שוות.',
-              'זוויות הבסיס שוות.',
-              'אלכסונים שווים.'
-            ]}
-          />
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+            <h4 className="text-lg font-semibold mb-3 text-yellow-800">טיפים חשובים:</h4>
+            <ul className="list-disc list-inside space-y-2 pr-5">
+              <li>תמיד לזכור את התכונות המיוחדות של כל צורה.</li>
+              <li>לצייר סקיצה של הצורה כדי להבין טוב יותר את הבעיה.</li>
+              <li>לבדוק אם יש צורות מיוחדות (כמו משולש שווה-שוקיים או מקבילית).</li>
+              <li>לשמור על סדר בפתרון ולכתוב את כל השלבים.</li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -396,36 +387,26 @@ const GeometryShapesPropertiesLesson = () => {
           מתרגלים ✍️
         </h2>
         
-        <ShapeSelector 
-          onShapeSelect={setSelectedShape} 
-          selectedShape={selectedShape} 
-        />
-        
-        {selectedShape && (
-          <div className="min-h-40 bg-gray-50 border border-dashed border-gray-300 rounded-lg p-4 mb-6 flex justify-center items-center">
-            <ShapeVisualization
-              shape={selectedShape}
-              title=""
-              properties={[]}
-            />
-          </div>
-        )}        <div className="space-y-8">
+        <div className="space-y-8">
           {exercises.map((exercise) => (
             <InteractiveExercise
               key={exercise.id}
               id={exercise.id}
               question={exercise.question}
-              type="input"
-              correctAnswer={exercise.correctAnswer}
+              inputs={exercise.inputs}
+              correctAnswers={exercise.correctAnswers}
               solution={exercise.solution}
-              placeholder={exercise.placeholder}
+              lessonId="geometry-shapes"
             />
           ))}
         </div>
       </section>
 
       {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />    
+      <Quiz
+        title="בחן את עצמך 🧐"
+        questions={quizQuestions}
+      />
     </LessonLayout>
   );
 };

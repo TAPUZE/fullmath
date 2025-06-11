@@ -48,7 +48,7 @@ const InteractiveExercise = ({
     // Default validation logic
     inputs.forEach(input => {
       const userAnswer = userAnswers[input.id] || '';
-      const correctAnswer = correctAnswers[input.answerKey || input.id];
+      const correctAnswer = correctAnswers[input.id];
       
       if (correctAnswer !== undefined) {
         const isCorrect = input.type === 'number' 
@@ -61,6 +61,10 @@ const InteractiveExercise = ({
           results.push(`${input.label}: שגוי (תשובה: ${userAnswer}, נכון: ${correctAnswer}) 🤔`);
           allCorrect = false;
         }
+      } else {
+        // If no correct answer is found for this input, mark as incorrect
+        results.push(`${input.label}: שגוי (לא נמצאה תשובה נכונה) 🤔`);
+        allCorrect = false;
       }
     });
 

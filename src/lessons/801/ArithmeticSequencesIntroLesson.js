@@ -3,6 +3,7 @@ import LessonLayout from '../../components/lesson/LessonLayout';
 import FormulaBox from '../../components/math/FormulaBox';
 import InteractiveExercise from '../../components/math/InteractiveExercise';
 import Quiz from '../../components/math/Quiz';
+import StepByStepSolution from '../../components/math/StepByStepSolution';
 
 // Sequence visualization component
 const SequenceVisualization = ({ sequence, difference, title }) => {
@@ -110,41 +111,61 @@ const ArithmeticSequencesIntroLesson = () => {
     {
       id: 'ex1',
       question: (
-        <span>
-          בסדרה החשבונית: 5, 8, 11, 14, ... מהו הפרש הסדרה?
-        </span>
-      ),
-      correctAnswer: '3',
-      solution: (
         <div>
-          <p><strong>פתרון מלא:</strong></p>
-          <p>הפרש הסדרה הוא ההפרש בין כל שני איברים עוקבים:</p>
-          <p>d = 8 - 5 = 3</p>
-          <p>d = 11 - 8 = 3</p>
-          <p>d = 14 - 11 = 3</p>
-          <p>לכן, הפרש הסדרה הוא 3.</p>
+          <p>תרגיל 1: בסדרה החשבונית: 5, 8, 11, 14, ... מהו הפרש הסדרה?</p>
         </div>
       ),
-      placeholder: 'הכנס את הפרש הסדרה'
+      inputs: [{
+        id: 'answer',
+        label: 'תשובה',
+        type: 'text',
+        placeholder: 'הכנס את הפרש הסדרה'
+      }],
+      correctAnswers: {
+        answer: '3'
+      },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "הפרש הסדרה הוא ההפרש בין כל שני איברים עוקבים:", formula: "d = a_{n+1} - a_n" },
+            { step: "נחשב את ההפרש בין האיבר השני לראשון:", formula: "d = 8 - 5 = 3" },
+            { step: "נבדוק את ההפרש בין האיבר השלישי לשני:", formula: "d = 11 - 8 = 3" },
+            { step: "נבדוק את ההפרש בין האיבר הרביעי לשלישי:", formula: "d = 14 - 11 = 3" },
+            { step: "התשובה:", formula: "d = 3", highlight: true }
+          ]}
+        />
+      )
     },
     {
       id: 'ex2',
       question: (
-        <span>
-          בסדרה החשבונית שהאיבר הראשון הוא 7 והפרש הוא 4, מהו האיבר החמישי?
-        </span>
-      ),
-      correctAnswer: '23',
-      solution: (
-        <div>          <p><strong>פתרון מלא:</strong></p>
-          <p>נתון: <FormulaBox inline>a₁ = 7, d = 4</FormulaBox></p>
-          <p>הנוסחה לאיבר הכללי: <FormulaBox inline>aₙ = a₁ + (n-1)d</FormulaBox></p>
-          <p>עבור האיבר החמישי (n = 5):</p>
-          <p><FormulaBox inline>a₅ = 7 + (5-1)×4 = 7 + 4×4 = 7 + 16 = 23</FormulaBox></p>
-          <p>האיבר החמישי הוא 23.</p>
+        <div>
+          <p>תרגיל 2: בסדרה החשבונית שהאיבר הראשון הוא 7 והפרש הוא 4, מהו האיבר החמישי?</p>
         </div>
       ),
-      placeholder: 'הכנס את האיבר החמישי'
+      inputs: [{
+        id: 'answer',
+        label: 'תשובה',
+        type: 'text',
+        placeholder: 'הכנס את האיבר החמישי'
+      }],
+      correctAnswers: {
+        answer: '23'
+      },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "נתון:", formula: "a_1 = 7, d = 4" },
+            { step: "הנוסחה לאיבר הכללי:", formula: "a_n = a_1 + (n-1)d" },
+            { step: "עבור האיבר החמישי (n = 5):", formula: "a_5 = 7 + (5-1) \\times 4" },
+            { step: "פישוט:", formula: "a_5 = 7 + 4 \\times 4" },
+            { step: "חישוב:", formula: "a_5 = 7 + 16 = 23" },
+            { step: "התשובה:", formula: "a_5 = 23", highlight: true }
+          ]}
+        />
+      )
     }
   ];
 
@@ -183,26 +204,20 @@ const ArithmeticSequencesIntroLesson = () => {
       lessonId="35182-sequences-arithmetic-intro"
       nextLessonPath="/lessons/trigonometry-right-triangle"
     >
-      {/* Learn Section */}
+      {/* Learning Section */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-purple-600 mb-6 border-b-2 border-purple-200 pb-2">
+        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
           לומדים 📚
         </h2>
-        <div className="space-y-6 text-gray-700 leading-relaxed">          <p>
+        
+        <div className="space-y-6 text-gray-700 leading-relaxed">
+          <p>
             סדרה היא רשימה מסודרת של מספרים. בסדרה חשבונית, ההפרש בין כל שני איברים עוקבים הוא קבוע. 
             ההפרש הקבוע הזה נקרא <strong>הפרש הסדרה</strong> ומסומן באות <FormulaBox inline>d</FormulaBox>.
           </p>
 
-          <SequenceVisualization
-            sequence={[2, 5, 8, 11, 14]}
-            difference={3}
-            title="דוגמה לסדרה חשבונית:"
-          />
-
-          <div className="mt-6">
-            <h3 className="text-xl font-semibold mb-2 text-blue-600">
-              הגדרה פורמלית
-            </h3>
+          <div className="bg-blue-50 border-r-4 border-blue-400 p-4 mb-4">
+            <h4 className="text-lg font-semibold mb-2">הגדרה פורמלית</h4>
             <p>
               סדרה <FormulaBox inline>(aₙ)</FormulaBox> נקראת סדרה חשבונית אם קיים מספר קבוע <FormulaBox inline>d</FormulaBox> 
               כך ש: <FormulaBox>aₙ₊₁ = aₙ + d</FormulaBox>
@@ -212,61 +227,50 @@ const ArithmeticSequencesIntroLesson = () => {
             </p>
           </div>
 
-          <ExampleBox title="דוגמאות לסדרות חשבוניות:">
-            <div className="space-y-3">
-              <div>
-                <p><strong>דוגמה 1:</strong> 1, 4, 7, 10, 13, ...</p>
-                <p className="text-sm text-gray-600">הפרש הסדרה: d = 3 (כל איבר גדול מהקודם ב-3)</p>
-              </div>
-              
-              <div>
-                <p><strong>דוגמה 2:</strong> 20, 15, 10, 5, 0, ...</p>
-                <p className="text-sm text-gray-600">הפרש הסדרה: d = -5 (כל איבר קטן מהקודם ב-5)</p>
-              </div>
-              
-              <div>
-                <p><strong>דוגמה 3:</strong> 3, 3, 3, 3, 3, ...</p>
-                <p className="text-sm text-gray-600">הפרש הסדרה: d = 0 (סדרה קבועה)</p>
-              </div>
-            </div>
-          </ExampleBox>
-
-          <div className="mt-6">
-            <h3 className="text-xl font-semibold mb-2 text-blue-600">
-              הנוסחה לאיבר הכללי
-            </h3>            <p>
+          <div className="bg-green-50 border-r-4 border-green-400 p-4 mb-4">
+            <h4 className="text-lg font-semibold mb-2">הנוסחה לאיבר הכללי</h4>
+            <p>
               באמצעות האיבר הראשון <FormulaBox inline>a₁</FormulaBox> והפרש הסדרה <FormulaBox inline>d</FormulaBox>, 
               ניתן לכתוב נוסחה לאיבר הכללי של הסדרה:
             </p>
-            
             <div className="my-4 text-center">
               <FormulaBox>aₙ = a₁ + (n-1)d</FormulaBox>
             </div>
-            
             <p>כאשר:</p>
-            <ul className="list-disc list-inside pr-5 space-y-1">
-              <li><FormulaBox inline>aₙ</FormulaBox> - האיבר ה-n בסדרה</li>
-              <li><FormulaBox inline>a₁</FormulaBox> - האיבר הראשון בסדרה</li>
-              <li><FormulaBox inline>d</FormulaBox> - הפרש הסדרה</li>              <li><FormulaBox inline>n</FormulaBox> - מיקום האיבר בסדרה (1, 2, 3, ...)</li>
+            <ul className="list-disc list-inside space-y-2 pr-5 mt-2">
+              <li><FormulaBox inline>aₙ</FormulaBox> הוא האיבר ה-n-י בסדרה</li>
+              <li><FormulaBox inline>a₁</FormulaBox> הוא האיבר הראשון</li>
+              <li><FormulaBox inline>d</FormulaBox> הוא הפרש הסדרה</li>
+              <li><FormulaBox inline>n</FormulaBox> הוא מספר האיבר בסדרה</li>
             </ul>
           </div>
 
-          <ExampleBox title="דוגמה לשימוש בנוסחה:">
-            <p className="font-medium mb-2">
-              בסדרה החשבונית 5, 8, 11, 14, ... מצא את האיבר ה-10.
-            </p>
+          <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <h4 className="text-lg font-semibold mb-2">דוגמה פתורה:</h4>
+            <p className="font-medium">בסדרה החשבונית 3, 7, 11, 15, ... מהו האיבר העשירי?</p>
             
-            <div className="mt-4">
-              <p><strong>פתרון:</strong></p>
-              <p>1. נזהה את הנתונים: <FormulaBox inline>a₁ = 5</FormulaBox>, <FormulaBox inline>d = 3</FormulaBox></p>
-              <p>2. נשתמש בנוסחה: <FormulaBox inline>aₙ = a₁ + (n-1)d</FormulaBox></p>
-              <p>3. עבור n = 10:</p>
-              <p><FormulaBox>a₁₀ = 5 + (10-1)×3 = 5 + 9×3 = 5 + 27 = 32</FormulaBox></p>
-              <p className="font-semibold">האיבר ה-10 הוא 32.</p>
-            </div>
-          </ExampleBox>
+            <StepByStepSolution
+              title="פתרון מלא:"
+              steps={[
+                { step: "1. נמצא את הפרש הסדרה:", formula: "d = 7 - 3 = 4" },
+                { step: "2. נשתמש בנוסחה לאיבר הכללי:", formula: "a_n = a_1 + (n-1)d" },
+                { step: "3. נציב את הנתונים (n = 10):", formula: "a_{10} = 3 + (10-1) \\times 4" },
+                { step: "4. נפשט:", formula: "a_{10} = 3 + 9 \\times 4" },
+                { step: "5. נחשב:", formula: "a_{10} = 3 + 36 = 39" },
+                { step: "התשובה:", formula: "a_{10} = 39", highlight: true }
+              ]}
+            />
+          </div>
 
-          <SequenceBuilder />
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+            <h4 className="text-lg font-semibold mb-3 text-yellow-800">טיפים חשובים:</h4>
+            <ul className="list-disc list-inside space-y-2 pr-5">
+              <li>תמיד לבדוק את הפרש הסדרה בין כמה זוגות של איברים עוקבים.</li>
+              <li>לזכור את הנוסחה לאיבר הכללי: aₙ = a₁ + (n-1)d.</li>
+              <li>בדוק את הפתרון על ידי חישוב כמה איברים בסדרה.</li>
+              <li>שים לב לסימן של הפרש הסדרה (חיובי או שלילי).</li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -276,20 +280,63 @@ const ArithmeticSequencesIntroLesson = () => {
           מתרגלים ✍️
         </h2>
         
-        <div className="space-y-8">          {exercises.map((exercise) => (
+        <div className="space-y-8">
+          {exercises.map((exercise) => (
             <InteractiveExercise
               key={exercise.id}
               id={exercise.id}
               question={exercise.question}
-              correctAnswer={exercise.correctAnswer}
-              placeholder={exercise.placeholder}
+              inputs={exercise.inputs}
+              correctAnswers={exercise.correctAnswers}
               solution={exercise.solution}
+              lessonId="sequences-arithmetic-intro"
             />
           ))}
-        </div>      </section>
+        </div>
+      </section>
 
       {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />
+      <Quiz
+        title="בחן את עצמך 🧐"
+        questions={[
+          {
+            id: 'q1',
+            question: 'איזה מהרצפים הבאים הוא סדרה חשבונית?',
+            options: [
+              '1, 4, 9, 16, 25, ...',
+              '2, 6, 18, 54, 162, ...',
+              '3, 7, 11, 15, 19, ...',
+              '1, 1, 2, 3, 5, 8, ...'
+            ],
+            correctAnswer: '3, 7, 11, 15, 19, ...',
+            explanation: 'זוהי סדרה חשבונית כי ההפרש בין כל שני איברים עוקבים הוא קבוע (4).'
+          },
+          {
+            id: 'q2',
+            question: 'בסדרה החשבונית 12, 9, 6, 3, ... מהו הפרש הסדרה?',
+            options: [
+              '3',
+              '-3',
+              '9',
+              '-9'
+            ],
+            correctAnswer: '-3',
+            explanation: 'הפרש הסדרה הוא -3 כי כל איבר קטן מהקודם ב-3.'
+          },
+          {
+            id: 'q3',
+            question: 'בסדרה חשבונית, האיבר הראשון הוא 5 והפרש הוא 3. מהו האיבר השישי?',
+            options: [
+              '15',
+              '18',
+              '20',
+              '23'
+            ],
+            correctAnswer: '20',
+            explanation: 'נשתמש בנוסחה aₙ = a₁ + (n-1)d: a₆ = 5 + (6-1)×3 = 5 + 15 = 20.'
+          }
+        ]}
+      />
     </LessonLayout>
   );
 };

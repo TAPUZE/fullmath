@@ -20,7 +20,14 @@ const AlgebraLinearEquationOneVariableLesson = () => {
       id: 'ex1',
       question: 'פתור את המשוואה 5x - 8 = 2x + 7.',
       correctAnswer: '5',
-      placeholder: 'הכנס פתרון',
+      inputs: [
+        {
+          id: 'answer',
+          label: 'תשובה',
+          type: 'text',
+          placeholder: 'הכנס פתרון'
+        }
+      ],
       solution: (
         <StepByStep 
           title="פתרון מלא:"
@@ -38,7 +45,14 @@ const AlgebraLinearEquationOneVariableLesson = () => {
       id: 'ex2',
       question: 'פתור את המשוואה 4(x+1) - 2(x-3) = 12.',
       correctAnswer: '1',
-      placeholder: 'הכנס פתרון',
+      inputs: [
+        {
+          id: 'answer',
+          label: 'תשובה',
+          type: 'text',
+          placeholder: 'הכנס פתרון'
+        }
+      ],
       solution: (
         <StepByStep 
           title="פתרון מלא:"
@@ -58,7 +72,14 @@ const AlgebraLinearEquationOneVariableLesson = () => {
       id: 'ex3',
       question: 'פתור את המשוואה עם שברים: x/2 + x/3 = 5.',
       correctAnswer: '6',
-      placeholder: 'הכנס פתרון',
+      inputs: [
+        {
+          id: 'answer',
+          label: 'תשובה',
+          type: 'text',
+          placeholder: 'הכנס פתרון'
+        }
+      ],
       solution: (
         <StepByStep 
           title="פתרון מלא:"
@@ -249,18 +270,19 @@ const AlgebraLinearEquationOneVariableLesson = () => {
         </ExampleBox>
       </LessonSection>
 
-      {/* Practice Section */}
+      {/* Exercises Section */}
       <LessonSection 
-        title="מתרגלים" 
-        titleColor="green" 
-        icon="✍️"
-      >        {exercises.map((exercise) => (
-          <InteractiveExercise 
+        title="תרגילים" 
+        titleColor="blue" 
+        icon="✏️"
+      >
+        {exercises.map((exercise) => (
+          <InteractiveExercise
             key={exercise.id}
             id={exercise.id}
             question={exercise.question}
-            correctAnswer={exercise.correctAnswer}
-            placeholder={exercise.placeholder}
+            inputs={exercise.inputs}
+            correctAnswers={{ answer: exercise.correctAnswer }}
             solution={exercise.solution}
           />
         ))}

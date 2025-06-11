@@ -182,8 +182,8 @@ const AlgebraPercentagesLesson = () => {
         <div className="space-y-8">          <InteractiveExercise
             id="ex1"
             question="תרגיל 1: כמה הם 30% מתוך 250?"
-            correctAnswer="75"
-            placeholder="הכנס מספר"
+            inputs={[{ id: 'answer', label: 'תשובה', type: 'text', placeholder: 'הכנס מספר' }]}
+            correctAnswers={{ answer: '75' }}
             solution={
               <div>
                 <p><strong>פתרון מלא:</strong></p>
@@ -195,35 +195,12 @@ const AlgebraPercentagesLesson = () => {
           />          <InteractiveExercise
             id="ex2"
             question="תרגיל 2: מחיר חולצה היה 120 ש״ח. החולצה הוזלה ב-25%. מה מחירה החדש?"
-            correctAnswer="90"
-            placeholder="הכנס מחיר חדש"
-            hint="נסה להשתמש בטבלה לארגון הנתונים לפני החישוב."
+            inputs={[{ id: 'answer', label: 'תשובה', type: 'text', placeholder: 'הכנס מחיר חדש' }]}
+            correctAnswers={{ answer: '90' }}
             solution={
               <div>
                 <p><strong>פתרון מלא:</strong></p>
-                <p>טבלת עזר:</p>                <DataTable className="text-sm">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="px-4 py-2 border-b border-gray-300 text-center font-semibold">תיאור</th>
-                      <th className="px-4 py-2 border-b border-gray-300 text-center font-semibold">מחיר מקורי</th>
-                      <th className="px-4 py-2 border-b border-gray-300 text-center font-semibold">אחוז שינוי</th>
-                      <th className="px-4 py-2 border-b border-gray-300 text-center font-semibold">סכום שינוי</th>
-                      <th className="px-4 py-2 border-b border-gray-300 text-center font-semibold">מחיר חדש</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="px-4 py-2 border-b border-gray-200 text-center">חולצה</td>
-                      <td className="px-4 py-2 border-b border-gray-200 text-center">120</td>
-                      <td className="px-4 py-2 border-b border-gray-200 text-center">-25%</td>
-                      <td className="px-4 py-2 border-b border-gray-200 text-center">30</td>
-                      <td className="px-4 py-2 border-b border-gray-200 text-center">90</td>
-                    </tr>
-                  </tbody>
-                </DataTable>
-                <p>גודל ההוזלה: <FormulaBox inline>\frac{25}{100} \cdot 120 = 0.25 \cdot 120 = 30</FormulaBox> ש"ח.</p>
-                <p>המחיר החדש: <FormulaBox inline>120 - 30 = 90</FormulaBox> ש"ח.</p>
-                <p>לחלופין: <FormulaBox inline>120 \left(1 - \frac{25}{100}\right) = 120 \cdot 0.75 = 90</FormulaBox> ש"ח.</p>
+                <FormulaBox>{`120 - 0.25 \\cdot 120 = 120 - 30 = 90`}</FormulaBox>
                 <p>המחיר החדש הוא 90 ש"ח.</p>
               </div>
             }

@@ -3,77 +3,61 @@ import LessonLayout from '../../components/lesson/LessonLayout';
 import FormulaBox from '../../components/math/FormulaBox';
 import InteractiveExercise from '../../components/math/InteractiveExercise';
 import Quiz from '../../components/math/Quiz';
+import StepByStepSolution from '../../components/math/StepByStepSolution';
 import { SlopeVisualization, LineGraph } from '../../components/ui/GraphComponents';
+
 const AnalyticGeometrySlopeLesson = () => {
-  // Exercise definitions
   const exercises = [
     {
-      id: 'slope-calculation',
+      id: 'ex1',
       question: (
-        <span>
-          מצא את שיפוע הישר העובר דרך הנקודות <FormulaBox inline>A(2,3)</FormulaBox> ו-<FormulaBox inline>B(4,7)</FormulaBox>.
-        </span>
-      ),
-      type: 'input',
-      correctAnswer: '2',
-      solution: (
-        <div>          <p><strong>פתרון מלא:</strong></p>
-          <FormulaBox>m = \frac{"{y_2 - y_1}"}{"{x_2 - x_1}"} = \frac{"{7 - 3}"}{"{4 - 2}"} = \frac{4}{2} = 2</FormulaBox>
-          <p>השיפוע הוא 2.</p>
-          <LineGraph 
-            slope={2} 
-            yIntercept={-1} 
-            point={{x: 2, y: 3}} 
-            title="ישר דרך A(2,3) ו-B(4,7)" 
-          />
-        </div>
-      ),
-      placeholder: 'הכנס שיפוע'
-    }
-  ];
-
-  // Quiz questions
-  const quizQuestions = [
-    {
-      id: 'slope-calculation-quiz',
-      question: (
-        <span>
-          מהו שיפוע הישר העובר דרך הנקודות <FormulaBox inline>(1,1)</FormulaBox> ו-<FormulaBox inline>(3,5)</FormulaBox>?
-        </span>
-      ),
-      options: [
-        { id: 'a', text: '1' },
-        { id: 'b', text: '2' },
-        { id: 'c', text: '0.5' },
-        { id: 'd', text: '-2' }
-      ],
-      correctAnswer: 'b',
-      explanation: (
         <div>
-          <p>השיפוע מחושב על פי הנוסחה:</p>
-          <FormulaBox>m = \frac{"{y_2 - y_1}"}{"{x_2 - x_1}"} = \frac{"{5 - 1}"}{"{3 - 1}"} = \frac{4}{2} = 2</FormulaBox>
+          <p>תרגיל 1: מצא את שיפוע הישר העובר דרך הנקודות <FormulaBox inline>A(2,3)</FormulaBox> ו-<FormulaBox inline>B(4,7)</FormulaBox>.</p>
         </div>
+      ),
+      inputs: [{
+        id: 'answer',
+        label: 'שיפוע',
+        type: 'text',
+        placeholder: 'הכנס שיפוע'
+      }],
+      correctAnswers: { answer: '2' },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "נסמן את הקואורדינטות:", formula: "A(2,3), B(4,7)" },
+            { step: "נציב בנוסחת השיפוע:", formula: "m = (y₂ - y₁)/(x₂ - x₁) = (7 - 3)/(4 - 2) = 4/2 = 2" },
+            { step: "השיפוע הוא 2", highlight: true }
+          ]}
+        />
       )
     },
     {
-      id: 'line-equation-quiz',
+      id: 'ex2',
       question: (
-        <span>
-          מהי משוואת הישר ששיפועו 1 וחותך את ציר ה-Y בנקודה <FormulaBox inline>(0,-3)</FormulaBox>?
-        </span>
-      ),
-      options: [        { id: 'a', text: <FormulaBox inline>y = -3x + 1</FormulaBox> },
-        { id: 'b', text: <FormulaBox inline>y = x - 3</FormulaBox> },
-        { id: 'c', text: <FormulaBox inline>y = x + 3</FormulaBox> },
-        { id: 'd', text: <FormulaBox inline>y = 3x - 1</FormulaBox> }
-      ],
-      correctAnswer: 'b',
-      explanation: (
         <div>
-          <p>במשוואה <FormulaBox inline>y = mx + n</FormulaBox>:</p>
-          <p>השיפוע m = 1 ונקודת החיתוך עם ציר Y היא (0,-3), אז n = -3</p>
-          <p>לכן המשוואה היא <FormulaBox inline>y = x - 3</FormulaBox></p>
+          <p>תרגיל 2: מצא את משוואת הישר ששיפועו 2 ועובר דרך הנקודה <FormulaBox inline>(3,4)</FormulaBox>.</p>
         </div>
+      ),
+      inputs: [{
+        id: 'answer',
+        label: 'משוואת הישר',
+        type: 'text',
+        placeholder: 'הכנס משוואה בצורה y=mx+n'
+      }],
+      correctAnswers: { answer: 'y=2x-2' },
+      solution: (
+        <StepByStepSolution
+          title="פתרון מלא:"
+          steps={[
+            { step: "נתון:", formula: "m=2, (x₁,y₁)=(3,4)" },
+            { step: "נציב בנוסחה:", formula: "y - y₁ = m(x - x₁)" },
+            { step: "נציב את הערכים:", formula: "y - 4 = 2(x - 3)" },
+            { step: "נפשט:", formula: "y - 4 = 2x - 6" },
+            { step: "נעביר אגפים:", formula: "y = 2x - 2", highlight: true }
+          ]}
+        />
       )
     }
   ];
@@ -86,22 +70,25 @@ const AnalyticGeometrySlopeLesson = () => {
     >
       {/* Learning Section */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-purple-600 mb-6 border-b-2 border-purple-200 pb-2">
+        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
           לומדים 📚
         </h2>
         
         <div className="space-y-6 text-gray-700 leading-relaxed">
           <p>הקו הישר הוא אחד המושגים הבסיסיים בגיאומטריה אנליטית. אנו מתארים אותו באמצעות השיפוע שלו והמשוואה האלגברית המייצגת אותו.</p>
           
-          <div className="sub-section">
-            <h3 className="text-xl font-semibold mt-4 mb-2 text-purple-600">1. שיפוע של ישר (<FormulaBox inline>m</FormulaBox>)</h3>
+          <div className="bg-blue-50 border-r-4 border-blue-400 p-4 mb-4">
+            <h4 className="text-lg font-semibold mb-2">1. שיפוע של ישר (<FormulaBox inline>m</FormulaBox>)</h4>
             <p>השיפוע של ישר מתאר את "התלילות" שלו, כלומר, בכמה הישר עולה או יורד עבור כל יחידת התקדמות אופקית.</p>
-            <p>אם נתונות שתי נקודות על הישר, <FormulaBox inline>A(x_1, y_1)</FormulaBox> ו-<FormulaBox inline>B(x_2, y_2)</FormulaBox>, השיפוע <FormulaBox inline>m</FormulaBox> מחושב כך:</p>              <FormulaBox>
-              m = \frac{"{y_2 - y_1}"}{"{x_2 - x_1}"}
-            </FormulaBox>
+            
+            <div className="mt-4">
+              <p>אם נתונות שתי נקודות על הישר, <FormulaBox inline>A(x_1, y_1)</FormulaBox> ו-<FormulaBox inline>B(x_2, y_2)</FormulaBox>, השיפוע <FormulaBox inline>m</FormulaBox> מחושב כך:</p>
+              <div className="text-center my-4">
+                <FormulaBox>m = \frac{y_2 - y_1}{x_2 - x_1}</FormulaBox>
+              </div>
+            </div>
             
             <p>חשוב לשים לב: <FormulaBox inline>x_2 \neq x_1</FormulaBox> (אחרת הישר הוא אנכי והשיפוע אינו מוגדר).</p>
-            <p>השיפוע מייצג את היחס בין השינוי ב-<FormulaBox inline>y</FormulaBox> (הפרש הגבהים) לשינוי ב-<FormulaBox inline>x</FormulaBox> (הפרש המרחקים האופקיים) בין שתי נקודות על הישר.</p>
             
             <SlopeVisualization 
               points={[
@@ -110,66 +97,76 @@ const AnalyticGeometrySlopeLesson = () => {
               ]} 
             />
             
-            <ul className="list-disc list-inside space-y-1 pr-5 mt-3">
-              <li>אם <FormulaBox inline>{`m > 0`}</FormulaBox>, הישר "עולה" משמאל לימין.</li>
-              <li>אם <FormulaBox inline>m &lt; 0</FormulaBox>, הישר "יורד" משמאל לימין.</li>
+            <ul className="list-disc list-inside space-y-2 pr-5 mt-3">
+              <li>אם <FormulaBox inline>m {'>'} 0</FormulaBox>, הישר "עולה" משמאל לימין.</li>
+              <li>אם <FormulaBox inline>m {'<'} 0</FormulaBox>, הישר "יורד" משמאל לימין.</li>
               <li>אם <FormulaBox inline>m = 0</FormulaBox>, הישר אופקי (מקביל לציר ה-X).</li>
               <li>אם השיפוע אינו מוגדר, הישר אנכי (מקביל לציר ה-Y).</li>
             </ul>
           </div>
 
-          <div className="sub-section">
-            <h3 className="text-xl font-semibold mt-4 mb-2 text-purple-600">2. משוואת הישר</h3>
+          <div className="bg-blue-50 border-r-4 border-blue-400 p-4 mb-4">
+            <h4 className="text-lg font-semibold mb-2">2. משוואת הישר</h4>
             <p>המשוואה האלגברית המייצגת קו ישר נקראת משוואת הישר. ישנן מספר צורות להצגתה:</p>
             
-            <h4 className="text-lg font-semibold mt-3 mb-1">א. הצורה המפורשת: <FormulaBox inline>y = mx + n</FormulaBox></h4>
-            <p>זוהי הצורה הנפוצה ביותר. במשוואה זו:</p>
-            <ul className="list-disc list-inside space-y-1 pr-5">
-              <li><FormulaBox inline>m</FormulaBox> הוא <strong>השיפוע</strong> של הישר.</li>
-              <li><FormulaBox inline>n</FormulaBox> הוא <strong>שיעור ה-Y של נקודת החיתוך של הישר עם ציר ה-Y</strong> (הנקודה <FormulaBox inline>(0,n)</FormulaBox>).</li>
-            </ul>
+            <div className="mt-4">
+              <h5 className="font-semibold mb-2">א. הצורה המפורשת: <FormulaBox inline>y = mx + n</FormulaBox></h5>
+              <p>זוהי הצורה הנפוצה ביותר. במשוואה זו:</p>
+              <ul className="list-disc list-inside space-y-2 pr-5">
+                <li><FormulaBox inline>m</FormulaBox> הוא <strong>השיפוע</strong> של הישר.</li>
+                <li><FormulaBox inline>n</FormulaBox> הוא <strong>שיעור ה-Y של נקודת החיתוך של הישר עם ציר ה-Y</strong> (הנקודה <FormulaBox inline>(0,n)</FormulaBox>).</li>
+              </ul>
+            </div>
 
-            <h4 className="text-lg font-semibold mt-3 mb-1">ב. מציאת משוואת ישר על פי שיפוע ונקודה</h4>
-            <p>אם ידוע שיפוע הישר <FormulaBox inline>m</FormulaBox> ונקודה <FormulaBox inline>(x_1, y_1)</FormulaBox> הנמצאת על הישר, ניתן להשתמש בנוסחה:</p>
-              <FormulaBox>
-              y - y_1 = m(x - x_1)
-            </FormulaBox>
-            
-            <p>לאחר הצבת הערכים, מפשטים את המשוואה לצורה המפורשת <FormulaBox inline>y = mx + n</FormulaBox>.</p>
+            <div className="mt-4">
+              <h5 className="font-semibold mb-2">ב. מציאת משוואת ישר על פי שיפוע ונקודה</h5>
+              <p>אם ידוע שיפוע הישר <FormulaBox inline>m</FormulaBox> ונקודה <FormulaBox inline>(x_1, y_1)</FormulaBox> הנמצאת על הישר, ניתן להשתמש בנוסחה:</p>
+              <div className="text-center my-4">
+                <FormulaBox>y - y_1 = m(x - x_1)</FormulaBox>
+              </div>
+            </div>
 
-            <h4 className="text-lg font-semibold mt-3 mb-1">ג. מציאת משוואת ישר על פי שתי נקודות</h4>
-            <p>אם נתונות שתי נקודות <FormulaBox inline>(x_1, y_1)</FormulaBox> ו-<FormulaBox inline>(x_2, y_2)</FormulaBox> הנמצאות על הישר:</p>
-            <ol className="list-decimal list-inside space-y-1 pr-5">
-              <li>תחילה, מחשבים את השיפוע <FormulaBox inline>m</FormulaBox>.</li>
-              <li>לאחר מכן, משתמשים בשיפוע <FormulaBox inline>m</FormulaBox> ובאחת מהנקודות בנוסחה <FormulaBox inline>y - y_1 = m(x - x_1)</FormulaBox>.</li>
-              <li>מפשטים את המשוואה.</li>
-            </ol>
+            <div className="mt-4">
+              <h5 className="font-semibold mb-2">ג. מציאת משוואת ישר על פי שתי נקודות</h5>
+              <p>אם נתונות שתי נקודות <FormulaBox inline>(x_1, y_1)</FormulaBox> ו-<FormulaBox inline>(x_2, y_2)</FormulaBox> הנמצאות על הישר:</p>
+              <ol className="list-decimal list-inside space-y-2 pr-5">
+                <li>תחילה, מחשבים את השיפוע <FormulaBox inline>m</FormulaBox>.</li>
+                <li>לאחר מכן, משתמשים בשיפוע <FormulaBox inline>m</FormulaBox> ובאחת מהנקודות בנוסחה <FormulaBox inline>y - y_1 = m(x - x_1)</FormulaBox>.</li>
+                <li>מפשטים את המשוואה.</li>
+              </ol>
+            </div>
           </div>
-          
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <h4 className="text-lg font-semibold mb-2">דוגמה פתורה (מציאת משוואת ישר ע"פ שיפוע ונקודה):</h4>
-            <p className="font-medium">שאלה: מצא את משוואת הישר ששיפועו 3 ועובר דרך הנקודה <FormulaBox inline>(1,5)</FormulaBox>.</p>
-              <LineGraph 
+
+          <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <h4 className="text-lg font-semibold mb-2">דוגמה פתורה:</h4>
+            <p className="font-medium">מצא את משוואת הישר ששיפועו 3 ועובר דרך הנקודה <FormulaBox inline>(1,5)</FormulaBox>.</p>
+            
+            <LineGraph 
               slope={3} 
               yIntercept={2} 
               point={{x: 1, y: 5}} 
               title="ישר y=3x+2 העובר דרך (1,5)" 
             />
             
-            <p className="mt-2"><strong>פתרון:</strong></p>
-            <p>נתון: <FormulaBox inline>m=3</FormulaBox>, <FormulaBox inline>(x_1, y_1) = (1,5)</FormulaBox>.</p>
-            <p>נשתמש בנוסחה <FormulaBox inline>y - y_1 = m(x - x_1)</FormulaBox>:</p>
-            <FormulaBox>y - 5 = 3(x - 1)</FormulaBox>
-            <FormulaBox>y - 5 = 3x - 3 \Rightarrow y = 3x + 2</FormulaBox>
-            <p className="mt-2">משוואת הישר היא <FormulaBox inline>y = 3x + 2</FormulaBox>.</p>
+            <StepByStepSolution
+              title="פתרון מלא:"
+              steps={[
+                { step: "נתון:", formula: "m=3, (x₁,y₁)=(1,5)" },
+                { step: "נציב בנוסחה:", formula: "y - y₁ = m(x - x₁)" },
+                { step: "נציב את הערכים:", formula: "y - 5 = 3(x - 1)" },
+                { step: "נפשט:", formula: "y - 5 = 3x - 3" },
+                { step: "נעביר אגפים:", formula: "y = 3x + 2", highlight: true }
+              ]}
+            />
           </div>
 
-          <div className="sub-section">
-            <h3 className="text-xl font-semibold mt-4 mb-2 text-purple-600">3. מצב הדדי בין ישרים</h3>
-            <p>בהינתן שני ישרים עם שיפועים <FormulaBox inline>m_1</FormulaBox> ו-<FormulaBox inline>m_2</FormulaBox>:</p>
-            <ul className="list-disc list-inside space-y-1 pr-5">
-              <li><strong>ישרים מקבילים:</strong> <FormulaBox inline>m_1 = m_2</FormulaBox> (ו-<FormulaBox inline>n_1 \neq n_2</FormulaBox>).</li>
-              <li><strong>ישרים מאונכים:</strong> <FormulaBox inline>m_1 \cdot m_2 = -1</FormulaBox>.</li>
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+            <h4 className="text-lg font-semibold mb-3 text-yellow-800">טיפים חשובים:</h4>
+            <ul className="list-disc list-inside space-y-2 pr-5">
+              <li>תמיד לזכור שצריך לחסר את הקואורדינטות בסדר הנכון: y₂ - y₁ ו-x₂ - x₁.</li>
+              <li>לשים לב לסימנים של הקואורדינטות, במיוחד כשהן שליליות.</li>
+              <li>לזכור שכאשר x₂ = x₁, השיפוע אינו מוגדר (הישר אנכי).</li>
+              <li>במשוואת הישר y = mx + n, n הוא נקודת החיתוך עם ציר ה-Y.</li>
             </ul>
           </div>
         </div>
@@ -180,55 +177,64 @@ const AnalyticGeometrySlopeLesson = () => {
         <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
           מתרגלים ✍️
         </h2>
-          <div className="space-y-8 mt-6">
-          {exercises.map((exercise, index) => (
+        
+        <div className="space-y-8">
+          {exercises.map((exercise) => (
             <InteractiveExercise
               key={exercise.id}
               id={exercise.id}
               question={exercise.question}
-              inputs={[{
-                id: 'answer',
-                label: 'תשובה',
-                type: exercise.type || 'text',
-                placeholder: exercise.placeholder
-              }]}
-              correctAnswers={{ answer: exercise.correctAnswer }}
+              inputs={exercise.inputs}
+              correctAnswers={exercise.correctAnswers}
               solution={exercise.solution}
+              lessonId="analytic-geometry-slope"
             />
           ))}
-            <InteractiveExercise
-            id="line-equation-exercise"
-            question={
-              <span>
-                תרגיל 2: מצא את משוואת הישר ששיפועו <FormulaBox inline>-2</FormulaBox> ועובר דרך הנקודה <FormulaBox inline>(1, -1)</FormulaBox>. הצג את התשובה בצורה <FormulaBox inline>y=mx+n</FormulaBox>.
-              </span>
-            }
-            inputs={[{
-              id: 'equation',
-              label: 'משוואת הישר',
-              type: 'text',
-              placeholder: 'לדוגמה: y=-2x+1'
-            }]}
-            correctAnswers={{ equation: 'y=-2x+1' }}
-            solution={
-              <div>
-                <p><strong>פתרון מלא:</strong></p>
-                <FormulaBox>y - (-1) = -2(x - 1)</FormulaBox>
-                <FormulaBox>y + 1 = -2x + 2 \Rightarrow y = -2x + 1</FormulaBox>
-                <p>משוואת הישר היא: <FormulaBox inline>y = -2x + 1</FormulaBox></p>
-              </div>
-            }
-          />
         </div>
       </section>
 
       {/* Quiz Section */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
-          בחן את עצמך 🧐
-        </h2>
-        <Quiz questions={quizQuestions} />
-      </section>     
+      <Quiz
+        title="בחן את עצמך 🧐"
+        questions={[
+          {
+            id: 'q1',
+            question: 'מהו שיפוע הישר העובר דרך הנקודות (1,1) ו-(3,5)?',
+            options: [
+              '1',
+              '2',
+              '0.5',
+              '-2'
+            ],
+            correctAnswer: '2',
+            explanation: 'm = (5-1)/(3-1) = 4/2 = 2'
+          },
+          {
+            id: 'q2',
+            question: 'מהי משוואת הישר ששיפועו 1 וחותך את ציר ה-Y בנקודה (0,-3)?',
+            options: [
+              'y = -3x + 1',
+              'y = x - 3',
+              'y = x + 3',
+              'y = 3x - 1'
+            ],
+            correctAnswer: 'y = x - 3',
+            explanation: 'במשוואה y = mx + n, m=1 ו-n=-3 (נקודת החיתוך עם ציר Y)'
+          },
+          {
+            id: 'q3',
+            question: 'איזה מהבאים מתאר נכון את הישר y = -2x + 4?',
+            options: [
+              'ישר עולה החותך את ציר Y בנקודה (0,4)',
+              'ישר יורד החותך את ציר Y בנקודה (0,4)',
+              'ישר עולה החותך את ציר Y בנקודה (0,-4)',
+              'ישר יורד החותך את ציר Y בנקודה (0,-4)'
+            ],
+            correctAnswer: 'ישר יורד החותך את ציר Y בנקודה (0,4)',
+            explanation: 'השיפוע שלילי (m=-2) ולכן הישר יורד, ו-n=4 ולכן חותך את ציר Y בנקודה (0,4)'
+          }
+        ]}
+      />
     </LessonLayout>
   );
 };
