@@ -41,7 +41,6 @@ const AnalyticGeometryLineContinuedLesson = () => {
       )
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
@@ -58,12 +57,34 @@ const AnalyticGeometryLineContinuedLesson = () => {
       id: 'q2',
       question: 'אם שיפועו של ישר הוא -2/3, מהו שיפועו של ישר המאונך לו?',
       options: [
-        { value: 'a', label: <FormulaBox inline>-\frac{2}{3}</FormulaBox> },
-        { value: 'b', label: <FormulaBox inline>\frac{2}{3}</FormulaBox> },
-        { value: 'c', label: <FormulaBox inline>\frac{3}{2}</FormulaBox> },
-        { value: 'd', label: <FormulaBox inline>-\frac{3}{2}</FormulaBox> }
+        { value: 'a', label: <FormulaBox inline>{`-\\frac{2}{3}`}</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>{`\\frac{2}{3}`}</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>{`\\frac{3}{2}`}</FormulaBox> },
+        { value: 'd', label: <FormulaBox inline>{`-\\frac{3}{2}`}</FormulaBox> }
       ],
       correctAnswer: 'c'
+    },
+    {
+      id: 'q3',
+      question: 'מצא את משוואת הישר המאונך לישר y = 2x + 5 והעובר דרך הנקודה (4, 1):',
+      options: [
+        { value: 'a', label: <FormulaBox inline>{`y = -\\frac{1}{2}x + 3`}</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>{`y = \\frac{1}{2}x - 1`}</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>{`y = 2x - 7`}</FormulaBox> },
+        { value: 'd', label: <FormulaBox inline>{`y = -2x + 9`}</FormulaBox> }
+      ],
+      correctAnswer: 'a'
+    },
+    {
+      id: 'q4',
+      question: 'מהו המרחק בין הישרים המקבילים y = 3x + 2 ו-y = 3x - 4?',
+      options: [
+        { value: 'a', label: <FormulaBox inline>{`\\frac{3}{\\sqrt{10}}`}</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>{`\\frac{6}{\\sqrt{10}}`}</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>{`\\frac{2}{\\sqrt{10}}`}</FormulaBox> },
+        { value: 'd', label: '6' }
+      ],
+      correctAnswer: 'b'
     }
   ];
 
@@ -88,9 +109,9 @@ const AnalyticGeometryLineContinuedLesson = () => {
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">2. תנאי אונכות בין ישרים</h3>
           <p>שני ישרים הם <strong>מאונכים</strong> (נפגשים בזווית ישרה) אם ורק אם מכפלת השיפועים שלהם שווה ל-(-1):</p>
-          <FormulaBox>{`m_1 \\\\cdot m_2 = -1`}</FormulaBox>
-          <p>במילים אחרות: <FormulaBox inline>{`m_2 = -\\\\frac{1}{m_1}`}</FormulaBox></p>
-          <p>לדוגמה: הישר <FormulaBox inline>y = 2x + 1</FormulaBox> מאונך לישר <FormulaBox inline>y = -\frac{1}{2}x + 3</FormulaBox> כיוון ש-<FormulaBox inline>{`2 \\\\cdot (-\\\\frac{1}{2}) = -1`}</FormulaBox>.</p>
+          <FormulaBox>{`m_1 \\cdot m_2 = -1`}</FormulaBox>
+          <p>במילים אחרות: <FormulaBox inline>{`m_2 = -\\frac{1}{m_1}`}</FormulaBox></p>
+          <p>לדוגמה: הישר <FormulaBox inline>{"y = 2x + 1"}</FormulaBox> מאונך לישר <FormulaBox inline>{"y = -\\frac{1}{2}x + 3"}</FormulaBox> כיוון ש-<FormulaBox inline>{`2 \\cdot (-\\frac{1}{2}) = -1`}</FormulaBox>.</p>
 
           <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-800">3. אסטרטגיית פתרון</h3>
           <ol className="list-decimal pr-6 space-y-2">

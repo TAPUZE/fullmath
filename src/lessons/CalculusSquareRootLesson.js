@@ -5,9 +5,8 @@ import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 
-const CalculusSquareRootLesson = () => {
-  const lessonId = 'calculus_square_root_he';
-  const nextLessonPath = '/calculus-rational';
+const CalculusSquareRootLesson = () => {  const lessonId = 'calculus_square_root_he';
+  const nextLessonPath = '/lesson/calculus-optimization';
 
   const exercises = [
     {
@@ -29,7 +28,6 @@ const CalculusSquareRootLesson = () => {
       )
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
@@ -48,6 +46,26 @@ const CalculusSquareRootLesson = () => {
         { value: 'a', label: <FormulaBox inline>{`\\frac{3}{2\\sqrt{3x}}`}</FormulaBox> },
         { value: 'b', label: <FormulaBox inline>{`\\frac{1}{2\\sqrt{3x}}`}</FormulaBox> },
         { value: 'c', label: <FormulaBox inline>{`2\\sqrt{3x}`}</FormulaBox> }
+      ],
+      correctAnswer: 'a'
+    },
+    {
+      id: 'q3',
+      question: 'מהי הנגזרת של f(x) = (2x-1)^(1/2)?',
+      options: [
+        { value: 'a', label: <FormulaBox inline>{`\\frac{1}{\\sqrt{2x-1}}`}</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>{`\\frac{2}{\\sqrt{2x-1}}`}</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>{`\\frac{1}{2\\sqrt{2x-1}}`}</FormulaBox> }
+      ],
+      correctAnswer: 'a'
+    },
+    {
+      id: 'q4',
+      question: 'איזה מהביטויים הבאים שווה לאינטגרל ∫ x√x dx?',
+      options: [
+        { value: 'a', label: <FormulaBox inline>{`\\frac{2}{5}x^{5/2} + C`}</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>{`\\frac{2}{3}x^{3/2} + C`}</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>{`\\frac{3}{2}x^{3/2} + C`}</FormulaBox> }
       ],
       correctAnswer: 'a'
     }

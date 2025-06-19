@@ -35,7 +35,6 @@ const CalculusIntegralPolynomialLesson = () => {
       }
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
@@ -46,7 +45,7 @@ const CalculusIntegralPolynomialLesson = () => {
         { value: 'b', label: 'x² + C' },
         { value: 'c', label: '2 + C' }
       ],
-      correct: 'b',
+      correctAnswer: 'b',
       explanation: 'לפי כלל האינטגרציה: ∫2x dx = 2∫x dx = 2(x²/2) + C = x² + C.'
     },
     {
@@ -58,7 +57,7 @@ const CalculusIntegralPolynomialLesson = () => {
         { value: 'b', label: '1/3' },
         { value: 'c', label: '3' }
       ],
-      correct: 'b',
+      correctAnswer: 'b',
       explanation: 'הפונקציה הקדומה של x² היא x³/3. לכן: [x³/3]₀¹ = (1³/3) - (0³/3) = 1/3 - 0 = 1/3.'
     },
     {
@@ -69,15 +68,15 @@ const CalculusIntegralPolynomialLesson = () => {
         { value: 'b', label: '5 + C' },
         { value: 'c', label: 'x + C' }
       ],
-      correct: 'a',
+      correctAnswer: 'a',
       explanation: 'האינטגרל של קבוע k הוא kx + C. לכן ∫5 dx = 5x + C.'
     }
   ];
-
   return (
     <LessonLayout
       title="חשבון אינטגרלי (פולינומים) ∫"
       lessonId="calculus-integral-polynomial"
+      nextLessonPath="/lessons/sequences-arithmetic-intro"
     >
       <div className="space-y-6">
         {/* כותרת */}
@@ -124,7 +123,7 @@ const CalculusIntegralPolynomialLesson = () => {
           <p className="mb-4">
             האינטגרל המסוים של פונקציה <FormulaBox inline>f(x)</FormulaBox> מהנקודה <FormulaBox inline>a</FormulaBox> עד הנקודה <FormulaBox inline>b</FormulaBox> מסומן <FormulaBox inline>\\int_a^b f(x) dx</FormulaBox> ומחושב כך:
           </p>
-          <FormulaBox>\int_a^b f(x) dx = [F(x)]_a^b = F(b) - F(a)</FormulaBox>
+          <FormulaBox>{"\\int_a^b f(x) dx = [F(x)]_a^b = F(b) - F(a)"}</FormulaBox>
           <p className="mb-4">
             כאשר <FormulaBox inline>F(x)</FormulaBox> היא פונקציה קדומה כלשהי של <FormulaBox inline>f(x)</FormulaBox> (אין צורך להוסיף <FormulaBox inline>C</FormulaBox> כי הוא מתבטל בחיסור).
           </p>

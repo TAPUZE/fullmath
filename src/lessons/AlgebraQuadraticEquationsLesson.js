@@ -39,7 +39,7 @@ const AlgebraQuadraticEquationsLesson = () => {
           <p>נתונה המשוואה: <FormulaBox inline>x^2 - 4x + 1 = 0</FormulaBox></p>
           <p>המקדמים הם: <FormulaBox inline>a = 1, b = -4, c = 1</FormulaBox></p>
           <p>הדיסקרימיננטה:</p>
-          <FormulaBox>\Delta = b^2 - 4ac = (-4)^2 - 4 \cdot 1 \cdot 1 = 16 - 4 = 12</FormulaBox>
+          <FormulaBox>{"\\Delta = b^2 - 4ac = (-4)^2 - 4 \\cdot 1 \\cdot 1 = 16 - 4 = 12"}</FormulaBox>
           <p>מכיוון ש-<FormulaBox inline>\Delta = 12 &gt; 0</FormulaBox>, למשוואה יש שני פתרונות ממשיים שונים.</p>
         </div>
       )
@@ -62,42 +62,41 @@ const AlgebraQuadraticEquationsLesson = () => {
       )
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
       question: 'מה קובעת הדיסקרימיננטה של משוואה ריבועית?',
       options: [
-        'את ערך הפתרונות',
-        'את מספר הפתרונות הממשיים',
-        'את סוג המשוואה',
-        'את המקדמים'
+        { value: "a", label: 'את ערך הפתרונות' },
+        { value: "b", label: 'את מספר הפתרונות הממשיים' },
+        { value: "c", label: 'את סוג המשוואה' },
+        { value: "d", label: 'את המקדמים' }
       ],
-      correctAnswer: 'את מספר הפתרונות הממשיים',
+      correctAnswer: "b",
       explanation: 'הדיסקרימיננטה קובעת כמה פתרונות ממשיים יש למשוואה: אם היא חיובית - שני פתרונות, אם אפס - פתרון אחד, אם שלילית - אין פתרונות ממשיים.'
     },
     {
       id: 'q2',
       question: 'איך פותרים משוואה מהצורה ax² + c = 0?',
       options: [
-        'רק בנוסחת השורשים',
-        'הוצאת גורם משותף',
-        'בידוד x² והוצאת שורש',
-        'אי אפשר לפתור'
+        { value: "a", label: 'רק בנוסחת השורשים' },
+        { value: "b", label: 'הוצאת גורם משותף' },
+        { value: "c", label: 'בידוד x² והוצאת שורש' },
+        { value: "d", label: 'אי אפשר לפתור' }
       ],
-      correctAnswer: 'בידוד x² והוצאת שורש',
+      correctAnswer: "c",
       explanation: 'משוואה חסרה מהצורה ax² + c = 0 נפתרת על ידי בידוד x²: x² = -c/a, ולאחר מכן x = ±√(-c/a).'
     },
     {
       id: 'q3',
       question: 'מה תהיה התוצאה אם הדיסקרימיננטה שווה לאפס?',
       options: [
-        'שני פתרונות שונים',
-        'פתרון יחיד (או שני פתרונות זהים)',
-        'אין פתרונות ממשיים',
-        'אינסוף פתרונות'
+        { value: "a", label: 'שני פתרונות שונים' },
+        { value: "b", label: 'פתרון יחיד (או שני פתרונות זהים)' },
+        { value: "c", label: 'אין פתרונות ממשיים' },
+        { value: "d", label: 'אינסוף פתרונות' }
       ],
-      correctAnswer: 'פתרון יחיד (או שני פתרונות זהים)',
+      correctAnswer: "b",
       explanation: 'כאשר הדיסקרימיננטה שווה לאפס, השורש יוצא אפס ולכן יש פתרון יחיד (או שני פתרונות זהים).'
     }
   ];
@@ -130,14 +129,14 @@ const AlgebraQuadraticEquationsLesson = () => {
             <FormulaBox>{"x_{1,2} = \\frac{-(-5) \\pm \\sqrt{(-5)^2 - 4 \\cdot 1 \\cdot 6}}{2 \\cdot 1}"}</FormulaBox>
             <FormulaBox>{"x_{1,2} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm \\sqrt{1}}{2} = \\frac{5 \\pm 1}{2}"}</FormulaBox>
             <p>מכאן נקבל את שני הפתרונות:</p>
-            <p><FormulaBox inline>x_1 = \\frac{5+1}{2} = \\frac{6}{2} = 3</FormulaBox></p>
-            <p><FormulaBox inline>x_2 = \\frac{5-1}{2} = \\frac{4}{2} = 2</FormulaBox></p>
+            <p><FormulaBox inline>{"x_1 = \\frac{5+1}{2} = \\frac{6}{2} = 3"}</FormulaBox></p>
+            <p><FormulaBox inline>{"x_2 = \\frac{5-1}{2} = \\frac{4}{2} = 2"}</FormulaBox></p>
             <p className="mt-2">לכן, פתרונות המשוואה הם <FormulaBox inline>x=3</FormulaBox> ו-<FormulaBox inline>x=2</FormulaBox>.</p>
           </div>
 
           <h3 className="text-xl font-semibold mt-6 mb-2">הדיסקרימיננטה וקביעת מספר הפתרונות</h3>
           <p>הביטוי הנמצא מתחת לשורש בנוסחת השורשים, <FormulaBox inline>b^2-4ac</FormulaBox>, נקרא <strong>דיסקרימיננטה</strong> ומסומן באות היוונית דלתא <FormulaBox inline>\\Delta</FormulaBox>.</p>
-          <FormulaBox>\Delta = b^2-4ac</FormulaBox>
+          <FormulaBox>{"\\Delta = b^2-4ac"}</FormulaBox>
           <p>הדיסקרימיננטה קובעת את מספר הפתרונות הממשיים של המשוואה הריבועית:</p>
           <ul className="list-disc list-inside space-y-2 pr-5">            <li>אם <FormulaBox inline>\Delta &gt; 0</FormulaBox>: למשוואה שני פתרונות ממשיים שונים.</li>
             <li>אם <FormulaBox inline>\Delta = 0</FormulaBox>: למשוואה פתרון ממשי יחיד (או שני פתרונות ממשיים זהים).</li>

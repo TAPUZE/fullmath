@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 const AnalyticGeometryCircleLesson = () => {
-  const [completionStatus, setCompletionStatus] = useState(false);
-
-  const breadcrumbItems = [
-    { label: 'דף ראשי', href: '/' },
-    { label: 'שאלון 35382', href: '/lessons' },
-    { label: 'המעגל', href: '#' }
-  ];
+  const lessonId = 'analytic-geometry-circle';
+  const nextLessonPath = '/lesson/analytic-geometry-circle-tangent';
 
   const quizQuestions = [
     {
       id: 'q1',
-      question: (        <>
-          מהי משוואת המעגל שמרכזו בנקודה <FormulaBox inline>(2, 3)</FormulaBox> ורדיוסו 5?
-        </>
-      ),
+      question: 'מהי משוואת המעגל שמרכזו בנקודה (2, 3) ורדיוסו 5?',
       options: [
         { value: 'a', label: '(x-2)² + (y-3)² = 25' },
         { value: 'b', label: '(x+2)² + (y+3)² = 25' },
@@ -30,10 +22,7 @@ const AnalyticGeometryCircleLesson = () => {
     },
     {
       id: 'q2',
-      question: (        <>
-          מהו מרכז המעגל שמשוואתו <FormulaBox inline>(x+1)^2 + (y-4)^2 = 9</FormulaBox>?
-        </>
-      ),
+      question: 'מהו מרכז המעגל שמשוואתו (x+1)² + (y-4)² = 9?',
       options: [
         { value: 'a', label: '(1, -4)' },
         { value: 'b', label: '(-1, 4)' },
@@ -41,6 +30,28 @@ const AnalyticGeometryCircleLesson = () => {
         { value: 'd', label: '(-1, -4)' }
       ],
       correctAnswer: 'b'
+    },
+    {
+      id: 'q3',
+      question: 'מהו רדיוס המעגל שמשוואתו x² + y² - 6x + 8y = 0?',
+      options: [
+        { value: 'a', label: '3' },
+        { value: 'b', label: '4' },
+        { value: 'c', label: '5' },
+        { value: 'd', label: '25' }
+      ],
+      correctAnswer: 'c'
+    },
+    {
+      id: 'q4',
+      question: 'איזה מהביטויים הבאים מייצג את המרחק מנקודה (x,y) למרכז המעגל?',
+      options: [
+        { value: 'a', label: 'x² + y²' },
+        { value: 'b', label: '√(x² + y²)' },
+        { value: 'c', label: '(x-h)² + (y-k)²' },
+        { value: 'd', label: '√((x-h)² + (y-k)²)' }
+      ],
+      correctAnswer: 'd'
     }
   ];
 
@@ -88,15 +99,11 @@ const AnalyticGeometryCircleLesson = () => {
       )
     }
   ];
-
   return (
     <LessonLayout 
       title="המעגל"
-      breadcrumbItems={breadcrumbItems}
-      nextLessonUrl="/lessons/problems-work-rate"
-      lessonMenuUrl="/lessons"
-      completionStatus={completionStatus}
-      onCompletionChange={setCompletionStatus}
+      lessonId={lessonId}
+      nextLessonPath={nextLessonPath}
     >
       {/* Learn Section */}
       <section className="mb-12">
@@ -190,10 +197,11 @@ const AnalyticGeometryCircleLesson = () => {
             <Exercise key={exercise.id} {...exercise} />
           ))}
         </div>
+      </section>      {/* Quiz Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">בחן את עצמך 🧐</h2>
+        <Quiz questions={quizQuestions} />
       </section>
-
-      {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />
     </LessonLayout>
   );
 };

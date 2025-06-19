@@ -40,23 +40,6 @@
   text-align: right;
 }
 
-/* Math formula styling */
-.formula-box {
-  margin: 10px 0;
-  padding: 15px;
-  background-color: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 6px;
-  font-family: 'Times New Roman', serif;
-}
-
-.formula-box.inline {
-  display: inline-block;
-  margin: 0 5px;
-  padding: 3px 8px;
-  vertical-align: middle;
-}
-
 /* Exercise and quiz styling */
 .exercise-container, .quiz-container {
   margin: 20px 0;
@@ -154,11 +137,6 @@ input[type="text"], input[type="number"] {
 @media (max-width: 768px) {
   .container {
     padding: 10px;
-  }
-  
-  .formula-box {
-    padding: 10px;
-    font-size: 14px;
   }
   
   .exercise-container, .quiz-container {

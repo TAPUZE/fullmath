@@ -50,7 +50,6 @@ const CalculusPolynomialLesson = () => {
       }
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
@@ -61,7 +60,7 @@ const CalculusPolynomialLesson = () => {
         { value: 'b', label: '12x³ - 6x² + x' },
         { value: 'c', label: '3x³ - 2x² + 1' }
       ],
-      correct: 'a',
+      correctAnswer: 'a',
       explanation: 'הנגזרת: (3x⁴)′ = 12x³, (-2x³)′ = -6x², (x)′ = 1. לכן f′(x) = 12x³ - 6x² + 1.'
     },
     {
@@ -72,7 +71,7 @@ const CalculusPolynomialLesson = () => {
         { value: 'b', label: 'נקודת מקסימום' },
         { value: 'c', label: 'נקודת פיתול' }
       ],
-      correct: 'a',
+      correctAnswer: 'a',
       explanation: 'כאשר f″(x₀) > 0 בנקודה חשודה, הפונקציה קעורה כלפי מעלה ולכן זו נקודת מינימום מקומי.'
     },
     {
@@ -83,14 +82,15 @@ const CalculusPolynomialLesson = () => {
         { value: 'b', label: '(0, -4)' },
         { value: 'c', label: '(3, 0)' }
       ],
-      correct: 'a',
+      correctAnswer: 'a',
       explanation: 'נקודת החיתוך עם ציר y מתקבלת כאשר x=0. f(0) = 0² - 4(0) + 3 = 3. הנקודה היא (0,3).'
     }
   ];
-
   return (
     <LessonLayout
       title="פונקציית פולינום (חדו״א) 📈"
+      lessonId="calculus-polynomial"
+      nextLessonPath="/lesson/calculus-rational"
       breadcrumbs={[
         { label: 'דף ראשי', href: '/' },
         { label: 'שאלון 35382', href: '/lessons' },

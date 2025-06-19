@@ -1,16 +1,116 @@
 /* Enhanced FormulaBox CSS styles for mathematical formulas */
 
 .formula-box {
-  font-family: 'Times New Roman', 'STIX Two Math', 'Latin Modern Math', 'Cambria Math', Times, serif;
-  margin: 0.5rem 0;
-  padding: 0.25rem;
-  border-radius: 4px;
-  background-color: #f8f9fa;
-  display: inline-block;
-  min-height: 1.5rem;
-  line-height: 1.5;
-  transition: background-color 0.2s ease;
-  position: relative;
+  font-family: 'Times New Roman', 'STIX Two Math', 'Latin Modern Math', 'Cambria Math', Times, serif !important;
+  margin: 0.5rem 0 !important;
+  padding: 0.25rem !important;
+  border-radius: 4px !important;
+  background-color: #f8f9fa !important;
+  display: inline-block !important;
+  min-height: 1.5rem !important;
+  line-height: 1.5 !important;
+  transition: background-color 0.2s ease !important;
+  position: relative !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Force override any conflicting styles */
+.formula-box.inline-formula {
+  display: inline !important;
+  margin: 0 0.25rem !important;
+  padding: 0.125rem 0.25rem !important;
+  background-color: #f0f0f0 !important;
+  border-radius: 3px !important;
+  font-size: 0.95em !important;
+  vertical-align: middle !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.formula-box.block-formula {
+  display: block !important;
+  text-align: center !important;
+  margin: 1rem auto !important;
+  padding: 0.75rem !important;
+  background-color: #fafafa !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 6px !important;
+  max-width: fit-content !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Remove any unwanted content or punctuation */
+.formula-box::before,
+.formula-box::after {
+  content: none !important;
+  display: none !important;
+}
+
+.formula-box * {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure MathJax content doesn't add extra punctuation */
+.formula-box .MathJax,
+.formula-box .MathJax *,
+.formula-box mjx-container,
+.formula-box mjx-container *,
+.formula-box .mjx-chtml,
+.formula-box .mjx-chtml * {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide any stray punctuation that might appear */
+.formula-box .mjx-chtml::after,
+.formula-box .MathJax::after,
+.formula-box mjx-container::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Clean up any unwanted text nodes or punctuation */
+.formula-box .mjx-mrow > .mjx-mo:last-child {
+  display: none !important;
+}
+
+/* Remove any trailing commas or punctuation from MathJax output */
+.formula-box mjx-mo:contains(','):last-child,
+.formula-box .mjx-mo:contains(','):last-child {
+  display: none !important;
+}
+
+/* Clean up phantom punctuation in various MathJax containers */
+.formula-box mjx-container mjx-math mjx-mrow mjx-mo:last-child {
+  visibility: hidden !important;
+}
+
+/* Prevent any extra content after math elements */
+.formula-box mjx-container:after,
+.formula-box mjx-math:after,
+.formula-box mjx-mrow:after {
+  content: "" !important;
+  display: none !important;
+}
+
+/* Specifically target MathJax rendered content */
+.formula-box mjx-container.MathJax {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline !important;
+}
+
+/* Override any Tailwind or external CSS conflicts */
+.formula-box.inline-formula mjx-container {
+  display: inline !important;
+  font-size: inherit !important;
+}
+
+.formula-box.block-formula mjx-container {
+  display: block !important;
+  text-align: center !important;
 }
 
 /* Inline formula styles */
@@ -78,11 +178,11 @@
   font-style: italic;
 }
 
-/* Error state */
+/* Error state - reduced visibility to prevent distraction */
 .formula-box.error {
-  background-color: #ffe6e6;
-  color: #cc0000;
-  border: 1px solid #ffcccc;
+  background-color: #fff5f5;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
 }
 
 /* Hebrew text in KaTeX mathematical formulas */

@@ -6,6 +6,8 @@ import Quiz from '../components/Quiz';
 
 const ProblemsMotionLesson = () => {
   const [completionStatus, setCompletionStatus] = useState(false);
+  const lessonId = 'problems-motion';
+  const nextLessonPath = '/lesson/problems-geometric-algebraic';
 
   const breadcrumbItems = [
     { label: 'דף ראשי', href: '/' },
@@ -97,15 +99,11 @@ const ProblemsMotionLesson = () => {
       )
     }
   ];
-
   return (
     <LessonLayout 
       title="בעיות תנועה"
-      breadcrumbItems={breadcrumbItems}
-      nextLessonUrl="/lessons/problems-geometric-algebraic"
-      lessonMenuUrl="/lessons"
-      completionStatus={completionStatus}
-      onCompletionChange={setCompletionStatus}
+      lessonId={lessonId}
+      nextLessonPath={nextLessonPath}
     >
       {/* Learn Section */}
       <section className="mb-12">
@@ -243,10 +241,13 @@ const ProblemsMotionLesson = () => {
             <Exercise key={exercise.id} {...exercise} />
           ))}
         </div>
+      </section>      {/* Quiz Section */}
+      <section id="quiz" aria-labelledby="quiz-heading" className="mb-12">
+        <h2 id="quiz-heading" className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
+          בחן את עצמך 🧠
+        </h2>
+        <Quiz questions={quizQuestions} lessonId={lessonId} />
       </section>
-
-      {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />
     </LessonLayout>
   );
 };

@@ -19,11 +19,11 @@ const GrowthDecayLesson = () => {
         <div>
           <p><strong>פתרון מלא:</strong></p>
           <p>נתונים: <FormulaBox inline>M_t = 2680.19</FormulaBox>, <FormulaBox inline>p = 5\\%</FormulaBox>, <FormulaBox inline>t = 6</FormulaBox>. מחפשים <FormulaBox inline>M_0</FormulaBox>.</p>
-          <p>גורם הגדילה: <FormulaBox inline>q = 1 + \\frac{5}{100} = 1.05</FormulaBox>.</p>
+          <p>גורם הגדילה: <FormulaBox inline>{"q = 1 + \\frac{5}{100} = 1.05"}</FormulaBox>.</p>
           <p>נציב בנוסחה <FormulaBox inline>M_t = M_0 \\cdot q^t</FormulaBox>:</p>
           <p><FormulaBox inline>2680.19 = M_0 \\cdot (1.05)^6</FormulaBox></p>
           <p><FormulaBox inline>(1.05)^6 \\approx 1.3400956</FormulaBox></p>
-          <p><FormulaBox inline>M_0 = \\frac{2680.19}{1.3400956} \\approx 1999.999...</FormulaBox></p>
+          <p><FormulaBox inline>{"M_0 = \\frac{2680.19}{1.3400956} \\approx 1999.999..."}</FormulaBox></p>
           <p>תשובה: הסכום ההתחלתי היה 2000.00 ש"ח.</p>
         </div>
       )
@@ -38,7 +38,7 @@ const GrowthDecayLesson = () => {
           <p><strong>פתרון מלא:</strong></p>
           <p>נתונים: <FormulaBox inline>M_0 = 50,000</FormulaBox>, <FormulaBox inline>p = 2.5\\%</FormulaBox>.</p>
           <p>מספר השנים: מתחילת 2010 עד תחילת 2015 עברו 5 שנים. לכן, <FormulaBox inline>t = 5</FormulaBox>.</p>
-          <p>גורם הגדילה: <FormulaBox inline>q = 1 + \\frac{2.5}{100} = 1.025</FormulaBox>.</p>
+          <p>גורם הגדילה: <FormulaBox inline>{"q = 1 + \\frac{2.5}{100} = 1.025"}</FormulaBox>.</p>
           <p>נציב בנוסחה <FormulaBox inline>M_t = M_0 \\cdot q^t</FormulaBox>:</p>
           <p><FormulaBox inline>M_5 = 50,000 \\cdot (1.025)^5</FormulaBox></p>
           <p><FormulaBox inline>(1.025)^5 \\approx 1.131408</FormulaBox></p>
@@ -48,7 +48,6 @@ const GrowthDecayLesson = () => {
       )
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
@@ -69,6 +68,28 @@ const GrowthDecayLesson = () => {
         { value: 'c', label: '230.00 גרם' }
       ],
       correctAnswer: 'b'
+    },
+    {
+      id: 'q3',
+      question: 'השקעה של 1000 ש"ח מניבה ריבית דריבית של 8% לשנה. כמה כסף יהיה בחשבון לאחר 3 שנים?',
+      options: [
+        { value: 'a', label: '1240 ש"ח' },
+        { value: 'b', label: '1259.71 ש"ח' },
+        { value: 'c', label: '1300 ש"ח' }
+      ],
+      correctAnswer: 'b',
+      explanation: 'השקעה = 1000 × (1.08)³ = 1000 × 1.259712 = 1259.71 ש"ח'
+    },
+    {
+      id: 'q4',
+      question: 'אוכלוסיית עיר גדלה ב-2% מדי שנה. אם כיום יש 50,000 תושבים, כמה תושבים יהיו בעוד 5 שנים? (עגל למספר שלם)',
+      options: [
+        { value: 'a', label: '55,000' },
+        { value: 'b', label: '55,204' },
+        { value: 'c', label: '60,000' }
+      ],
+      correctAnswer: 'b',
+      explanation: 'אוכלוסיה = 50,000 × (1.02)⁵ = 50,000 × 1.10408 = 55,204 תושבים'
     }
   ];
 
@@ -107,7 +128,7 @@ const GrowthDecayLesson = () => {
             <ul className="list-disc pr-5 space-y-1">
               <li>הכמות ההתחלתית: <FormulaBox inline>M_0 = 1000</FormulaBox>.</li>
               <li>אחוז הגדילה לשעה: <FormulaBox inline>p = 20\\%</FormulaBox>.</li>
-              <li>גורם הגדילה: <FormulaBox inline>q = 1 + \\frac{20}{100} = 1 + 0.2 = 1.2</FormulaBox>.</li>
+              <li>גורם הגדילה: <FormulaBox inline>{"q = 1 + \\frac{20}{100} = 1 + 0.2 = 1.2"}</FormulaBox>.</li>
               <li>מספר תקופות הזמן (שעות): <FormulaBox inline>t = 3</FormulaBox>.</li>
             </ul>
             <p>נציב בנוסחה <FormulaBox inline>M_t = M_0 \\cdot q^t</FormulaBox>:</p>
@@ -126,7 +147,7 @@ const GrowthDecayLesson = () => {
             <ul className="list-disc pr-5 space-y-1">
               <li>הכמות ההתחלתית (מחיר התחלתי): <FormulaBox inline>M_0 = 120,000</FormulaBox>.</li>
               <li>אחוז הדעיכה לשנה: <FormulaBox inline>p = 10\\%</FormulaBox>.</li>
-              <li>גורם הדעיכה: <FormulaBox inline>q = 1 - \\frac{10}{100} = 1 - 0.1 = 0.9</FormulaBox>.</li>
+              <li>גורם הדעיכה: <FormulaBox inline>{"q = 1 - \\frac{10}{100} = 1 - 0.1 = 0.9"}</FormulaBox>.</li>
               <li>מספר תקופות הזמן (שנים): <FormulaBox inline>t = 4</FormulaBox>.</li>
             </ul>
             <p>נציב בנוסחה <FormulaBox inline>M_t = M_0 \\cdot q^t</FormulaBox>:</p>
@@ -145,7 +166,7 @@ const GrowthDecayLesson = () => {
             <ul className="list-disc pr-5 space-y-1">
               <li>הכמות הסופית: <FormulaBox inline>M_t = 1500</FormulaBox> (כאשר <FormulaBox inline>t=5</FormulaBox>).</li>
               <li>אחוז הדעיכה לשנה: <FormulaBox inline>p = 8\\%</FormulaBox>.</li>
-              <li>גורם הדעיכה: <FormulaBox inline>q = 1 - \\frac{8}{100} = 1 - 0.08 = 0.92</FormulaBox>.</li>
+              <li>גורם הדעיכה: <FormulaBox inline>{"q = 1 - \\frac{8}{100} = 1 - 0.08 = 0.92"}</FormulaBox>.</li>
               <li>מספר תקופות הזמן (שנים): <FormulaBox inline>t = 5</FormulaBox>.</li>
               <li>אנחנו מחפשים את <FormulaBox inline>M_0</FormulaBox>.</li>
             </ul>

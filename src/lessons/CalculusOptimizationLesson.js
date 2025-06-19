@@ -6,7 +6,7 @@ import Quiz from '../components/Quiz';
 
 const CalculusOptimizationLesson = () => {
   const lessonId = 'calculus_optimization_he';
-  const nextLessonPath = '/calculus-integral-polynomial';
+  const nextLessonPath = '/lesson/calculus-integral-polynomial';
 
   const exercises = [
     {
@@ -17,24 +17,25 @@ const CalculusOptimizationLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון:</strong></p>          <p>1. נגזרת: <FormulaBox inline>f'(x) = -2x + 4</FormulaBox></p>
-          <p>2. נקודת קיצון: <FormulaBox inline>-2x + 4 = 0 \\\\Rightarrow x = 2</FormulaBox></p>
+          <p>2. נקודת קיצון: <FormulaBox inline>{"-2x + 4 = 0 \\Rightarrow x = 2"}</FormulaBox></p>
           <p>3. ערך הפונקציה: <FormulaBox inline>f(2) = -(2)^2 + 4(2) + 5 = -4 + 8 + 5 = 9</FormulaBox></p>
           <p>4. מאחר שמקדם <FormulaBox inline>x^2</FormulaBox> שלילי, זהו מקסימום.</p>
         </div>
       )
     }
-  ];
-  const quizQuestions = [
+  ];  const quizQuestions = [
     {
       id: 'q1',
-      question: 'מתי פונקציה f(x) = ax² + bx + c (כאשר a &lt; 0) מגיעה למקסימום?',      options: [
+      question: 'מתי פונקציה f(x) = ax² + bx + c (כאשר a < 0) מגיעה למקסימום?',
+      options: [
         { value: 'a', label: <FormulaBox inline>{"x = -\\frac{b}{2a}"}</FormulaBox> },
         { value: 'b', label: <FormulaBox inline>{"x = \\frac{b}{2a}"}</FormulaBox> },
         { value: 'c', label: <FormulaBox inline>{"x = -\\frac{a}{2b}"}</FormulaBox> },
         { value: 'd', label: <FormulaBox inline>{"x = \\frac{a}{2b}"}</FormulaBox> }
       ],
       correctAnswer: 'a'
-    },    {
+    },
+    {
       id: 'q2',
       question: 'מהו תנאי הכרחי לקיום נקודת קיצון פנימית?',
       options: [
@@ -42,6 +43,28 @@ const CalculusOptimizationLesson = () => {
         { value: 'b', label: <FormulaBox inline>f'(x) = 0</FormulaBox> },
         { value: 'c', label: <FormulaBox inline>f''(x) = 0</FormulaBox> },
         { value: 'd', label: <FormulaBox inline>f''(x) &gt; 0</FormulaBox> }
+      ],
+      correctAnswer: 'b'
+    },
+    {
+      id: 'q3',
+      question: 'עבור הפונקציה f(x) = x³ - 3x² + 2, מהן נקודות החשד לקיצון?',
+      options: [
+        { value: 'a', label: 'x = 0, x = 2' },
+        { value: 'b', label: 'x = 1, x = 3' },
+        { value: 'c', label: 'x = -1, x = 2' },
+        { value: 'd', label: 'x = 0, x = 3' }
+      ],
+      correctAnswer: 'a'
+    },
+    {
+      id: 'q4',
+      question: 'במבחן הנגזרת השנייה, אם f\'\'(x₀) > 0 ו-f\'(x₀) = 0, אז x₀ הוא:',
+      options: [
+        { value: 'a', label: 'נקודת מקסימום מקומי' },
+        { value: 'b', label: 'נקודת מינימום מקומי' },
+        { value: 'c', label: 'נקודת פיתול' },
+        { value: 'd', label: 'לא ניתן לקבוע' }
       ],
       correctAnswer: 'b'
     }

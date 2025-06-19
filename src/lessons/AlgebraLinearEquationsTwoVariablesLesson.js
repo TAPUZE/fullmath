@@ -10,12 +10,58 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
       <FormulaBox>{children}</FormulaBox>
     </div>
   );
-
   const checkSystemAnswer = (userAnswer, correctAnswer) => {
     // Normalize answers by removing parentheses and spaces
     const normalize = (answer) => answer.replace(/[()]/g, '').replace(/\s+/g, '').trim();
     return normalize(userAnswer) === normalize(correctAnswer);
   };
+
+  const quizQuestions = [
+    {
+      id: 'q1',
+      question: 'מהו ערך x בפתרון מערכת המשוואות: x + y = 5, x - y = 1?',
+      options: [
+        { value: 'a', label: '1' },
+        { value: 'b', label: '2' },
+        { value: 'c', label: '3' },
+        { value: 'd', label: '4' }
+      ],
+      correctAnswer: 'c'
+    },
+    {
+      id: 'q2',
+      question: 'מהו ערך y בפתרון מערכת המשוואות: y = 2x, x + y = 9?',
+      options: [
+        { value: 'a', label: '2' },
+        { value: 'b', label: '3' },
+        { value: 'c', label: '6' },
+        { value: 'd', label: '9' }
+      ],
+      correctAnswer: 'c'
+    },
+    {
+      id: 'q3',
+      question: 'איזה מהמשפטים הבאים נכון על מערכת המשוואות: 2x + y = 7, 4x + 2y = 10?',
+      options: [
+        { value: 'a', label: 'יש פתרון יחיד' },
+        { value: 'b', label: 'אין פתרון' },
+        { value: 'c', label: 'יש אינסוף פתרונות' },
+        { value: 'd', label: 'לא ניתן לקבוע' }
+      ],
+      correctAnswer: 'b'
+    },
+    {
+      id: 'q4',
+      question: 'באיזה שיטה נוח לפתור את המערכת: 3x + 2y = 12, x = y + 1?',
+      options: [
+        { value: 'a', label: 'שיטת החילוץ' },
+        { value: 'b', label: 'שיטת ההצבה' },
+        { value: 'c', label: 'שיטת החיבור' },
+        { value: 'd', label: 'כל השיטות זהות בנוחות' }
+      ],
+      correctAnswer: 'b'
+    }
+  ];
 
   return (
     <LessonLayout 
@@ -165,58 +211,13 @@ const AlgebraLinearEquationsTwoVariablesLesson = () => {
               </div>
             }
           />
-        </div>
-      </section>
+        </div>      </section>
 
       {/* Quiz Section */}
-      <Quiz
-        title="בחן את עצמך 🧐"
-        questions={[
-          {
-            id: 1,
-            question: (
-              <div>
-                <p>מהו ערך <FormulaBox inline>x</FormulaBox> בפתרון מערכת המשוואות הבאה?</p>
-                <SystemOfEquations>
-                  \begin{"{"}cases{"}"} 
-                  x + y = 5 \\ 
-                  x - y = 1 
-                  \end{"{"}cases{"}"}
-                </SystemOfEquations>
-              </div>
-            ),
-            options: [
-              { value: "a", label: "1" },
-              { value: "b", label: "2" },
-              { value: "c", label: "3" },
-              { value: "d", label: "4" }
-            ],
-            correctAnswer: "c",
-            explanation: "חיבור המשוואות: (x+y) + (x-y) = 5 + 1 ⟹ 2x = 6 ⟹ x = 3"
-          },
-          {
-            id: 2,
-            question: (
-              <div>
-                <p>מהו ערך <FormulaBox inline>y</FormulaBox> בפתרון מערכת המשוואות הבאה?</p>
-                <SystemOfEquations>
-                  \begin{"{"}cases{"}"} 
-                  y = 2x \\ 
-                  x + y = 9 
-                  \end{"{"}cases{"}"}
-                </SystemOfEquations>
-              </div>
-            ),
-            options: [
-              { value: "a", label: "2" },
-              { value: "b", label: "3" },
-              { value: "c", label: "6" },
-              { value: "d", label: "9" }
-            ],
-            correctAnswer: "c",
-            explanation: "הצבה: x + 2x = 9 ⟹ 3x = 9 ⟹ x = 3. אז y = 2 × 3 = 6"
-          }
-        ]}        />
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">בחן את עצמך 🧐</h2>
+        <Quiz questions={quizQuestions} />
+      </section>
     </LessonLayout>
   );
 };

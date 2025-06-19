@@ -15,7 +15,8 @@ const NormalDistributionLesson = () => {
         <div>
           <p><strong>פתרון מלא:</strong></p>          <p>נתונים: <FormulaBox inline>\\mu = 500, \\sigma = 40</FormulaBox></p>
           <p>עבור <FormulaBox inline>X = 450</FormulaBox> שעות:</p>
-          <FormulaBox>Z = \\frac{450 - 500}{40} = \\frac{-50}{40} = -1.25</FormulaBox>          <p>נחפש בטבלת Z את <FormulaBox inline>P(Z &lt; -1.25)</FormulaBox>. בדרך כלל, <FormulaBox inline>P(Z &lt; -1.25) = P(Z &gt; 1.25) = 1 - P(Z &lt; 1.25)</FormulaBox>.</p>
+          <FormulaBox>{"Z = \\frac{450 - 500}{40} = \\frac{-50}{40} = -1.25"}</FormulaBox>
+          <p>נחפש בטבלת Z את <FormulaBox inline>{"P(Z < -1.25)"}</FormulaBox>. בדרך כלל, <FormulaBox inline>{"P(Z < -1.25) = P(Z > 1.25) = 1 - P(Z < 1.25)"}</FormulaBox>.</p>
           <p>מטבלה, <FormulaBox inline>P(Z &lt; 1.25) \\approx 0.8944</FormulaBox>.</p>
           <p>לכן, <FormulaBox inline>P(Z &lt; -1.25) \\approx 1 - 0.8944 = 0.1056</FormulaBox>.</p>
           <p>ההסתברות היא כ-10.56%.</p>
@@ -30,7 +31,7 @@ const NormalDistributionLesson = () => {
       solution: (        <div>
           <p><strong>פתרון:</strong></p>
           <p>נתונים: <FormulaBox inline>X = 85, \\mu = 70, \\sigma = 10</FormulaBox></p>
-          <FormulaBox>Z = \\frac{85 - 70}{10} = \\frac{15}{10} = 1.5</FormulaBox>
+          <FormulaBox>{"Z = \\frac{85 - 70}{10} = \\frac{15}{10} = 1.5"}</FormulaBox>
           <p>ציון ה-Z של התלמיד הוא 1.5. משמעות הדבר היא שהציון שלו גבוה ב-1.5 סטיות תקן מהממוצע.</p>
         </div>
       )
@@ -43,8 +44,8 @@ const NormalDistributionLesson = () => {
       solution: (
         <div>          <p><strong>פתרון:</strong></p>
           <p>נתונים: <FormulaBox inline>\\mu = 200, \\sigma = 5</FormulaBox></p>
-          <p>עבור 195 גרם: <FormulaBox inline>Z_1 = \\frac{195 - 200}{5} = -1</FormulaBox></p>
-          <p>עבור 205 גרם: <FormulaBox inline>Z_2 = \\frac{205 - 200}{5} = 1</FormulaBox></p>
+          <p>עבור 195 גרם: <FormulaBox inline>{"Z_1 = \\frac{195 - 200}{5} = -1"}</FormulaBox></p>
+          <p>עבור 205 גרם: <FormulaBox inline>{"Z_2 = \\frac{205 - 200}{5} = 1"}</FormulaBox></p>
           <p>אנחנו מחפשים <FormulaBox inline>P(-1 &lt; Z &lt; 1)</FormulaBox>.</p>
           <p>לפי הכלל האמפירי (68-95-99.7), כ-68% מהנתונים נמצאים במרחק של סטיית תקן אחת מהממוצע.</p>
           <p>לכן ההסתברות היא 0.6826 (68.26%).</p>
@@ -52,37 +53,41 @@ const NormalDistributionLesson = () => {
       )
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
       question: 'מה מייצג ציון Z בהתפלגות נורמלית?',
       options: [
-        'הערך המקורי של המשתנה',
-        'מספר סטיות התקן מהממוצע',
-        'ההסתברות לקבל ערך מסוים',
-        'השטח מתחת לעקומה'
+        { value: "a", label: 'הערך המקורי של המשתנה' },
+        { value: "b", label: 'מספר סטיות התקן מהממוצע' },
+        { value: "c", label: 'ההסתברות לקבל ערך מסוים' },
+        { value: "d", label: 'השטח מתחת לעקומה' }
       ],
-      correctAnswer: 'מספר סטיות התקן מהממוצע',
+      correctAnswer: "b",
       explanation: 'ציון Z מייצג כמה סטיות תקן ערך מסוים רחוק מהממוצע, ומחושב לפי הנוסחה Z = (X - μ)/σ.'
     },
     {
       id: 'q2',
       question: 'לפי הכלל האמפירי (68-95-99.7), כמה אחוזים מהנתונים נמצאים במרחק של שתי סטיות תקן מהממוצע?',
-      options: ['68%', '95%', '99.7%', '50%'],
-      correctAnswer: '95%',
+      options: [
+        { value: "a", label: '68%' },
+        { value: "b", label: '95%' },
+        { value: "c", label: '99.7%' },
+        { value: "d", label: '50%' }
+      ],
+      correctAnswer: "b",
       explanation: 'לפי הכלל האמפירי, 95% מהנתונים נמצאים במרחק של שתי סטיות תקן מהממוצע (μ ± 2σ).'
     },
     {
       id: 'q3',
       question: 'מה מאפיין את ההתפלגות הנורמלית הסטנדרטית?',
       options: [
-        'ממוצע = 1, סטיית תקן = 0',
-        'ממוצע = 0, סטיית תקן = 1',
-        'ממוצע = 100, סטיית תקן = 15',
-        'ממוצע = 50, סטיית תקן = 10'
+        { value: "a", label: 'ממוצע = 1, סטיית תקן = 0' },
+        { value: "b", label: 'ממוצע = 0, סטיית תקן = 1' },
+        { value: "c", label: 'ממוצע = 100, סטיית תקן = 15' },
+        { value: "d", label: 'ממוצע = 50, סטיית תקן = 10' }
       ],
-      correctAnswer: 'ממוצע = 0, סטיית תקן = 1',
+      correctAnswer: "b",
       explanation: 'ההתפלגות הנורמלית הסטנדרטית (Z) מוגדרת עם ממוצע 0 וסטיית תקן 1, מה שמקל על חישובים.'
     }
   ];

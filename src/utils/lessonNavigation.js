@@ -71,12 +71,16 @@ export const LESSON_GROUPS = {
       {
         id: 'statistics-intro',
         title: 'מבוא לסטטיסטיקה',
-        path: '/lessons/statistics-intro'
-      },
+        path: '/lessons/statistics-intro'      },
       {
         id: 'probability-intro',
         title: 'מבוא להסתברות',
         path: '/lessons/probability-intro'
+      },
+      {
+        id: 'trigonometry-right-triangle',
+        title: 'טריגונומטריה במשולש ישר-זווית',
+        path: '/lessons/trigonometry-right-triangle'
       },      {
         id: 'sequences-arithmetic-intro',
         title: 'מבוא לסדרות חשבוניות',
@@ -263,8 +267,9 @@ export const getQuestionnaireLessonId = (actualLessonId) => {
     '35182-analytic-geometry-distance': 'analytic-geometry-distance',
     '35182-analytic-geometry-midpoint': 'analytic-geometry-midpoint',
     '35182-analytic-geometry-points': 'analytic-geometry-points',    '35182-analytic-geometry-slope': 'analytic-geometry-slope',    '35182-geometry-area-perimeter': 'geometry-area-perimeter',
-    '35182-geometry-shapes-properties': 'geometry-shapes-properties',
-    '35182-statistics-intro': 'statistics-intro',    '35182-probability-intro': 'probability-intro',
+    '35182-geometry-shapes-properties': 'geometry-shapes-properties',    '35182-statistics-intro': 'statistics-intro',    '35182-probability-intro': 'probability-intro',
+    '35182-trigonometry-right-triangle': 'trigonometry-right-triangle',
+    'trigonometry-right-triangle': 'trigonometry-right-triangle',
     '35182-sequences-arithmetic-intro': 'sequences-arithmetic-intro',
     'functions_parabola_investigation_35381': 'functions-parabola-investigation',
     '35381_sequences_arithmetic_sum': 'sequences-arithmetic-sum',
@@ -279,8 +284,7 @@ export const getQuestionnaireLessonId = (actualLessonId) => {
     'analytic-geometry-circle': 'analytic-geometry-circle',
     'analytic-geometry-circle-tangent': 'analytic-geometry-circle-tangent',
     'analytic-geometry-circle-line-intersection': 'analytic-geometry-circle-line-intersection',
-    'analytic_geometry_line_continued_he': 'analytic-geometry-line-continued',
-    'calculus-polynomial': 'calculus-polynomial',
+    'analytic_geometry_line_continued_he': 'analytic-geometry-line-continued',    'calculus-polynomial': 'calculus-polynomial',
     'calculus-rational': 'calculus-rational',
     'calculus_square_root_he': 'calculus-square-root',
     'calculus_optimization_he': 'calculus-optimization',

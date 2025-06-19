@@ -7,6 +7,8 @@ import Quiz from '../components/Quiz';
 
 const ProblemsWorkRateLesson = () => {
   const [completionStatus, setCompletionStatus] = useState(false);
+  const lessonId = 'problems-work-rate';
+  const nextLessonPath = '/lesson/problems-motion';
 
   const breadcrumbItems = [
     { label: 'דף ראשי', href: '/' },
@@ -62,10 +64,10 @@ const ProblemsWorkRateLesson = () => {
       placeholder: 'הכנס זמן בשעות (עם עשרות)',
       solution: (
         <div className="space-y-3">
-          <p><strong>פתרון:</strong></p>          <p>קצב עבודה של מכונה א': <FormulaBox inline>\frac{1}{5}</FormulaBox> עבודות לשעה</p>
-          <p>קצב עבודה של מכונה ב': <FormulaBox inline>\frac{1}{10}</FormulaBox> עבודות לשעה</p>
+          <p><strong>פתרון:</strong></p>          <p>קצב עבודה של מכונה א': <FormulaBox inline>{`\\frac{1}{5}`}</FormulaBox> עבודות לשעה</p>
+          <p>קצב עבודה של מכונה ב': <FormulaBox inline>{`\\frac{1}{10}`}</FormulaBox> עבודות לשעה</p>
           <p>קצב עבודה משותף:</p>
-          <FormulaBox>\frac{1}{5} + \frac{1}{10} = \frac{2}{10} + \frac{1}{10} = \frac{3}{10}</FormulaBox>
+          <FormulaBox>{"\\frac{1}{5} + \\frac{1}{10} = \\frac{2}{10} + \\frac{1}{10} = \\frac{3}{10}"}</FormulaBox>
           <p>זמן לסיום העבודה:</p>
           <FormulaBox>{"t = \\frac{1}{\\frac{3}{10}} = \\frac{10}{3} = 3\\frac{1}{3}"}</FormulaBox>
           <p><strong>תשובה:</strong> 3.33 שעות (או 3 שעות ו-20 דקות)</p>
@@ -84,10 +86,10 @@ const ProblemsWorkRateLesson = () => {
       placeholder: 'הכנס זמן בשעות (עם עשרות)',
       solution: (
         <div className="space-y-3">
-          <p><strong>פתרון:</strong></p>          <p>קצב ריקון של צינור א': <FormulaBox inline>\frac{1}{6}</FormulaBox> בריכות לשעה</p>
-          <p>קצב ריקון של צינור ב': <FormulaBox inline>\frac{1}{4}</FormulaBox> בריכות לשעה</p>
+          <p><strong>פתרון:</strong></p>          <p>קצב ריקון של צינור א': <FormulaBox inline>{`\\frac{1}{6}`}</FormulaBox> בריכות לשעה</p>
+          <p>קצב ריקון של צינור ב': <FormulaBox inline>{`\\frac{1}{4}`}</FormulaBox> בריכות לשעה</p>
           <p>קצב ריקון משותף:</p>
-          <FormulaBox>\frac{1}{6} + \frac{1}{4} = \frac{2}{12} + \frac{3}{12} = \frac{5}{12}</FormulaBox>
+          <FormulaBox>{"\\frac{1}{6} + \\frac{1}{4} = \\frac{2}{12} + \\frac{3}{12} = \\frac{5}{12}"}</FormulaBox>
           <p>זמן לריקון הבריכה:</p>
           <FormulaBox>{"t = \\frac{1}{\\frac{5}{12}} = \\frac{12}{5} = 2.4"}</FormulaBox>
           <p><strong>תשובה:</strong> 2.4 שעות (או 2 שעות ו-24 דקות)</p>
@@ -95,15 +97,11 @@ const ProblemsWorkRateLesson = () => {
       )
     }
   ];
-
   return (
     <LessonLayout 
       title="בעיות קצב עבודה"
-      breadcrumbItems={breadcrumbItems}
-      nextLessonUrl="/lessons/problems-motion"
-      lessonMenuUrl="/lessons"
-      completionStatus={completionStatus}
-      onCompletionChange={setCompletionStatus}
+      lessonId={lessonId}
+      nextLessonPath={nextLessonPath}
     >
       {/* Learn Section */}
       <section className="mb-12">
@@ -168,13 +166,14 @@ const ProblemsWorkRateLesson = () => {
             </ul>
             
             <p>2. <strong>חישוב קצבי עבודה:</strong></p>
-            <ul className="list-disc pr-4">              <li>קצב עובד א': <FormulaBox inline>\frac{1}{8}</FormulaBox> עבודות לשעה</li>
-              <li>קצב עובד ב': <FormulaBox inline>\frac{1}{12}</FormulaBox> עבודות לשעה</li>
+            <ul className="list-disc pr-4">              <li>קצב עובד א': <FormulaBox inline>{`\\frac{1}{8}`}</FormulaBox> עבודות לשעה</li>
+              <li>קצב עובד ב': <FormulaBox inline>{`\\frac{1}{12}`}</FormulaBox> עבודות לשעה</li>
             </ul>
             
-            <p>3. <strong>חישוב קצב משותף:</strong></p>            <FormulaBox>\frac{1}{8} + \frac{1}{12}</FormulaBox>
+            <p>3. <strong>חישוב קצב משותף:</strong></p>
+            <FormulaBox>{"\\frac{1}{8} + \\frac{1}{12}"}</FormulaBox>
             <p>נמצא מכנה משותף (24):</p>
-            <FormulaBox>\frac{1}{8} + \frac{1}{12} = \frac{3}{24} + \frac{2}{24} = \frac{5}{24}</FormulaBox>
+            <FormulaBox>{"\\frac{1}{8} + \\frac{1}{12} = \\frac{3}{24} + \\frac{2}{24} = \\frac{5}{24}"}</FormulaBox>
             
             <p>4. <strong>חישוב זמן משותף:</strong></p>            <p className="text-center my-4">
               <FormulaBox>{"t = \\frac{1}{\\frac{5}{24}} = \\frac{24}{5} = 4.8"}</FormulaBox>
@@ -211,10 +210,13 @@ const ProblemsWorkRateLesson = () => {
             <Exercise key={exercise.id} {...exercise} />
           ))}
         </div>
+      </section>      {/* Quiz Section */}
+      <section id="quiz" aria-labelledby="quiz-heading" className="mb-12">
+        <h2 id="quiz-heading" className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
+          בחן את עצמך 🧠
+        </h2>
+        <Quiz questions={quizQuestions} lessonId={lessonId} />
       </section>
-
-      {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />
     </LessonLayout>
   );
 };

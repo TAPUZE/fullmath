@@ -11,13 +11,12 @@ const ShapeVisualization = ({ shape, title, properties }) => {
       case 'triangle-general':
         return (
           <svg className="w-32 h-32" viewBox="0 0 100 100">
-            <polygon points="50,10 10,90 90,90" fill="none" stroke="#3B82F6" strokeWidth="2" />
-            <text x="50" y="8" textAnchor="middle" fontSize="10" fill="#1F2937">A</text>
-            <text x="5" y="95" textAnchor="middle" fontSize="10" fill="#1F2937">B</text>
-            <text x="95" y="95" textAnchor="middle" fontSize="10" fill="#1F2937">C</text>
-            <text x="50" y="95" textAnchor="middle" fontSize="9" fill="#1F2937" fontStyle="italic">a</text>
-            <text x="73" y="55" textAnchor="middle" fontSize="9" fill="#1F2937" fontStyle="italic" transform="rotate(56 70 50)">b</text>
-            <text x="27" y="55" textAnchor="middle" fontSize="9" fill="#1F2937" fontStyle="italic" transform="rotate(-56 30 50)">c</text>
+            <polygon points="50,10 10,90 90,90" fill="none" stroke="#3B82F6" strokeWidth="2" />            <text x="50" y="8" textAnchor="middle" fontSize="14" fill="#1F2937">A</text>
+            <text x="5" y="95" textAnchor="middle" fontSize="14" fill="#1F2937">B</text>
+            <text x="95" y="95" textAnchor="middle" fontSize="14" fill="#1F2937">C</text>
+            <text x="50" y="95" textAnchor="middle" fontSize="13" fill="#1F2937" fontStyle="italic">a</text>
+            <text x="73" y="55" textAnchor="middle" fontSize="13" fill="#1F2937" fontStyle="italic" transform="rotate(56 70 50)">b</text>
+            <text x="27" y="55" textAnchor="middle" fontSize="13" fill="#1F2937" fontStyle="italic" transform="rotate(-56 30 50)">c</text>
           </svg>
         );
       case 'triangle-isosceles':

@@ -92,8 +92,7 @@ const AnalyticGeometryMidpointLesson = () => {
   // Solved example component
   const SolvedExample = () => (
     <div>
-      <h4 className="text-lg font-semibold mb-2">דוגמה פתורה (מתוך חומר הבחינה):</h4>
-      <p className="font-medium">שאלה: מצא את שיעורי אמצע הקטע שקצותיו הם <FormulaBox>\(A(2,5)\)</FormulaBox> ו-<FormulaBox>\(B(8,1)\)</FormulaBox>.</p>
+      <h4 className="text-lg font-semibold mb-2">דוגמה פתורה (מתוך חומר הבחינה):</h4>      <p className="font-medium">שאלה: מצא את שיעורי אמצע הקטע שקצותיו הם <FormulaBox inline>{"A(2,5)"}</FormulaBox> ו-<FormulaBox inline>{"B(8,1)"}</FormulaBox>.</p>
       
       <div className="text-center my-4">
         <ExampleDiagram />
@@ -101,12 +100,12 @@ const AnalyticGeometryMidpointLesson = () => {
       
       <div className="mt-2 space-y-1" dir="rtl">
         <p><strong>פתרון:</strong></p>
-        <p>נסמן: <FormulaBox>\(x_1=2, y_1=5\)</FormulaBox> ו-<FormulaBox>\(x_2=8, y_2=1\)</FormulaBox>.</p>
+        <p>נסמן: <FormulaBox inline>{"x_1=2, y_1=5"}</FormulaBox> ו-<FormulaBox inline>{"x_2=8, y_2=1"}</FormulaBox>.</p>
         <p>שיעור ה-X של נקודת האמצע:</p>
-        <p><FormulaBox>\(x_M = \frac{x_1 + x_2}{2} = \frac{2 + 8}{2} = \frac{10}{2} = 5\)</FormulaBox></p>
+        <p><FormulaBox>{"x_M = \\frac{x_1 + x_2}{2} = \\frac{2 + 8}{2} = \\frac{10}{2} = 5"}</FormulaBox></p>
         <p>שיעור ה-Y של נקודת האמצע:</p>
-        <p><FormulaBox>\(y_M = \frac{y_1 + y_2}{2} = \frac{5 + 1}{2} = \frac{6}{2} = 3\)</FormulaBox></p>
-        <p className="mt-2 font-semibold">שיעורי נקודת האמצע הם <FormulaBox>\((5,3)\)</FormulaBox>.</p>
+        <p><FormulaBox>{"y_M = \\frac{y_1 + y_2}{2} = \\frac{5 + 1}{2} = \\frac{6}{2} = 3"}</FormulaBox></p>
+        <p className="mt-2 font-semibold">שיעורי נקודת האמצע הם <FormulaBox inline>{"(5,3)"}</FormulaBox>.</p>
       </div>
     </div>
   );
@@ -240,12 +239,12 @@ const AnalyticGeometryMidpointLesson = () => {
           </p>
           
           <h3 className="text-xl font-semibold mt-6 mb-2">נוסחת אמצע קטע</h3>          <p>
-            אם נתונות שתי נקודות קצה של קטע, <FormulaBox>\(A(x_1, y_1)\)</FormulaBox> ו-<FormulaBox>\(B(x_2, y_2)\)</FormulaBox>, הקואורדינטות של נקודת האמצע <FormulaBox>\(M(x_M, y_M)\)</FormulaBox> של הקטע AB מחושבות כך:
+            אם נתונות שתי נקודות קצה של קטע, <FormulaBox inline>{"A(x_1, y_1)"}</FormulaBox> ו-<FormulaBox inline>{"B(x_2, y_2)"}</FormulaBox>, הקואורדינטות של נקודת האמצע <FormulaBox inline>{"M(x_M, y_M)"}</FormulaBox> של הקטע AB מחושבות כך:
           </p>
           <div className="formula-box-block my-6 text-center">
-            <FormulaBox>\(x_M = \frac{x_1 + x_2}{2}\)</FormulaBox>
+            <FormulaBox>{"x_M = \\frac{x_1 + x_2}{2}"}</FormulaBox>
             <br />
-            <FormulaBox>\(y_M = \frac{y_1 + y_2}{2}\)</FormulaBox>
+            <FormulaBox>{"y_M = \\frac{y_1 + y_2}{2}"}</FormulaBox>
           </div>
           <p>
             כלומר, שיעור ה-X של נקודת האמצע הוא הממוצע של שיעורי ה-X של נקודות הקצה, ושיעור ה-Y של נקודת האמצע הוא הממוצע של שיעורי ה-Y של נקודות הקצה.
@@ -272,9 +271,9 @@ const AnalyticGeometryMidpointLesson = () => {
             solution={
               <div>
                 <p><strong>פתרון מלא:</strong></p>
-                <p><FormulaBox>\(x_M = \frac{-3 + 5}{2} = \frac{2}{2} = 1\)</FormulaBox></p>
-                <p><FormulaBox>\(y_M = \frac{7 + (-1)}{2} = \frac{6}{2} = 3\)</FormulaBox></p>
-                <p>נקודת האמצע היא <FormulaBox>\((1,3)\)</FormulaBox>.</p>
+                <p><FormulaBox inline>{"x_M = \\frac{-3 + 5}{2} = \\frac{2}{2} = 1"}</FormulaBox></p>
+                <p><FormulaBox inline>{"y_M = \\frac{7 + (-1)}{2} = \\frac{6}{2} = 3"}</FormulaBox></p>
+                <p>נקודת האמצע היא <FormulaBox inline>{"(1,3)"}</FormulaBox>.</p>
                 
                 <div className="flex flex-col items-center my-4 p-3 border border-gray-200 rounded-lg bg-white">
                   <svg viewBox="-45 -80 115 125" className="w-full max-w-xs h-auto">

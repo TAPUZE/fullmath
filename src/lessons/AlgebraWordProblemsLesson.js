@@ -32,19 +32,18 @@ const AlgebraWordProblemsLesson = () => {
       <div className="space-y-2">
         <p><strong>פתרון:</strong></p>
         <p>1. <strong>הבנה:</strong> נתונים יחסים בין כמויות עפרונות וסכום כולל. מחפשים את מספר העפרונות של כל אחד.</p>
-        <p>2. <strong>הגדרת נעלמים:</strong></p>
-        <p>נסמן את מספר העפרונות של רון ב-<FormulaBox>\(x\)</FormulaBox>.</p>
-        <p>לפי הנתון "לגיל יש פי 2 יותר עפרונות מאשר לרון", מספר העפרונות של גיל הוא <FormulaBox>\(2x\)</FormulaBox>.</p>
+        <p>2. <strong>הגדרת נעלמים:</strong></p>        <p>נסמן את מספר העפרונות של רון ב-<FormulaBox inline>{"x"}</FormulaBox>.</p>
+        <p>לפי הנתון "לגיל יש פי 2 יותר עפרונות מאשר לרון", מספר העפרונות של גיל הוא <FormulaBox inline>{"2x"}</FormulaBox>.</p>
         <p>3. <strong>תרגום למשוואה:</strong></p>
         <p>הנתון "לשניהם יחד יש 21 עפרונות" מתורגם למשוואה:</p>
-        <p><FormulaBox>\(x + 2x = 21\)</FormulaBox> (העפרונות של רון + העפרונות של גיל = סך הכל עפרונות)</p>
+        <p><FormulaBox>{"x + 2x = 21"}</FormulaBox> (העפרונות של רון + העפרונות של גיל = סך הכל עפרונות)</p>
         <p>4. <strong>פתרון המשוואה:</strong></p>
-        <p><FormulaBox>\(3x = 21\)</FormulaBox></p>
-        <p>נחלק ב-3: <FormulaBox>\(x = \frac{21}{3} = 7\)</FormulaBox>.</p>
+        <p><FormulaBox>{"3x = 21"}</FormulaBox></p>
+        <p>נחלק ב-3: <FormulaBox inline>{"x = \\frac{21}{3} = 7"}</FormulaBox>.</p>
         <p>5. <strong>בדיקה ותשובה מילולית:</strong></p>
-        <p>מצאנו <FormulaBox>\(x=7\)</FormulaBox>. זהו מספר העפרונות של רון.</p>
-        <p>מספר העפרונות של גיל הוא <FormulaBox>\(2x = 2 \cdot 7 = 14\)</FormulaBox>.</p>
-        <p>בדיקה: לרון (7) ולגיל (14) יש יחד <FormulaBox>\(7+14=21\)</FormulaBox> עפרונות, ו-14 הוא פי 2 מ-7. הנתונים מסתדרים.</p>
+        <p>מצאנו <FormulaBox inline>{"x=7"}</FormulaBox>. זהו מספר העפרונות של רון.</p>
+        <p>מספר העפרונות של גיל הוא <FormulaBox inline>{"2x = 2 \\cdot 7 = 14"}</FormulaBox>.</p>
+        <p>בדיקה: לרון (7) ולגיל (14) יש יחד <FormulaBox inline>{"7+14=21"}</FormulaBox> עפרונות, ו-14 הוא פי 2 מ-7. הנתונים מסתדרים.</p>
         <p className="mt-2 font-semibold">תשובה: לרון יש 7 עפרונות, ולגיל יש 14 עפרונות.</p>
       </div>
     </div>
@@ -63,17 +62,16 @@ const AlgebraWordProblemsLesson = () => {
       question: 'מחיר עט יקר ב-5 ש"ח ממחיר עיפרון. דנה קנתה 3 עטים ו-4 עפרונות ושילמה בסך הכל 40 ש"ח. מה מחיר העיפרון?',
       hint: 'סמן את מחיר העיפרון ב-x.',
       correctAnswer: '3.57',
-      tolerance: 0.1,
-      solution: (
+      tolerance: 0.1,      solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>נסמן: מחיר עיפרון = <FormulaBox>\(x\)</FormulaBox> ש"ח.</p>
-          <p>מחיר עט = <FormulaBox>\(x+5\)</FormulaBox> ש"ח.</p>
-          <p>המשוואה: <FormulaBox>\(3(x+5) + 4x = 40\)</FormulaBox></p>
-          <p>פתיחת סוגריים: <FormulaBox>\(3x + 15 + 4x = 40\)</FormulaBox></p>
-          <p>כינוס איברים: <FormulaBox>\(7x + 15 = 40\)</FormulaBox></p>
-          <p>העברת אגפים: <FormulaBox>\(7x = 40 - 15 \Rightarrow 7x = 25\)</FormulaBox></p>
-          <p>בידוד הנעלם: <FormulaBox>\(x = \frac{25}{7} \approx 3.57\)</FormulaBox></p>
+          <p>נסמן: מחיר עיפרון = <FormulaBox inline>{"x"}</FormulaBox> ש"ח.</p>
+          <p>מחיר עט = <FormulaBox inline>{"x+5"}</FormulaBox> ש"ח.</p>
+          <p>המשוואה: <FormulaBox>{"3(x+5) + 4x = 40"}</FormulaBox></p>
+          <p>פתיחת סוגריים: <FormulaBox>{"3x + 15 + 4x = 40"}</FormulaBox></p>
+          <p>כינוס איברים: <FormulaBox>{"7x + 15 = 40"}</FormulaBox></p>
+          <p>העברת אגפים: <FormulaBox>{"7x = 40 - 15 \\Rightarrow 7x = 25"}</FormulaBox></p>
+          <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{25}{7} \\approx 3.57"}</FormulaBox></p>
           <p>מחיר העיפרון הוא כ-3.57 ש"ח.</p>
         </div>
       ),
@@ -83,24 +81,22 @@ const AlgebraWordProblemsLesson = () => {
       id: 'ex2',
       question: 'סכום שלושה מספרים עוקבים הוא 48. מהו המספר הקטן ביותר?',
       hint: 'סמן את המספר הקטן ביותר ב-x. המספרים העוקבים יהיו x, x+1, x+2.',
-      correctAnswer: '15',
-      solution: (
+      correctAnswer: '15',      solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p>נסמן: המספר הקטן = <FormulaBox>\(x\)</FormulaBox>.</p>
-          <p>המספר האמצעי = <FormulaBox>\(x+1\)</FormulaBox>.</p>
-          <p>המספר הגדול = <FormulaBox>\(x+2\)</FormulaBox>.</p>
-          <p>המשוואה: <FormulaBox>\(x + (x+1) + (x+2) = 48\)</FormulaBox></p>
-          <p>כינוס איברים: <FormulaBox>\(3x + 3 = 48\)</FormulaBox></p>
-          <p>העברת אגפים: <FormulaBox>\(3x = 48 - 3 \Rightarrow 3x = 45\)</FormulaBox></p>
-          <p>בידוד הנעלם: <FormulaBox>\(x = \frac{45}{3} = 15\)</FormulaBox></p>
+          <p>נסמן: המספר הקטן = <FormulaBox inline>{"x"}</FormulaBox>.</p>
+          <p>המספר האמצעי = <FormulaBox inline>{"x+1"}</FormulaBox>.</p>
+          <p>המספר הגדול = <FormulaBox inline>{"x+2"}</FormulaBox>.</p>
+          <p>המשוואה: <FormulaBox>{"x + (x+1) + (x+2) = 48"}</FormulaBox></p>
+          <p>כינוס איברים: <FormulaBox>{"3x + 3 = 48"}</FormulaBox></p>
+          <p>העברת אגפים: <FormulaBox>{"3x = 48 - 3 \\Rightarrow 3x = 45"}</FormulaBox></p>
+          <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{45}{3} = 15"}</FormulaBox></p>
           <p>המספר הקטן ביותר הוא 15.</p>
         </div>
       ),
       placeholder: 'הכנס את המספר הקטן ביותר'
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
@@ -126,6 +122,30 @@ const AlgebraWordProblemsLesson = () => {
       ],
       correctAnswer: 'a',
       explanation: 'נסמן כדורים כחולים = x, כדורים אדומים = 3x. סך הכל: x + 3x = 4x = 28. לכן x = 7.'
+    },
+    {
+      id: 'q3',
+      question: 'מספר כלשהו מוכפל ב-3 ומוסיפים לו 7, התוצאה היא 25. מהו המספר?',
+      options: [
+        { value: 'a', label: '4' },
+        { value: 'b', label: '6' },
+        { value: 'c', label: '8' },
+        { value: 'd', label: '10' }
+      ],
+      correctAnswer: 'b',
+      explanation: 'נסמן את המספר ב-x. המשוואה היא: 3x + 7 = 25. פתרון: 3x = 18, לכן x = 6.'
+    },
+    {
+      id: 'q4',
+      question: 'גיל אבא פי 4 מגיל הבן. בעוד 12 שנים גיל האבא יהיה פי 2 מגיל הבן. מהו גיל הבן כיום?',
+      options: [
+        { value: 'a', label: '8 שנים' },
+        { value: 'b', label: '12 שנים' },
+        { value: 'c', label: '16 שנים' },
+        { value: 'd', label: '20 שנים' }
+      ],
+      correctAnswer: 'b',
+      explanation: 'נסמן גיל הבן = x, גיל האבא = 4x. בעוד 12 שנים: 4x + 12 = 2(x + 12). פתרון: 4x + 12 = 2x + 24, 2x = 12, x = 12.'
     }
   ];
 

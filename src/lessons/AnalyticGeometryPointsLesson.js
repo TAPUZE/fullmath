@@ -49,20 +49,18 @@ const CoordinateIdentificationExercise = ({ questionText, svgContent, correctAns
           <polygon points="50,0 47,-2 47,2" fill="#4B5563" />
           <polygon points="0,-50 -2,-47 2,-47" fill="#4B5563" />
           
-          {/* Axis labels */}
-          <text x="53" y="2" fontSize="8" fill="#1F2937">x</text>
-          <text x="3" y="-51" fontSize="8" fill="#1F2937">y</text>
-          <text x="0" y="0" dx="-4" dy="7" fontSize="6" fill="#1F2937">(0,0)</text>
-          
-          {/* Point P for exercise */}
+          {/* Axis labels */}          <text x="53" y="2" fontSize="12" fill="#1F2937">x</text>
+          <text x="3" y="-51" fontSize="12" fill="#1F2937">y</text>
+          <text x="0" y="0" dx="-4" dy="7" fontSize="10" fill="#1F2937">(0,0)</text>
+            {/* Point P for exercise */}
           <circle cx="-40" cy="-20" r="2.5" fill="#059669" />
-          <text x="-40" y="-20" dx="5" dy="-3" fontSize="8" fill="#059669">P</text>
+          <text x="-40" y="-20" dx="5" dy="-3" fontSize="12" fill="#059669">P</text>
           
-          {/* Tick labels */}
-          <text x="-40" y="7" fontSize="6" fill="#6B7280">-4</text>
-          <text x="-7" y="-20" fontSize="6" fill="#6B7280">2</text>
-          <text x="20" y="7" fontSize="6" fill="#6B7280">2</text>
-          <text x="-7" y="20" fontSize="6" fill="#6B7280">-2</text>
+          {/* Tick labels with larger text */}
+          <text x="-40" y="7" fontSize="10" fill="#6B7280">-4</text>
+          <text x="-7" y="-20" fontSize="10" fill="#6B7280">2</text>
+          <text x="20" y="7" fontSize="10" fill="#6B7280">2</text>
+          <text x="-7" y="20" fontSize="10" fill="#6B7280">-2</text>
         </svg>
       </div>
       
@@ -136,37 +134,35 @@ const DynamicCoordinateSystem = () => {
         <polygon points="150,0 145,-5 145,5" fill="#1F2937" />
         <polygon points="0,-150 -5,-145 5,-145" fill="#1F2937" />
         
-        {/* Axis labels */}
-        <text x="155" y="5" fontSize="12" fill="#1F2937" fontWeight="bold">x</text>
-        <text x="7" y="-152" fontSize="12" fill="#1F2937" fontWeight="bold">y</text>
-        <text x="0" y="0" dx="-12" dy="15" fontSize="10" fill="#6B7280">(0,0)</text>
+        {/* Axis labels */}        <text x="155" y="5" fontSize="16" fill="#1F2937" fontWeight="bold">x</text>
+        <text x="7" y="-152" fontSize="16" fill="#1F2937" fontWeight="bold">y</text>
+        <text x="0" y="0" dx="-12" dy="15" fontSize="14" fill="#6B7280">(0,0)</text>
         
         {/* Tick marks and labels */}
         {[-4, -3, -2, -1, 1, 2, 3, 4].map(num => (
           <g key={`x-${num}`}>
             <line x1={num * 20} y1="-3" x2={num * 20} y2="3" stroke="#1F2937" strokeWidth="1" />
-            <text x={num * 20} y="0" dy="15" fontSize="8" fill="#6B7280" textAnchor="middle">{num}</text>
+            <text x={num * 20} y="0" dy="15" fontSize="12" fill="#6B7280" textAnchor="middle">{num}</text>
           </g>
         ))}
         {[-4, -3, -2, -1, 1, 2, 3, 4].map(num => (
           <g key={`y-${num}`}>
             <line x1="-3" y1={-num * 20} x2="3" y2={-num * 20} stroke="#1F2937" strokeWidth="1" />
-            <text x="0" y={-num * 20} dx="-15" dy="3" fontSize="8" fill="#6B7280" textAnchor="middle">{num}</text>
+            <text x="0" y={-num * 20} dx="-15" dy="3" fontSize="12" fill="#6B7280" textAnchor="middle">{num}</text>
           </g>
         ))}
-        
-        {/* Sample points for demonstration */}
+          {/* Sample points for demonstration */}
         <circle cx="80" cy="-60" r="3" fill="#3B82F6" />
-        <text x="80" y="-60" dx="8" dy="-5" fontSize="9" fill="#3B82F6">A(4,3)</text>
+        <text x="80" y="-60" dx="8" dy="-5" fontSize="13" fill="#3B82F6">A(4,3)</text>
         
         <circle cx="-60" cy="40" r="3" fill="#EF4444" />
-        <text x="-60" y="40" dx="-25" dy="5" fontSize="9" fill="#EF4444">B(-3,-2)</text>
+        <text x="-60" y="40" dx="-25" dy="5" fontSize="13" fill="#EF4444">B(-3,-2)</text>
         
         <circle cx="40" cy="80" r="3" fill="#10B981" />
-        <text x="40" y="80" dx="8" dy="5" fontSize="9" fill="#10B981">C(2,-4)</text>
+        <text x="40" y="80" dx="8" dy="5" fontSize="13" fill="#10B981">C(2,-4)</text>
         
         <circle cx="-80" cy="-40" r="3" fill="#F59E0B" />
-        <text x="-80" y="-40" dx="-25" dy="-5" fontSize="9" fill="#F59E0B">D(-4,2)</text>
+        <text x="-80" y="-40" dx="-25" dy="-5" fontSize="13" fill="#F59E0B">D(-4,2)</text>
       </svg>
     </div>
   );
@@ -226,18 +222,17 @@ const AnalyticGeometryPointsLesson = () => {
         </div>
       ),
       placeholder: 'הכנס אות (A, B, C, או D)'
-    }
-  ];
+    }  ];
 
   // Quiz questions
   const quizQuestions = [
-    {
-      id: 'origin-coordinates',
+    {      id: 'origin-coordinates',
       question: 'מהן הקואורדינטות של ראשית הצירים?',
-      options: [        { id: 'a', text: <FormulaBox inline>{`(1,1)`}</FormulaBox> },
-        { id: 'b', text: <FormulaBox inline>{`(0,0)`}</FormulaBox> },
-        { id: 'c', text: <FormulaBox inline>{`(0,1)`}</FormulaBox> },
-        { id: 'd', text: <FormulaBox inline>{`(1,0)`}</FormulaBox> }
+      options: [
+        { value: 'a', label: <FormulaBox inline>{`(1,1)`}</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>{`(0,0)`}</FormulaBox> },
+        { value: 'c', label: <FormulaBox inline>{`(0,1)`}</FormulaBox> },
+        { value: 'd', label: <FormulaBox inline>{`(1,0)`}</FormulaBox> }
       ],
       correctAnswer: 'b',
       explanation: (
@@ -252,19 +247,58 @@ const AnalyticGeometryPointsLesson = () => {
       question: (
         <span>
           נקודה <FormulaBox inline>{`(-2, -5)`}</FormulaBox> נמצאת באיזה רביע?
-        </span>
-      ),
+        </span>      ),
       options: [
-        { id: 'a', text: 'רביע I' },
-        { id: 'b', text: 'רביע II' },
-        { id: 'c', text: 'רביע III' },
-        { id: 'd', text: 'רביע IV' }
+        { value: 'a', label: 'רביע I' },
+        { value: 'b', label: 'רביע II' },
+        { value: 'c', label: 'רביע III' },
+        { value: 'd', label: 'רביע IV' }
       ],
       correctAnswer: 'c',
       explanation: (
         <div>
           <p>נקודה <FormulaBox inline>{`(-2, -5)`}</FormulaBox> יש לה שני קואורדינטות שליליות.</p>
           <p>רביע III הוא האזור שבו גם ציר X וגם ציר Y שליליים.</p>
+        </div>
+      )
+    },
+    {
+      id: 'quadrant-positive-x',
+      question: (
+        <span>
+          נקודה <FormulaBox inline>{`(3, -4)`}</FormulaBox> נמצאת באיזה רביע?
+        </span>      ),
+      options: [
+        { value: 'a', label: 'רביע I' },
+        { value: 'b', label: 'רביע II' },
+        { value: 'c', label: 'רביע III' },
+        { value: 'd', label: 'רביע IV' }
+      ],
+      correctAnswer: 'd',
+      explanation: (
+        <div>
+          <p>נקודה <FormulaBox inline>{`(3, -4)`}</FormulaBox> יש לה קואורדינטת X חיובית וקואורדינטת Y שלילית.</p>
+          <p>רביע IV הוא האזור שבו ציר X חיובי וציר Y שלילי.</p>
+        </div>
+      )
+    },
+    {
+      id: 'axes-points',
+      question: (
+        <span>
+          נקודה <FormulaBox inline>{`(0, 5)`}</FormulaBox> נמצאת:
+        </span>      ),
+      options: [
+        { value: 'a', label: 'על ציר ה-X' },
+        { value: 'b', label: 'על ציר ה-Y' },
+        { value: 'c', label: 'ברביע הראשון' },
+        { value: 'd', label: 'ברביע השני' }
+      ],
+      correctAnswer: 'b',
+      explanation: (
+        <div>
+          <p>נקודה <FormulaBox inline>{`(0, 5)`}</FormulaBox> יש לה קואורדינטת X שווה לאפס.</p>
+          <p>כל נקודה עם קואורדינטת X שווה לאפס נמצאת על ציר ה-Y.</p>
         </div>
       )
     }

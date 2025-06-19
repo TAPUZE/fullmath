@@ -89,13 +89,13 @@ const AnalyticGeometryDistanceLesson = () => {
   const SolvedExample = () => (
     <div className="border border-blue-200 bg-blue-50 p-4 rounded-lg mt-4">
       <h4 className="text-lg font-semibold mb-2">דוגמה פתורה (מתוך חומר הבחינה):</h4>
-      <p className="font-medium">שאלה: מצא את המרחק בין הנקודות <FormulaBox>\(A(1,2)\)</FormulaBox> ו-<FormulaBox>\(B(4,6)\)</FormulaBox>.</p>
+      <p className="font-medium">שאלה: מצא את המרחק בין הנקודות <FormulaBox inline>{"A(1,2)"}</FormulaBox> ו-<FormulaBox inline>{"B(4,6)"}</FormulaBox>.</p>
       <div className="mt-2 space-y-1">
         <p><strong>פתרון:</strong></p>
-        <p>נסמן: <FormulaBox>\(x_1=1, y_1=2\)</FormulaBox> ו-<FormulaBox>\(x_2=4, y_2=6\)</FormulaBox>.</p>
+        <p>נסמן: <FormulaBox inline>{"x_1=1, y_1=2"}</FormulaBox> ו-<FormulaBox inline>{"x_2=4, y_2=6"}</FormulaBox>.</p>
         <p>נציב בנוסחת המרחק:</p>
-        <p><FormulaBox>\(d = \sqrt{(4 - 1)^2 + (6 - 2)^2}\)</FormulaBox></p>
-        <p><FormulaBox>\(d = \sqrt{(3)^2 + (4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5\)</FormulaBox></p>
+        <p><FormulaBox inline>{"d = \\sqrt{(4 - 1)^2 + (6 - 2)^2}"}</FormulaBox></p>
+        <p><FormulaBox inline>{"d = \\sqrt{(3)^2 + (4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5"}</FormulaBox></p>
         <p className="mt-2 font-semibold">המרחק בין הנקודות הוא 5 יחידות.</p>
       </div>
     </div>
@@ -109,8 +109,8 @@ const AnalyticGeometryDistanceLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p><FormulaBox>\(d = \sqrt{(3 - (-2))^2 + (13 - 1)^2}\)</FormulaBox></p>
-          <p><FormulaBox>\(d = \sqrt{(5)^2 + (12)^2} = \sqrt{25 + 144} = \sqrt{169} = 13\)</FormulaBox></p>
+          <p><FormulaBox inline>{"d = \\sqrt{(3 - (-2))^2 + (13 - 1)^2}"}</FormulaBox></p>
+          <p><FormulaBox inline>{"d = \\sqrt{(5)^2 + (12)^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13"}</FormulaBox></p>
           <p>המרחק הוא 13 יחידות.</p>
         </div>
       ),
@@ -123,8 +123,8 @@ const AnalyticGeometryDistanceLesson = () => {
       solution: (
         <div>
           <p><strong>פתרון מלא:</strong></p>
-          <p><FormulaBox>\(d = \sqrt{(0 - 0)^2 + (-5 - 0)^2}\)</FormulaBox></p>
-          <p><FormulaBox>\(d = \sqrt{0 + 25} = \sqrt{25} = 5\)</FormulaBox></p>
+          <p><FormulaBox inline>{"d = \\sqrt{(0 - 0)^2 + (-5 - 0)^2}"}</FormulaBox></p>
+          <p><FormulaBox inline>{"d = \\sqrt{0 + 25} = \\sqrt{25} = 5"}</FormulaBox></p>
           <p>המרחק הוא 5 יחידות.</p>
         </div>
       ),
@@ -184,7 +184,7 @@ const AnalyticGeometryDistanceLesson = () => {
 
           <ul className="list-disc list-inside space-y-2 pr-5">
             <li>
-              <strong>קו אופקי:</strong> אם שתי נקודות <FormulaBox>\(A(x_1, y)\)</FormulaBox> ו-<FormulaBox>\(B(x_2, y)\)</FormulaBox> נמצאות על קו אופקי, המרחק ביניהן הוא <FormulaBox>\(d = |x_2 - x_1|\)</FormulaBox>.
+              <strong>קו אופקי:</strong> אם שתי נקודות <FormulaBox inline>{"A(x_1, y)"}</FormulaBox> ו-<FormulaBox inline>{"B(x_2, y)"}</FormulaBox> נמצאות על קו אופקי, המרחק ביניהן הוא <FormulaBox inline>{"d = |x_2 - x_1|"}</FormulaBox>.
             </li>
             <li>
               <strong>קו אנכי:</strong> אם שתי נקודות <FormulaBox>{`\\(C(x, y_1)\\)`}</FormulaBox> ו-<FormulaBox>{`\\(D(x, y_2)\\)`}</FormulaBox> נמצאות על קו אנכי, המרחק ביניהן הוא <FormulaBox>{`\\(d = |y_2 - y_1|\\)`}</FormulaBox>.

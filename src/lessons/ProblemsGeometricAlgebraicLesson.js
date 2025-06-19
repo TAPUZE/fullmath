@@ -6,6 +6,8 @@ import Quiz from '../components/Quiz';
 
 const ProblemsGeometricAlgebraicLesson = () => {
   const [completionStatus, setCompletionStatus] = useState(false);
+  const lessonId = 'problems-geometric-algebraic';
+  const nextLessonPath = '/lessons/probability-intro';
 
   const breadcrumbItems = [
     { label: 'דף ראשי', href: '/' },
@@ -84,15 +86,11 @@ const ProblemsGeometricAlgebraicLesson = () => {
       )
     }
   ];
-
   return (
     <LessonLayout 
       title="בעיות גיאומטריות-אלגבריות"
-      breadcrumbItems={breadcrumbItems}
-      nextLessonUrl="/lessons/analytic-geometry-line-continued"
-      lessonMenuUrl="/lessons"
-      completionStatus={completionStatus}
-      onCompletionChange={setCompletionStatus}
+      lessonId={lessonId}
+      nextLessonPath={nextLessonPath}
     >
       {/* Learn Section */}
       <section className="mb-12">
@@ -193,10 +191,13 @@ const ProblemsGeometricAlgebraicLesson = () => {
             <Exercise key={exercise.id} {...exercise} />
           ))}
         </div>
+      </section>      {/* Quiz Section */}
+      <section id="quiz" aria-labelledby="quiz-heading" className="mb-12">
+        <h2 id="quiz-heading" className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">
+          בחן את עצמך 🧠
+        </h2>
+        <Quiz questions={quizQuestions} lessonId={lessonId} />
       </section>
-
-      {/* Quiz Section */}
-      <Quiz questions={quizQuestions} />
     </LessonLayout>
   );
 };

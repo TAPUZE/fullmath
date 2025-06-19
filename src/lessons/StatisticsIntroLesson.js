@@ -167,17 +167,16 @@ const StatisticsIntroLesson = () => {
     { value: 90, frequency: 4 },
     { value: 100, frequency: 2 }
   ];
-
   // Quiz questions
   const quizQuestions = [
     {
       id: 'mean-calculation',
       question: 'מהו הממוצע של המספרים: 2, 4, 6, 8, 10?',
       options: [
-        { id: 'a', text: '5' },
-        { id: 'b', text: '6' },
-        { id: 'c', text: '7' },
-        { id: 'd', text: '30' }
+        { value: 'a', label: '5' },
+        { value: 'b', label: '6' },
+        { value: 'c', label: '7' },
+        { value: 'd', label: '30' }
       ],
       correctAnswer: 'b',
       explanation: (        <div>          <p>הממוצע מחושב על ידי סכום כל הערכים חלקי מספר הערכים:</p>
@@ -189,13 +188,12 @@ const StatisticsIntroLesson = () => {
       )
     },
     {
-      id: 'median-calculation',
-      question: 'מהו החציון של רשימת הציונים: 60, 90, 70, 100, 80?',
+      id: 'median-calculation',      question: 'מהו החציון של רשימת הציונים: 60, 90, 70, 100, 80?',
       options: [
-        { id: 'a', text: '70' },
-        { id: 'b', text: '80' },
-        { id: 'c', text: '85' },
-        { id: 'd', text: '90' }
+        { value: 'a', label: '70' },
+        { value: 'b', label: '80' },
+        { value: 'c', label: '85' },
+        { value: 'd', label: '90' }
       ],
       correctAnswer: 'b',
       explanation: (
@@ -272,15 +270,14 @@ const StatisticsIntroLesson = () => {
             
             <p className="mt-2"><strong>ממוצע:</strong> כדי לחשב ממוצע מטבלת שכיחויות, כופלים כל ערך בשכיחות שלו, סוכמים את כל המכפלות, ומחלקים בסך כל השכיחויות (סה"כ התלמידים).</p>            <p>סה"כ תלמידים: <FormulaBox inline>3+5+8+4+2 = 22</FormulaBox>.</p>
             <p>סכום (ערך × שכיחות): <FormulaBox inline>(60 \cdot 3) + (70 \cdot 5) + (80 \cdot 8) + (90 \cdot 4) + (100 \cdot 2)</FormulaBox></p>
-            <FormulaBox>= 180 + 350 + 640 + 360 + 200 = 1730</FormulaBox>
-            <p>ממוצע: <FormulaBox inline>\frac{1730}{22} \approx 78.64</FormulaBox>.</p>
+            <FormulaBox>= 180 + 350 + 640 + 360 + 200 = 1730</FormulaBox>            <p>ממוצע: <FormulaBox inline>{`\\frac{1730}{22} \\approx 78.64`}</FormulaBox>.</p>
             
-            <p className="mt-2"><strong>חציון:</strong> יש 22 תלמידים (מספר זוגי). האיברים האמצעיים הם במקומות <FormulaBox inline>\frac{22}{2}=11</FormulaBox> ו-<FormulaBox inline>11+1=12</FormulaBox>.</p>
+            <p className="mt-2"><strong>חציון:</strong> יש 22 תלמידים (מספר זוגי). האיברים האמצעיים הם במקומות <FormulaBox inline>{`\\frac{22}{2}=11`}</FormulaBox> ו-<FormulaBox inline>11+1=12</FormulaBox>.</p>
             <ul className="list-disc list-inside pr-5">
               <li>3 תלמידים קיבלו 60.</li>              <li><FormulaBox inline>3+5=8</FormulaBox> תלמידים קיבלו 70 או פחות.</li>
               <li><FormulaBox inline>8+8=16</FormulaBox> תלמידים קיבלו 80 או פחות.</li>
             </ul>
-            <p>התלמיד ה-11 והתלמיד ה-12 קיבלו שניהם ציון 80. לכן, החציון הוא <FormulaBox inline>\frac{80+80}{2} = 80</FormulaBox>.</p>
+            <p>התלמיד ה-11 והתלמיד ה-12 קיבלו שניהם ציון 80. לכן, החציון הוא <FormulaBox inline>{`\\frac{80+80}{2} = 80`}</FormulaBox>.</p>
             
             <p className="mt-2"><strong>שכיח:</strong> הציון בעל השכיחות הגבוהה ביותר הוא 80 (8 תלמידים). לכן, השכיח הוא 80.</p>
           </div>

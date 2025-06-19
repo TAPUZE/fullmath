@@ -50,7 +50,6 @@ const CalculusRationalLesson = () => {
       }
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
@@ -61,7 +60,7 @@ const CalculusRationalLesson = () => {
         { value: 'b', label: 'x ≠ 7' },
         { value: 'c', label: 'x ≠ 5' }
       ],
-      correct: 'b',
+      correctAnswer: 'b',
       explanation: 'תחום ההגדרה הוא כל הערכים שבהם המכנה שונה מאפס. x-7≠0 לכן x≠7.'
     },
     {
@@ -73,14 +72,15 @@ const CalculusRationalLesson = () => {
         { value: 'b', label: 'y=3' },
         { value: 'c', label: 'אין אסימפטוטה אופקית' }
       ],
-      correct: 'b',
+      correctAnswer: 'b',
       explanation: 'החזקות הגבוהות במונה ובמכנה שוות (x²), לכן האסימפטוטה האופקית היא יחס המקדמים: 6/2 = 3, כלומר y=3.'
     }
   ];
-
   return (
     <LessonLayout
       title="פונקציה רציונלית (חדו״א)"
+      lessonId="calculus-rational"
+      nextLessonPath="/lesson/calculus-square-root"
       breadcrumbs={[
         { label: 'דף ראשי', href: '/' },
         { label: 'שאלון 35382', href: '/lessons' },

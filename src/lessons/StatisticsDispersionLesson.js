@@ -27,14 +27,13 @@ const StatisticsDispersionLesson = () => {
             <li><FormulaBox inline>(90-80)^2 = (10)^2 = 100</FormulaBox></li>
           </ul>
           <p>3. סכום ריבועי הסטיות: <FormulaBox inline>100+25+25+100 = 250</FormulaBox>.</p>
-          <p>4. שונות: <FormulaBox inline>S^2 = \\frac{250}{4} = 62.5</FormulaBox>.</p>
+          <p>4. שונות: <FormulaBox inline>{"S^2 = \\frac{250}{4} = 62.5"}</FormulaBox>.</p>
           <p>5. סטיית תקן: <FormulaBox inline>{"S = \\sqrt{62.5} \\approx 7.90569"}</FormulaBox>.</p>
           <p>תשובה מעוגלת: 7.91.</p>
         </div>
       )
     }
   ];
-
   const quizQuestions = [
     {
       id: 'q1',
@@ -55,6 +54,28 @@ const StatisticsDispersionLesson = () => {
         { value: 'c', label: 'סטיות התקן יהיו זהות' }
       ],
       correctAnswer: 'a'
+    },
+    {
+      id: 'q3',
+      question: 'הנתונים: 5, 7, 9, 11, 13. מהו הטווח?',
+      options: [
+        { value: 'a', label: '8' },
+        { value: 'b', label: '9' },
+        { value: 'c', label: '13' },
+        { value: 'd', label: '6' }
+      ],
+      correctAnswer: 'a'
+    },
+    {
+      id: 'q4',
+      question: 'מדוע סטיית התקן נחשבת לעיתים קרובות לעדיפה על פני השונות?',
+      options: [
+        { value: 'a', label: 'היא תמיד קטנה יותר' },
+        { value: 'b', label: 'היא מבוטאת באותן יחידות כמו הנתונים המקוריים' },
+        { value: 'c', label: 'היא תמיד חיובית' },
+        { value: 'd', label: 'הן קשה יותר לחישוב' }
+      ],
+      correctAnswer: 'b'
     }
   ];
 

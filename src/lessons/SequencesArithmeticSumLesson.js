@@ -2,6 +2,7 @@ import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
+import Quiz from '../components/Quiz';
 
 const SequencesArithmeticSumLesson = () => {
 
@@ -39,6 +40,59 @@ const SequencesArithmeticSumLesson = () => {
             <FormulaBox>{"n = \\frac{400 \\cdot 2}{80} = 10"}</FormulaBox>
           </div>
           <p>לכן, יש בסדרה זו 10 איברים.</p>
+        </div>
+      )
+    }
+  ];
+
+  const quizQuestions = [
+    {
+      id: 'q1',
+      question: 'מהו סכום 5 האיברים הראשונים בסדרה חשבונית שבה האיבר הראשון הוא 3 והפרש הסדרה הוא 2?',      options: [
+        { value: 'a', label: '35' },
+        { value: 'b', label: '25' },
+        { value: 'c', label: '30' },
+        { value: 'd', label: '15' }
+      ],
+      correctAnswer: 'a',
+      explanation: (
+        <div>
+          <p><strong>פתרון:</strong></p>
+          <p>נתונים: <FormulaBox inline>a_1=3, d=2, n=5</FormulaBox>.</p>
+          <p>נשתמש בנוסחה הראשונה: <FormulaBox inline>{"S_n = \\frac{n}{2}[2a_1 + (n-1)d]"}</FormulaBox>.</p>
+          <p>נציב את הנתונים:</p>
+          <div className="my-2 text-center">
+            <FormulaBox>{"S_{5} = \\frac{5}{2}[2 \\cdot 3 + (5-1) \\cdot 2]"}</FormulaBox>
+          </div>
+          <div className="my-2 text-center">
+            <FormulaBox>{"S_{5} = 2.5[6 + 8] = 2.5 \\cdot 14 = 35"}</FormulaBox>
+          </div>
+          <p>סכום 5 האיברים הראשונים הוא 35.</p>
+        </div>
+      )
+    },
+    {
+      id: 'q2',
+      question: 'בסדרה חשבונית, אם האיבר הראשון הוא 4 והאיבר האחרון בסכום של 6 איברים הוא 28, מהו סכום 6 האיברים?',      options: [
+        { value: 'a', label: '64' },
+        { value: 'b', label: '96' },
+        { value: 'c', label: '60' },
+        { value: 'd', label: '80' }
+      ],
+      correctAnswer: 'b',
+      explanation: (
+        <div>
+          <p><strong>פתרון:</strong></p>
+          <p>נתונים: <FormulaBox inline>a_1=4, a_6=28, n=6</FormulaBox>.</p>
+          <p>נשתמש בנוסחה השנייה: <FormulaBox inline>{"S_n = \\frac{n}{2}(a_1 + a_n)"}</FormulaBox>.</p>
+          <p>נציב את הנתונים:</p>
+          <div className="my-2 text-center">
+            <FormulaBox>{"S_{6} = \\frac{6}{2}(4 + 28)"}</FormulaBox>
+          </div>
+          <div className="my-2 text-center">
+            <FormulaBox>{"S_{6} = 3 \\cdot 32 = 96"}</FormulaBox>
+          </div>
+          <p>סכום 6 האיברים הוא 96.</p>
         </div>
       )
     }
@@ -112,6 +166,21 @@ const SequencesArithmeticSumLesson = () => {
               question={`תרגיל ${index + 1}: ${exercise.question}`}
               correctAnswer={exercise.correctAnswer}
               solution={exercise.solution}
+            />
+          ))}        </div>
+      </section>
+
+      {/* Quiz Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-purple-600 mb-4 border-b-2 border-purple-200 pb-2">חידון קצר על סכום סדרות חשבוניות 🧠</h2>
+        <div className="space-y-6">
+          {quizQuestions.map((question) => (
+            <Quiz
+              key={question.id}
+              id={question.id}
+              question={question.question}
+              options={question.options}
+              explanation={question.explanation}
             />
           ))}        </div>
       </section>

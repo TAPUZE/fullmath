@@ -35,11 +35,11 @@ const AnalyticGeometryCircleLineIntersectionLesson = () => {
       correctAnswer: 1
     }
   ];
-
   return (
     <LessonLayout 
       title="גיאומטריה אנליטית - חיתוך של מעגל וישר"
       lessonId="analytic-geometry-circle-line-intersection"
+      nextLessonPath="/lesson/analytic-geometry-line-continued"
     >
       <div className="space-y-6">
         {/* כותרת */}
@@ -190,13 +190,13 @@ const AnalyticGeometryCircleLineIntersectionLesson = () => {
             <div className="bg-blue-50 p-4 rounded-lg">
               <h4 className="font-semibold mb-2">ישר אופקי y = k:</h4>
               <p>נציב ישירות במשוואת המעגל: <FormulaBox type="inline">{`x^2 + k^2 = R^2`}</FormulaBox></p>
-              <p>נקבל: <FormulaBox type="inline">{`x = \\\\pm\\\\sqrt{R^2 - k^2}`}</FormulaBox> (אם <FormulaBox type="inline">{`|k| \\\\leq R`}</FormulaBox>)</p>
+              <p>נקבל: <FormulaBox type="inline">{`x = \\pm\\sqrt{R^2 - k^2}`}</FormulaBox> (אם <FormulaBox type="inline">{`|k| \\leq R`}</FormulaBox>)</p>
             </div>
             
             <div className="bg-green-50 p-4 rounded-lg">
               <h4 className="font-semibold mb-2">ישר אנכי x = h:</h4>
               <p>נציב ישירות במשוואת המעגל: <FormulaBox type="inline">{`h^2 + y^2 = R^2`}</FormulaBox></p>
-              <p>נקבל: <FormulaBox type="inline">{`y = \\\\pm\\\\sqrt{R^2 - h^2}`}</FormulaBox> (אם <FormulaBox type="inline">{`|h| \\\\leq R`}</FormulaBox>)</p>
+              <p>נקבל: <FormulaBox type="inline">{`y = \\pm\\sqrt{R^2 - h^2}`}</FormulaBox> (אם <FormulaBox type="inline">{`|h| \\leq R`}</FormulaBox>)</p>
             </div>
           </div>
         </div>

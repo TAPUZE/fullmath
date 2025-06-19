@@ -6,7 +6,6 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
   const [submitted, setSubmitted] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [timeSpent, setTimeSpent] = useState(0);
-
   useEffect(() => {
     setStartTime(Date.now());
     
@@ -17,7 +16,16 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
         setTimeSpent(prev => prev + sessionTime);
       }
     };
-  }, []);
+  }, [startTime, submitted]);
+
+  // Handle undefined or empty questions
+  if (!questions || !Array.isArray(questions) || questions.length === 0) {
+    return (
+      <div className="text-center py-8 text-gray-500">
+        <p>אין שאלות זמינות לבחינה זו.</p>
+      </div>
+    );
+  }
 
   const handleAnswerChange = (questionId, value) => {
     setAnswers(prev => ({

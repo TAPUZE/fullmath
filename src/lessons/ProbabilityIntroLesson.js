@@ -92,11 +92,11 @@ const ProbabilityIntroLesson = () => {
   const quizQuestions = [
     {
       id: 'q1',
-      question: 'מהי ההסתברות לקבל מספר זוגי בהטלת קובייה הוגנת?',
-      options: [        { value: 'a', label: <FormulaBox inline>1/6</FormulaBox> },
-        { value: 'b', label: <FormulaBox inline>2/6</FormulaBox> },
-        { value: 'c', label: <><FormulaBox inline>3/6</FormulaBox> (או <FormulaBox inline>1/2</FormulaBox>)</> },
-        { value: 'd', label: <FormulaBox inline>1</FormulaBox> }
+      question: 'מהי ההסתברות לקבל מספר זוגי בהטלת קובייה הוגנת?',      options: [
+        { value: 'a', label: <FormulaBox inline>{"\\frac{1}{6}"}</FormulaBox> },
+        { value: 'b', label: <FormulaBox inline>{"\\frac{2}{6}"}</FormulaBox> },
+        { value: 'c', label: <><FormulaBox inline>{"\\frac{3}{6}"}</FormulaBox> (או <FormulaBox inline>{"\\frac{1}{2}"}</FormulaBox>)</> },
+        { value: 'd', label: <FormulaBox inline>{"1"}</FormulaBox> }
       ],
       correctAnswer: 'c'
     },

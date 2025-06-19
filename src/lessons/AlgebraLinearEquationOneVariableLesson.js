@@ -6,7 +6,7 @@ import Quiz from '../components/Quiz';
 
 const AlgebraLinearEquationOneVariableLesson = () => {
   const lessonId = 'algebra_linear_equation_one_variable_35182';
-  const nextLessonPath = '/algebra-linear-equations-two-variables';
+  const nextLessonPath = '/lessons/algebra-percentages';
 
   const exercises = [
     {
@@ -20,7 +20,7 @@ const AlgebraLinearEquationOneVariableLesson = () => {
           <p><FormulaBox inline>5x - 8 = 2x + 7</FormulaBox></p>
           <p>העברת אגפים: <FormulaBox inline>5x - 2x = 7 + 8</FormulaBox></p>
           <p>כינוס איברים: <FormulaBox inline>3x = 15</FormulaBox></p>
-          <p>בידוד הנעלם: <FormulaBox inline>x = \\frac{15}{3} = 5</FormulaBox></p>
+          <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{15}{3} = 5"}</FormulaBox></p>
           <p>הפתרון הוא: <FormulaBox inline>x = 5</FormulaBox>.</p>
         </div>
       )
@@ -38,7 +38,7 @@ const AlgebraLinearEquationOneVariableLesson = () => {
           <p>כינוס איברים באגף שמאל: <FormulaBox inline>2x + 10 = 12</FormulaBox></p>
           <p>העברת אגפים: <FormulaBox inline>2x = 12 - 10</FormulaBox></p>
           <p><FormulaBox inline>2x = 2</FormulaBox></p>
-          <p>בידוד הנעלם: <FormulaBox inline>x = \\frac{2}{2} = 1</FormulaBox></p>
+          <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{2}{2} = 1"}</FormulaBox></p>
           <p>הפתרון הוא: <FormulaBox inline>x = 1</FormulaBox>.</p>
         </div>
       )
@@ -56,7 +56,7 @@ const AlgebraLinearEquationOneVariableLesson = () => {
           <p><FormulaBox inline>{"6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5"}</FormulaBox></p>
           <p><FormulaBox inline>3x + 2x = 30</FormulaBox></p>
           <p>כינוס איברים: <FormulaBox inline>5x = 30</FormulaBox></p>
-          <p>בידוד הנעלם: <FormulaBox inline>x = \\frac{30}{5} = 6</FormulaBox></p>
+          <p>בידוד הנעלם: <FormulaBox inline>{"x = \\frac{30}{5} = 6"}</FormulaBox></p>
           <p>פתרון המשוואה הוא <FormulaBox inline>x = 6</FormulaBox>.</p>
         </div>
       )
@@ -82,7 +82,7 @@ const AlgebraLinearEquationOneVariableLesson = () => {
         { value: 'a', label: <FormulaBox inline>x = 4</FormulaBox> },
         { value: 'b', label: <FormulaBox inline>x = 8</FormulaBox> },
         { value: 'c', label: <FormulaBox inline>x = 12</FormulaBox> },
-        { value: 'd', label: <FormulaBox inline>x = \\frac{3}{4}</FormulaBox> }
+        { value: 'd', label: <FormulaBox inline>{"x = \\frac{3}{4}"}</FormulaBox> }
       ],
       correctAnswer: 'c'
     },
@@ -114,9 +114,8 @@ const AlgebraLinearEquationOneVariableLesson = () => {
           <p>
             משוואה ממעלה ראשונה עם נעלם אחד היא משוואה שבה הנעלם (בדרך כלל x) מופיע בחזקה ראשונה בלבד, 
             ולא בחזקות גבוהות יותר או במכנה. המטרה היא למצוא את ערכו של הנעלם שמקיים את השוויון.
-          </p>
-          <p>
-            הצורה הכללית של משוואה כזו לאחר פישוט יכולה להיות <FormulaBox inline>ax = b</FormulaBox>, 
+          </p>          <p>
+            הצורה הכללית של משוואה כזו לאחר פישוט יכולה להיות <FormulaBox inline>ax = b</FormulaBox> 
             כאשר a ו-b הם מספרים ידועים, ו-<FormulaBox inline>a \\neq 0</FormulaBox>.
           </p>
           

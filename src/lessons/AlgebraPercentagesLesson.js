@@ -43,11 +43,9 @@ const AlgebraPercentagesLesson = () => {
           <p>
             אחוז הוא דרך לבטא חלק מתוך שלם, כאשר השלם מחולק ל-100 חלקים שווים. 
             המילה "אחוז" משמעותה "מתוך מאה". הסמל של אחוז הוא %.
-          </p>
-          
-          <p>
-            לדוגמה, 25% הם 25 מתוך 100, או <FormulaBox inline>\frac{25}{100}</FormulaBox>, 
-            ששווה ל-<FormulaBox inline>\frac{1}{4}</FormulaBox> או 0.25.
+          </p>          <p>
+            לדוגמה, 25% הם 25 מתוך 100, או <FormulaBox inline>{`\\frac{25}{100}`}</FormulaBox> 
+            ששווה ל-<FormulaBox inline>{`\\frac{1}{4}`}</FormulaBox> או 0.25.
           </p>
 
           <h3 className="text-xl font-semibold mt-6 mb-2">חישוב ערך האחוז מגודל נתון</h3>
@@ -57,17 +55,17 @@ const AlgebraPercentagesLesson = () => {
           </p>
           
           <div className="my-4 text-center">
-            <FormulaBox>{`\\text{Value} = \\\\frac{P}{100} \\\\cdot N`}</FormulaBox>
+            <FormulaBox>{`\\text{Value} = \\frac{P}{100} \\cdot N`}</FormulaBox>
           </div>
           
-          <p>או בצורה עשרונית: <FormulaBox inline>{`\\text{Value} = (\\text{Decimal}) \\\\cdot N`}</FormulaBox>.</p>
+          <p>או בצורה עשרונית: <FormulaBox inline>{`Value = Decimal \\cdot N`}</FormulaBox>.</p>
 
           <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
             <h4 className="text-lg font-semibold mb-2">דוגמה:</h4>
             <p className="font-medium">שאלה: חשב כמה הם 20% מתוך 150.</p>
             <p className="mt-2"><strong>פתרון:</strong></p>
             <p>כאן <FormulaBox inline>{`P=20`}</FormulaBox> ו-<FormulaBox inline>{`N=150`}</FormulaBox>.</p>
-            <FormulaBox>{`\\text{Value} = \\\\frac{20}{100} \\\\cdot 150 = 0.20 \\\\cdot 150 = 30`}</FormulaBox>
+            <FormulaBox>{`\\text{Value} = \\frac{20}{100} \\cdot 150 = 0.20 \\cdot 150 = 30`}</FormulaBox>
             <p className="mt-2">לכן, 20% מתוך 150 הם 30.</p>
           </div>
 
@@ -187,7 +185,7 @@ const AlgebraPercentagesLesson = () => {
               <FormulaBox>{`M_1 = \\frac{115}{100} \\cdot 200 = 1.15 \\cdot 200 = 230`}</FormulaBox>
               <span className="text-lg mr-2">ש״ח</span>
             </p>
-            <p>או באמצעות הנוסחה הכללית להתייקרות: <FormulaBox inline>M_1 = M_0 \left(1 + \frac{P}{100}\right)</FormulaBox></p>
+            <p>או באמצעות הנוסחה הכללית להתייקרות: <FormulaBox inline>{`M_1 = M_0 \\left(1 + \\frac{P}{100}\\right)`}</FormulaBox></p>
             <p className="text-center my-4">
               <FormulaBox>{`M_1 = 200 \\left(1 + \\frac{15}{100}\\right) = 200 \\cdot (1 + 0.15) = 200 \\cdot 1.15 = 230`}</FormulaBox>
               <span className="text-lg mr-2">ש״ח</span>
@@ -219,7 +217,7 @@ const AlgebraPercentagesLesson = () => {
             </DataTable>
 
             <p className="mt-2"><strong>פתרון:</strong></p>
-            <p>1. <strong>סכום השינוי (ההוזלה):</strong> <FormulaBox inline>\frac{20}{100} \cdot 300 = 0.20 \cdot 300 = 60</FormulaBox> ש"ח.</p>
+            <p>1. <strong>סכום השינוי (ההוזלה):</strong> <FormulaBox inline>{`\\frac{20}{100} \\cdot 300 = 0.20 \\cdot 300 = 60`}</FormulaBox> ש"ח.</p>
             <p>2. <strong>המחיר החדש:</strong> <FormulaBox inline>300 - 60 = 240</FormulaBox> ש"ח.</p>
             <p className="mt-2">המחיר החדש הוא 240 ש"ח.</p>
             <p className="mt-2">
@@ -279,10 +277,9 @@ const AlgebraPercentagesLesson = () => {
                       <TableCell>90</TableCell>
                     </tr>
                   </tbody>
-                </DataTable>
-                <p>גודל ההוזלה: <FormulaBox inline>\frac{25}{100} \cdot 120 = 0.25 \cdot 120 = 30</FormulaBox> ש"ח.</p>
+                </DataTable>                <p>גודל ההוזלה: <FormulaBox inline>{`\\frac{25}{100} \\cdot 120 = 0.25 \\cdot 120 = 30`}</FormulaBox> ש"ח.</p>
                 <p>המחיר החדש: <FormulaBox inline>120 - 30 = 90</FormulaBox> ש"ח.</p>
-                <p>לחלופין: <FormulaBox inline>120 \left(1 - \frac{25}{100}\right) = 120 \cdot 0.75 = 90</FormulaBox> ש"ח.</p>
+                <p>לחלופין: <FormulaBox inline>{`120 \\left(1 - \\frac{25}{100}\\right) = 120 \\cdot 0.75 = 90`}</FormulaBox> ש"ח.</p>
                 <p>המחיר החדש הוא 90 ש"ח.</p>
               </div>
             }

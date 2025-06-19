@@ -6,9 +6,8 @@ import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 const ProblemsBuySellLesson = () => {
-
   const lessonId = 'problems_buy_sell_he';
-  const nextLessonPath = '/calculus-optimization';
+  const nextLessonPath = '/lesson/calculus-optimization';
 
   const exercises = [
     {

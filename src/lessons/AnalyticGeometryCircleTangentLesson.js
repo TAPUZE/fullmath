@@ -2,6 +2,7 @@ import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
+import Quiz from '../components/Quiz';
 
 const AnalyticGeometryCircleTangentLesson = () => {
   const exercises = [
@@ -16,11 +17,11 @@ const AnalyticGeometryCircleTangentLesson = () => {
       solution: "המעגל ממורכז ב-(2, -1) ורדיוס 3. הרדיוס לנקודה (5, -1) הוא אופקי. לכן המשיק אנכי: x = 5"
     }
   ];
-
   return (
     <LessonLayout 
       title="גיאומטריה אנליטית - משיק למעגל"
       lessonId="analytic-geometry-circle-tangent"
+      nextLessonPath="/lesson/analytic-geometry-circle-line-intersection"
     >
       <div className="space-y-6">
         {/* כותרת */}
@@ -58,9 +59,9 @@ const AnalyticGeometryCircleTangentLesson = () => {
               <p className="mb-3">
                 עבור מעגל <FormulaBox type="inline">x^2 + y^2 = r^2</FormulaBox>:
               </p>
-              <FormulaBox type="block">{`2x + 2y \\\\frac{dy}{dx} = 0 \\\\Rightarrow \\\\frac{dy}{dx} = -\\\\frac{x}{y}`}</FormulaBox>
+              <FormulaBox type="block">{`2x + 2y \\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{x}{y}`}</FormulaBox>
               <p className="mt-3">השיפוע של המשיק בנקודה <FormulaBox type="inline">{`(x_0, y_0)`}</FormulaBox> הוא:</p>
-              <FormulaBox type="block">{`m = -\\\\frac{x_0}{y_0}`}</FormulaBox>
+              <FormulaBox type="block">{`m = -\\frac{x_0}{y_0}`}</FormulaBox>
             </div>
 
             <div>
@@ -191,6 +192,49 @@ const AnalyticGeometryCircleTangentLesson = () => {
             <li>מנקודה חיצונית עוברים בדיוק שני משיקים למעגל</li>
           </ul>
         </div>
+
+        {/* Quiz Section */}
+        <Quiz
+          title="בחן את עצמך 🧐"
+          questions={[
+            {
+              id: 1,
+              question: "מהי משוואת המשיק למעגל x² + y² = 16 בנקודה (0, 4)?",
+              options: [
+                { value: "a", label: "y = 4" },
+                { value: "b", label: "x = 0" },
+                { value: "c", label: "x + y = 4" },
+                { value: "d", label: "y = -4" }
+              ],
+              correctAnswer: "a",
+              explanation: "בנקודה (0, 4) המשיק הוא אופקי כי x₀ = 0. לכן המשיק הוא y = 4"
+            },
+            {
+              id: 2,
+              question: "מהו השיפוע של המשיק למעגל x² + y² = 25 בנקודה (3, 4)?",
+              options: [
+                { value: "a", label: "3/4" },
+                { value: "b", label: "-3/4" },
+                { value: "c", label: "4/3" },
+                { value: "d", label: "-4/3" }
+              ],
+              correctAnswer: "b",
+              explanation: "השיפוע של המשיק הוא m = -x₀/y₀ = -3/4"
+            },
+            {
+              id: 3,
+              question: "מהי משוואת המשיק למעגל (x-1)² + (y-2)² = 9 בנקודה (4, 2)?",
+              options: [
+                { value: "a", label: "x = 4" },
+                { value: "b", label: "y = 2" },
+                { value: "c", label: "x + y = 6" },
+                { value: "d", label: "3x - y = 10" }
+              ],
+              correctAnswer: "a",
+              explanation: "הרדיוס מהמרכז (1, 2) לנקודה (4, 2) הוא אופקי. לכן המשיק אנכי: x = 4"
+            }
+          ]}
+        />
       </div>
     </LessonLayout>
   );

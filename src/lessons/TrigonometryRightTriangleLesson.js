@@ -194,26 +194,48 @@ const TrigonometryRightTriangleLesson = () => {
     } else {
       setExercise1Feedback(`התשובה לא נכונה. התשובה הנכונה היא ${correctAnswer} ס"מ. נסה שוב או הצג את הפתרון.`);
     }
-  };
-  const quizQuestions = [
+  };  const quizQuestions = [
     {
+      id: 'q1',
       question: "במשולש ישר-זווית, הניצב שליד זווית α הוא 8 ס״מ והיתר הוא 10 ס״מ. מהו cos(α)?",
       options: [
-        { value: 'a', text: '0.6' },
-        { value: 'b', text: '0.8' },
-        { value: 'c', text: '1.25' },
-        { value: 'd', text: '0.5' }
+        { value: 'a', label: '0.6' },
+        { value: 'b', label: '0.8' },
+        { value: 'c', label: '1.25' },
+        { value: 'd', label: '0.5' }
       ],
-      correct: 'b',
+      correctAnswer: 'b',
       explanation: 'cos(α) = ניצב ליד / יתר = 8/10 = 0.8'
+    },
+    {
+      id: 'q2',
+      question: "מהו sin(30°)?",
+      options: [
+        { value: 'a', label: '1/2' },
+        { value: 'b', label: '√3/2' },
+        { value: 'c', label: '√2/2' },
+        { value: 'd', label: '1' }
+      ],
+      correctAnswer: 'a',
+      explanation: 'sin(30°) = 1/2 הוא ערך בסיסי של זווית מיוחדת'
+    },
+    {
+      id: 'q3',
+      question: "אם tan(α) = 3/4, מהו היחס בין הניצב שמול לניצב שליד?",
+      options: [
+        { value: 'a', label: '3:4' },
+        { value: 'b', label: '4:3' },
+        { value: 'c', label: '5:4' },
+        { value: 'd', label: '3:5' }
+      ],
+      correctAnswer: 'a',
+      explanation: 'tan(α) = ניצב שמול / ניצב שליד = 3/4, לכן היחס הוא 3:4'
     }
-  ];
-
-  return (
+  ];  return (
     <LessonLayout
       title="טריגונומטריה במשולש ישר-זווית"
-      lessonId="35182-trigonometry-right-triangle"
-      nextLessonPath="/lessons/questionnaire-35182-summary"
+      lessonId="trigonometry-right-triangle"
+      nextLessonPath="/lessons/sequences-arithmetic-intro"
     >
       {/* Learning Section */}
       <section className="mb-12">
@@ -232,7 +254,7 @@ const TrigonometryRightTriangleLesson = () => {
               הגדרות במשולש ישר-זווית
             </h3>
             <p className="mb-3">
-              במשולש ישר-זווית ABC, כאשר <FormulaBox>\angle C = 90^\circ</FormulaBox>:
+              במשולש ישר-זווית ABC, כאשר <FormulaBox inline>{"\\angle C = 90^\\circ"}</FormulaBox>:
             </p>
             
             <TriangleDiagram />
@@ -241,9 +263,10 @@ const TrigonometryRightTriangleLesson = () => {
               <li>הצלע שמול הזווית הישרה (AB) נקראת <strong>יתר</strong>.</li>
               <li>שתי הצלעות האחרות (AC ו-BC) נקראות <strong>ניצבים</strong>.</li>
               <li>
-                ביחס לזווית חדה <FormulaBox>\alpha</FormulaBox> (בסקיצה זו, <FormulaBox>\alpha = \angle A</FormulaBox>):
-                <ul className="list-disc list-inside mr-6 mt-2 space-y-1">                  <li>הניצב שמול הזווית <FormulaBox>\alpha</FormulaBox> (הצלע BC) נקרא <strong>הניצב שמול הזווית</strong>.</li>
-                  <li>הניצב שליד הזווית <FormulaBox>\alpha</FormulaBox> (הצלע AC) נקרא <strong>הניצב שליד הזווית</strong>.</li>
+                ביחס לזווית חדה <FormulaBox inline>{"\\alpha"}</FormulaBox> (בסקיצה זו, <FormulaBox inline>{"\\alpha = \\angle A"}</FormulaBox>):
+                <ul className="list-disc list-inside mr-6 mt-2 space-y-1">
+                  <li>הניצב שמול הזווית <FormulaBox inline>{"\\alpha"}</FormulaBox> (הצלע BC) נקרא <strong>הניצב שמול הזווית</strong>.</li>
+                  <li>הניצב שליד הזווית <FormulaBox inline>{"\\alpha"}</FormulaBox> (הצלע AC) נקרא <strong>הניצב שליד הזווית</strong>.</li>
                 </ul>
               </li>
             </ul>
@@ -254,7 +277,7 @@ const TrigonometryRightTriangleLesson = () => {
               הפונקציות הטריגונומטריות הבסיסיות
             </h3>
             <p className="mb-3">
-              עבור זווית חדה <FormulaBox>\alpha</FormulaBox> במשולש ישר-זווית, מוגדרות הפונקציות הבאות:
+              עבור זווית חדה <FormulaBox inline>{"\\alpha"}</FormulaBox> במשולש ישר-זווית, מוגדרות הפונקציות הבאות:
             </p>              <div className="space-y-3">                <div className="flex items-center space-x-4">
                   <strong>סינוס (Sine):</strong>
                   <HtmlMathBox inline>
@@ -286,8 +309,9 @@ const TrigonometryRightTriangleLesson = () => {
             <h4 className="text-lg font-semibold mb-3 text-purple-700">
               דוגמה פתורה:
             </h4>
-            <p className="font-medium mb-3">              במשולש ישר זווית ABC (<FormulaBox>\angle C=90^\circ</FormulaBox>), נתון: 
-              <FormulaBox>\angle A=30^\circ</FormulaBox>, <FormulaBox>AC=10</FormulaBox> ס"מ.
+            <p className="font-medium mb-3">
+              במשולש ישר זווית ABC (<FormulaBox inline>{"\\angle C=90^\\circ"}</FormulaBox>), נתון: 
+              <FormulaBox inline>{"\\angle A=30^\\circ"}</FormulaBox>, <FormulaBox inline>{"AC=10"}</FormulaBox> ס"מ.
               חשב את אורך הניצב BC.
             </p>
             

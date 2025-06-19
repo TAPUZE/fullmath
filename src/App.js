@@ -10,6 +10,8 @@ import HomePage from './components/HomePage';
 import LessonMenu from './components/LessonMenu';
 import ProgressDashboard from './components/ProgressDashboard';
 import TeachersDashboard from './components/TeachersDashboard';
+import MathTest from './components/MathTest';
+import MathTestClean from './components/MathTestClean';
 
 // ============================================
 // QUESTIONNAIRE COMPONENTS
@@ -76,6 +78,8 @@ function App() {
           <Route path="/menu" element={<LessonMenu />} />
           <Route path="/progress" element={<ProgressDashboard />} />
           <Route path="/teachers" element={<TeachersDashboard />} />
+          <Route path="/math-test" element={<MathTest />} />
+          <Route path="/math-test-clean" element={<MathTestClean />} />
           
           {/* ============================================ */}
           {/* QUESTIONNAIRES */}
