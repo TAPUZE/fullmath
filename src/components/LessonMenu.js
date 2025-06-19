@@ -2,6 +2,243 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getLessonStatus, getProgressStats } from '../utils/progressUtils';
 
+const lessonSections = [
+  {
+    title: 'קבוצה 801 - אלגברה ומתמטיקה בסיסית',
+    color: 'blue',
+    lessons: [
+      {
+        id: 'algebra-linear-equation-one-variable',
+        title: 'משוואות לינאריות במשתנה אחד',
+        description: 'פתרון משוואות לינאריות פשוטות ומורכבות',
+        url: '/lessons/algebra-linear-equation-one-variable'
+      },
+      {
+        id: 'algebra-linear-equations-two-variables',
+        title: 'מערכת משוואות לינאריות בשני משתנים',
+        description: 'פתרון מערכות משוואות לינאריות בשיטות שונות',
+        url: '/lessons/algebra-linear-equations-two-variables'
+      },
+      {
+        id: 'algebra-percentages',
+        title: 'אחוזים ושיעורים',
+        description: 'חישובי אחוזים, הנחות ותוספות',
+        url: '/lessons/algebra-percentages'
+      },
+      {
+        id: 'algebra-inequalities',
+        title: 'אי-שוויונים',
+        description: 'פתרון אי-שוויונים לינאריים ומורכבים',
+        url: '/lessons/algebra-inequalities'
+      },
+      {
+        id: 'algebra-quadratic-equations',
+        title: 'משוואות ריבועיות',
+        description: 'פתרון משוואות ריבועיות בשיטות שונות',
+        url: '/lessons/algebra-quadratic-equations'
+      },
+      {
+        id: 'algebra-word-problems',
+        title: 'בעיות מילוליות באלגברה',
+        description: 'תרגום בעיות מילוליות למשוואות ופתרונן',
+        url: '/lessons/algebra-word-problems'
+      },
+      {
+        id: 'geometry-shapes',
+        title: 'תכונות גיאומטריות של משולשים ומרובעים',
+        description: 'לימוד תכונות משולשים, מקבילית, מלבן, מעוין וטרפז',
+        url: '/lesson/geometry-shapes'
+      },
+      {
+        id: 'geometry-shapes-properties',
+        title: 'תכונות מתקדמות של צורות גיאומטריות',
+        description: 'תכונות מתקדמות של מרובעים ומשולשים',
+        url: '/lessons/geometry-shapes-properties'
+      },
+      {
+        id: 'geometry-area-perimeter',
+        title: 'שטח והיקף',
+        description: 'חישוב שטח והיקף של צורות גיאומטריות שונות',
+        url: '/lessons/geometry-area-perimeter'
+      }
+    ]
+  },
+  {
+    title: 'קבוצה 802 - גיאומטריה ופונקציות',
+    color: 'purple',
+    lessons: [
+      {
+        id: 'analytic-geometry-points',
+        title: 'נקודות במערכת הצירים',
+        description: 'מציאת נקודות ומרחקים במערכת הצירים',
+        url: '/lessons/analytic-geometry-points'
+      },
+      {
+        id: 'analytic-geometry-slope',
+        title: 'שיפוע ישר',
+        description: 'חישוב שיפוע וזוויות נטייה',
+        url: '/lessons/analytic-geometry-slope'
+      },
+      {
+        id: 'analytic-geometry-distance',
+        title: 'מרחק בין נקודות',
+        description: 'חישוב מרחקים במישור הקרטזי',
+        url: '/lessons/analytic-geometry-distance'
+      },
+      {
+        id: 'analytic-geometry-midpoint',
+        title: 'נקודת אמצע',
+        description: 'מציאת נקודת אמצע בין שתי נקודות',
+        url: '/lessons/analytic-geometry-midpoint'
+      },
+      {
+        id: 'analytic-geometry-line-continued',
+        title: 'הישר בגיאומטריה אנליטית - המשך',
+        description: 'נושאים מתקדמים בלימוד הישר',
+        url: '/lesson/analytic-geometry-line-continued'
+      },
+      {
+        id: 'analytic-geometry-circle',
+        title: 'המעגל בגיאומטריה אנליטית',
+        description: 'משוואות מעגל, מרכז ורדיוס',
+        url: '/lesson/analytic-geometry-circle'
+      },
+      {
+        id: 'analytic-geometry-circle-tangent',
+        title: 'משיק למעגל',
+        description: 'מציאת משוואת המשik למעגל בנקודה נתונה',
+        url: '/lesson/analytic-geometry-circle-tangent'
+      },
+      {
+        id: 'analytic-geometry-circle-line-intersection',
+        title: 'חיתוך של מעגל וישר',
+        description: 'מציאת נקודות חיתוך בין מעגל לישר',
+        url: '/lesson/analytic-geometry-circle-line-intersection'
+      },
+      {
+        id: 'trigonometry-right-triangle',
+        title: 'טריגונומטריה במשולש ישר זווית',
+        description: 'פונקציות טריגונומטריות בסיסיות',
+        url: '/lessons/trigonometry-right-triangle'
+      },
+      {
+        id: 'functions-parabola-investigation',
+        title: 'חקירת הפרבולה',
+        description: 'תכונות וחקירת פונקציה ריבועית',
+        url: '/lessons/functions-parabola-investigation'
+      }
+    ]
+  },
+  {
+    title: 'קבוצה 803 - מתמטיקה מתקדמת וסטטיסטיקה',
+    color: 'red',
+    lessons: [
+      {
+        id: 'calculus-polynomial',
+        title: 'נגזרות של פולינומים',
+        description: 'חשבון נגזרות של פונקציות פולינומיות',
+        url: '/lesson/calculus-polynomial'
+      },
+      {
+        id: 'calculus-rational',
+        title: 'נגזרות של פונקציות רציונליות',
+        description: 'חשבון נגזרות של פונקציות רציונליות',
+        url: '/lesson/calculus-rational'
+      },
+      {
+        id: 'calculus-square-root',
+        title: 'נגזרות ופונקציות שורש',
+        description: 'חשבון נגזרות של פונקציות שורש',
+        url: '/lesson/calculus-square-root'
+      },
+      {
+        id: 'calculus-optimization',
+        title: 'בעיות אופטימיזציה',
+        description: 'מציאת מקסימום ומינימום באמצעות נגזרות',
+        url: '/lesson/calculus-optimization'
+      },
+      {
+        id: 'calculus-integral-polynomial',
+        title: 'אינטגרלים של פולינומים',
+        description: 'חשבון אינטגרלים של פונקציות פולינומיות',
+        url: '/lesson/calculus-integral-polynomial'
+      },
+      {
+        id: 'sequences-arithmetic-intro',
+        title: 'מבוא לסדרות חשבוניות',
+        description: 'סדרות חשבוניות ותכונותיהן',
+        url: '/lessons/sequences-arithmetic-intro'
+      },
+      {
+        id: 'sequences-arithmetic-sum',
+        title: 'סכום סדרה חשבונית',
+        description: 'חישוב סכום של סדרה חשבונית',
+        url: '/lessons/sequences-arithmetic-sum'
+      },
+      {
+        id: 'statistics-intro',
+        title: 'מבוא לסטטיסטיקה',
+        description: 'מושגי יסוד בסטטיסטיקה ואוכלוסייה',
+        url: '/lessons/statistics-intro'
+      },
+      {
+        id: 'statistics-dispersion',
+        title: 'מדדי פיזור',
+        description: 'סטיית תקן, שונות ומדדי פיזור נוספים',
+        url: '/lessons/statistics-dispersion'
+      },
+      {
+        id: 'normal-distribution',
+        title: 'התפלגות נורמלית',
+        description: 'תכונות ויישומים של ההתפלגות הנורמלית',
+        url: '/lessons/normal-distribution'
+      },
+      {
+        id: 'probability-intro',
+        title: 'מבוא להסתברות',
+        description: 'עקרונות בסיסיים בתורת ההסתברות',
+        url: '/lessons/probability-intro'
+      },
+      {
+        id: 'probability-tree-conditional',
+        title: 'הסתברות מותנית ועץ הסתברות',
+        description: 'הסתברות מותנית ושימוש בעץ הסתברות',
+        url: '/lessons/probability-tree-conditional'
+      },
+      {
+        id: 'problems-work-rate',
+        title: 'בעיות הספק',
+        description: 'פתרון בעיות עבודה והספק',
+        url: '/lesson/problems-work-rate'
+      },
+      {
+        id: 'problems-motion',
+        title: 'בעיות תנועה',
+        description: 'פתרון בעיות מהירות, זמן ומרחק',
+        url: '/lesson/problems-motion'
+      },
+      {
+        id: 'problems-geometric-algebraic',
+        title: 'בעיות גיאומטריות-אלגבריות',
+        description: 'פתרון בעיות משולבות גיאומטריה ואלגברה',
+        url: '/lesson/problems-geometric-algebraic'
+      },
+      {
+        id: 'problems-buy-sell',
+        title: 'בעיות קנייה ומכירה',
+        description: 'פתרון בעיות רווח והפסד במסחר',
+        url: '/lesson/problems-buy-sell'
+      },
+      {
+        id: 'growth-decay',
+        title: 'גידול והתפרקות אקספוננציאלית',
+        description: 'פונקציות אקספוננציאליות ויישומיהן',
+        url: '/lessons/growth-decay'
+      }
+    ]
+  }
+];
+
 const LessonMenu = () => {
   const [lessonStatuses, setLessonStatuses] = useState({});
   const [progressStats, setProgressStats] = useState({ total: 0, completed: 0, started: 0, notStarted: 0 });
@@ -33,9 +270,7 @@ const LessonMenu = () => {
     window.addEventListener('storage', handleStorageChange);
     
     // Also listen for focus events to update when returning to this tab
-    window.addEventListener('focus', updateStatuses);
-
-    return () => {
+    window.addEventListener('focus', updateStatuses);    return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('focus', updateStatuses);
     };
@@ -107,242 +342,7 @@ const LessonMenu = () => {
           </div>
         );
     }
-  };  const lessonSections = [
-    {
-      title: 'קבוצה 801 - אלגברה ומתמטיקה בסיסית',
-      color: 'blue',
-      lessons: [
-        {
-          id: 'algebra-linear-equation-one-variable',
-          title: 'משוואות לינאריות במשתנה אחד',
-          description: 'פתרון משוואות לינאריות פשוטות ומורכבות',
-          url: '/lessons/algebra-linear-equation-one-variable'
-        },
-        {
-          id: 'algebra-linear-equations-two-variables',
-          title: 'מערכת משוואות לינאריות בשני משתנים',
-          description: 'פתרון מערכות משוואות לינאריות בשיטות שונות',
-          url: '/lessons/algebra-linear-equations-two-variables'
-        },
-        {
-          id: 'algebra-percentages',
-          title: 'אחוזים ושיעורים',
-          description: 'חישובי אחוזים, הנחות ותוספות',
-          url: '/lessons/algebra-percentages'
-        },
-        {
-          id: 'algebra-inequalities',
-          title: 'אי-שוויונים',
-          description: 'פתרון אי-שוויונים לינאריים ומורכבים',
-          url: '/lessons/algebra-inequalities'
-        },
-        {
-          id: 'algebra-quadratic-equations',
-          title: 'משוואות ריבועיות',
-          description: 'פתרון משוואות ריבועיות בשיטות שונות',
-          url: '/lessons/algebra-quadratic-equations'
-        },
-        {
-          id: 'algebra-word-problems',
-          title: 'בעיות מילוליות באלגברה',
-          description: 'תרגום בעיות מילוליות למשוואות ופתרונן',
-          url: '/lessons/algebra-word-problems'
-        },
-        {
-          id: 'geometry-shapes',
-          title: 'תכונות גיאומטריות של משולשים ומרובעים',
-          description: 'לימוד תכונות משולשים, מקבילית, מלבן, מעוין וטרפז',
-          url: '/lesson/geometry-shapes'
-        },
-        {
-          id: 'geometry-shapes-properties',
-          title: 'תכונות מתקדמות של צורות גיאומטריות',
-          description: 'תכונות מתקדמות של מרובעים ומשולשים',
-          url: '/lessons/geometry-shapes-properties'
-        },
-        {
-          id: 'geometry-area-perimeter',
-          title: 'שטח והיקף',
-          description: 'חישוב שטח והיקף של צורות גיאומטריות שונות',
-          url: '/lessons/geometry-area-perimeter'
-        }
-      ]
-    },
-    {
-      title: 'קבוצה 802 - גיאומטריה ופונקציות',
-      color: 'purple',
-      lessons: [
-        {
-          id: 'analytic-geometry-points',
-          title: 'נקודות במערכת הצירים',
-          description: 'מציאת נקודות ומרחקים במערכת הצירים',
-          url: '/lessons/analytic-geometry-points'
-        },
-        {
-          id: 'analytic-geometry-slope',
-          title: 'שיפוע ישר',
-          description: 'חישוב שיפוע וזוויות נטייה',
-          url: '/lessons/analytic-geometry-slope'
-        },
-        {
-          id: 'analytic-geometry-distance',
-          title: 'מרחק בין נקודות',
-          description: 'חישוב מרחקים במישור הקרטזי',
-          url: '/lessons/analytic-geometry-distance'
-        },
-        {
-          id: 'analytic-geometry-midpoint',
-          title: 'נקודת אמצע',
-          description: 'מציאת נקודת אמצע בין שתי נקודות',
-          url: '/lessons/analytic-geometry-midpoint'
-        },
-        {
-          id: 'analytic-geometry-line-continued',
-          title: 'הישר בגיאומטריה אנליטית - המשך',
-          description: 'נושאים מתקדמים בלימוד הישר',
-          url: '/lesson/analytic-geometry-line-continued'
-        },
-        {
-          id: 'analytic-geometry-circle',
-          title: 'המעגל בגיאומטריה אנליטית',
-          description: 'משוואות מעגל, מרכז ורדיוס',
-          url: '/lesson/analytic-geometry-circle'
-        },
-        {
-          id: 'analytic-geometry-circle-tangent',
-          title: 'משיק למעגל',
-          description: 'מציאת משוואת המשיק למעגל בנקודה נתונה',
-          url: '/lesson/analytic-geometry-circle-tangent'
-        },
-        {
-          id: 'analytic-geometry-circle-line-intersection',
-          title: 'חיתוך של מעגל וישר',
-          description: 'מציאת נקודות חיתוך בין מעגל לישר',
-          url: '/lesson/analytic-geometry-circle-line-intersection'
-        },
-        {
-          id: 'trigonometry-right-triangle',
-          title: 'טריגונומטריה במשולש ישר זווית',
-          description: 'פונקציות טריגונומטריות בסיסיות',
-          url: '/lessons/trigonometry-right-triangle'
-        },
-        {
-          id: 'functions-parabola-investigation',
-          title: 'חקירת הפרבולה',
-          description: 'תכונות וחקירת פונקציה ריבועית',
-          url: '/lessons/functions-parabola-investigation'
-        }
-      ]
-    },
-    {
-      title: 'קבוצה 803 - מתמטיקה מתקדמת וסטטיסטיקה',
-      color: 'red',
-      lessons: [
-        {
-          id: 'calculus-polynomial',
-          title: 'נגזרות של פולינומים',
-          description: 'חשבון נגזרות של פונקציות פולינומיות',
-          url: '/lesson/calculus-polynomial'
-        },
-        {
-          id: 'calculus-rational',
-          title: 'נגזרות של פונקציות רציונליות',
-          description: 'חשבון נגזרות של פונקציות רציונליות',
-          url: '/lesson/calculus-rational'
-        },
-        {
-          id: 'calculus-square-root',
-          title: 'נגזרות ופונקציות שורש',
-          description: 'חשבון נגזרות של פונקציות שורש',
-          url: '/lesson/calculus-square-root'
-        },
-        {
-          id: 'calculus-optimization',
-          title: 'בעיות אופטימיזציה',
-          description: 'מציאת מקסימום ומינימום באמצעות נגזרות',
-          url: '/lesson/calculus-optimization'
-        },
-        {
-          id: 'calculus-integral-polynomial',
-          title: 'אינטגרלים של פולינומים',
-          description: 'חשבון אינטגרלים של פונקציות פולינומיות',
-          url: '/lesson/calculus-integral-polynomial'
-        },
-        {
-          id: 'sequences-arithmetic-intro',
-          title: 'מבוא לסדרות חשבוניות',
-          description: 'סדרות חשבוניות ותכונותיהן',
-          url: '/lessons/sequences-arithmetic-intro'
-        },
-        {
-          id: 'sequences-arithmetic-sum',
-          title: 'סכום סדרה חשבונית',
-          description: 'חישוב סכום של סדרה חשבונית',
-          url: '/lessons/sequences-arithmetic-sum'
-        },
-        {
-          id: 'statistics-intro',
-          title: 'מבוא לסטטיסטיקה',
-          description: 'מושגי יסוד בסטטיסטיקה ואוכלוסייה',
-          url: '/lessons/statistics-intro'
-        },
-        {
-          id: 'statistics-dispersion',
-          title: 'מדדי פיזור',
-          description: 'סטיית תקן, שונות ומדדי פיזור נוספים',
-          url: '/lessons/statistics-dispersion'
-        },
-        {
-          id: 'normal-distribution',
-          title: 'התפלגות נורמלית',
-          description: 'תכונות ויישומים של ההתפלגות הנורמלית',
-          url: '/lessons/normal-distribution'
-        },
-        {
-          id: 'probability-intro',
-          title: 'מבוא להסתברות',
-          description: 'עקרונות בסיסיים בתורת ההסתברות',
-          url: '/lessons/probability-intro'
-        },
-        {
-          id: 'probability-tree-conditional',
-          title: 'הסתברות מותנית ועץ הסתברות',
-          description: 'הסתברות מותנית ושימוש בעץ הסתברות',
-          url: '/lessons/probability-tree-conditional'
-        },
-        {
-          id: 'problems-work-rate',
-          title: 'בעיות הספק',
-          description: 'פתרון בעיות עבודה והספק',
-          url: '/lesson/problems-work-rate'
-        },
-        {
-          id: 'problems-motion',
-          title: 'בעיות תנועה',
-          description: 'פתרון בעיות מהירות, זמן ומרחק',
-          url: '/lesson/problems-motion'
-        },
-        {
-          id: 'problems-geometric-algebraic',
-          title: 'בעיות גיאומטריות-אלגבריות',
-          description: 'פתרון בעיות משולבות גיאומטריה ואלגברה',
-          url: '/lesson/problems-geometric-algebraic'
-        },
-        {
-          id: 'problems-buy-sell',
-          title: 'בעיות קנייה ומכירה',
-          description: 'פתרון בעיות רווח והפסד במסחר',
-          url: '/lesson/problems-buy-sell'
-        },
-        {
-          id: 'growth-decay',
-          title: 'גידול והתפרקות אקספוננציאלית',
-          description: 'פונקציות אקספוננציאליות ויישומיהן',
-          url: '/lessons/growth-decay'
-        }
-      ]
-    }
-  ];
+  };  
 
   return (
     <div className="bg-gray-100 min-h-screen">

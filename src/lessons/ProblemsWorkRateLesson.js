@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import HtmlMathBox from '../components/HtmlMathBox';
@@ -6,15 +6,8 @@ import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 const ProblemsWorkRateLesson = () => {
-  const [completionStatus, setCompletionStatus] = useState(false);
   const lessonId = 'problems-work-rate';
   const nextLessonPath = '/lesson/problems-motion';
-
-  const breadcrumbItems = [
-    { label: 'דף ראשי', href: '/' },
-    { label: 'שאלון 35382', href: '/lessons' },
-    { label: 'בעיות קצב עבודה', href: '#' }
-  ];
 
   const quizQuestions = [
     {

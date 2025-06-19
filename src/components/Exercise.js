@@ -17,7 +17,6 @@ const Exercise = ({
   const [wrongAnswers, setWrongAnswers] = useState([]);
   const [startTime, setStartTime] = useState(null);
   const [timeSpent, setTimeSpent] = useState(0);
-
   useEffect(() => {
     // Load existing data for this exercise
     const savedData = localStorage.getItem(`exercise_${lessonId}_${id}`);
@@ -38,7 +37,7 @@ const Exercise = ({
         setTimeSpent(prev => prev + additionalTime);
       }
     };
-  }, [id, lessonId]);
+  }, [id, lessonId, startTime]);
 
   const saveExerciseData = (newAttempts, newWrongAnswers, newTimeSpent) => {
     const exerciseData = {

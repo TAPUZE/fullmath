@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 const ProblemsGeometricAlgebraicLesson = () => {
-  const [completionStatus, setCompletionStatus] = useState(false);
   const lessonId = 'problems-geometric-algebraic';
   const nextLessonPath = '/lessons/probability-intro';
-
-  const breadcrumbItems = [
-    { label: 'דף ראשי', href: '/' },
-    { label: 'שאלון 35382', href: '/lessons' },
-    { label: 'בעיות גיאומטריות-אלגבריות', href: '#' }
-  ];
 
   const quizQuestions = [
     {

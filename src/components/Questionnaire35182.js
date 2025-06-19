@@ -3,106 +3,108 @@ import { Link } from 'react-router-dom';
 import NavigationHeader from './NavigationHeader';
 import { getLessonStatus, getProgressStats } from '../utils/progressUtils';
 
+const lessons = [
+  {
+    id: 'algebra-linear-equation-one-variable',
+    title: 'משוואות ליניאריות במשתנה אחד',
+    description: 'פתרון משוואות ליניאריות פשוטות ומורכבות',
+    path: '/lessons/algebra-linear-equation-one-variable'
+  },
+  {
+    id: 'algebra-percentages',
+    title: 'אחוזים ושינויים',
+    description: 'חישובי אחוזים, הנחות והעלאות',
+    path: '/lessons/algebra-percentages'
+  },
+  {
+    id: 'algebra-inequalities',
+    title: 'אי-שוויונות',
+    description: 'פתרון אי-שוויונות ליניאריים',
+    path: '/lessons/algebra-inequalities'
+  },
+  {
+    id: 'algebra-quadratic-equations',
+    title: 'משוואות ריבועיות',
+    description: 'פתרון משוואות ריבועיות בשיטות שונות',
+    path: '/lessons/algebra-quadratic-equations'
+  },
+  {
+    id: 'algebra-word-problems',
+    title: 'בעיות מילוליות באלגברה',
+    description: 'תרגום בעיות מילוליות למשוואות',
+    path: '/lessons/algebra-word-problems'
+  },
+  {
+    id: 'algebra-linear-equations-two-variables',
+    title: 'משוואות ליניאריות בשני משתנים',
+    description: 'מערכות משוואות ליניאריות',
+    path: '/lessons/algebra-linear-equations-two-variables'
+  },
+  {
+    id: 'analytic-geometry-distance',
+    title: 'מרחק בין נקודות',
+    description: 'חישוב מרחק בין נקודות במישור',
+    path: '/lessons/analytic-geometry-distance'
+  },
+  {
+    id: 'analytic-geometry-midpoint',
+    title: 'נקודת אמצע',
+    description: 'מציאת נקודת אמצע בין שתי נקודות',
+    path: '/lessons/analytic-geometry-midpoint'
+  },
+  {
+    id: 'analytic-geometry-points',
+    title: 'נקודות במישור הקרטזי',
+    description: 'מיקום וזיהוי נקודות במישור',
+    path: '/lessons/analytic-geometry-points'
+  },
+  {
+    id: 'analytic-geometry-slope',
+    title: 'שיפוע ומשוואת ישר',
+    description: 'חישוב שיפוע וכתיבת משוואת ישר',
+    path: '/lessons/analytic-geometry-slope'
+  },
+  {
+    id: 'geometry-area-perimeter',
+    title: 'שטח והיקף',
+    description: 'חישוב שטח והיקף של צורות גיאומטריות',
+    path: '/lessons/geometry-area-perimeter'
+  },
+  {
+    id: 'geometry-shapes-properties',
+    title: 'תכונות צורות גיאומטריות',
+    description: 'תכונות מרובעים, משולשים ומעגלים',
+    path: '/lessons/geometry-shapes-properties'
+  },
+  {
+    id: 'statistics-intro',
+    title: 'יסודות הסטטיסטיקה',
+    description: 'ממוצע, חציון, שכיח ותפוצה',
+    path: '/lessons/statistics-intro'
+  },
+  {
+    id: 'probability-intro',
+    title: 'יסודות ההסתברות',
+    description: 'הסתברות פשוטה ומעשית',
+    path: '/lessons/probability-intro'
+  },
+  {
+    id: 'sequences-arithmetic-intro',
+    title: 'סדרות חשבוניות - יסודות',
+    description: 'הגדרה ותכונות של סדרות חשבוניות',
+    path: '/lessons/sequences-arithmetic-intro'
+  },
+  {
+    id: 'trigonometry-right-triangle',
+    title: 'טריגונומטריה במשולש ישר זווית',
+    description: 'פונקציות טריגונומטריות בסיסיות',
+    path: '/lessons/trigonometry-right-triangle'
+  }
+];
+
 const Questionnaire35182 = () => {
   const [lessonStatuses, setLessonStatuses] = useState({});
   const [progressStats, setProgressStats] = useState({ total: 0, completed: 0, started: 0, notStarted: 0 });
-
-  const lessons = [
-    {
-      id: 'algebra-linear-equation-one-variable',
-      title: 'משוואות ליניאריות במשתנה אחד',
-      description: 'פתרון משוואות ליניאריות פשוטות ומורכבות',
-      path: '/lessons/algebra-linear-equation-one-variable'
-    },
-    {
-      id: 'algebra-percentages',
-      title: 'אחוזים ושינויים',
-      description: 'חישובי אחוזים, הנחות והעלאות',
-      path: '/lessons/algebra-percentages'
-    },
-    {
-      id: 'algebra-inequalities',
-      title: 'אי-שוויונות',
-      description: 'פתרון אי-שוויונות ליניאריים',
-      path: '/lessons/algebra-inequalities'
-    },
-    {
-      id: 'algebra-quadratic-equations',
-      title: 'משוואות ריבועיות',
-      description: 'פתרון משוואות ריבועיות בשיטות שונות',
-      path: '/lessons/algebra-quadratic-equations'
-    },
-    {
-      id: 'algebra-word-problems',
-      title: 'בעיות מילוליות באלגברה',
-      description: 'תרגום בעיות מילוליות למשוואות',
-      path: '/lessons/algebra-word-problems'
-    },
-    {
-      id: 'algebra-linear-equations-two-variables',
-      title: 'משוואות ליניאריות בשני משתנים',
-      description: 'מערכות משוואות ליניאריות',
-      path: '/lessons/algebra-linear-equations-two-variables'
-    },
-    {
-      id: 'analytic-geometry-distance',
-      title: 'מרחק בין נקודות',
-      description: 'חישוב מרחק בין נקודות במישור',
-      path: '/lessons/analytic-geometry-distance'
-    },
-    {
-      id: 'analytic-geometry-midpoint',
-      title: 'נקודת אמצע',
-      description: 'מציאת נקודת אמצע בין שתי נקודות',
-      path: '/lessons/analytic-geometry-midpoint'
-    },
-    {
-      id: 'analytic-geometry-points',
-      title: 'נקודות במישור הקרטזי',
-      description: 'מיקום וזיהוי נקודות במישור',
-      path: '/lessons/analytic-geometry-points'
-    },
-    {
-      id: 'analytic-geometry-slope',
-      title: 'שיפוע ומשוואת ישר',
-      description: 'חישוב שיפוע וכתיבת משוואת ישר',
-      path: '/lessons/analytic-geometry-slope'
-    },    {
-      id: 'geometry-area-perimeter',
-      title: 'שטח והיקף',
-      description: 'חישוב שטח והיקף של צורות גיאומטריות',
-      path: '/lessons/geometry-area-perimeter'
-    },
-    {
-      id: 'geometry-shapes-properties',
-      title: 'תכונות צורות גיאומטריות',
-      description: 'תכונות מרובעים, משולשים ומעגלים',
-      path: '/lessons/geometry-shapes-properties'
-    },
-    {
-      id: 'statistics-intro',
-      title: 'יסודות הסטטיסטיקה',
-      description: 'ממוצע, חציון, שכיח ותפוצה',
-      path: '/lessons/statistics-intro'
-    },
-    {
-      id: 'probability-intro',
-      title: 'יסודות ההסתברות',
-      description: 'הסתברות פשוטה ומעשית',
-      path: '/lessons/probability-intro'
-    },
-    {
-      id: 'sequences-arithmetic-intro',
-      title: 'סדרות חשבוניות - יסודות',
-      description: 'הגדרה ותכונות של סדרות חשבוניות',
-      path: '/lessons/sequences-arithmetic-intro'
-    },
-    {
-      id: 'trigonometry-right-triangle',
-      title: 'טריגונומטריה במשולש ישר זווית',
-      description: 'פונקציות טריגונומטריות בסיסיות',
-      path: '/lessons/trigonometry-right-triangle'    }
-  ];
 
   // Update lesson statuses when component mounts and when localStorage changes
   useEffect(() => {
@@ -128,9 +130,7 @@ const Questionnaire35182 = () => {
     window.addEventListener('storage', handleStorageChange);
     
     // Also listen for focus events to update when returning to this tab
-    window.addEventListener('focus', updateStatuses);
-
-    return () => {
+    window.addEventListener('focus', updateStatuses);    return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('focus', updateStatuses);
     };

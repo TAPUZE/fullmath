@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
 const ProblemsMotionLesson = () => {
-  const [completionStatus, setCompletionStatus] = useState(false);
   const lessonId = 'problems-motion';
   const nextLessonPath = '/lesson/problems-geometric-algebraic';
-
-  const breadcrumbItems = [
-    { label: 'דף ראשי', href: '/' },
-    { label: 'שאלון 35382', href: '/lessons' },
-    { label: 'בעיות תנועה', href: '#' }
-  ];
 
   const quizQuestions = [
     {

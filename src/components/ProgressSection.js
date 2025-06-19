@@ -2,7 +2,7 @@ import React from 'react';
 import { ProgressLayout, useProgressData, useCompletionStatus, useProgressNotification } from './progress';
 
 const ProgressSection = ({ lessonId, nextLessonUrl, menuUrl }) => {
-  const { progressData, loadProgressData, resetProgressData, saveCompletionData } = useProgressData(lessonId);
+  const { progressData, resetProgressData, saveCompletionData } = useProgressData(lessonId);
   const { isCompleted, toggleCompletion, setIsCompleted, autoCompleted } = useCompletionStatus(
     lessonId, 
     progressData.allTasksCompleted, 
