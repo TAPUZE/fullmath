@@ -109,9 +109,75 @@ const HomePage = () => {  return (
                   מעבר לשאלון 35382
                 </Link>
               </div>
+            </div>          </div>
+        </section>
+
+        {/* MAHAT Section */}
+        <section className="py-8 sm:py-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-8 sm:mb-10">
+            מכינה טכנולוגית - MAHAT
+          </h2>
+          
+          <div className="max-w-4xl mx-auto">
+            {/* MAHAT Card */}
+            <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl shadow-lg overflow-hidden border-2 border-orange-200">
+              <div className="p-6 sm:p-8">
+                <div className="flex items-center mb-6">
+                  <div className="bg-orange-100 text-orange-600 p-3 rounded-full mr-4 ml-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl sm:text-3xl font-semibold text-orange-700 mb-2">
+                      קורס הכנה טכנולוגי מקיף
+                    </h3>
+                    <p className="text-orange-600 font-medium">המכינה המותאמת לסטודנטים טכנולוגיים</p>
+                  </div>
+                </div>
+                
+                <p className="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
+                  קורס מקיף הכולל 10 שיעורים מובנים המותאמים במיוחד לסטודנטים במכינות טכנולוגיות.
+                  הקורס מכסה את כל הנושאים הנדרשים: אלגברה, גיאומטריה, פונקציות, טריגונומטריה ועוד.
+                </p>
+                
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-6">
+                  <div className="bg-white bg-opacity-60 rounded-lg p-2 text-center">
+                    <div className="text-xs sm:text-sm font-medium text-gray-700">טכניקות אלגבריות</div>
+                  </div>
+                  <div className="bg-white bg-opacity-60 rounded-lg p-2 text-center">
+                    <div className="text-xs sm:text-sm font-medium text-gray-700">חזקות ושורשים</div>
+                  </div>
+                  <div className="bg-white bg-opacity-60 rounded-lg p-2 text-center">
+                    <div className="text-xs sm:text-sm font-medium text-gray-700">גיאומטריה</div>
+                  </div>
+                  <div className="bg-white bg-opacity-60 rounded-lg p-2 text-center">
+                    <div className="text-xs sm:text-sm font-medium text-gray-700">פרבולות</div>
+                  </div>
+                  <div className="bg-white bg-opacity-60 rounded-lg p-2 text-center">
+                    <div className="text-xs sm:text-sm font-medium text-gray-700">טריגונומטריה</div>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link 
+                    to="/menu" 
+                    className="flex-1 inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-md transition duration-150 ease-in-out text-center"
+                  >
+                    צפה בכל השיעורים
+                  </Link>                  <Link 
+                    to="/lessons/mahat-algebraic-techniques-1" 
+                    className="flex-1 inline-block bg-white text-orange-600 border-2 border-orange-500 hover:bg-orange-50 font-semibold py-3 px-6 rounded-md transition duration-150 ease-in-out text-center"
+                  >
+                    התחל עכשיו
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
-        </section>        {/* Progress Dashboard Section */}
+        </section>
+
+        {/* Progress Dashboard Section */}
         <section className="text-center py-12">
           <h2 className="text-2xl font-semibold text-gray-800 mb-6">בדקו את ההתקדמות שלכם!</h2>
           <Link 

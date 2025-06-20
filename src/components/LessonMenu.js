@@ -228,12 +228,214 @@ const lessonSections = [
         title: 'בעיות קנייה ומכירה',
         description: 'פתרון בעיות רווח והפסד במסחר',
         url: '/lesson/problems-buy-sell'
-      },
-      {
+      },      {
         id: 'growth-decay',
         title: 'גידול והתפרקות אקספוננציאלית',
         description: 'פונקציות אקספוננציאליות ויישומיהן',
         url: '/lessons/growth-decay'
+      }
+    ]  },  {
+    title: 'MAHAT - מכינה טכנולוגית',
+    color: 'green',
+    lessons: [
+      // נושא 1: טכניקה אלגברית (30 שעות)
+      {
+        id: 'mahat-1-1-basics',
+        title: '1.1 יסודות החשבון',
+        description: 'פעולות חשבון במספרים שלמים, שברים ועשרוניים. סדר פעולות ומספרים שליליים',
+        url: '/lessons/mahat-1-1-basics'
+      },
+      {
+        id: 'mahat-1-2-fractions',
+        title: '1.2 שברים ושימוש במחשבון',
+        description: 'צמצום והרחבת שברים, פעולות בשברים, שימוש במחשבון ועיגול',
+        url: '/lessons/mahat-1-2-fractions'
+      },
+      {
+        id: 'mahat-1-3-powers-basic',
+        title: '1.3 חוקי חזקות ושורשים (בסיסי)',
+        description: 'מבוא לחוקי חזקות ושורשים בסיסיים',
+        url: '/lessons/mahat-1-3-powers-basic'
+      },
+      {
+        id: 'mahat-1-4-algebraic-expressions',
+        title: '1.4 ביטויים אלגבריים וכינוס איברים',
+        description: 'מושג המשתנה, ביטוי אלגברי, פעולות בחד-איבר ורב-איבר',
+        url: '/lessons/mahat-1-4-algebraic-expressions'
+      },
+      {
+        id: 'mahat-1-5-multiplication-formulas',
+        title: '1.5 נוסחאות הכפל המקוצר ופירוק לגורמים',
+        description: 'נוסחאות הכפל המקוצר ופירוק לגורמים בשיטות שונות',
+        url: '/lessons/mahat-1-5-multiplication-formulas'
+      },
+      {
+        id: 'mahat-1-6-algebraic-fractions',
+        title: '1.6 שברים אלגבריים',
+        description: 'צמצום, הרחבה ופעולות בשברים אלגבריים',
+        url: '/lessons/mahat-1-6-algebraic-fractions'
+      },
+
+      // נושא 2: חזקות ושורשים (25 שעות)
+      {
+        id: 'mahat-2-1-advanced-powers',
+        title: '2.1 חוקי חזקות מתקדמים',
+        description: 'חזרה והרחבה על חוקי חזקות, שילוב אותיות ומספרים',
+        url: '/lessons/mahat-2-1-advanced-powers'
+      },
+      {
+        id: 'mahat-2-2-roots-rational',
+        title: '2.2 שורשים וחזקות עם מעריך רציונלי',
+        description: 'המעבר בין חזקה לשורש, פירוק שורשים ופעולות',
+        url: '/lessons/mahat-2-2-roots-rational'
+      },
+      {
+        id: 'mahat-2-3-scientific-notation',
+        title: '2.3 כתיבה מדעית והמרת מידות',
+        description: 'הצגה מדעית של מספרים, פעולות חשבון והמרת מידות',
+        url: '/lessons/mahat-2-3-scientific-notation'
+      },
+
+      // נושא 3: קריאת גרפים (20 שעות)
+      {
+        id: 'mahat-3-1-graph-reading',
+        title: '3.1 הבנת מידע מגרפים',
+        description: 'קריאה וניתוח גרפים, זיהוי מגמות וערכי קיצון',
+        url: '/lessons/mahat-3-1-graph-reading'
+      },
+
+      // נושא 4: משוואות ומערכות משוואות (25 שעות)
+      {
+        id: 'mahat-4-1-linear-equations',
+        title: '4.1 משוואות ממעלה ראשונה',
+        description: 'פתרון משוואות עם נעלם אחד, סוגריים ושברים',
+        url: '/lessons/mahat-4-1-linear-equations'
+      },
+      {
+        id: 'mahat-4-2-linear-systems',
+        title: '4.2 מערכת משוואות לינאריות',
+        description: 'פתרון מערכת של שתי משוואות בשני נעלמים',
+        url: '/lessons/mahat-4-2-linear-systems'
+      },
+      {
+        id: 'mahat-4-3-quadratic-equations',
+        title: '4.3 משוואות ריבועיות',
+        description: 'פתרון משוואות ריבועיות באמצעות נוסחת השורשים',
+        url: '/lessons/mahat-4-3-quadratic-equations'
+      },
+      {
+        id: 'mahat-4-4-mixed-systems',
+        title: '4.4 מערכת משוואות ריבועית ולינארית',
+        description: 'פתרון מערכת של משוואה ריבועית ולינארית',
+        url: '/lessons/mahat-4-4-mixed-systems'
+      },
+
+      // נושא 5: שינוי נושא הנוסחה (20 שעות)
+      {
+        id: 'mahat-5-1-formula-subject',
+        title: '5.1 בידוד משתנים',
+        description: 'בידוד משתנה בנוסחאות מתחומים שונים והצבת ערכים',
+        url: '/lessons/mahat-5-1-formula-subject'
+      },
+
+      // נושא 6: מבוא להנדסה (20 שעות)
+      {
+        id: 'mahat-6-1-plane-shapes',
+        title: '6.1 צורות הנדסיות במישור',
+        description: 'תכונות, היקפים ושטחים של צורות גיאומטריות שונות',
+        url: '/lessons/mahat-6-1-plane-shapes'
+      },
+      {
+        id: 'mahat-6-2-coordinate-geometry',
+        title: '6.2 הנדסה במערכת צירים',
+        description: 'סימון נקודות, חישוב אורכים ושטחים במערכת צירים',
+        url: '/lessons/mahat-6-2-coordinate-geometry'
+      },
+
+      // נושא 7: הנדסה אנליטית (40 שעות)
+      {
+        id: 'mahat-7-1-function-line',
+        title: '7.1 מושג הפונקציה והקו הישר',
+        description: 'הגדרת פונקציה, תיאור גרפי ואלגברי של קו ישר',
+        url: '/lessons/mahat-7-1-function-line'
+      },
+      {
+        id: 'mahat-7-2-slope-parallel',
+        title: '7.2 שיפוע וישרים מקבילים/ניצבים',
+        description: 'תכונות השיפוע, מציאת משוואת ישר, ישרים מקבילים וניצבים',
+        url: '/lessons/mahat-7-2-slope-parallel'
+      },
+      {
+        id: 'mahat-7-3-midpoint-distance',
+        title: '7.3 אמצע קטע ומרחק בין נקודות',
+        description: 'נוסחת אמצע קטע ונוסחת מרחק בין נקודות',
+        url: '/lessons/mahat-7-3-midpoint-distance'
+      },
+      {
+        id: 'mahat-7-4-implicit-function',
+        title: '7.4 פונקציה סתומה ופתרון גרפי',
+        description: 'מעבר מצורה סתומה למפורשת ופתרון גרפי',
+        url: '/lessons/mahat-7-4-implicit-function'
+      },
+      {
+        id: 'mahat-7-5-complex-geometry',
+        title: '7.5 הנדסה אנליטית בצורות מורכבות',
+        description: 'הוכחת תכונות של מרובעים ומשולשים במערכת צירים',
+        url: '/lessons/mahat-7-5-complex-geometry'
+      },
+
+      // נושא 8: פרבולות (30 שעות)
+      {
+        id: 'mahat-8-1-quadratic-intro',
+        title: '8.1 מבוא לפונקציה הריבועית',
+        description: 'גרף הפרבולה, הצגה סטנדרטית, קודקוד ונקודות חיתוך',
+        url: '/lessons/mahat-8-1-quadratic-intro'
+      },
+      {
+        id: 'mahat-8-2-parabola-analysis',
+        title: '8.2 חקירת פרבולה',
+        description: 'תחומי עלייה/ירידה, חיוביות/שליליות וערכי קיצון',
+        url: '/lessons/mahat-8-2-parabola-analysis'
+      },
+      {
+        id: 'mahat-8-3-line-parabola',
+        title: '8.3 חיתוך בין ישר לפרבולה',
+        description: 'פתרון אלגברי וגרפי של מערכת ישר ופרבולה',
+        url: '/lessons/mahat-8-3-line-parabola'
+      },
+
+      // נושא 9: שאלות מילוליות (30 שעות)
+      {
+        id: 'mahat-9-1-purchase-problems',
+        title: '9.1 בעיות קנייה ומכירה',
+        description: 'בניית משוואות לבעיות קנייה ומכירה, כולל אחוזים',
+        url: '/lessons/mahat-9-1-purchase-problems'
+      },
+      {
+        id: 'mahat-9-2-geometry-problems',
+        title: '9.2 בעיות גיאומטריות',
+        description: 'בניית משוואות מתוך נתונים על צורות הנדסיות',
+        url: '/lessons/mahat-9-2-geometry-problems'
+      },
+
+      // נושא 10: טריגונומטריה (30 שעות)
+      {
+        id: 'mahat-10-1-trig-basics',
+        title: '10.1 יסודות הטריגונומטריה',
+        description: 'הכרת משולש ישר זווית והגדרת הפונקציות sin, cos, tan',
+        url: '/lessons/mahat-10-1-trig-basics'
+      },
+      {
+        id: 'mahat-10-2-trig-functions',
+        title: '10.2 שימוש בפונקציות הטריגונומטריות',
+        description: 'מציאת צלע או זווית חסרה במשולש ישר זווית',
+        url: '/lessons/mahat-10-2-trig-functions'
+      },
+      {
+        id: 'mahat-10-3-complex-shapes',
+        title: '10.3 פתרון צורות מורכבות',
+        description: 'שימוש בטריגונומטריה לפתרון צורות מורכבות',
+        url: '/lessons/mahat-10-3-complex-shapes'
       }
     ]
   }
