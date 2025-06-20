@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getLessonStatus, getProgressStats } from '../utils/progressUtils';
 
-// MAHAT-specific lesson sections (only MAHAT curriculum)
-const mahatLessonSections = [
+// MAHAT lesson sections organized by chapters
+const mahatChapters = [
   {
-    title: 'MAHAT - מכינה טכנולוגית',
-    color: 'green',
+    id: 'chapter-1',
+    title: 'פרק 1: טכניקה אלגברית',
+    description: '30 שעות לימוד',
+    color: 'blue',
+    icon: '🧮',
     lessons: [
-      // נושא 1: טכניקה אלגברית (30 שעות)
       {
         id: 'mahat-1-1-basics',
         title: '1.1 יסודות החשבון',
@@ -44,9 +46,16 @@ const mahatLessonSections = [
         title: '1.6 שברים אלגבריים',
         description: 'צמצום, הרחבה ופעולות בשברים אלגבריים',
         url: '/lessons/mahat-1-6-algebraic-fractions'
-      },
-
-      // נושא 2: חזקות ושורשים (25 שעות)
+      }
+    ]
+  },
+  {
+    id: 'chapter-2',
+    title: 'פרק 2: חזקות ושורשים',
+    description: '25 שעות לימוד',
+    color: 'green',
+    icon: '√',
+    lessons: [
       {
         id: 'mahat-2-1-advanced-powers',
         title: '2.1 חוקי חזקות מתקדמים',
@@ -64,17 +73,31 @@ const mahatLessonSections = [
         title: '2.3 כתיבה מדעית והמרת מידות',
         description: 'הצגה מדעית של מספרים, פעולות חשבון והמרת מידות',
         url: '/lessons/mahat-2-3-scientific-notation'
-      },
-
-      // נושא 3: קריאת גרפים (20 שעות)
+      }
+    ]
+  },
+  {
+    id: 'chapter-3',
+    title: 'פרק 3: קריאת גרפים',
+    description: '20 שעות לימוד',
+    color: 'yellow',
+    icon: '📊',
+    lessons: [
       {
         id: 'mahat-3-1-graph-reading',
         title: '3.1 הבנת מידע מגרפים',
         description: 'קריאה וניתוח גרפים, זיהוי מגמות וערכי קיצון',
         url: '/lessons/mahat-3-1-graph-reading'
-      },
-
-      // נושא 4: משוואות ומערכות משוואות (25 שעות)
+      }
+    ]
+  },
+  {
+    id: 'chapter-4',
+    title: 'פרק 4: משוואות ומערכות משוואות',
+    description: '25 שעות לימוד',
+    color: 'purple',
+    icon: '⚖️',
+    lessons: [
       {
         id: 'mahat-4-1-linear-equations',
         title: '4.1 משוואות ממעלה ראשונה',
@@ -98,17 +121,31 @@ const mahatLessonSections = [
         title: '4.4 מערכת משוואות ריבועית ולינארית',
         description: 'פתרון מערכת של משוואה ריבועית ולינארית',
         url: '/lessons/mahat-4-4-mixed-systems'
-      },
-
-      // נושא 5: שינוי נושא הנוסחה (20 שעות)
+      }
+    ]
+  },
+  {
+    id: 'chapter-5',
+    title: 'פרק 5: שינוי נושא הנוסחה',
+    description: '20 שעות לימוד',
+    color: 'red',
+    icon: '🔄',
+    lessons: [
       {
         id: 'mahat-5-1-formula-subject',
         title: '5.1 בידוד משתנים',
         description: 'בידוד משתנה בנוסחאות מתחומים שונים והצבת ערכים',
         url: '/lessons/mahat-5-1-formula-subject'
-      },
-
-      // נושא 6: מבוא להנדסה (20 שעות)
+      }
+    ]
+  },
+  {
+    id: 'chapter-6',
+    title: 'פרק 6: מבוא להנדסה',
+    description: '20 שעות לימוד',
+    color: 'indigo',
+    icon: '📐',
+    lessons: [
       {
         id: 'mahat-6-1-plane-shapes',
         title: '6.1 צורות הנדסיות במישור',
@@ -120,9 +157,16 @@ const mahatLessonSections = [
         title: '6.2 הנדסה במערכת צירים',
         description: 'סימון נקודות, חישוב אורכים ושטחים במערכת צירים',
         url: '/lessons/mahat-6-2-coordinate-geometry'
-      },
-
-      // נושא 7: הנדסה אנליטית (40 שעות)
+      }
+    ]
+  },
+  {
+    id: 'chapter-7',
+    title: 'פרק 7: הנדסה אנליטית',
+    description: '40 שעות לימוד',
+    color: 'teal',
+    icon: '📏',
+    lessons: [
       {
         id: 'mahat-7-1-function-line',
         title: '7.1 מושג הפונקציה והקו הישר',
@@ -152,9 +196,16 @@ const mahatLessonSections = [
         title: '7.5 הנדסה אנליטית בצורות מורכבות',
         description: 'הוכחת תכונות של מרובעים ומשולשים במערכת צירים',
         url: '/lessons/mahat-7-5-complex-geometry'
-      },
-
-      // נושא 8: פרבולות (30 שעות)
+      }
+    ]
+  },
+  {
+    id: 'chapter-8',
+    title: 'פרק 8: פרבולות',
+    description: '30 שעות לימוד',
+    color: 'pink',
+    icon: '📈',
+    lessons: [
       {
         id: 'mahat-8-1-quadratic-intro',
         title: '8.1 מבוא לפונקציה הריבועית',
@@ -172,9 +223,16 @@ const mahatLessonSections = [
         title: '8.3 חיתוך בין ישר לפרבולה',
         description: 'פתרון אלגברי וגרפי של מערכת ישר ופרבולה',
         url: '/lessons/mahat-8-3-line-parabola'
-      },
-
-      // נושא 9: שאלות מילוליות (30 שעות)
+      }
+    ]
+  },
+  {
+    id: 'chapter-9',
+    title: 'פרק 9: שאלות מילוליות',
+    description: '30 שעות לימוד',
+    color: 'orange',
+    icon: '📝',
+    lessons: [
       {
         id: 'mahat-9-1-purchase-problems',
         title: '9.1 בעיות קנייה ומכירה',
@@ -186,9 +244,16 @@ const mahatLessonSections = [
         title: '9.2 בעיות גיאומטריות',
         description: 'בניית משוואות מתוך נתונים על צורות הנדסיות',
         url: '/lessons/mahat-9-2-geometry-problems'
-      },
-
-      // נושא 10: טריגונומטריה (30 שעות)
+      }
+    ]
+  },
+  {
+    id: 'chapter-10',
+    title: 'פרק 10: טריגונומטריה',
+    description: '30 שעות לימוד',
+    color: 'cyan',
+    icon: '📐',
+    lessons: [
       {
         id: 'mahat-10-1-trig-basics',
         title: '10.1 יסודות הטריגונומטריה',
@@ -214,15 +279,16 @@ const mahatLessonSections = [
 const MahatLessonMenu = () => {
   const [lessonStatuses, setLessonStatuses] = useState({});
   const [progressStats, setProgressStats] = useState({ total: 0, completed: 0, started: 0, notStarted: 0 });
+  const [expandedChapters, setExpandedChapters] = useState({});
 
-  // Update lesson statuses when component mounts and when localStorage changes
+  // Update lesson statuses when component mounts
   useEffect(() => {
     const updateStatuses = () => {
       const statuses = {};
       const allLessonIds = [];
       
-      mahatLessonSections.forEach(section => {
-        section.lessons.forEach(lesson => {
+      mahatChapters.forEach(chapter => {
+        chapter.lessons.forEach(lesson => {
           statuses[lesson.id] = getLessonStatus(lesson.id);
           allLessonIds.push(lesson.id);
         });
@@ -234,14 +300,12 @@ const MahatLessonMenu = () => {
 
     updateStatuses();
 
-    // Listen for storage changes (when user completes lessons in other tabs)
+    // Listen for storage changes
     const handleStorageChange = () => {
       updateStatuses();
     };
 
     window.addEventListener('storage', handleStorageChange);
-    
-    // Also listen for focus events to update when returning to this tab
     window.addEventListener('focus', updateStatuses);
 
     return () => {
@@ -249,6 +313,13 @@ const MahatLessonMenu = () => {
       window.removeEventListener('focus', updateStatuses);
     };
   }, []);
+
+  const toggleChapter = (chapterId) => {
+    setExpandedChapters(prev => ({
+      ...prev,
+      [chapterId]: !prev[chapterId]
+    }));
+  };
 
   // Progress summary component
   const ProgressSummary = () => {
@@ -322,29 +393,29 @@ const MahatLessonMenu = () => {
     <div className="bg-gray-100 min-h-screen">
       <div className="container mx-auto p-4 md:p-8">
         <header className="mb-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-green-700 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-orange-700 mb-4">
             MAHAT - מכינה טכנולוגית
           </h1>
           <p className="text-lg text-gray-600 mb-2">
             קורס מקיף להכנה טכנולוגית במתמטיקה
           </p>
           <p className="text-md text-gray-500 mb-4">
-            37 שיעורים מובנים המכסים את כל הנושאים הנדרשים במכינה טכנולוגית
+            10 פרקים מובנים המכסים את כל הנושאים הנדרשים במכינה טכנולוגית
           </p>
           <div className="mb-4 flex gap-4 justify-center">
             <Link 
               to="/progress" 
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-150 ease-in-out inline-flex items-center"
+              className="bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-150 ease-in-out inline-flex items-center"
             >
               <span className="mr-2">📊</span>
               לוח התקדמות MAHAT
             </Link>
             <Link 
-              to="/menu" 
+              to="/" 
               className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-150 ease-in-out inline-flex items-center"
             >
-              <span className="mr-2">📚</span>
-              כל השיעורים (בגרות)
+              <span className="mr-2">🏠</span>
+              חזרה לעמוד הבית
             </Link>
           </div>
         </header>
@@ -353,61 +424,102 @@ const MahatLessonMenu = () => {
         <ProgressSummary />
 
         <main className="max-w-6xl mx-auto">
-          {mahatLessonSections.map((section) => (
-            <div key={section.title} className="mb-10">
-              <h2 className={`text-2xl font-bold mb-6 text-${section.color}-700 border-b-2 pb-2`}>
-                {section.title}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {section.lessons.map((lesson) => {
-                  const status = lessonStatuses[lesson.id] || 'not-started';
-                  const borderColor = status === 'completed' ? 'border-green-300' : 
-                                    status === 'started' ? 'border-yellow-300' : 'border-gray-200';
-                  const hoverBorderColor = status === 'completed' ? 'hover:border-green-400' : 
-                                         status === 'started' ? 'hover:border-yellow-400' : 'hover:border-green-300';
-                  
-                  return (
-                    <Link
-                      key={lesson.id}
-                      to={lesson.url}
-                      className={`block p-6 bg-white rounded-lg shadow-md border-2 ${borderColor} ${hoverBorderColor} transition-all duration-200 hover:shadow-lg`}
-                    >
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-lg font-semibold flex-1">
-                          {lesson.title}
-                        </h3>
-                        <StatusIndicator status={status} />
-                      </div>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                        {lesson.description}
-                      </p>
-                      <div className="flex justify-between items-center">
-                        <div className="inline-flex items-center text-sm font-medium text-green-600">
-                          {status === 'completed' ? 'צפה שוב' : status === 'started' ? 'המשך ללמוד' : 'התחל ללמוד'}
-                          <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                        {status === 'completed' && (
-                          <div className="text-green-600">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
+          {mahatChapters.map((chapter) => {
+            const isExpanded = expandedChapters[chapter.id];
+            const chapterLessons = chapter.lessons || [];
+            const completedInChapter = chapterLessons.filter(lesson => lessonStatuses[lesson.id] === 'completed').length;
+            const totalInChapter = chapterLessons.length;
+            
+            return (
+              <div key={chapter.id} className="mb-8">
+                {/* Chapter Header */}
+                <div 
+                  className={`bg-white rounded-lg shadow-md p-6 cursor-pointer border-l-4 border-${chapter.color}-500 hover:shadow-lg transition-all duration-200`}
+                  onClick={() => toggleChapter(chapter.id)}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <div className="text-3xl mr-4">{chapter.icon}</div>
+                      <div>
+                        <h2 className={`text-xl font-bold text-${chapter.color}-700 mb-1`}>
+                          {chapter.title}
+                        </h2>
+                        <p className="text-gray-600 text-sm">{chapter.description}</p>
+                        <div className="flex items-center mt-2">
+                          <div className="text-sm text-gray-500">
+                            {completedInChapter}/{totalInChapter} שיעורים הושלמו
                           </div>
-                        )}
+                          <div className="w-16 h-2 bg-gray-200 rounded-full mr-3">
+                            <div 
+                              className={`h-2 bg-${chapter.color}-500 rounded-full transition-all duration-300`}
+                              style={{ width: `${totalInChapter > 0 ? (completedInChapter / totalInChapter) * 100 : 0}%` }}
+                            ></div>
+                          </div>
+                        </div>
                       </div>
-                    </Link>
-                  );
-                })}
+                    </div>
+                    <div className="text-gray-500">
+                      {isExpanded ? '▼' : '▶'}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Chapter Lessons */}
+                {isExpanded && (
+                  <div className="mt-4 mr-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {chapterLessons.map((lesson) => {
+                        const status = lessonStatuses[lesson.id] || 'not-started';
+                        const borderColor = status === 'completed' ? `border-${chapter.color}-300` : 
+                                          status === 'started' ? 'border-yellow-300' : 'border-gray-200';
+                        const hoverBorderColor = status === 'completed' ? `hover:border-${chapter.color}-400` : 
+                                               status === 'started' ? 'hover:border-yellow-400' : `hover:border-${chapter.color}-300`;
+                        
+                        return (
+                          <Link
+                            key={lesson.id}
+                            to={lesson.url}
+                            className={`block p-4 bg-white rounded-lg shadow-sm border-2 ${borderColor} ${hoverBorderColor} transition-all duration-200 hover:shadow-md`}
+                          >
+                            <div className="flex justify-between items-start mb-2">
+                              <h3 className="text-md font-semibold flex-1 leading-tight">
+                                {lesson.title}
+                              </h3>
+                              <StatusIndicator status={status} />
+                            </div>
+                            <p className="text-gray-600 text-xs leading-relaxed mb-3">
+                              {lesson.description}
+                            </p>
+                            <div className="flex justify-between items-center">
+                              <div className={`inline-flex items-center text-xs font-medium text-${chapter.color}-600`}>
+                                {status === 'completed' ? 'צפה שוב' : status === 'started' ? 'המשך ללמוד' : 'התחל ללמוד'}
+                                <svg className="mr-1 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              </div>
+                              {status === 'completed' && (
+                                <div className="text-green-600">
+                                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                  </svg>
+                                </div>
+                              )}
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </main>
 
         <footer className="text-center mt-12 py-8 text-gray-500">
           <p>© 2025 פלטפורמת למידה במתמטיקה - MAHAT. כל הזכויות שמורות.</p>
           <p className="mt-2 text-sm">
-            {mahatLessonSections.reduce((total, section) => total + section.lessons.length, 0)} שיעורי MAHAT זמינים
+            {mahatChapters.reduce((total, chapter) => total + chapter.lessons.length, 0)} שיעורי MAHAT זמינים ב-10 פרקים
           </p>
         </footer>
       </div>
