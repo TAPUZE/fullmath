@@ -5,15 +5,14 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
   const [results, setResults] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [startTime, setStartTime] = useState(null);
-  const [timeSpent, setTimeSpent] = useState(0);
+  // const [timeSpent, setTimeSpent] = useState(0); // Commented out unused variable
   useEffect(() => {
     setStartTime(Date.now());
     
-    return () => {
-      // Save time when component unmounts
+    return () => {      // Save time when component unmounts
       if (startTime && !submitted) {
-        const sessionTime = Math.floor((Date.now() - startTime) / 1000);
-        setTimeSpent(prev => prev + sessionTime);
+        // const sessionTime = Math.floor((Date.now() - startTime) / 1000); // Commented out unused variable
+        // setTimeSpent(prev => prev + sessionTime); // Commented out as timeSpent is not used
       }
     };
   }, [startTime, submitted]);
@@ -71,10 +70,9 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
     if (lessonId) {
       localStorage.setItem(`lesson_quiz_score_${lessonId}`, JSON.stringify(quizData));
     }
-    
-    setResults({ score, totalQuestions, timeSpent: finalTimeSpent });
+      setResults({ score, totalQuestions, timeSpent: finalTimeSpent });
     setSubmitted(true);
-    setTimeSpent(finalTimeSpent);
+    // setTimeSpent(finalTimeSpent); // Commented out as timeSpent state is not used
     
     if (onSubmit) {
       onSubmit(quizData);

@@ -4,7 +4,7 @@ import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
-const P = 15; // Example value, replace with the correct one if needed
+// const P = 15; // Example value, replace with the correct one if needed - Commented out unused variable
 
 const AlgebraPercentagesLesson = () => {
   const DataTable = ({ children, className = "" }) => (

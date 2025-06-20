@@ -1,6 +1,6 @@
 import React from 'react';
 import LessonLayout from '../components/LessonLayout';
-import FormulaBox from '../components/FormulaBox';
+// import FormulaBox from '../components/FormulaBox'; // Commented out unused import
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 

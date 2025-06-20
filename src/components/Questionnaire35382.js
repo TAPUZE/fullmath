@@ -111,13 +111,11 @@ const Questionnaire35382 = () => {
     window.addEventListener('storage', handleStorageChange);
     
     // Also listen for focus events to update when returning to this tab
-    window.addEventListener('focus', updateStatuses);
-
-    return () => {
+    window.addEventListener('focus', updateStatuses);    return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('focus', updateStatuses);
     };
-  }, []);
+  }, [lessons]);
 
   // Status indicator component
   const StatusIndicator = ({ status }) => {

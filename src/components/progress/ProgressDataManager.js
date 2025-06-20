@@ -166,11 +166,10 @@ export const useProgressData = (lessonId) => {
     if (!startTime) {
       startTime = new Date().toISOString();
       localStorage.setItem(startTimeKey, startTime);
-    }
-    
+    }    
     // Load initial progress data
     loadProgressData();
-  }, [lessonId]);
+  }, [lessonId, loadProgressData]);
 
   return {
     progressData,
@@ -202,10 +201,9 @@ export const useCompletionStatus = (lessonId, allTasksCompleted = false, progres
       if (progressData && saveCompletionData) {
         saveCompletionData(progressData);
       }
-      markAsCompleted();
-      setAutoCompleted(true);
+      markAsCompleted();      setAutoCompleted(true);
     }
-  }, [allTasksCompleted, isCompleted, lessonId, progressData, saveCompletionData, autoCompleted]);
+  }, [allTasksCompleted, isCompleted, lessonId, progressData, saveCompletionData, autoCompleted, markAsCompleted]);
   const markAsNotCompleted = () => {
     localStorage.removeItem(`lesson_completed_${lessonId}`);
     localStorage.removeItem(`lesson_completion_data_${lessonId}`);

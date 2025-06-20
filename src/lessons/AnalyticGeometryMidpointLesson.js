@@ -3,7 +3,7 @@ import LessonLayout from '../components/LessonLayout';
 import FormulaBox from '../components/FormulaBox';
 import Quiz from '../components/Quiz';
 
-const x_1 = 0, x_2 = 0, y_1 = 0, y_2 = 0; // Replace with appropriate values or imports
+// const x_1 = 0, x_2 = 0, y_1 = 0, y_2 = 0; // Replace with appropriate values or imports - Commented out unused variables
 
 const AnalyticGeometryMidpointLesson = () => {
   // General Midpoint Diagram

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import NavigationHeader from './NavigationHeader';
 import TabNavigation from './teachers/TabNavigation';
 import OverviewTab from './teachers/OverviewTab';
@@ -100,8 +100,8 @@ const mockClassesData = [
 const TeachersDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [selectedClass, setSelectedClass] = useState('all');
-  const [studentsData, setStudentsData] = useState(mockStudentsData);
-  const [classesData, setClassesData] = useState(mockClassesData);
+  const [studentsData] = useState(mockStudentsData); // Removed setStudentsData as it's unused
+  const [classesData] = useState(mockClassesData); // Removed setClassesData as it's unused
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [showStudentAnalysis, setShowStudentAnalysis] = useState(false);
