@@ -4,6 +4,7 @@ import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
+
 const Mahat11Basics = () => {
   const lessonId = 'mahat-1-1-basics';
   const nextLessonPath = '/lessons/mahat-1-2-fractions';
@@ -305,13 +306,10 @@ const Mahat11Basics = () => {
               </p>
             </div>
           </div>
-        </section>
-
-        <Quiz 
+        </section>        <Quiz 
           questions={quizQuestions} 
           lessonId={lessonId}
-          title="בחן את עצמך - יסודות החשבון"
-        />
+          title="בחן את עצמך - יסודות החשבון"        />
       </div>
     </LessonLayout>
   );

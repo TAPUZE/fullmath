@@ -5,6 +5,173 @@
  * Each group contains lessons in sequential order with their routes and questionnaire
  */
 export const LESSON_GROUPS = {
+  // MAHAT - Technological Preparatory Course
+  'mahat': {
+    questionnairePath: '/mahat-menu',
+    questionnaireTitle: 'MAHAT - מכינה טכנולוגית',
+    lessons: [
+      // Topic 1: Algebraic Techniques (30 hours)
+      {
+        id: 'mahat-1-1-basics',
+        title: '1.1 יסודות החשבון',
+        path: '/lessons/mahat-1-1-basics'
+      },
+      {
+        id: 'mahat-1-2-fractions',
+        title: '1.2 שברים ושימוש במחשבון',
+        path: '/lessons/mahat-1-2-fractions'
+      },
+      {
+        id: 'mahat-1-3-powers-basic',
+        title: '1.3 חוקי חזקות ושורשים (בסיסי)',
+        path: '/lessons/mahat-1-3-powers-basic'
+      },
+      {
+        id: 'mahat-1-4-algebraic-expressions',
+        title: '1.4 ביטויים אלגבריים וכינוס איברים',
+        path: '/lessons/mahat-1-4-algebraic-expressions'
+      },
+      {
+        id: 'mahat-1-5-multiplication-formulas',
+        title: '1.5 נוסחאות הכפל המקוצר ופירוק לגורמים',
+        path: '/lessons/mahat-1-5-multiplication-formulas'
+      },
+      {
+        id: 'mahat-1-6-algebraic-fractions',
+        title: '1.6 שברים אלגבריים',
+        path: '/lessons/mahat-1-6-algebraic-fractions'
+      },
+      // Topic 2: Powers and Roots (25 hours)
+      {
+        id: 'mahat-2-1-advanced-powers',
+        title: '2.1 חוקי חזקות מתקדמים',
+        path: '/lessons/mahat-2-1-advanced-powers'
+      },
+      {
+        id: 'mahat-2-2-roots-rational',
+        title: '2.2 שורשים וחזקות עם מעריך רציונלי',
+        path: '/lessons/mahat-2-2-roots-rational'
+      },
+      {
+        id: 'mahat-2-3-scientific-notation',
+        title: '2.3 כתיבה מדעית והמרת מידות',
+        path: '/lessons/mahat-2-3-scientific-notation'
+      },
+      // Topic 3: Graph Reading (20 hours)
+      {
+        id: 'mahat-3-1-graph-reading',
+        title: '3.1 הבנת מידע מגרפים',
+        path: '/lessons/mahat-3-1-graph-reading'
+      },
+      // Topic 4: Equations and Systems (25 hours)
+      {
+        id: 'mahat-4-1-linear-equations',
+        title: '4.1 משוואות ממעלה ראשונה',
+        path: '/lessons/mahat-4-1-linear-equations'
+      },
+      {
+        id: 'mahat-4-2-linear-systems',
+        title: '4.2 מערכת משוואות לינאריות',
+        path: '/lessons/mahat-4-2-linear-systems'
+      },
+      {
+        id: 'mahat-4-3-quadratic-equations',
+        title: '4.3 משוואות ריבועיות',
+        path: '/lessons/mahat-4-3-quadratic-equations'
+      },
+      {
+        id: 'mahat-4-4-mixed-systems',
+        title: '4.4 מערכת משוואות ריבועית ולינארית',
+        path: '/lessons/mahat-4-4-mixed-systems'
+      },
+      // Topic 5: Formula Subject Change (20 hours)
+      {
+        id: 'mahat-5-1-formula-subject',
+        title: '5.1 בידוד משתנים',
+        path: '/lessons/mahat-5-1-formula-subject'
+      },
+      // Topic 6: Introduction to Engineering (20 hours)
+      {
+        id: 'mahat-6-1-plane-shapes',
+        title: '6.1 צורות הנדסיות במישור',
+        path: '/lessons/mahat-6-1-plane-shapes'
+      },
+      {
+        id: 'mahat-6-2-coordinate-geometry',
+        title: '6.2 הנדסה במערכת צירים',
+        path: '/lessons/mahat-6-2-coordinate-geometry'
+      },
+      // Topic 7: Analytic Engineering (40 hours)
+      {
+        id: 'mahat-7-1-function-line',
+        title: '7.1 מושג הפונקציה והקו הישר',
+        path: '/lessons/mahat-7-1-function-line'
+      },
+      {
+        id: 'mahat-7-2-slope-parallel',
+        title: '7.2 שיפוע וישרים מקבילים/ניצבים',
+        path: '/lessons/mahat-7-2-slope-parallel'
+      },
+      {
+        id: 'mahat-7-3-midpoint-distance',
+        title: '7.3 אמצע קטע ומרחק בין נקודות',
+        path: '/lessons/mahat-7-3-midpoint-distance'
+      },
+      {
+        id: 'mahat-7-4-implicit-function',
+        title: '7.4 פונקציה סתומה ופתרון גרפי',
+        path: '/lessons/mahat-7-4-implicit-function'
+      },
+      {
+        id: 'mahat-7-5-complex-geometry',
+        title: '7.5 הנדסה אנליטית בצורות מורכבות',
+        path: '/lessons/mahat-7-5-complex-geometry'
+      },
+      // Topic 8: Parabolas (30 hours)
+      {
+        id: 'mahat-8-1-quadratic-intro',
+        title: '8.1 מבוא לפונקציה הריבועית',
+        path: '/lessons/mahat-8-1-quadratic-intro'
+      },
+      {
+        id: 'mahat-8-2-parabola-analysis',
+        title: '8.2 חקירת פרבולה',
+        path: '/lessons/mahat-8-2-parabola-analysis'
+      },
+      {
+        id: 'mahat-8-3-line-parabola',
+        title: '8.3 חיתוך בין ישר לפרבולה',
+        path: '/lessons/mahat-8-3-line-parabola'
+      },
+      // Topic 9: Word Problems (30 hours)
+      {
+        id: 'mahat-9-1-purchase-problems',
+        title: '9.1 בעיות קנייה ומכירה',
+        path: '/lessons/mahat-9-1-purchase-problems'
+      },
+      {
+        id: 'mahat-9-2-geometry-problems',
+        title: '9.2 בעיות גיאומטריות',
+        path: '/lessons/mahat-9-2-geometry-problems'
+      },
+      // Topic 10: Trigonometry (30 hours)
+      {
+        id: 'mahat-10-1-trig-basics',
+        title: '10.1 יסודות הטריגונומטריה',
+        path: '/lessons/mahat-10-1-trig-basics'
+      },
+      {
+        id: 'mahat-10-2-trig-functions',
+        title: '10.2 שימוש בפונקציות הטריגונומטריות',
+        path: '/lessons/mahat-10-2-trig-functions'
+      },
+      {
+        id: 'mahat-10-3-complex-shapes',
+        title: '10.3 פתרון צורות מורכבות',
+        path: '/lessons/mahat-10-3-complex-shapes'
+      }
+    ]
+  },
   '35182': {
     questionnairePath: '/questionnaire/35182',
     questionnaireTitle: 'שאלון מתמטיקה בסיסית',

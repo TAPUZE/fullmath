@@ -4,6 +4,7 @@ import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
+
 const Mahat13PowersBasic = () => {
   const lessonId = 'mahat-1-3-powers-basic';
   const nextLessonPath = '/lessons/mahat-1-4-algebraic-expressions';
@@ -322,8 +323,7 @@ const Mahat13PowersBasic = () => {
             <p className="text-sm font-medium text-blue-800">
               <strong>הכנה לשיעור הבא:</strong> בשיעור 1.4 נלמד על ביטויים אלגבריים - איך להשתמש באותיות במתמטיקה ולבצע פעולות עליהן.
             </p>
-          </div>
-        </div>
+          </div>        </div>
       </section>
       </div>
     </LessonLayout>

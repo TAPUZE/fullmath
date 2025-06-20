@@ -8,6 +8,7 @@ import './styles/lessons.css';
 // ============================================
 import HomePage from './components/HomePage';
 import LessonMenu from './components/LessonMenu';
+import MahatLessonMenu from './components/MahatLessonMenu';
 import ProgressDashboard from './components/ProgressDashboard';
 import TeachersDashboard from './components/TeachersDashboard';
 import MathTest from './components/MathTest';
@@ -126,9 +127,9 @@ function App() {
     <Router>
       <div className="App">        <Routes>          {/* ============================================ */}
           {/* MAIN PAGES */}
-          {/* ============================================ */}
-          <Route path="/" element={<HomePage />} />
+          {/* ============================================ */}          <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<LessonMenu />} />
+          <Route path="/mahat-menu" element={<MahatLessonMenu />} />
           <Route path="/progress" element={<ProgressDashboard />} />
           <Route path="/teachers" element={<TeachersDashboard />} />
           <Route path="/math-test" element={<MathTest />} />

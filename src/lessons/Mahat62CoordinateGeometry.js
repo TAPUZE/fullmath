@@ -1,262 +1,393 @@
-﻿import React from 'react';
-import LessonLayout from '../components/LessonLayout';
-import FormulaBox from '../components/FormulaBox';
-import Exercise from '../components/Exercise';
-import Quiz from '../components/Quiz';
+import React, { useState } from 'react';
+import '../styles/lessons.css';
 
 const Mahat62CoordinateGeometry = () => {
-  const lessonId = 'mahat-6-2-area-calculations';
-  const nextLessonPath = '/lessons/mahat-7-1-function-line';
-  
-  const exercises = [
-    {
-      id: 'ex1',
-      question: 'מהו שטח מלבן שאורכו 15 ס"מ ורוחבו 8 ס"מ?',
-      correctAnswer: '120 ס"ר',
-      placeholder: 'הזן את השטח בס"ר',
-      solution: (
-        <div>
-          <p><strong>פתרון:</strong></p>
-          <p><strong>נוסחת שטח מלבן:</strong> A = אורך × רוחב</p>
-          <p><strong>הצבת הנתונים:</strong> A = 15 × 8</p>
-          <p><strong>חישוב:</strong> A = 120 ס"ר</p>
-          <p><strong>תשובה:</strong> שטח המלבן הוא 120 ס"ר</p>
-        </div>
-      )
-    },
-    {
-      id: 'ex2',
-      question: 'מהו שטח מעגל שרדיוסו 5 ס"מ? (השתמש ב-π ≈ 3.14)',
-      correctAnswer: '78.5 ס"ר',
-      placeholder: 'הזן את השטח בס"ר',
-      solution: (
-        <div>
-          <p><strong>פתרון:</strong></p>
-          <p><strong>נוסחת שטח מעגל:</strong> A = πr²</p>
-          <p><strong>הצבת הנתונים:</strong> A = 3.14 × 5²</p>
-          <p><strong>חישוב:</strong> A = 3.14 × 25 = 78.5 ס"ר</p>
-          <p><strong>תשובה:</strong> שטח המעגל הוא 78.5 ס"ר</p>
-        </div>
-      )
-    },
-    {
-      id: 'ex3',
-      question: 'משולש שבסיסו 12 ס"מ וגובהו 8 ס"מ. מהו שטחו?',
-      correctAnswer: '48 ס"ר',
-      placeholder: 'הזן את השטח בס"ר',
-      solution: (
-        <div>
-          <p><strong>פתרון:</strong></p>
-          <p><strong>נוסחת שטח משולש:</strong> A = (בסיס × גובה) / 2</p>
-          <p><strong>הצבת הנתונים:</strong> A = (12 × 8) / 2</p>
-          <p><strong>חישוב:</strong> A = 96 / 2 = 48 ס"ר</p>
-          <p><strong>תשובה:</strong> שטח המשולש הוא 48 ס"ר</p>
-        </div>
-      )
-    },
-    {
-      id: 'ex4',
-      question: 'שטח מלבן הוא 48 ס"ר. היקפו 28 ס"מ. מה אורכי צלעותיו?',
-      correctAnswer: '6 ס"מ ו-8 ס"מ',
-      placeholder: 'הזן את אורכי הצלעות',
-      solution: (
-        <div>
-          <p><strong>פתרון:</strong></p>
-          <p><strong>נתונים:</strong> שטח = 48, היקף = 28</p>
-          <p><strong>נסמן:</strong> אורך = a, רוחב = b</p>
-          <p><strong>משוואות:</strong></p>
-          <p>• a × b = 48 (שטח)</p>
-          <p>• 2(a + b) = 28 → a + b = 14 (היקף)</p>
-          <p><strong>פתרון:</strong> נחפש זוג מספרים שמכפלתם 48 וסכומם 14</p>
-          <p>• 6 × 8 = 48 ✓</p>
-          <p>• 6 + 8 = 14 ✓</p>
-          <p><strong>תשובה:</strong> הצלעות הן 6 ס"מ ו-8 ס"מ</p>
-        </div>
-      )
-    },
-    {
-      id: 'ex5',
-      question: 'כיצד משתנה שטח ריבוע אם מגדילים את אורך צלעו פי 3?',
-      correctAnswer: 'גדל פי 9',
-      placeholder: 'הזן איך משתנה השטח',
-      solution: (
-        <div>
-          <p><strong>פתרון:</strong></p>
-          <p><strong>שטח ריבוע מקורי:</strong> A₁ = a²</p>
-          <p><strong>אורך צלע חדש:</strong> 3a</p>
-          <p><strong>שטח ריבוע חדש:</strong> A₂ = (3a)² = 9a²</p>
-          <p><strong>יחס השטחים:</strong> A₂/A₁ = 9a²/a² = 9</p>
-          <p><strong>תשובה:</strong> השטח גדל פי 9</p>
-          <p><strong>כלל כללי:</strong> כאשר מגדילים ממד ליניארי פי k, השטח גדל פי k²</p>
-        </div>
-      )
-    }
-  ];
+  const [showAnswer, setShowAnswer] = useState({});
+  const [showSolution, setShowSolution] = useState({});
+  const toggleAnswer = (questionId) => {
+    setShowAnswer(prev => ({
+      ...prev,
+      [questionId]: !prev[questionId]
+    }));
+  };
 
-  const quizData = {
-    title: 'בחן את עצמך - חישוב שטחים',
-    questions: [
-      {
-        question: 'במשולש, כדי לחשב שטח יש צורך:',
-        options: ['רק בשלוש הצלעות', 'בבסיס ובגובה לצלע הנתונה', 'רק בגובה', 'בצלע השנייה'],
-        correctAnswer: 1,
-        explanation: 'נוסחת השטח מחייבת שימוש בצלע (בסיס) ובגובה היורד אליה בניצב.'
-      },
-      {
-        question: 'שטח מלבן הוא 48 ס"ר. היקפו 28 ס"מ. מה אורכי צלעותיו?',
-        options: ['4 ו-12', '3 ו-16', '5 ו-9.6', '6 ו-8'],
-        correctAnswer: 3,
-        explanation: 'יש לחפש זוג מספרים שמכפלתם 48 וסכומם 14 (חצי מההיקף).'
-      },
-      {
-        question: 'כיצד משתנה שטח ריבוע אם מגדילים את אורך צלעו פי 3?',
-        options: ['גדל פי 3', 'גדל פי 6', 'גדל פי 9', 'גדל פי 1.5'],
-        correctAnswer: 2,
-        explanation: 'השטח תלוי בצלע בריבוע. אם הצלע גדלה פי 3, השטח גדל פי 3², כלומר פי 9.'
-      }
-    ]
+  const toggleSolution = (questionId) => {
+    setShowSolution(prev => ({
+      ...prev,
+      [questionId]: !prev[questionId]
+    }));
   };
 
   return (
-    <LessonLayout
-      lessonId={lessonId}
-      title="חישוב שטחים של צורות הנדסיות"
-      description="נוסחאות שטח, יישומים מעשיים וחישוב שטחים מורכבים"
-      nextLessonPath={nextLessonPath}
-    >
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-blue-800">מבוא לשיעור</h2>
-        <p className="text-lg mb-4">
-          בעוד שהיקף מודד את "אורך הגדר" של צורה, שטח מודד את המרחב הדו-ממדי שהצורה תופסת, 
-          או "כמה צבע צריך כדי למלא אותה". בשיעור זה נסקור את הנוסחאות החשובות לחישוב שטח 
-          של כל הצורות המישוריות שלמדנו, ונתרגל חישוב שטחים של צורות מורכבות.
-        </p>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-blue-800">מטרות השיעור</h2>
-        <ul className="list-disc list-inside space-y-2 text-lg">
-          <li>שליטה בנוסחאות השטח: נלמד ונשנן את נוסחאות השטח של כל הצורות הבסיסיות</li>
-          <li>הבנת הקשר בין גובה לבסיס: נבין את החשיבות של שימוש בגובה המתאים לבסיס בחישובי שטח</li>
-          <li>חישוב שטחים מורכבים: נלמד לפרק צורות מורכבות לחלקים, לחשב את שטח כל חלק ולסכום אותם</li>
-          <li>יישומים מעשיים: נפתור בעיות שטח הקשורות למצבים יומיומיים כמו חישוב כמות צבע או שטח דירה</li>
+    <div className="lesson-container">
+      <h1>6.2 הנדסה אנליטית - יסודות</h1>
+      
+      {/* Lesson Objectives */}
+      <div className="objectives-section">
+        <h2>מטרות השיעור</h2>
+        <ul>
+          <li>הכרת מערכת הצירים הקרטזית</li>
+          <li>זיהוי ומיקום נקודות במישור</li>
+          <li>הבנת הקשר בין נקודות לקואורדינטות</li>
+          <li>פתרון בעיות בסיסיות בהנדסה אנליטית</li>
+          <li>קריאה ופרשנות של גרפים במערכת צירים</li>
         </ul>
-      </section>
+      </div>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-blue-800">תיאוריה</h2>
+      {/* Theory Section */}
+      <div className="theory-section">
+        <h2>תיאוריה</h2>
         
-        <div className="bg-blue-50 p-4 rounded-lg mb-4">
-          <h3 className="text-xl font-semibold mb-3">מושג השטח</h3>
-          <p className="mb-3">
-            <strong>שטח</strong> הוא המרחב הדו-ממדי שצורה תופסת. יחידות המדידה הן יחידות ריבועיות: 
-            ס"ר (סנטימטר רבוע), מ"ר (מטר רבוע), ק"מ (קילומטר רבוע) וכו'.
-          </p>
+        <div className="concept-box">
+          <h3>מערכת הצירים הקרטזית</h3>
           <p>
-            דמיינו שאתם רוצים לצבוע קיר - השטח יגיד לכם כמה צבע אתם צריכים.
+            מערכת הצירים הקרטזית מורכבת משני צירים מאוזנים:
           </p>
-        </div>
-
-        <div className="bg-green-50 p-4 rounded-lg mb-4">
-          <h3 className="text-xl font-semibold mb-3">נוסחאות שטח - צורות בסיסיות</h3>
-          
-          <div className="bg-white p-3 rounded border-r-4 border-green-400 mb-3">
-            <h4 className="font-semibold mb-2">ריבוע</h4>
-            <FormulaBox>שטח = צלע²</FormulaBox>
-          </div>
-
-          <div className="bg-white p-3 rounded border-r-4 border-green-400 mb-3">
-            <h4 className="font-semibold mb-2">מלבן</h4>
-            <FormulaBox>שטח = אורך × רוחב</FormulaBox>
-          </div>
-
-          <div className="bg-white p-3 rounded border-r-4 border-green-400 mb-3">
-            <h4 className="font-semibold mb-2">משולש</h4>
-            <FormulaBox>שטח = (בסיס × גובה) / 2</FormulaBox>
-            <p className="text-sm mt-2"><strong>חשוב:</strong> הגובה חייב להיות ניצב לבסיס!</p>
-          </div>
-
-          <div className="bg-white p-3 rounded border-r-4 border-green-400">
-            <h4 className="font-semibold mb-2">מעגל</h4>
-            <FormulaBox>שטח = πr²</FormulaBox>
-            <p className="text-sm mt-2">כאשר r הוא הרדיוס</p>
-          </div>
-        </div>
-
-        <div className="bg-yellow-50 p-4 rounded-lg mb-4">
-          <h3 className="text-xl font-semibold mb-3">נוסחאות שטח - צורות מתקדמות</h3>
-          
-          <div className="bg-white p-3 rounded border-r-4 border-yellow-400 mb-3">
-            <h4 className="font-semibold mb-2">מקבילית</h4>
-            <FormulaBox>שטח = בסיס × גובה</FormulaBox>
-            <p className="text-sm mt-2">הגובה הוא המרחק הניצב בין הבסיסים המקבילים</p>
-          </div>
-
-          <div className="bg-white p-3 rounded border-r-4 border-yellow-400 mb-3">
-            <h4 className="font-semibold mb-2">טרפז</h4>
-            <FormulaBox>שטח = [(בסיס עליון + בסיס תחתון) × גובה] / 2</FormulaBox>
-            <p className="text-sm mt-2">הגובה הוא המרחק הניצב בין שני הבסיסים</p>
-          </div>
-
-          <div className="bg-white p-3 rounded border-r-4 border-yellow-400">
-            <h4 className="font-semibold mb-2">מעוין</h4>
-            <FormulaBox>שטח = (אלכסון 1 × אלכסון 2) / 2</FormulaBox>
-            <p className="text-sm mt-2">או: שטח = בסיס × גובה (כמו מקבילית)</p>
-          </div>
-        </div>
-
-        <div className="bg-purple-50 p-4 rounded-lg">
-          <h3 className="text-xl font-semibold mb-3">עקרונות חשובים</h3>
-          <div className="bg-white p-3 rounded border-r-4 border-purple-400">
-            <ul className="space-y-2">
-              <li><strong>גובה נכון:</strong> תמיד השתמשו בגובה הניצב לבסיס הנבחר</li>
-              <li><strong>יחידות:</strong> וודאו שכל המידות באותן יחידות לפני החישוב</li>
-              <li><strong>שטחים מורכבים:</strong> פרקו לצורות פשוטות, חשבו כל אחת בנפרד וסכמו</li>
-              <li><strong>קנה מידה:</strong> אם מגדילים ממד ליניארי פי k, השטח גדל פי k²</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-blue-800">תרגילים</h2>
-        <div className="space-y-6">
-          {exercises.map((exercise, index) => (
-            <Exercise
-              key={exercise.id}
-              exerciseId={exercise.id}
-              question={exercise.question}
-              correctAnswer={exercise.correctAnswer}
-              placeholder={exercise.placeholder}
-              solution={exercise.solution}
-              lessonId={lessonId}
-            />
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-8">
-        <Quiz
-          quizId={`${lessonId}_quiz`}
-          title={quizData.title}
-          questions={quizData.questions}
-          lessonId={lessonId}
-        />
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-blue-800">סיכום</h2>
-        <div className="bg-gray-50 p-6 rounded-lg">
-          <ul className="list-disc list-inside space-y-2 text-lg">
-            <li>שטח מודד את המרחב הדו-ממדי שצורה תופסת</li>
-            <li>כל צורה יש לה נוסחת שטח ייחודית שחשוב לזכור</li>
-            <li>בחישובי שטח של משולש ומקבילית, הגובה חייב להיות ניצב לבסיס</li>
-            <li>שטחים מורכבים ניתנים לפירוק לצורות פשוטות</li>
-            <li>הבנת חישובי השטח חיונית ליישומים מעשיים כמו בנייה וצביעה</li>
+          <ul>
+            <li><strong>ציר X (ציר האופקי):</strong> מייצג את הקואורדינטה הראשונה</li>
+            <li><strong>ציר Y (ציר האנכי):</strong> מייצג את הקואורדינטה השנייה</li>
+            <li><strong>נקודת המקור (O):</strong> נקודת החיתוך של הצירים, הקואורדינטות (0,0)</li>
           </ul>
         </div>
-      </section>
-    </LessonLayout>
+
+        <div className="concept-box">
+          <h3>קואורדינטות נקודה</h3>
+          <p>
+            כל נקודה במישור מיוצגת על ידי זוג קואורדינטות <strong>(x, y)</strong>:
+          </p>
+          <ul>
+            <li><strong>x:</strong> המרחק האופקי מהמקור (חיובי ימינה, שלילי שמאלה)</li>
+            <li><strong>y:</strong> המרחק האנכי מהמקור (חיובי למעלה, שלילי למטה)</li>
+          </ul>
+          
+          <div className="example-box">
+            <h4>דוגמה:</h4>
+            <p>הנקודה A(3, 2) נמצאת 3 יחידות ימינה ו-2 יחידות למעלה מהמקור</p>
+            <p>הנקודה B(-1, -4) נמצאת 1 יחידה שמאלה ו-4 יחידות למטה מהמקור</p>
+          </div>
+        </div>
+
+        <div className="concept-box">
+          <h3>רביעי המישור</h3>
+          <p>מערכת הצירים מחלקת את המישור לארבעה רביעים:</p>
+          <ul>
+            <li><strong>רביע ראשון:</strong> x &gt; 0, y &gt; 0 (שניהם חיוביים)</li>
+            <li><strong>רביע שני:</strong> x &lt; 0, y &gt; 0 (x שלילי, y חיובי)</li>
+            <li><strong>רביע שלישי:</strong> x &lt; 0, y &lt; 0 (שניהם שליליים)</li>
+            <li><strong>רביע רביעי:</strong> x &gt; 0, y &lt; 0 (x חיובי, y שלילי)</li>
+          </ul>
+        </div>
+
+        <div className="concept-box">
+          <h3>מיקום נקודות על הצירים</h3>
+          <ul>
+            <li><strong>על ציר X:</strong> הקואורדינטה y = 0, כלומר (x, 0)</li>
+            <li><strong>על ציר Y:</strong> הקואורדינטה x = 0, כלומר (0, y)</li>
+            <li><strong>במקור:</strong> שתי הקואורדינטות שוות לאפס (0, 0)</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Exercises Section */}
+      <div className="exercises-section">
+        <h2>תרגילים</h2>
+
+        <div className="exercise-box">
+          <h3>תרגיל 1: זיהוי קואורדינטות</h3>
+          <p>מצא את הקואורדינטות של הנקודות הבאות:</p>
+          <div className="sub-exercise">
+            <p>א) נקודה A נמצאת 4 יחידות ימינה ו-3 יחידות למעלה מהמקור</p>
+            <button onClick={() => toggleAnswer('ex1a')} className="show-answer-btn">
+              {showAnswer['ex1a'] ? 'הסתר פתרון' : 'הראה פתרון'}
+            </button>
+            {showAnswer['ex1a'] && (
+              <div className="answer-box">
+                <p><strong>פתרון:</strong> A(4, 3)</p>
+              </div>
+            )}
+          </div>
+
+          <div className="sub-exercise">
+            <p>ב) נקודה B נמצאת 2 יחידות שמאלה ו-5 יחידות למטה מהמקור</p>
+            <button onClick={() => toggleAnswer('ex1b')} className="show-answer-btn">
+              {showAnswer['ex1b'] ? 'הסתר פתרון' : 'הראה פתרון'}
+            </button>
+            {showAnswer['ex1b'] && (
+              <div className="answer-box">
+                <p><strong>פתרון:</strong> B(-2, -5)</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="exercise-box">
+          <h3>תרגיל 2: זיהוי רביעים</h3>
+          <p>קבע באיזה רביע נמצאת כל נקודה:</p>
+          <div className="sub-exercise">
+            <p>א) C(5, -2)</p>
+            <button onClick={() => toggleAnswer('ex2a')} className="show-answer-btn">
+              {showAnswer['ex2a'] ? 'הסתר פתרון' : 'הראה פתרון'}
+            </button>
+            {showAnswer['ex2a'] && (
+              <div className="answer-box">
+                <p><strong>פתרון:</strong> רביע רביעי (x חיובי, y שלילי)</p>
+              </div>
+            )}
+          </div>
+
+          <div className="sub-exercise">
+            <p>ב) D(-3, 4)</p>
+            <button onClick={() => toggleAnswer('ex2b')} className="show-answer-btn">
+              {showAnswer['ex2b'] ? 'הסתר פתרון' : 'הראה פתרון'}
+            </button>
+            {showAnswer['ex2b'] && (
+              <div className="answer-box">
+                <p><strong>פתרון:</strong> רביע שני (x שלילי, y חיובי)</p>
+              </div>
+            )}
+          </div>
+
+          <div className="sub-exercise">
+            <p>ג) E(-1, -6)</p>
+            <button onClick={() => toggleAnswer('ex2c')} className="show-answer-btn">
+              {showAnswer['ex2c'] ? 'הסתר פתרון' : 'הראה פתרון'}
+            </button>
+            {showAnswer['ex2c'] && (
+              <div className="answer-box">
+                <p><strong>פתרון:</strong> רביע שלישי (שניהם שליליים)</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="exercise-box">
+          <h3>תרגיל 3: נקודות על הצירים</h3>
+          <p>מצא את הקואורדינטות של הנקודות הבאות:</p>
+          <div className="sub-exercise">
+            <p>א) נקודה F נמצאת על ציר X במרחק 7 יחידות ימינה מהמקור</p>
+            <button onClick={() => toggleAnswer('ex3a')} className="show-answer-btn">
+              {showAnswer['ex3a'] ? 'הסתר פתרון' : 'הראה פתרון'}
+            </button>
+            {showAnswer['ex3a'] && (
+              <div className="answer-box">
+                <p><strong>פתרון:</strong> F(7, 0)</p>
+              </div>
+            )}
+          </div>
+
+          <div className="sub-exercise">
+            <p>ב) נקודה G נמצאת על ציר Y במרחק 3 יחידות למטה מהמקור</p>
+            <button onClick={() => toggleAnswer('ex3b')} className="show-answer-btn">
+              {showAnswer['ex3b'] ? 'הסתר פתרון' : 'הראה פתרון'}
+            </button>
+            {showAnswer['ex3b'] && (
+              <div className="answer-box">
+                <p><strong>פתרון:</strong> G(0, -3)</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="exercise-box">
+          <h3>תרגיל 4: בעיה מורכבת</h3>
+          <p>נתונות הנקודות: A(2, 3), B(-1, 4), C(-2, -1), D(3, -2)</p>
+          <div className="sub-exercise">
+            <p>א) איזו נקודה נמצאת ברביע הראשון?</p>
+            <button onClick={() => toggleAnswer('ex4a')} className="show-answer-btn">
+              {showAnswer['ex4a'] ? 'הסתר פתרון' : 'הראה פתרון'}
+            </button>
+            {showAnswer['ex4a'] && (
+              <div className="answer-box">
+                <p><strong>פתרון:</strong> נקודה A(2, 3) - שתי הקואורדינטות חיוביות</p>
+              </div>
+            )}
+          </div>
+
+          <div className="sub-exercise">
+            <p>ב) איזו נקודה נמצאת ברביע השלישי?</p>
+            <button onClick={() => toggleAnswer('ex4b')} className="show-answer-btn">
+              {showAnswer['ex4b'] ? 'הסתר פתרון' : 'הראה פתרון'}
+            </button>
+            {showAnswer['ex4b'] && (
+              <div className="answer-box">
+                <p><strong>פתרון:</strong> נקודה C(-2, -1) - שתי הקואורדינטות שליליות</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Quiz Section */}
+      <div className="quiz-section">
+        <h2>בוחן</h2>
+        
+        <div className="question-box">
+          <h3>שאלה 1</h3>
+          <p>איזו נקודה נמצאת ברביע השני?</p>
+          <div className="options">            <label>
+              <input 
+                type="radio" 
+                name="q1" 
+                value="A"
+              />
+              א) (3, 2)
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="q1" 
+                value="B"
+              />
+              ב) (-4, 5)
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="q1" 
+                value="C"
+              />
+              ג) (-1, -3)
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="q1" 
+                value="D"
+              />
+              ד) (2, -4)
+            </label>
+          </div>
+          <button onClick={() => toggleSolution('q1')} className="show-solution-btn">
+            {showSolution['q1'] ? 'הסתר פתרון' : 'הראה פתרון'}
+          </button>
+          {showSolution['q1'] && (
+            <div className="solution-box">
+              <p><strong>תשובה נכונה: ב) (-4, 5)</strong></p>
+              <p><strong>הסבר:</strong> ברביע השני x שלילי ו-y חיובי</p>
+            </div>
+          )}
+        </div>
+
+        <div className="question-box">
+          <h3>שאלה 2</h3>
+          <p>נקודה הנמצאת על ציר Y צריכה לקיים:</p>
+          <div className="options">            <label>
+              <input 
+                type="radio" 
+                name="q2" 
+                value="A"
+              />
+              א) x = 0
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="q2" 
+                value="B"
+              />
+              ב) y = 0
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="q2" 
+                value="C"
+              />
+              ג) x = y
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="q2" 
+                value="D"
+              />
+              ד) x + y = 0
+            </label>
+          </div>
+          <button onClick={() => toggleSolution('q2')} className="show-solution-btn">
+            {showSolution['q2'] ? 'הסתר פתרון' : 'הראה פתרון'}
+          </button>
+          {showSolution['q2'] && (
+            <div className="solution-box">
+              <p><strong>תשובה נכונה: א) x = 0</strong></p>
+              <p><strong>הסבר:</strong> נקודה על ציר Y מתאפיינת ב-x = 0, כלומר (0, y)</p>
+            </div>
+          )}
+        </div>
+
+        <div className="question-box">
+          <h3>שאלה 3</h3>
+          <p>במה מתאפיין הרביע הרביעי?</p>
+          <div className="options">            <label>
+              <input 
+                type="radio" 
+                name="q3" 
+                value="A"
+              />
+              א) x &gt; 0, y &gt; 0
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="q3" 
+                value="B"
+              />
+              ב) x &lt; 0, y &gt; 0
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="q3" 
+                value="C"
+              />
+              ג) x &lt; 0, y &lt; 0
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="q3" 
+                value="D"
+              />
+              ד) x &gt; 0, y &lt; 0
+            </label>
+          </div>
+          <button onClick={() => toggleSolution('q3')} className="show-solution-btn">
+            {showSolution['q3'] ? 'הסתר פתרון' : 'הראה פתרון'}
+          </button>
+          {showSolution['q3'] && (
+            <div className="solution-box">
+              <p><strong>תשובה נכונה: ד) x &gt; 0, y &lt; 0</strong></p>
+              <p><strong>הסבר:</strong> ברביע הרביעי x חיובי (ימינה) ו-y שלילי (למטה)</p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Summary */}
+      <div className="summary-section">
+        <h2>סיכום השיעור</h2>
+        <div className="summary-box">
+          <h3>נקודות מפתח:</h3>
+          <ul>
+            <li><strong>מערכת הצירים הקרטזית:</strong> מורכבת מציר X (אופקי) וציר Y (אנכי)</li>
+            <li><strong>קואורדינטות נקודה:</strong> מיוצגות כ-(x, y)</li>
+            <li><strong>רביעי המישור:</strong> ארבעה אזורים הנקבעים על ידי סימני x ו-y</li>
+            <li><strong>נקודות על הצירים:</strong> על ציר X: (x, 0), על ציר Y: (0, y)</li>
+            <li><strong>המקור:</strong> נקודת החיתוך של הצירים (0, 0)</li>
+          </ul>
+        </div>
+        
+        <div className="summary-box">
+          <h3>נוסחאות וכללים חשובים:</h3>
+          <ul>
+            <li>רביע ראשון: x &gt; 0, y &gt; 0</li>
+            <li>רביע שני: x &lt; 0, y &gt; 0</li>
+            <li>רביע שלישי: x &lt; 0, y &lt; 0</li>
+            <li>רביע רביעי: x &gt; 0, y &lt; 0</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 };
 

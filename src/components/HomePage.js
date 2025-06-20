@@ -158,14 +158,13 @@ const HomePage = () => {  return (
                     <div className="text-xs sm:text-sm font-medium text-gray-700">טריגונומטריה</div>
                   </div>
                 </div>
-                
-                <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                   <Link 
-                    to="/menu" 
+                    to="/mahat-menu" 
                     className="flex-1 inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-md transition duration-150 ease-in-out text-center"
                   >
-                    צפה בכל השיעורים
-                  </Link>                  <Link 
+                    צפה בשיעורי MAHAT
+                  </Link><Link 
                     to="/lessons/mahat-algebraic-techniques-1" 
                     className="flex-1 inline-block bg-white text-orange-600 border-2 border-orange-500 hover:bg-orange-50 font-semibold py-3 px-6 rounded-md transition duration-150 ease-in-out text-center"
                   >

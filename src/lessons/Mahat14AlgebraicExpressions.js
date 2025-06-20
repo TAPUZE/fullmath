@@ -4,6 +4,7 @@ import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
+
 const Mahat14AlgebraicExpressions = () => {
   const lessonId = 'mahat-1-4-algebraic-expressions';
   const nextLessonPath = '/lessons/mahat-1-5-multiplication-formulas';

@@ -4,6 +4,7 @@ import FormulaBox from '../components/FormulaBox';
 import Exercise from '../components/Exercise';
 import Quiz from '../components/Quiz';
 
+
 const Mahat12Fractions = () => {
   const lessonId = 'mahat-1-2-fractions';
   const nextLessonPath = '/lessons/mahat-1-3-powers-basic';
@@ -272,12 +273,10 @@ const Mahat12Fractions = () => {
       </section>
 
       {/* בחן את עצמך */}
-      <section className="mb-8">
-        <Quiz
+      <section className="mb-8">        <Quiz
           quizId={`${lessonId}_quiz`}
           title={quizData.title}
-          questions={quizData.questions}
-          lessonId={lessonId}
+          questions={quizData.questions}          lessonId={lessonId}
         />
       </section>
 
@@ -298,8 +297,7 @@ const Mahat12Fractions = () => {
             <p className="text-sm font-medium text-blue-800">
               <strong>הכנה לשיעור הבא:</strong> בשיעור 1.3 נכיר את חוקי החזקות והשורשים - כלים חזקים שיפשטו לנו חישובים רבים.
             </p>
-          </div>
-        </div>
+          </div>        </div>
       </section>
       </div>
     </LessonLayout>

@@ -6,8 +6,7 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
   const [submitted, setSubmitted] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [randomizedQuestions, setRandomizedQuestions] = useState([]);
-
-  useEffect(() => {
+  // const [timeSpent, setTimeSpent] = useState(0); // Commented out unused variable  useEffect(() => {
     setStartTime(Date.now());
     
     // Randomize quiz questions and their options
@@ -34,10 +33,10 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
       setRandomizedQuestions(shuffledQuestions);
     }
     
-    return () => {
-      // Save time when component unmounts
+    return () => {      // Save time when component unmounts
       if (startTime && !submitted) {
-        // const sessionTime = Math.floor((Date.now() - startTime) / 1000);
+        // const sessionTime = Math.floor((Date.now() - startTime) / 1000); // Commented out unused variable
+        // setTimeSpent(prev => prev + sessionTime); // Commented out as timeSpent is not used
       }
     };
   }, [questions, startTime, submitted]);
@@ -95,20 +94,17 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
     if (lessonId) {
       localStorage.setItem(`lesson_quiz_score_${lessonId}`, JSON.stringify(quizData));
     }
-    
-    setResults({ score, totalQuestions, timeSpent: finalTimeSpent });
+      setResults({ score, totalQuestions, timeSpent: finalTimeSpent });
     setSubmitted(true);
+    // setTimeSpent(finalTimeSpent); // Commented out as timeSpent state is not used
     
     if (onSubmit) {
       onSubmit(quizData);
     }
   };
-
-  const questionsToRender = randomizedQuestions.length > 0 ? randomizedQuestions : questions;
-
   return (
     <div className="space-y-6">
-      {questionsToRender.map((question, index) => (
+      {(randomizedQuestions.length > 0 ? randomizedQuestions : questions).map((question, index) => (
         <div key={question.id} className="quiz-question p-4 border border-gray-300 rounded-lg bg-gray-50">
           <p className="font-medium mb-3">
             שאלה {index + 1}: {question.question}
@@ -139,8 +135,7 @@ const Quiz = ({ questions, onSubmit, lessonId }) => {
           הגש בוחן
         </button>
       )}
-      
-      {results && (
+        {results && (
         <div className="mt-3 p-3 rounded-md text-sm bg-yellow-100 text-yellow-700">
           <div className="font-bold">הציון שלך הוא: {results.score} מתוך {results.totalQuestions}</div>
           <div className="mt-1 text-xs">
