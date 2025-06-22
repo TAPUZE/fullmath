@@ -8,10 +8,13 @@ import Quiz from '../components/Quiz';
 const Mahat12Fractions = () => {
   const lessonId = 'mahat-1-2-fractions';
   const nextLessonPath = '/lessons/mahat-1-3-powers-basic';
-  const exercises = [
-    {
+  const exercises = [    {
       id: 'ex1',
-      question: 'צמצם את השבר: 45/60',
+      question: (
+        <div>
+          צמצם את השבר: <FormulaBox inline>{"\\frac{45}{60}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '3/4',
       placeholder: 'הכנס תשובה בצורה a/b',
       solution: (
@@ -23,10 +26,13 @@ const Mahat12Fractions = () => {
           <FormulaBox>{"\\frac{45}{60} = \\frac{45 \\div 15}{60 \\div 15} = \\frac{3}{4}"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex2',
-      question: 'חשב: (5/12) × (8/15)',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"\\frac{5}{12} \\times \\frac{8}{15}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '2/9',
       placeholder: 'הכנס תשובה בצורה a/b',
       solution: (
@@ -38,10 +44,13 @@ const Mahat12Fractions = () => {
           <FormulaBox>{"\\frac{40}{180} = \\frac{40 \\div 20}{180 \\div 20} = \\frac{2}{9}"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex3',
-      question: 'חשב: (7/9) ÷ (14/27)',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"\\frac{7}{9} \\div \\frac{14}{27}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '3/2',
       placeholder: 'הכנס תשובה בצורה a/b',
       solution: (
@@ -54,10 +63,13 @@ const Mahat12Fractions = () => {
           <FormulaBox>{"\\frac{189}{126} = \\frac{3}{2}"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex4',
-      question: 'חשב: 5/12 - 1/8',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"\\frac{5}{12} - \\frac{1}{8}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '7/24',
       placeholder: 'הכנס תשובה בצורה a/b',
       solution: (
@@ -69,10 +81,13 @@ const Mahat12Fractions = () => {
           <FormulaBox>{"\\frac{10}{24} - \\frac{3}{24} = \\frac{7}{24}"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex5',
-      question: 'חשב: 2 + 1/3 + 1/4',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"2 + \\frac{1}{3} + \\frac{1}{4}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '31/12',
       placeholder: 'הכנס תשובה בצורה a/b',
       solution: (
@@ -87,11 +102,31 @@ const Mahat12Fractions = () => {
   ];
   const quizData = {
     title: 'בחן את עצמך - שברים ושימוש במחשבון',
-    questions: [
-      {
+    questions: [      {
         id: 'q1',
-        question: 'מהו המכנה המשותף הקטן ביותר של 1/8 ו-5/6?',
-        options: ['48', '14', '24', '6'],
+        question: (
+          <div>
+            מהו המכנה המשותף הקטן ביותר של <FormulaBox inline>{"\\frac{1}{8}"}</FormulaBox> ו-<FormulaBox inline>{"\\frac{5}{6}"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          {
+            label: <FormulaBox inline>{"48"}</FormulaBox>,
+            value: '48'
+          },
+          {
+            label: <FormulaBox inline>{"14"}</FormulaBox>,
+            value: '14'
+          },
+          {
+            label: <FormulaBox inline>{"24"}</FormulaBox>,
+            value: '24'
+          },
+          {
+            label: <FormulaBox inline>{"6"}</FormulaBox>,
+            value: '6'
+          }
+        ],
         correctAnswer: '24',
         explanation: (
           <div>
@@ -102,11 +137,31 @@ const Mahat12Fractions = () => {
             <p>המכנה המשותף הקטן ביותר הוא 24</p>
           </div>
         )
-      },
-      {
+      },      {
         id: 'q2',
-        question: 'התוצאה של 4 × (1/2 + 1/4) היא:',
-        options: ['3', '2.5', '4', '1'],
+        question: (
+          <div>
+            התוצאה של <FormulaBox inline>{"4 \\times \\left(\\frac{1}{2} + \\frac{1}{4}\\right)"}</FormulaBox> היא:
+          </div>
+        ),
+        options: [
+          {
+            label: <FormulaBox inline>{"3"}</FormulaBox>,
+            value: '3'
+          },
+          {
+            label: <FormulaBox inline>{"2.5"}</FormulaBox>,
+            value: '2.5'
+          },
+          {
+            label: <FormulaBox inline>{"4"}</FormulaBox>,
+            value: '4'
+          },
+          {
+            label: <FormulaBox inline>{"1"}</FormulaBox>,
+            value: '1'
+          }
+        ],
         correctAnswer: '3',
         explanation: (
           <div>
@@ -117,11 +172,31 @@ const Mahat12Fractions = () => {
             <FormulaBox>{"4 \\times \\frac{3}{4} = \\frac{4 \\times 3}{4} = \\frac{12}{4} = 3"}</FormulaBox>
           </div>
         )
-      },
-      {
+      },      {
         id: 'q3',
-        question: 'סוחר מכר 3/5 מהסחורה שלו. איזה חלק מהסחורה נשאר לו?',
-        options: ['1/5', '3/5', '2/5', '5/3'],
+        question: (
+          <div>
+            סוחר מכר <FormulaBox inline>{"\\frac{3}{5}"}</FormulaBox> מהסחורה שלו. איזה חלק מהסחורה נשאר לו?
+          </div>
+        ),
+        options: [
+          {
+            label: <FormulaBox inline>{"\\frac{1}{5}"}</FormulaBox>,
+            value: '1/5'
+          },
+          {
+            label: <FormulaBox inline>{"\\frac{3}{5}"}</FormulaBox>,
+            value: '3/5'
+          },
+          {
+            label: <FormulaBox inline>{"\\frac{2}{5}"}</FormulaBox>,
+            value: '2/5'
+          },
+          {
+            label: <FormulaBox inline>{"\\frac{5}{3}"}</FormulaBox>,
+            value: '5/3'
+          }
+        ],
         correctAnswer: '2/5',
         explanation: (
           <div>

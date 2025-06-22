@@ -8,10 +8,13 @@ const Mahat16AlgebraicFractions = () => {
   const lessonId = 'mahat-1-6-algebraic-fractions';
   const nextLessonPath = '/lessons/mahat-2-1-advanced-powers';
 
-  const exercises = [
-    {
+  const exercises = [    {
       id: 'ex1',
-      question: 'מהו תחום ההצבה של (x+1)/(x²-16)?',
+      question: (
+        <div>
+          מהו תחום ההצבה של <FormulaBox inline>{"\\frac{x+1}{x^2-16}"}</FormulaBox>?
+        </div>
+      ),
       correctAnswer: 'x ≠ 4, x ≠ -4',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -24,10 +27,13 @@ const Mahat16AlgebraicFractions = () => {
           <p>תחום ההצבה: x ≠ 4, x ≠ -4</p>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex2',
-      question: 'צמצם: (2x+4)/(x²+5x+6)',
+      question: (
+        <div>
+          צמצם: <FormulaBox inline>{"\\frac{2x+4}{x^2+5x+6}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '2/(x+3)',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -40,10 +46,13 @@ const Mahat16AlgebraicFractions = () => {
           <p>תנאי: x ≠ -2, x ≠ -3</p>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex3',
-      question: 'חשב: 2/x + 3/(x+1)',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"\\frac{2}{x} + \\frac{3}{x+1}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '(5x+2)/(x(x+1))',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -55,10 +64,13 @@ const Mahat16AlgebraicFractions = () => {
           <FormulaBox>{"= \\frac{5x + 2}{x(x+1)}"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex4',
-      question: 'חשב: (x²-25)/(x+1) ÷ (x+5)/(x²+2x+1)',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"\\frac{x^2-25}{x+1} \\div \\frac{x+5}{x^2+2x+1}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '(x-5)(x+1)',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -73,9 +85,12 @@ const Mahat16AlgebraicFractions = () => {
         </div>
       )
     },
-    {
-      id: 'ex5',
-      question: 'פשט: (x²-9)/(x²-6x+9)',
+    {      id: 'ex5',
+      question: (
+        <div>
+          פשט: <FormulaBox inline>{"\\frac{x^2-9}{x^2-6x+9}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '(x+3)/(x-3)',
       placeholder: 'הכנס תשובה',
       solution: (

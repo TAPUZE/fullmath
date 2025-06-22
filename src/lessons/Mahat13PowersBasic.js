@@ -7,11 +7,14 @@ import Quiz from '../components/Quiz';
 
 const Mahat13PowersBasic = () => {
   const lessonId = 'mahat-1-3-powers-basic';
-  const nextLessonPath = '/lessons/mahat-1-4-algebraic-expressions';
-  const exercises = [
+  const nextLessonPath = '/lessons/mahat-1-4-algebraic-expressions';  const exercises = [
     {
       id: 'ex1',
-      question: 'חשב: 3⁴',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"3^4"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '81',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -23,10 +26,13 @@ const Mahat13PowersBasic = () => {
           <FormulaBox>{"= 27 \\times 3 = 81"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex2',
-      question: 'חשב: √64',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"\\sqrt{64}"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '8',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -36,10 +42,13 @@ const Mahat13PowersBasic = () => {
           <FormulaBox>{"\\sqrt{64} = 8 \\text{ כי } 8^2 = 8 \\times 8 = 64"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex3',
-      question: 'חשב: 2³ × 2²',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"2^3 \\times 2^2"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '32',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -50,10 +59,13 @@ const Mahat13PowersBasic = () => {
           <FormulaBox>{"2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex4',
-      question: 'חשב: 5⁰',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"5^0"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '1',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -64,10 +76,13 @@ const Mahat13PowersBasic = () => {
           <p>זה כלל יסודי בחזקות!</p>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex5',
-      question: 'חשב: 6² ÷ 6¹',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"6^2 \\div 6^1"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '6',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -79,10 +94,13 @@ const Mahat13PowersBasic = () => {
           <FormulaBox>{"\\frac{6^2}{6^1} = \\frac{36}{6} = 6"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex6',
-      question: 'חשב: (√9)²',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"(\\sqrt{9})^2"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '9',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -98,11 +116,19 @@ const Mahat13PowersBasic = () => {
   ];
   const quizData = {
     title: 'בחן את עצמך - חוקי חזקות ושורשים',
-    questions: [
-      {
+    questions: [      {
         id: 'q1',
-        question: 'מה התוצאה של 4³?',
-        options: ['12', '16', '64', '81'],
+        question: (
+          <div>
+            מה התוצאה של <FormulaBox inline>{"4^3"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"12"}</FormulaBox>, value: '12' },
+          { label: <FormulaBox inline>{"16"}</FormulaBox>, value: '16' },
+          { label: <FormulaBox inline>{"64"}</FormulaBox>, value: '64' },
+          { label: <FormulaBox inline>{"81"}</FormulaBox>, value: '81' }
+        ],
         correctAnswer: '64',
         explanation: (
           <div>
@@ -111,11 +137,19 @@ const Mahat13PowersBasic = () => {
             <FormulaBox>{"4^3 = 4 \\times 4 \\times 4 = 16 \\times 4 = 64"}</FormulaBox>
           </div>
         )
-      },
-      {
+      },      {
         id: 'q2',
-        question: 'מה השורש הריבועי של 49?',
-        options: ['6', '7', '8', '9'],
+        question: (
+          <div>
+            מה השורש הריבועי של <FormulaBox inline>{"49"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"6"}</FormulaBox>, value: '6' },
+          { label: <FormulaBox inline>{"7"}</FormulaBox>, value: '7' },
+          { label: <FormulaBox inline>{"8"}</FormulaBox>, value: '8' },
+          { label: <FormulaBox inline>{"9"}</FormulaBox>, value: '9' }
+        ],
         correctAnswer: '7',
         explanation: (
           <div>
@@ -124,11 +158,19 @@ const Mahat13PowersBasic = () => {
             <FormulaBox>{"\\sqrt{49} = 7 \\text{ כי } 7^2 = 7 \\times 7 = 49"}</FormulaBox>
           </div>
         )
-      },
-      {
+      },      {
         id: 'q3',
-        question: 'מה התוצאה של 3² × 3³?',
-        options: ['3⁵', '3⁶', '6⁵', '9⁵'],
+        question: (
+          <div>
+            מה התוצאה של <FormulaBox inline>{"3^2 \\times 3^3"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"3^5"}</FormulaBox>, value: '3⁵' },
+          { label: <FormulaBox inline>{"3^6"}</FormulaBox>, value: '3⁶' },
+          { label: <FormulaBox inline>{"6^5"}</FormulaBox>, value: '6⁵' },
+          { label: <FormulaBox inline>{"9^5"}</FormulaBox>, value: '9⁵' }
+        ],
         correctAnswer: '3⁵',
         explanation: (
           <div>

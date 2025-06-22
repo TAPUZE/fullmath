@@ -7,10 +7,13 @@ import Quiz from '../components/Quiz';
 const Mahat15MultiplicationFormulas = () => {
   const lessonId = 'mahat-1-5-multiplication-formulas';
   const nextLessonPath = '/lessons/mahat-1-6-algebraic-fractions';
-  const exercises = [
-    {
+  const exercises = [    {
       id: 'ex1',
-      question: 'פתח את הביטוי: (x + 3)²',
+      question: (
+        <div>
+          פתח את הביטוי: <FormulaBox inline>{"(x + 3)^2"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: 'x² + 6x + 9',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -20,10 +23,13 @@ const Mahat15MultiplicationFormulas = () => {
           <FormulaBox>{"(x + 3)^2 = x^2 + 2 \\cdot x \\cdot 3 + 3^2 = x^2 + 6x + 9"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex2',
-      question: 'פרק לגורמים: x² - 25',
+      question: (
+        <div>
+          פרק לגורמים: <FormulaBox inline>{"x^2 - 25"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '(x + 5)(x - 5)',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -33,10 +39,13 @@ const Mahat15MultiplicationFormulas = () => {
           <FormulaBox>{"x^2 - 25 = x^2 - 5^2 = (x + 5)(x - 5)"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex3',
-      question: 'פתח את הביטוי: (2a - 5)²',
+      question: (
+        <div>
+          פתח את הביטוי: <FormulaBox inline>{"(2a - 5)^2"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '4a² - 20a + 25',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -47,10 +56,13 @@ const Mahat15MultiplicationFormulas = () => {
           <FormulaBox>{"= 4a^2 - 20a + 25"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex4',
-      question: 'חשב: (3x + 2)(3x - 2)',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"(3x + 2)(3x - 2)"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '9x² - 4',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -60,10 +72,13 @@ const Mahat15MultiplicationFormulas = () => {
           <FormulaBox>{"(3x + 2)(3x - 2) = (3x)^2 - 2^2 = 9x^2 - 4"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex5',
-      question: 'פרק לגורמים: 6x² + 15x',
+      question: (
+        <div>
+          פרק לגורמים: <FormulaBox inline>{"6x^2 + 15x"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '3x(2x + 5)',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -74,9 +89,12 @@ const Mahat15MultiplicationFormulas = () => {
         </div>
       )
     },
-    {
-      id: 'ex6',
-      question: 'פרק לגורמים: y² + 10y + 25',
+    {      id: 'ex6',
+      question: (
+        <div>
+          פרק לגורמים: <FormulaBox inline>{"y^2 + 10y + 25"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '(y + 5)²',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -90,36 +108,103 @@ const Mahat15MultiplicationFormulas = () => {
   ];
   const quizData = {
     title: 'בחן את עצמך - נוסחאות כפל מקוצר',
-    questions: [
-      {
-        question: 'מה התוצאה של (a + b)²?',
-        options: ['a² + b²', 'a² + 2ab + b²', 'a² - 2ab + b²', '2a² + 2b²'],
-        correctAnswer: 1,
-        explanation: 'נוסחת הבינום בריבוע: (a + b)² = a² + 2ab + b²'
-      },
-      {
-        question: 'איך מפרקים את הביטוי a² - b²?',
-        options: ['(a + b)²', '(a - b)²', '(a + b)(a - b)', 'לא ניתן לפרק'],
-        correctAnswer: 2,
-        explanation: 'זוהי נוסחת הפרש ריבועים: a² - b² = (a + b)(a - b)'
-      },
-      {
-        question: 'מה התוצאה של (x - 4)²?',
-        options: ['x² - 16', 'x² + 8x + 16', 'x² - 8x + 16', 'x² - 4x + 16'],
-        correctAnswer: 2,
-        explanation: '(x - 4)² = x² - 2·x·4 + 4² = x² - 8x + 16'
-      },
-      {
-        question: 'איך מפרקים את הביטוי 4x² - 9?',
-        options: ['(2x + 3)²', '(2x - 3)²', '(2x + 3)(2x - 3)', '(4x + 9)(4x - 9)'],
-        correctAnswer: 2,
-        explanation: '4x² - 9 = (2x)² - 3² = (2x + 3)(2x - 3)'
-      },
-      {
-        question: 'מה הגורם המשותף ב-6ab + 9a?',
-        options: ['3', '3a', '6a', '9a'],
-        correctAnswer: 1,
-        explanation: '6ab + 9a = 3a·2b + 3a·3 = 3a(2b + 3)'
+    questions: [      {
+        question: (
+          <div>
+            מה התוצאה של <FormulaBox inline>{"(a + b)^2"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"a^2 + b^2"}</FormulaBox>, value: 'a² + b²' },
+          { label: <FormulaBox inline>{"a^2 + 2ab + b^2"}</FormulaBox>, value: 'a² + 2ab + b²' },
+          { label: <FormulaBox inline>{"a^2 - 2ab + b^2"}</FormulaBox>, value: 'a² - 2ab + b²' },
+          { label: <FormulaBox inline>{"2a^2 + 2b^2"}</FormulaBox>, value: '2a² + 2b²' }
+        ],
+        correctAnswer: 'a² + 2ab + b²',
+        explanation: (
+          <div>
+            <p><strong>הסבר:</strong></p>
+            <p>נוסחת הבינום בריבוע:</p>
+            <FormulaBox>{"(a + b)^2 = a^2 + 2ab + b^2"}</FormulaBox>
+          </div>
+        )
+      },      {
+        question: (
+          <div>
+            איך מפרקים את הביטוי <FormulaBox inline>{"a^2 - b^2"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"(a + b)^2"}</FormulaBox>, value: '(a + b)²' },
+          { label: <FormulaBox inline>{"(a - b)^2"}</FormulaBox>, value: '(a - b)²' },
+          { label: <FormulaBox inline>{"(a + b)(a - b)"}</FormulaBox>, value: '(a + b)(a - b)' },
+          { label: 'לא ניתן לפרק', value: 'לא ניתן לפרק' }
+        ],
+        correctAnswer: '(a + b)(a - b)',
+        explanation: (
+          <div>
+            <p><strong>הסבר:</strong></p>
+            <p>זוהי נוסחת הפרש ריבועים:</p>
+            <FormulaBox>{"a^2 - b^2 = (a + b)(a - b)"}</FormulaBox>
+          </div>
+        )
+      },      {
+        question: (
+          <div>
+            מה התוצאה של <FormulaBox inline>{"(x - 4)^2"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"x^2 - 16"}</FormulaBox>, value: 'x² - 16' },
+          { label: <FormulaBox inline>{"x^2 + 8x + 16"}</FormulaBox>, value: 'x² + 8x + 16' },
+          { label: <FormulaBox inline>{"x^2 - 8x + 16"}</FormulaBox>, value: 'x² - 8x + 16' },
+          { label: <FormulaBox inline>{"x^2 - 4x + 16"}</FormulaBox>, value: 'x² - 4x + 16' }
+        ],
+        correctAnswer: 'x² - 8x + 16',
+        explanation: (
+          <div>
+            <p><strong>הסבר:</strong></p>
+            <FormulaBox>{"(x - 4)^2 = x^2 - 2 \\cdot x \\cdot 4 + 4^2 = x^2 - 8x + 16"}</FormulaBox>
+          </div>
+        )
+      },      {
+        question: (
+          <div>
+            איך מפרקים את הביטוי <FormulaBox inline>{"4x^2 - 9"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"(2x + 3)^2"}</FormulaBox>, value: '(2x + 3)²' },
+          { label: <FormulaBox inline>{"(2x - 3)^2"}</FormulaBox>, value: '(2x - 3)²' },
+          { label: <FormulaBox inline>{"(2x + 3)(2x - 3)"}</FormulaBox>, value: '(2x + 3)(2x - 3)' },
+          { label: <FormulaBox inline>{"(4x + 9)(4x - 9)"}</FormulaBox>, value: '(4x + 9)(4x - 9)' }
+        ],
+        correctAnswer: '(2x + 3)(2x - 3)',
+        explanation: (
+          <div>
+            <p><strong>הסבר:</strong></p>
+            <FormulaBox>{"4x^2 - 9 = (2x)^2 - 3^2 = (2x + 3)(2x - 3)"}</FormulaBox>
+          </div>
+        )
+      },      {
+        question: (
+          <div>
+            מה הגורם המשותף ב-<FormulaBox inline>{"6ab + 9a"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"3"}</FormulaBox>, value: '3' },
+          { label: <FormulaBox inline>{"3a"}</FormulaBox>, value: '3a' },
+          { label: <FormulaBox inline>{"6a"}</FormulaBox>, value: '6a' },
+          { label: <FormulaBox inline>{"9a"}</FormulaBox>, value: '9a' }
+        ],
+        correctAnswer: '3a',
+        explanation: (
+          <div>
+            <p><strong>הסבר:</strong></p>
+            <FormulaBox>{"6ab + 9a = 3a \\cdot 2b + 3a \\cdot 3 = 3a(2b + 3)"}</FormulaBox>
+          </div>
+        )
       }
     ]
   };

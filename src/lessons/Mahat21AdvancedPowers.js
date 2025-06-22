@@ -8,10 +8,13 @@ const Mahat21AdvancedPowers = () => {
   const lessonId = 'mahat-2-1-advanced-powers';
   const nextLessonPath = '/lessons/mahat-2-2-roots-rational';
 
-  const exercises = [
-    {
+  const exercises = [    {
       id: 'ex1',
-      question: 'פשט: x³ * x⁷',
+      question: (
+        <div>
+          פשט: <FormulaBox inline>{"x^3 \\times x^7"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: 'x¹⁰',
       placeholder: 'הכנס תשובה',
       solution: (

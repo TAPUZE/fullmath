@@ -9,10 +9,13 @@ const Mahat14AlgebraicExpressions = () => {
   const lessonId = 'mahat-1-4-algebraic-expressions';
   const nextLessonPath = '/lessons/mahat-1-5-multiplication-formulas';
   
-  const exercises = [
-    {
+  const exercises = [    {
       id: 'ex1',
-      question: 'כנס את האיברים הדומים: 3x + 5x - 2x',
+      question: (
+        <div>
+          כנס את האיברים הדומים: <FormulaBox inline>{"3x + 5x - 2x"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '6x',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -22,10 +25,13 @@ const Mahat14AlgebraicExpressions = () => {
           <FormulaBox>{"3x + 5x - 2x = (3 + 5 - 2)x = 6x"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex2',
-      question: 'חשב: 2(3x + 4)',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"2(3x + 4)"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '6x + 8',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -35,10 +41,13 @@ const Mahat14AlgebraicExpressions = () => {
           <FormulaBox>{"2(3x + 4) = 2 \\cdot 3x + 2 \\cdot 4 = 6x + 8"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex3',
-      question: 'פשט: 5a + 3b - 2a + 7b',
+      question: (
+        <div>
+          פשט: <FormulaBox inline>{"5a + 3b - 2a + 7b"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '3a + 10b',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -49,10 +58,13 @@ const Mahat14AlgebraicExpressions = () => {
           <FormulaBox>{"= (5 - 2)a + (3 + 7)b = 3a + 10b"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex4',
-      question: 'פתח סוגריים: -3(2x - 5)',
+      question: (
+        <div>
+          פתח סוגריים: <FormulaBox inline>{"-3(2x - 5)"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '-6x + 15',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -63,10 +75,13 @@ const Mahat14AlgebraicExpressions = () => {
           <FormulaBox>{"= -6x + 15"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex5',
-      question: 'הוצא גורם משותף: 12x + 8',
+      question: (
+        <div>
+          הוצא גורם משותף: <FormulaBox inline>{"12x + 8"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '4(3x + 2)',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -77,10 +92,13 @@ const Mahat14AlgebraicExpressions = () => {
           <p>בדיקה: <FormulaBox inline>{"4(3x + 2) = 12x + 8"}</FormulaBox> ✓</p>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex6',
-      question: 'הוצא גורם משותף: x² + 3x',
+      question: (
+        <div>
+          הוצא גורם משותף: <FormulaBox inline>{"x^2 + 3x"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: 'x(x + 3)',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -96,24 +114,66 @@ const Mahat14AlgebraicExpressions = () => {
 
   const quizData = {
     title: 'בחן את עצמך - ביטויים אלגבריים',
-    questions: [
-      {
-        question: 'מה התוצאה של כינוס האיברים הדומים: 7x - 3x + 2x?',
-        options: ['6x', '5x', '4x', '8x'],
-        correctAnswer: 0,
-        explanation: 'איברים דומים הם איברים עם אותו חלק משתנה. 7x - 3x + 2x = (7 - 3 + 2)x = 6x'
-      },
-      {
-        question: 'מה התוצאה של פתיחת הסוגריים: 4(2x - 3)?',
-        options: ['8x - 12', '8x - 3', '2x - 12', '6x - 7'],
-        correctAnswer: 0,
-        explanation: 'לפי חוק הפילוג: 4(2x - 3) = 4 · 2x - 4 · 3 = 8x - 12'
-      },
-      {
-        question: 'איך מוציאים גורם משותף מהביטוי 6x + 9?',
-        options: ['3(2x + 3)', '6(x + 9)', '9(6x + 1)', '(6x)(9)'],
-        correctAnswer: 0,
-        explanation: 'הגורם המשותף הגדול ביותר של 6 ו-9 הוא 3, לכן: 6x + 9 = 3(2x + 3)'
+    questions: [      {
+        question: (
+          <div>
+            מה התוצאה של כינוס האיברים הדומים: <FormulaBox inline>{"7x - 3x + 2x"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"6x"}</FormulaBox>, value: '6x' },
+          { label: <FormulaBox inline>{"5x"}</FormulaBox>, value: '5x' },
+          { label: <FormulaBox inline>{"4x"}</FormulaBox>, value: '4x' },
+          { label: <FormulaBox inline>{"8x"}</FormulaBox>, value: '8x' }
+        ],
+        correctAnswer: '6x',
+        explanation: (
+          <div>
+            <p><strong>הסבר:</strong></p>
+            <p>איברים דומים הם איברים עם אותו חלק משתנה:</p>
+            <FormulaBox>{"7x - 3x + 2x = (7 - 3 + 2)x = 6x"}</FormulaBox>
+          </div>
+        )
+      },      {
+        question: (
+          <div>
+            מה התוצאה של פתיחת הסוגריים: <FormulaBox inline>{"4(2x - 3)"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"8x - 12"}</FormulaBox>, value: '8x - 12' },
+          { label: <FormulaBox inline>{"8x - 3"}</FormulaBox>, value: '8x - 3' },
+          { label: <FormulaBox inline>{"2x - 12"}</FormulaBox>, value: '2x - 12' },
+          { label: <FormulaBox inline>{"6x - 7"}</FormulaBox>, value: '6x - 7' }
+        ],
+        correctAnswer: '8x - 12',
+        explanation: (
+          <div>
+            <p><strong>הסבר:</strong></p>
+            <p>לפי חוק הפילוג:</p>
+            <FormulaBox>{"4(2x - 3) = 4 \\cdot 2x - 4 \\cdot 3 = 8x - 12"}</FormulaBox>
+          </div>
+        )
+      },      {
+        question: (
+          <div>
+            איך מוציאים גורם משותף מהביטוי <FormulaBox inline>{"6x + 9"}</FormulaBox>?
+          </div>
+        ),
+        options: [
+          { label: <FormulaBox inline>{"3(2x + 3)"}</FormulaBox>, value: '3(2x + 3)' },
+          { label: <FormulaBox inline>{"6(x + 9)"}</FormulaBox>, value: '6(x + 9)' },
+          { label: <FormulaBox inline>{"9(6x + 1)"}</FormulaBox>, value: '9(6x + 1)' },
+          { label: <FormulaBox inline>{"(6x)(9)"}</FormulaBox>, value: '(6x)(9)' }
+        ],
+        correctAnswer: '3(2x + 3)',
+        explanation: (
+          <div>
+            <p><strong>הסבר:</strong></p>
+            <p>הגורם המשותף הגדול ביותר של 6 ו-9 הוא 3, לכן:</p>
+            <FormulaBox>{"6x + 9 = 3(2x + 3)"}</FormulaBox>
+          </div>
+        )
       }
     ]
   };
