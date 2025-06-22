@@ -8,10 +8,13 @@ import Quiz from '../components/Quiz';
 const Mahat11Basics = () => {
   const lessonId = 'mahat-1-1-basics';
   const nextLessonPath = '/lessons/mahat-1-2-fractions';
-  const exercises = [
-    {
+  const exercises = [    {
       id: 'ex1',
-      question: 'חשב: 12 + 8 ÷ 4',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"12 + 8 \\div 4"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '14',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -22,10 +25,13 @@ const Mahat11Basics = () => {
           <FormulaBox>{"12 + 2 = 14"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex2',
-      question: 'חשב: (12 + 8) ÷ 4',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"(12 + 8) \\div 4"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '5',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -36,10 +42,13 @@ const Mahat11Basics = () => {
           <FormulaBox>{"20 \\div 4 = 5"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex3',
-      question: 'חשב: 4 - (-10)',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"4 - (-10)"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '14',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -49,10 +58,13 @@ const Mahat11Basics = () => {
           <FormulaBox>{"4 - (-10) = 4 + 10 = 14"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex4',
-      question: 'חשב: (-7) × (-3)',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"(-7) \\times (-3)"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '21',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -62,10 +74,13 @@ const Mahat11Basics = () => {
           <FormulaBox>{"(-7) \\times (-3) = 21"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex5',
-      question: 'חשב: 18 ÷ ((-2) - 4) + 5',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"18 \\div ((-2) - 4) + 5"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '2',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -79,10 +94,13 @@ const Mahat11Basics = () => {
           <FormulaBox>{"-3 + 5 = 2"}</FormulaBox>
         </div>
       )
-    },
-    {
+    },    {
       id: 'ex6',
-      question: 'חשב: -2 × ((-5) + 3)² - 7',
+      question: (
+        <div>
+          חשב: <FormulaBox inline>{"-2 \\times ((-5) + 3)^2 - 7"}</FormulaBox>
+        </div>
+      ),
       correctAnswer: '-15',
       placeholder: 'הכנס תשובה',
       solution: (
@@ -101,15 +119,29 @@ const Mahat11Basics = () => {
     }
   ];
   // שאלות בחירה מרובה - להשלמה עם תוכן אמיתי
-  const quizQuestions = [
-    {
+  const quizQuestions = [    {
       id: 'q1',
-      question: 'מה התוצאה של: 7 + 3 × 2',
-      options: [
-        '20',
-        '13',
-        '16',
-        '10'
+      question: (
+        <div>
+          מה התוצאה של: <FormulaBox inline>{"7 + 3 \\times 2"}</FormulaBox>
+        </div>
+      ),      options: [
+        {
+          label: <FormulaBox inline>{"20"}</FormulaBox>,
+          value: '20'
+        },
+        {
+          label: <FormulaBox inline>{"13"}</FormulaBox>,
+          value: '13'
+        },
+        {
+          label: <FormulaBox inline>{"16"}</FormulaBox>,
+          value: '16'
+        },
+        {
+          label: <FormulaBox inline>{"10"}</FormulaBox>,
+          value: '10'
+        }
       ],
       correctAnswer: '13',
       explanation: (
@@ -118,39 +150,75 @@ const Mahat11Basics = () => {
           <p>לפי סדר פעולות החשבון, כפל קודם לחיבור:</p>
           <FormulaBox>{"3 \\times 2 = 6"}</FormulaBox>
           <FormulaBox>{"7 + 6 = 13"}</FormulaBox>
-          <p>אם היינו מחברים קודם (טעות!): 7 + 3 = 10, 10 × 2 = 20</p>
+          <p>אם היינו מחברים קודם (טעות!): <FormulaBox inline>{"7 + 3 = 10"}</FormulaBox>, <FormulaBox inline>{"10 \\times 2 = 20"}</FormulaBox></p>
         </div>
       )
-    },
-    {
+    },    {
       id: 'q2',
-      question: 'מה התוצאה של: 20 - (4 + 6 ÷ 2) × 3',
-      options: [
-        '-1',
-        '7',
-        '1',
-        '14'
+      question: (
+        <div>
+          מה התוצאה של: <FormulaBox inline>{"20 - (4 + 6 \\div 2) \\times 3"}</FormulaBox>
+        </div>
+      ),      options: [
+        {
+          label: <FormulaBox inline>{"-1"}</FormulaBox>,
+          value: '-1'
+        },
+        {
+          label: <FormulaBox inline>{"7"}</FormulaBox>,
+          value: '7'
+        },
+        {
+          label: <FormulaBox inline>{"1"}</FormulaBox>,
+          value: '1'
+        },
+        {
+          label: <FormulaBox inline>{"14"}</FormulaBox>,
+          value: '14'
+        }
       ],
       correctAnswer: '-1',
       explanation: (
         <div>
           <p><strong>הסבר:</strong></p>
           <p>נפתור שלב אחר שלב:</p>
-          <p>1. בתוך הסוגריים: 6 ÷ 2 = 3</p>
-          <p>2. עכשיו הסוגריים: (4 + 3) = 7</p>
-          <p>3. הכפל: 7 × 3 = 21</p>
-          <p>4. החיסור: 20 - 21 = -1</p>
+          <p>1. בתוך הסוגריים: <FormulaBox inline>{"6 \\div 2 = 3"}</FormulaBox></p>
+          <p>2. עכשיו הסוגריים: <FormulaBox inline>{"(4 + 3) = 7"}</FormulaBox></p>
+          <p>3. הכפל: <FormulaBox inline>{"7 \\times 3 = 21"}</FormulaBox></p>
+          <p>4. החיסור: <FormulaBox inline>{"20 - 21 = -1"}</FormulaBox></p>
         </div>
       )
-    },
-    {
+    },    {
       id: 'q3',
-      question: 'מה ההבדל בין (-3)² ל-3²?',
-      options: [
-        'אין הבדל, שניהם שווים 9',
-        '(-3)² = 9, -3² = -9',
-        '(-3)² = -9, -3² = 9',
-        'שניהם שווים -9'
+      question: (
+        <div>
+          מה ההבדל בין <FormulaBox inline>{"(-3)^2"}</FormulaBox> ל-<FormulaBox inline>{"-3^2"}</FormulaBox>?
+        </div>
+      ),      options: [
+        {
+          label: <FormulaBox inline>{"9"}</FormulaBox>,
+          value: 'אין הבדל, שניהם שווים 9'
+        },
+        {
+          label: (
+            <div>
+              <FormulaBox inline>{"(-3)^2 = 9"}</FormulaBox>, <FormulaBox inline>{"-3^2 = -9"}</FormulaBox>
+            </div>
+          ),
+          value: '(-3)² = 9, -3² = -9'
+        },
+        {
+          label: (
+            <div>
+              <FormulaBox inline>{"(-3)^2 = -9"}</FormulaBox>, <FormulaBox inline>{"-3^2 = 9"}</FormulaBox>
+            </div>
+          ),
+          value: '(-3)² = -9, -3² = 9'
+        },
+        {
+          label: <FormulaBox inline>{"-9"}</FormulaBox>,
+          value: 'שניהם שווים -9'
+        }
       ],
       correctAnswer: '(-3)² = 9, -3² = -9',
       explanation: (
@@ -216,7 +284,7 @@ const Mahat11Basics = () => {
             <div className="border-r-4 border-green-300 pr-4">
               <p><strong>דוגמה 1: תרגיל פשוט</strong></p>
               <FormulaBox>{"7 + 3 \\times 2"}</FormulaBox>
-              <p className="text-red-600"><strong>טעות נפוצה:</strong> לחבר 7+3 קודם. 10 × 2 = 20. לא נכון!</p>
+              <p className="text-red-600"><strong>טעות נפוצה:</strong> לחבר <FormulaBox inline>{"7+3"}</FormulaBox> קודם. <FormulaBox inline>{"10 \\times 2 = 20"}</FormulaBox>. לא נכון!</p>
               <p className="text-green-600"><strong>הדרך הנכונה:</strong> כפל קודם לחיבור.</p>
               <p>1. <FormulaBox inline>{"3 \\times 2 = 6"}</FormulaBox></p>
               <p>2. <FormulaBox inline>{"7 + 6 = 13"}</FormulaBox></p>
@@ -295,7 +363,7 @@ const Mahat11Basics = () => {
               <li><strong>חיבור וחיסור:</strong> גם כן מבצעים משמאל לימין</li>
               <li><strong>מספרים שליליים:</strong> חיבור מספר שלילי = חיסור, חיסור מספר שלילי = חיבור</li>
               <li><strong>כפל וחילוק בסימנים:</strong> סימנים זהים = חיובי, סימנים שונים = שלילי</li>
-              <li><strong>חזקות:</strong> שימו לב להבדל בין (-3)² ל-3²</li>
+              <li><strong>חזקות:</strong> שימו לב להבדל בין <FormulaBox inline>{"(-3)^2"}</FormulaBox> ל-<FormulaBox inline>{"-3^2"}</FormulaBox></li>
               <li><strong>תמיד כתבו כל שלב:</strong> זה מונע טעויות ומבהיר את החשיבה</li>
             </ul>
             
